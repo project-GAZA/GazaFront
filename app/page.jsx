@@ -8,6 +8,9 @@ import 'fullpage.js';
 import 'fullpage.js/dist/jquery.fullpage.min.css';
 import $ from 'jquery';
 
+import ShowComment from './components/ShowComment';
+import InputComment from './components/InputComment';
+
 const SectionBox = styled(Box)`
   text-align: center;
   background-color: ${props => props.cr};
@@ -24,11 +27,11 @@ const Home = () => {
 
   return (
     <Box id="fullpage">
-      <SectionBox cr="blue" className="section">
-        댓글 보여지는 화면
+      <SectionBox cr="gray" className="section">
+        <ShowComment />
       </SectionBox>
-      <SectionBox cr="red" className="section">
-        댓글 입력하는 화면
+      <SectionBox cr="gray" className="section">
+        <InputComment />
       </SectionBox>
       <Box className="section fp-scrollable">
         <Box style={{ height: '200vh' }}>페이지 설명화면</Box>
