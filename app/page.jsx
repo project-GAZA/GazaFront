@@ -10,6 +10,7 @@ import $ from 'jquery';
 
 import ShowComment from './components/ShowComment';
 import InputComment from './components/InputComment';
+import ShowInfo from './components/ShowInfo';
 
 const SectionBox = styled(Box)`
   text-align: center;
@@ -34,7 +35,7 @@ const Home = () => {
         <InputComment />
       </SectionBox>
       <Box className="section fp-scrollable">
-        <Box style={{ height: '200vh' }}>페이지 설명화면</Box>
+        <ShowInfo />
       </Box>
     </Box>
   );
