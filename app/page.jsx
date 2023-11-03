@@ -10,7 +10,7 @@ import $ from 'jquery';
 
 import ShowComment from './components/ShowComment';
 import ShowInfo from './components/ShowInfo';
-import ParticipateProject from './components/ParticipateProject';
+import ShowInputComment from './components/ShowInputComment';
 
 const SectionBox = styled(Box)`
   text-align: center;
@@ -28,15 +28,18 @@ const Home = () => {
 
   return (
     <Box id="fullpage">
+      <Box className="section fp-scrollable">
+        <ShowInfo />
+      </Box>
+      <SectionBox cr="gray" className="section">
+        <ShowInputComment />
+      </SectionBox>
       <SectionBox cr="gray" className="section">
         <ShowComment />
       </SectionBox>
       <SectionBox cr="gray" className="section">
-        <ParticipateProject />
+        <Box>가자지구 지도 화면</Box>
       </SectionBox>
-      <Box className="section fp-scrollable">
-        <ShowInfo />
-      </Box>
     </Box>
   );
 };

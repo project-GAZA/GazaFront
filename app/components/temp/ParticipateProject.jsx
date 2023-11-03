@@ -1,19 +1,40 @@
 'use clients';
 
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalFooter,
-  ModalBody,
-  Button,
-  Box,
-  useDisclosure,
-} from '@chakra-ui/react';
+import { Button, Box, useDisclosure } from '@chakra-ui/react';
 
 import InputComment from './InputComment';
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
+function preventDefault(e) {
+  e.preventDefault();
+}
+
+function preventDefaultForScrollKeys(e) {
+  if (keys[e.keyCode]) {
+    preventDefault(e);
+    return false;
+  }
+}
+
+// modern Chrome requires { passive: false } when adding event
+var supportsPassive = false;
+try {
+  window.addEventListener(
+    'test',
+    null,
+    Object.defineProperty({}, 'passive', {
+      get: function () {
+        supportsPassive = true;
+      },
+    }),
+  );
+} catch (e) {}
+
+var wheelOpt = supportsPassive ? { passive: false } : false;
+var wheelEvent =
+  'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
 function disableScroll() {
   window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
@@ -31,6 +52,7 @@ function enableScroll() {
 
 const ParticipateProject = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  disableScroll();
   return (
     <>
       <Box
@@ -53,28 +75,8 @@ const ParticipateProject = () => {
         <Button size="md" height="300px" border="2px" borderColor="green.500">
           기부와 응원남기기
         </Button>
+        <InputComment isOpen={isOpen} onClose={onClose} />
       </Box>
-      <Modal
-        isCentered
-        closeOnOverlayClick={false}
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <InputComment />
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody></ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
     </>
   );
 };
