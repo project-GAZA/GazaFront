@@ -1,41 +1,40 @@
 'use clients';
 
 import {
-  Card,
   Heading,
   Stack,
-  Text,
-  CardBody,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
   Divider,
-  Image,
-  CardFooter,
+  Textarea,
+  ModalFooter,
   ButtonGroup,
   Button,
+  Box,
 } from '@chakra-ui/react';
 
 const ShowComment = () => {
   return (
-    <Card sx={{ margin: '0 auto' }} maxW="sm">
-      <CardBody>
-        <Image
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Green double couch with wooden legs"
-          borderRadius="lg"
-        />
+    <ModalContent sx={{ margin: '0 auto' }} maxW="sm">
+      <ModalHeader sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Button colorScheme="teal" size="xs">
+          기부
+        </Button>
+        <Heading size="md">응원 메세지 입력창</Heading>
+        <Box />
+      </ModalHeader>
+      <ModalBody>
         <Stack mt="6" spacing="3">
-          <Heading size="md">댓글 입력창</Heading>
-          <Text>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design
-            with a sprinkle of vintage design.
-          </Text>
-          <Text color="blue.600" fontSize="2xl">
-            $450
-          </Text>
+          <Textarea
+            placeholder="댓글을 입력하세요"
+            mb={2} // 하단 마진 추가
+            resize="none"
+          />
         </Stack>
-      </CardBody>
+      </ModalBody>
       <Divider />
-      <CardFooter>
+      <ModalFooter>
         <ButtonGroup spacing="2">
           <Button variant="solid" colorScheme="blue">
             Buy now
@@ -44,8 +43,8 @@ const ShowComment = () => {
             Add to cart
           </Button>
         </ButtonGroup>
-      </CardFooter>
-    </Card>
+      </ModalFooter>
+    </ModalContent>
   );
 };
 

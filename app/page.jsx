@@ -9,8 +9,8 @@ import 'fullpage.js/dist/jquery.fullpage.min.css';
 import $ from 'jquery';
 
 import ShowComment from './components/ShowComment';
-import InputComment from './components/InputComment';
 import ShowInfo from './components/ShowInfo';
+import ParticipateProject from './components/ParticipateProject';
 
 const SectionBox = styled(Box)`
   text-align: center;
@@ -32,7 +32,7 @@ const Home = () => {
         <ShowComment />
       </SectionBox>
       <SectionBox cr="gray" className="section">
-        <InputComment />
+        <ParticipateProject />
       </SectionBox>
       <Box className="section fp-scrollable">
         <ShowInfo />
