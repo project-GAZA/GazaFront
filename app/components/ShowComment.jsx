@@ -16,18 +16,14 @@ import {
   useToast,
 } from '@chakra-ui/react';
 
-// ★ API URL 변경할 것! 
+// JANG: API URL 변경
 const API_URL = 'http://13.124.123.16:8080/api/home';
-
-// (JSONPlaceholder) 더미 API 사용 -> 서버 통신 없이 UI 확인 가능
-// const API_URL = 'https://jsonplaceholder.typicode.com/comments';
 
 
 const ShowComment = () => {
 
-  // DB에서 GET하면 : [{content, createDt, likeCount, username}..]
-  // messages 안에서 content, likeCount, usename 참고할 것
-
+  // GET `/api/home` : [{content, createDt, likeCount, username}..]
+ 
   const [messages, setMessages] = useState([]); 
 
   useEffect(()=>{
@@ -79,9 +75,39 @@ const ShowComment = () => {
 
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
-            {/* 테스트 코드 */}
 
+            {/* JANG: 테스트용 (이후 지우기!) */}
+            {Array.from({ length: 5 }, (_, index) => (
+              <Box key={index}> 
+                <Box
+                  sx={{
+                    bg: 'gray.200',
+                    borderRadius: 10,
+                    padding: 10,
+                  }}
+                >
+                  <Heading size="xs" textAlign="left">
+                    닉네임: nickname_{index}
+                  </Heading>
+                  <Text pt="2" fontSize="sm" textAlign="left">
+                    메시지: message_{index}
+                  </Text>
+                </Box>
+                <Box sx={{ mt: 2 }}>
+                  <Button
+                    color="blue"
+                    fontSize="sm"
+                    fontWeight="bold"
+                    textAlign="center"
+                  >
+                    좋아요
+                  </Button>
+                  <Text sx={{ color: 'gray' }}>좋아요: {index} </Text>
+                </Box>
+              </Box>
+            ))}
 
+            {/* JANG: 실제 메시지들 (이후 이거 사용) */}
             {messages.map((message, index) => (
               <Box key={index}> 
                 <Box
