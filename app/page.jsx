@@ -18,6 +18,11 @@ import axios from 'axios';
 const SectionBox = styled(Box)`
   text-align: center;
   background-color: ${props => props.cr};
+  background-image: url('/home-bg-img.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; // 스크롤 시 배경 고정
 `;
 
 const Home = () => {
@@ -31,9 +36,9 @@ const Home = () => {
 
   return (
     <Box id="fullpage">
-      <Box className="section fp-scrollable">
+      <SectionBox className="section">
         <ShowInfo />
-      </Box>
+      </SectionBox>
       <SectionBox cr="gray" className="section">
         <ShowInputComment />
       </SectionBox>
