@@ -12,6 +12,9 @@ import ShowComment from './components/ShowComment';
 import ShowInfo from './components/ShowInfo';
 import ShowInputComment from './components/ShowInputComment';
 
+// JANG: 추가
+import axios from 'axios';
+
 const SectionBox = styled(Box)`
   text-align: center;
   background-color: ${props => props.cr};
