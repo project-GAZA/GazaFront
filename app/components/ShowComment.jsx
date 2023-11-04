@@ -68,12 +68,23 @@ const ShowComment = () => {
 
   return (
     <>
-      <Card sx={{ margin: '0 auto' }}>
+      <Card sx={{ 
+        width: '60%',
+        height: '80%',
+        display: 'flex',
+        flexDirection: 'column', // 내용을 세로로 정렬
+        // alignItems: 'center',
+        justifyContent: 'flex-start', // 내용을 위에서부터 시작하도록 정렬
+        margin: '0 auto',
+        overflowY: 'auto', // 세로 스크롤만 허용
+       }}>
         <CardHeader>
           <Heading size="md" textAlign="center">응원 메시지</Heading>
         </CardHeader>
 
-        <CardBody>
+        <CardBody sx={{
+          overflowY: 'auto', // CardBody 내부에서 스크롤 가능하도록 설정
+        }}>
           <Stack divider={<StackDivider />} spacing="4">
 
             {/* JANG: 테스트용 (이후 지우기!) */}
