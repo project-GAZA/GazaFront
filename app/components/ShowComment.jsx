@@ -11,7 +11,6 @@ import {
   Text,
   CardBody,
   StackDivider,
-   
   Button,
   useToast,
 } from '@chakra-ui/react';
@@ -19,19 +18,17 @@ import {
 // JANG: API URL 변경
 const API_URL = 'http://13.124.123.16:8080/api/home';
 
-
 const ShowComment = () => {
-
   // GET `/api/home` : [{content, createDt, likeCount, username}..]
- 
-  const [messages, setMessages] = useState([]); 
 
-  useEffect(()=>{
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
     async function fetchComments() {
-      try{
+      try {
         const response = await axios.get(API_URL);
-        setMessages(response.data); // 응답 데이터를 messages에 저장 
-      } catch(error){
+        setMessages(response.data); // 응답 데이터를 messages에 저장
+      } catch (error) {
         // toast({
         //   title: '메시지 불러오기 실패',
         //   description: '메시지를 불러오는데 실패했습니다.',
@@ -46,50 +43,57 @@ const ShowComment = () => {
   }, []);
 
   // 좋아요 버튼 핸들러
-  const handleLike = async (messageId) => {
-    try{
+  const handleLike = async messageId => {
+    try {
       await axios.post(`${API_URL}/like/${messageId}`); // 좋아요 요청
       // 좋아요 수 업데이트 로직
-      setMessages(messages.map((message) => {
-        message.createDt === messageId
-        ? { ...message, likeCount : message.likeCount + 1}
-        : message
-      }));
-    } catch(error){
-    // toast({
-    //   title: '좋아요 실패',
-    //   description: '좋아요에 실패했습니다.',
-    //   status: 'error',
-    //   duration: 3000,
-    //   isClosable: true,
-    // });
+      setMessages(
+        messages.map(message => {
+          message.createDt === messageId
+            ? { ...message, likeCount: message.likeCount + 1 }
+            : message;
+        }),
+      );
+    } catch (error) {
+      // toast({
+      //   title: '좋아요 실패',
+      //   description: '좋아요에 실패했습니다.',
+      //   status: 'error',
+      //   duration: 3000,
+      //   isClosable: true,
+      // });
     }
   };
 
   return (
     <>
-      <Card sx={{ 
-        width: '60%',
-        height: '80%',
-        display: 'flex',
-        flexDirection: 'column', // 내용을 세로로 정렬
-        // alignItems: 'center',
-        justifyContent: 'flex-start', // 내용을 위에서부터 시작하도록 정렬
-        margin: '0 auto',
-        overflowY: 'auto', // 세로 스크롤만 허용
-       }}>
+      <Card
+        sx={{
+          width: '60%',
+          height: '80%',
+          display: 'flex',
+          flexDirection: 'column', // 내용을 세로로 정렬
+          // alignItems: 'center',
+          justifyContent: 'flex-start', // 내용을 위에서부터 시작하도록 정렬
+          margin: '0 auto',
+          overflowY: 'auto', // 세로 스크롤만 허용
+        }}
+      >
         <CardHeader>
-          <Heading size="md" textAlign="center">응원 메시지</Heading>
+          <Heading size="md" textAlign="center">
+            응원 메시지
+          </Heading>
         </CardHeader>
 
-        <CardBody sx={{
-          overflowY: 'auto', // CardBody 내부에서 스크롤 가능하도록 설정
-        }}>
+        <CardBody
+          sx={{
+            overflowY: 'auto', // CardBody 내부에서 스크롤 가능하도록 설정
+          }}
+        >
           <Stack divider={<StackDivider />} spacing="4">
-
             {/* JANG: 테스트용 (이후 지우기!) */}
             {Array.from({ length: 5 }, (_, index) => (
-              <Box key={index}> 
+              <Box key={index}>
                 <Box
                   sx={{
                     bg: 'gray.200',
@@ -120,7 +124,7 @@ const ShowComment = () => {
 
             {/* JANG: 실제 메시지들 (이후 이거 사용) */}
             {messages.map((message, index) => (
-              <Box key={index}> 
+              <Box key={index}>
                 <Box
                   sx={{
                     bg: 'gray.200',
@@ -145,7 +149,9 @@ const ShowComment = () => {
                   >
                     좋아요
                   </Button>
-                  <Text sx={{ color: 'gray' }}>좋아요: {message.likeCount}</Text>
+                  <Text sx={{ color: 'gray' }}>
+                    좋아요: {message.likeCount}
+                  </Text>
                 </Box>
               </Box>
             ))}
@@ -155,6 +161,5 @@ const ShowComment = () => {
     </>
   );
 };
-
 
 export default ShowComment;

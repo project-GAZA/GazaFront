@@ -3,21 +3,14 @@
 import React, { useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import 'fullpage.js/vendors/scrolloverflow';
-import 'fullpage.js';
-import 'fullpage.js/dist/jquery.fullpage.min.css';
 import $ from 'jquery';
 
 import ShowComment from './components/ShowComment';
 import ShowInfo from './components/ShowInfo';
 import ShowInputComment from './components/ShowInputComment';
 
-// JANG: 추가
-import axios from 'axios';
-
 const SectionBox = styled(Box)`
   text-align: center;
-  background-color: ${props => props.cr};
   background-image: url('/home-bg-img.png');
   background-size: cover;
   background-position: center;
@@ -27,9 +20,20 @@ const SectionBox = styled(Box)`
 
 const Home = () => {
   useEffect(() => {
-    $(document).ready(function () {
-      $('#fullpage').fullpage({
-        scrollOverflow: true,
+    // 클라이언트 사이드에서만 실행되도록 보장합니다.
+
+    import('fullpage.js/vendors/scrolloverflow').then(() => {
+      import('fullpage.js').then(() => {
+        import('fullpage.js/dist/jquery.fullpage.min.css').then(() => {
+          if ($.fn.fullpage && typeof $.fn.fullpage.destroy === 'function') {
+            // 이미 인스턴스가 있다면 먼저 파괴
+            $.fn.fullpage.destroy('all');
+          }
+
+          $('#fullpage').fullpage({
+            scrollOverflow: true,
+          });
+        });
       });
     });
   }, []);
@@ -39,17 +43,16 @@ const Home = () => {
       <SectionBox className="section">
         <ShowInfo />
       </SectionBox>
-      <SectionBox cr="gray" className="section">
+      <SectionBox className="section">
         <ShowInputComment />
       </SectionBox>
-      <SectionBox cr="gray" className="section">
+      <SectionBox className="section">
         <ShowComment />
       </SectionBox>
-      <SectionBox cr="gray" className="section">
+      <SectionBox className="section">
         <Box>가자지구 지도 화면</Box>
       </SectionBox>
     </Box>
   );
 };
-
 export default Home;
