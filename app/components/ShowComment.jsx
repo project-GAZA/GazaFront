@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 
 // JANG: API URL 변경
-const API_URL = 'http://13.124.123.16:8080/api/home';
+const API_URL = '//13.124.123.16:8080/api/home';
 
 const ShowComment = () => {
   const [messages, setMessages] = useState([]);

@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 
 const postComment = async ({ content, username }) => {
-  const response = await fetch('http://13.124.123.16:8080/api/message', {
+  const response = await fetch('//13.124.123.16:8080/api/message', {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain',
