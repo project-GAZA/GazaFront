@@ -1,7 +1,7 @@
 'use clients';
 // test_section_3 : 응원 메시지 확인 창
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Card,
   CardHeader,
@@ -19,27 +19,36 @@ import {
 const API_URL = 'http://13.124.123.16:8080/api/home';
 
 const ShowComment = () => {
-  // GET `/api/home` : [{content, createDt, likeCount, username}..]
-
   const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    async function fetchComments() {
-      try {
-        const response = await axios.get(API_URL);
-        setMessages(response.data); // 응답 데이터를 messages에 저장
-      } catch (error) {
-        // toast({
-        //   title: '메시지 불러오기 실패',
-        //   description: '메시지를 불러오는데 실패했습니다.',
-        //   status: 'error',
-        //   duration: 3000,
-        //   isClosable: true,
-        // })
-      }
-    }
+  // GET `/api/home` : [{content, createDt, likeCount, username}..]
 
-    fetchComments();
+  const getComments = async () => {
+    const response = await fetch('http://13.124.123.16:8080/api/home', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json, text/plain',
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+    });
+    if (response.status === 200) {
+      const data = await response.json();
+      setMessages(data);
+      console.log(data);
+    }
+    return;
+  };
+
+  const ref = useRef();
+
+  function handlePopupScroll(event) {
+    // 이벤트 전파를 막음
+    event.preventDefault();
+    // event.stopPropagation();
+  }
+
+  useEffect(() => {
+    getComments();
   }, []);
 
   // 좋아요 버튼 핸들러
@@ -68,6 +77,8 @@ const ShowComment = () => {
   return (
     <>
       <Card
+        className="nonfullpage"
+        onScroll={handlePopupScroll}
         sx={{
           width: '60%',
           height: '80%',
@@ -87,12 +98,13 @@ const ShowComment = () => {
 
         <CardBody
           sx={{
+            overscrollBehavior: 'contain',
             overflowY: 'auto', // CardBody 내부에서 스크롤 가능하도록 설정
           }}
         >
           <Stack divider={<StackDivider />} spacing="4">
             {/* JANG: 테스트용 (이후 지우기!) */}
-            {Array.from({ length: 5 }, (_, index) => (
+            {messages.map((v, index) => (
               <Box key={index}>
                 <Box
                   sx={{
@@ -102,10 +114,10 @@ const ShowComment = () => {
                   }}
                 >
                   <Heading size="xs" textAlign="left">
-                    닉네임: nickname_{index}
+                    닉네임: nickname_{v.username}
                   </Heading>
                   <Text pt="2" fontSize="sm" textAlign="left">
-                    메시지: message_{index}
+                    메시지: message_{v.content}
                   </Text>
                 </Box>
                 <Box sx={{ mt: 2 }}>
@@ -117,7 +129,7 @@ const ShowComment = () => {
                   >
                     좋아요
                   </Button>
-                  <Text sx={{ color: 'gray' }}>좋아요: {index} </Text>
+                  <Text sx={{ color: 'gray' }}>좋아요: {v.likeCount} </Text>
                 </Box>
               </Box>
             ))}

@@ -31,6 +31,7 @@ const Home = () => {
           }
 
           $('#fullpage').fullpage({
+            normalScrollElements: '.nonfullpage',
             scrollOverflow: true,
           });
         });
