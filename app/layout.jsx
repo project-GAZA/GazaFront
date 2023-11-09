@@ -11,7 +11,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="kr">
-      <head></head>
+      <head>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
+      </head>
       <body>
         <ChakraProvider>{children}</ChakraProvider>
       </body>
