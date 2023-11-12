@@ -1,7 +1,5 @@
 'use client';
-// test_section_1 : 프로젝트 설명
-// JANG: 이 jsx 파일은 일단 보류
-// JANG: 테스트용에 ShowInfo_1.jsx와 ShowInfo_2.jsx 각각 섹션1,2로 넣어둠 (나중에 ShowInfo.jsx에서 합칠 것?)
+// test_section_1 : 프로젝트 설명 1
 
 import {
   Flex,
@@ -37,16 +35,21 @@ const ShowInfo = () => {
       direction='column'
       position='relative'
     >
+      {/* JANG: 일단 간편하게 이미지로 넣었는데, 나중에 직접 타이틀과 텍스트를 position으로 넣고 + 효과 넣는 게 좋을 듯 */}
       <Image
-        src='/home-title.png'
+        src='/section-1.png'
         alt='PEACE IN GAZA'
         position='absolute'
-        top="10%"
-        maxW="50%"
-        maxH = "20%"
-        objectFit="contain"
+        // 이미지 화면에 꽉 차게
+        w="100%"
+        h="100%"
+        // top="10%"
+        // maxW="50%"
+        // maxH = "20%"
+        // objectFit="contain"
+
       />
-      <Text
+      {/* <Text
         fontSize='2rem'
         fontWeight='bold'
         color='white'
@@ -57,7 +60,7 @@ const ShowInfo = () => {
         레는 빨간 레코드<br/>
         미는 파란 미나리<br/>
         와 이거 짱이다!!
-      </Text>
+      </Text> */}
     </Flex>
     </>
   );

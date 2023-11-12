@@ -9,6 +9,10 @@ import ShowComment from './components/ShowComment';
 import ShowInfo from './components/ShowInfo';
 import ShowInputComment from './components/ShowInputComment';
 
+// JANG: 테스트용 import
+import ShowInfo_1 from './components/ShowInfo_1';
+import ShowInfo_2 from './components/ShowInfo_2';
+
 const SectionBox = styled(Box)`
   text-align: center;
   background-image: url('/home-bg-img.png');
@@ -42,7 +46,11 @@ const Home = () => {
   return (
     <Box id="fullpage">
       <SectionBox className="section">
-        <ShowInfo />
+        <ShowInfo_1 />
+      </SectionBox>
+      {/* JANG: section 2 (프로젝트 설명 2) 추가 */}
+      <SectionBox className="section">
+        <ShowInfo_2 />
       </SectionBox>
       <SectionBox className="section">
         <ShowInputComment />
