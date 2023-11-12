@@ -1,177 +1,101 @@
 'use clients';
-// test_section_5 : 응원 메시지 확인 창
+// test_section_5 : 가자지구 시각화 창
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Card,
-  CardHeader,
-  Heading,
-  Stack,
-  Box,
-  Text,
-  CardBody,
-  StackDivider,
-  Button,
-  useToast,
+    Box,
+    Text,
+    VStack,
 } from '@chakra-ui/react';
 
 // JANG: API URL 변경
-const API_URL = '//13.124.123.16:8080/api/home';
+const API_URL = '//13.124.123.16:8080/api/message';
 
-const ShowComment = () => {
-  const [messages, setMessages] = useState([]);
+const ShowGazaMap = () => {
 
-  // GET `/api/home` : [{content, createDt, likeCount, username}..]
+// JANG: API 호출
+//   const [percentage, setPercentage] = useState(0);
 
-  const getComments = async () => {
-    const response = await fetch('http://13.124.123.16:8080/api/home', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json, text/plain',
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
-    });
-    if (response.status === 200) {
-      const data = await response.json();
-      setMessages(data);
-      console.log(data);
-    }
-    return;
-  };
+//   const getPercentage = async () => {
+//     const response = await fetch(API_URL, {
+//       method: 'GET',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json;charset=UTF-8',
+//       },
+//     });
+//     try {
+//         if (response.status === 200){
+//             const { number } = await response.json();
+//             setPercentage(number);
+//             console.log(number);
+//         } else {
+//             console.error('Failed to fetch data:', response.status);
+//         }
+//     } catch (error) {
+//         console.error('Error fetching data:', error);
+//     }
+//     return;
+//   };
 
-  const ref = useRef();
-
-  function handlePopupScroll(event) {
-    // 이벤트 전파를 막음
-    event.preventDefault();
-    // event.stopPropagation();
-  }
+// JANG: 테스트용 데이터 (임시 하드코딩)
+    const percentage = 80;
 
   useEffect(() => {
-    getComments();
+    // getPercentage();
   }, []);
 
-  // 좋아요 버튼 핸들러
-  const handleLike = async messageId => {
-    try {
-      await axios.post(`${API_URL}/like/${messageId}`); // 좋아요 요청
-      // 좋아요 수 업데이트 로직
-      setMessages(
-        messages.map(message => {
-          message.createDt === messageId
-            ? { ...message, likeCount: message.likeCount + 1 }
-            : message;
-        }),
-      );
-    } catch (error) {
-      // toast({
-      //   title: '좋아요 실패',
-      //   description: '좋아요에 실패했습니다.',
-      //   status: 'error',
-      //   duration: 3000,
-      //   isClosable: true,
-      // });
-    }
-  };
-
+  
   return (
     <>
-      <Card
-        className="nonfullpage"
-        onScroll={handlePopupScroll}
-        sx={{
-          width: '60%',
-          height: '80%',
-          display: 'flex',
-          flexDirection: 'column', // 내용을 세로로 정렬
-          // alignItems: 'center',
-          justifyContent: 'flex-start', // 내용을 위에서부터 시작하도록 정렬
-          margin: '0 auto',
-          overflowY: 'auto', // 세로 스크롤만 허용
-        }}
+    <VStack
+      justify="center"
+      align="center"
+      height="100vh"
+      spacing={4}
       >
-        <CardHeader>
-          <Heading size="md" textAlign="center">
-            응원 메시지
-          </Heading>
-        </CardHeader>
-
-        <CardBody
-          sx={{
-            overscrollBehavior: 'contain',
-            overflowY: 'auto', // CardBody 내부에서 스크롤 가능하도록 설정
-          }}
+        <Text color="yellow.400" fontSize="35px" fontWeight="bold">
+            메시지 참여 현황
+        </Text>
+        {/* 노란색 큰 박스 */}
+        <Box
+            width="90%"
+            height="70%"
+            maxWidth="400px"
+            // maxHeight="800px"
+            position="relative"
+            border="5px solid"
+            borderColor="yellow.400"
+            borderRadius="10px"
+            backgroundColor="blackAlpha.800"
         >
-          <Stack divider={<StackDivider />} spacing="4">
-            {/* JANG: 테스트용 (이후 지우기!) */}
-            {messages.map((v, index) => (
-              <Box key={index}>
-                <Box
-                  sx={{
-                    bg: 'gray.200',
-                    borderRadius: 10,
-                    padding: 10,
-                  }}
-                >
-                  <Heading size="xs" textAlign="left">
-                    닉네임: nickname_{v.username}
-                  </Heading>
-                  <Text pt="2" fontSize="sm" textAlign="left">
-                    메시지: message_{v.content}
-                  </Text>
-                </Box>
-                <Box sx={{ mt: 2 }}>
-                  <Button
-                    color="blue"
-                    fontSize="sm"
-                    fontWeight="bold"
-                    textAlign="center"
-                  >
-                    좋아요
-                  </Button>
-                  <Text sx={{ color: 'gray' }}>좋아요: {v.likeCount} </Text>
-                </Box>
-              </Box>
-            ))}
+            {/* 내부 파랗게 차오르는 영역 */}
+            <Box
+            position="absolute"
+            bottom="0"
+            width="100%"
+            height={`${percentage}%`}
+            backgroundColor="blue.500"
+            transition="height 0.6s ease-out"
+            />
 
-            {/* JANG: 실제 메시지들 (이후 이거 사용) */}
-            {messages.map((message, index) => (
-              <Box key={index}>
-                <Box
-                  sx={{
-                    bg: 'gray.200',
-                    borderRadius: 10,
-                    padding: 10,
-                  }}
-                >
-                  <Heading size="xs" textAlign="left">
-                    닉네임: {message.username}
-                  </Heading>
-                  <Text pt="2" fontSize="sm" textAlign="left">
-                    메시지: {message.content}
-                  </Text>
-                </Box>
-                <Box sx={{ mt: 2 }}>
-                  <Button
-                    color="blue"
-                    fontSize="sm"
-                    fontWeight="bold"
-                    textAlign="center"
-                    onClick={() => setLikes(message.createDt + 1)}
-                  >
-                    좋아요
-                  </Button>
-                  <Text sx={{ color: 'gray' }}>
-                    좋아요: {message.likeCount}
-                  </Text>
-                </Box>
-              </Box>
-            ))}
-          </Stack>
-        </CardBody>
-      </Card>
+            {/* 노란색 박스 앞에 수치 표시 -> percentage를 0~100까지로만 일단 제한함 (나중에 목표치에 대한 비율로 설정!) */}
+            <Text
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+            color="white"
+            fontWeight="bold"
+            fontSize="50px"
+            zIndex="999"
+            >
+            {percentage}%
+            </Text>
+        </Box>
+     </VStack>
     </>
   );
 };
 
-export default ShowComment;
+export default ShowGazaMap;

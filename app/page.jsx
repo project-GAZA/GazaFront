@@ -12,6 +12,7 @@ import ShowInputComment from './components/ShowInputComment';
 // JANG: 테스트용 import
 import ShowInfo_1 from './components/ShowInfo_1';
 import ShowInfo_2 from './components/ShowInfo_2';
+import ShowGazaMap from './components/ShowGazaMap';
 
 const SectionBox = styled(Box)`
   text-align: center;
@@ -59,7 +60,7 @@ const Home = () => {
         <ShowComment />
       </SectionBox>
       <SectionBox className="section">
-        <Box>가자지구 지도 화면</Box>
+        <Box><ShowGazaMap /></Box>
       </SectionBox>
     </Box>
   );
