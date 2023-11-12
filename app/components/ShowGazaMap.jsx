@@ -1,5 +1,5 @@
 'use clients';
-// test_section_4 : 응원 메시지 확인 창
+// test_section_5 : 응원 메시지 확인 창
 
 import React, { useState, useEffect, useRef } from 'react';
 import {

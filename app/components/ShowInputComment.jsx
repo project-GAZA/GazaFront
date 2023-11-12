@@ -1,5 +1,5 @@
 'use clients';
-// test_section_2 : 응원 메시지 입력창
+// test_section_3 : 응원 메시지 입력창
 
 import { useState } from 'react';
 import { useToast } from '@chakra-ui/react';
