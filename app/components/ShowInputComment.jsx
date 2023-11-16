@@ -19,7 +19,7 @@ import {
   FormControl,
 } from '@chakra-ui/react';
 
-const postComment = async ({ content, username }) => {
+const postComment = async (content, username) => {
   const response = await fetch('http://13.124.123.16:8080/api/message', {
     method: 'POST',
     headers: {
@@ -40,8 +40,9 @@ const InputComment = () => {
   const [username, setUsername] = useState('');
   const [disable, setDisable] = useState(false);
 
-  const SubmitForm = async e => {
+  const SubmitForm = e => {
     e.preventDefault();
+    console.log(content, username);
     toast.promise(postComment(content, username), {
       success: { title: '댓글작성완료', description: 'Looks great' },
       error: {
