@@ -20,7 +20,7 @@ import {
 import styled from '@emotion/styled';
 import { FaHeart, FaSearch } from 'react-icons/fa';
 
-import useWindowSize from '../hooks/useWindowSize';
+import useWindowSize from '../../hooks/useWindowSize';
 
 // JANG: API URL 변경
 const API_URL = '//13.124.123.16:8080/api/home';
