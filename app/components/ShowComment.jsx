@@ -10,69 +10,96 @@ import {
   Box,
   Text,
   CardBody,
-  StackDivider,
+  IconButton,
+  InputGroup,
+  InputLeftElement,
   Button,
-  useToast,
+  Icon,
+  Input,
 } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+import { FaHeart, FaSearch } from 'react-icons/fa';
+
+import useWindowSize from '../hooks/useWindowSize';
 
 // JANG: API URL 변경
 const API_URL = '//13.124.123.16:8080/api/home';
 
+const LikeWrapper = styled(IconButton)`
+  height: 20px;
+  min-width: 20px;
+  width: 20px;
+  padding: 0px;
+  & :hover {
+    background: ${props => props.actBtn};
+  }
+`;
+const CommentHeader = styled(Box)`
+  display: flex;
+  alignitems: center;
+  gap: 5px;
+  & button {
+    background: ${props => props.actBtn};
+  }
+`;
+
+// GET `/api/home` : [{content, createDt, likeCount, username}..]
+
+const getComments = async () => {
+  const response = await fetch('http://13.124.123.16:8080/api/home', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json, text/plain',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  });
+  if (response.status === 200) {
+    const data = await response.json();
+    setMessages(data);
+    console.log(data);
+  }
+  return;
+};
+
+// 좋아요 버튼 핸들러
+const handleLike = async messageId => {
+  try {
+    await axios.post(`${API_URL}/like/${messageId}`); // 좋아요 요청
+    // 좋아요 수 업데이트 로직
+    setMessages(
+      messages.map(message => {
+        message.createDt === messageId
+          ? { ...message, likeCount: message.likeCount + 1 }
+          : message;
+      }),
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const cardBackground = ['#343540', '#23242b'];
+
+// Start Component
 const ShowComment = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      content: '..',
+      createDt: '..',
+      likeCount: 2,
+      username: '주경진진진진진진진진진',
+    },
+  ]);
 
-  // GET `/api/home` : [{content, createDt, likeCount, username}..]
-
-  const getComments = async () => {
-    const response = await fetch('http://13.124.123.16:8080/api/home', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json, text/plain',
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
-    });
-    if (response.status === 200) {
-      const data = await response.json();
-      setMessages(data);
-      console.log(data);
-    }
-    return;
-  };
-
-  const ref = useRef();
-
-  function handlePopupScroll(event) {
+  const handlePopupScroll = event => {
     // 이벤트 전파를 막음
     event.preventDefault();
     // event.stopPropagation();
-  }
-
-  useEffect(() => {
-    getComments();
-  }, []);
-
-  // 좋아요 버튼 핸들러
-  const handleLike = async messageId => {
-    try {
-      await axios.post(`${API_URL}/like/${messageId}`); // 좋아요 요청
-      // 좋아요 수 업데이트 로직
-      setMessages(
-        messages.map(message => {
-          message.createDt === messageId
-            ? { ...message, likeCount: message.likeCount + 1 }
-            : message;
-        }),
-      );
-    } catch (error) {
-      // toast({
-      //   title: '좋아요 실패',
-      //   description: '좋아요에 실패했습니다.',
-      //   status: 'error',
-      //   duration: 3000,
-      //   isClosable: true,
-      // });
-    }
   };
+  const size = useWindowSize();
+  useEffect(() => {
+    // getComments();
+  }, []);
 
   return (
     <>
@@ -80,89 +107,108 @@ const ShowComment = () => {
         className="nonfullpage"
         onScroll={handlePopupScroll}
         sx={{
-          width: '60%',
-          height: '80%',
+          backgroundColor: '#23242b',
           display: 'flex',
+          maxHeight: '80%',
+
           flexDirection: 'column', // 내용을 세로로 정렬
           // alignItems: 'center',
           justifyContent: 'flex-start', // 내용을 위에서부터 시작하도록 정렬
-          margin: '0 auto',
+          margin: '0 20px',
           overflowY: 'auto', // 세로 스크롤만 허용
         }}
       >
-        <CardHeader>
-          <Heading size="md" textAlign="center">
+        <CardHeader
+          sx={{
+            backgroundColor: '#85f9ad',
+            height: `${size.width >= 900 ? 45 : 35}px`,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Heading
+            sx={{
+              fontSize: `${size.width >= 900 ? 18 : 16}px`,
+              fontWeight: 700,
+            }}
+          >
             응원 메시지
           </Heading>
         </CardHeader>
 
         <CardBody
           sx={{
+            padding: '0px',
             overscrollBehavior: 'contain',
             overflowY: 'auto', // CardBody 내부에서 스크롤 가능하도록 설정
           }}
         >
-          <Stack divider={<StackDivider />} spacing="4">
-            {/* JANG: 테스트용 (이후 지우기!) */}
-            {messages.map((v, index) => (
-              <Box key={index}>
-                <Box
-                  sx={{
-                    bg: 'gray.200',
-                    borderRadius: 10,
-                    padding: 10,
-                  }}
-                >
-                  <Heading size="xs" textAlign="left">
-                    닉네임: nickname_{v.username}
-                  </Heading>
-                  <Text pt="2" fontSize="sm" textAlign="left">
-                    메시지: message_{v.content}
-                  </Text>
-                </Box>
-                <Box sx={{ mt: 2 }}>
-                  <Button
-                    color="blue"
-                    fontSize="sm"
-                    fontWeight="bold"
-                    textAlign="center"
-                  >
-                    좋아요
-                  </Button>
-                  <Text sx={{ color: 'gray' }}>좋아요: {v.likeCount} </Text>
-                </Box>
-              </Box>
-            ))}
+          <Box
+            sx={{
+              padding: '10px',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Box sx={{ width: '150px', minWidth: '150px' }}>
+              <Button sx={{ marginRight: '10px' }} colorScheme="teal" size="sm">
+                Best
+              </Button>
+              <Button colorScheme="teal" size="sm">
+                New
+              </Button>
+            </Box>
+            <InputGroup sx={{ minWidth: 130, maxWidth: 300 }}>
+              <InputLeftElement pointerEvents="none">
+                <Icon as={FaSearch} color="gray.300" />
+              </InputLeftElement>
+              <Input color="white" type="text" placeholder="Input Nickname" />
+            </InputGroup>
+          </Box>
 
-            {/* JANG: 실제 메시지들 (이후 이거 사용) */}
-            {messages.map((message, index) => (
-              <Box key={index}>
+          <Stack spacing="0">
+            {messages.map((v, index) => (
+              <Box
+                sx={{ backgroundColor: cardBackground[index % 2] }}
+                key={index}
+              >
                 <Box
                   sx={{
-                    bg: 'gray.200',
-                    borderRadius: 10,
-                    padding: 10,
+                    padding: '10px',
                   }}
                 >
-                  <Heading size="xs" textAlign="left">
-                    닉네임: {message.username}
-                  </Heading>
-                  <Text pt="2" fontSize="sm" textAlign="left">
-                    메시지: {message.content}
-                  </Text>
-                </Box>
-                <Box sx={{ mt: 2 }}>
-                  <Button
-                    color="blue"
+                  <CommentHeader actBtn="red">
+                    <Heading size="xs" textAlign="left" color="#2c7ca3">
+                      From. {v.username}
+                    </Heading>
+                    <LikeWrapper
+                      isRound={true}
+                      variant="solid"
+                      backgroundColor="#23242b"
+                      color="#eee"
+                      colorScheme="red"
+                      fontSize="12px"
+                      icon={<FaHeart />}
+                    />
+                    <Text
+                      sx={{
+                        color: '#babdce',
+                        fontSize: '14px',
+                        fontWeight: '400',
+                      }}
+                    >
+                      {v.likeCount}
+                    </Text>
+                  </CommentHeader>
+                  <Text
+                    pt="2"
                     fontSize="sm"
-                    fontWeight="bold"
-                    textAlign="center"
-                    onClick={() => setLikes(message.createDt + 1)}
+                    textAlign="left"
+                    color="#eee"
+                    fontWeight="600"
                   >
-                    좋아요
-                  </Button>
-                  <Text sx={{ color: 'gray' }}>
-                    좋아요: {message.likeCount}
+                    {v.content}
                   </Text>
                 </Box>
               </Box>

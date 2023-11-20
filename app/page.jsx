@@ -6,7 +6,6 @@ import styled from '@emotion/styled';
 import $ from 'jquery';
 
 import ShowComment from './components/ShowComment';
-import ShowInfo from './components/ShowInfo';
 import ShowInputComment from './components/ShowInputComment';
 
 // JANG: 테스트용 import
@@ -60,7 +59,9 @@ const Home = () => {
         <ShowComment />
       </SectionBox>
       <SectionBox className="section">
-        <Box><ShowGazaMap /></Box>
+        <Box>
+          <ShowGazaMap />
+        </Box>
       </SectionBox>
     </Box>
   );

@@ -1,5 +1,5 @@
 import './globals.css';
-import { ChakraProvider, ToastProvider } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 export const metadata = {
   title: 'Peace-In-GAZA',
