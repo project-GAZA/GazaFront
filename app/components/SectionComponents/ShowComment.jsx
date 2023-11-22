@@ -22,9 +22,6 @@ import { FaHeart, FaSearch } from 'react-icons/fa';
 
 import useWindowSize from '../../hooks/useWindowSize';
 
-// JANG: API URL 변경
-const API_URL = '//13.124.123.16:8080/api/home';
-
 const LikeWrapper = styled(IconButton)`
   height: 20px;
   min-width: 20px;
@@ -43,25 +40,7 @@ const CommentHeader = styled(Box)`
   }
 `;
 
-// GET `/api/home` : [{content, createDt, likeCount, username}..]
-
-const getComments = async () => {
-  const response = await fetch('http://13.124.123.16:8080/api/home', {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json, text/plain',
-      'Content-Type': 'application/json;charset=UTF-8',
-    },
-  });
-  if (response.status === 200) {
-    const data = await response.json();
-    setMessages(data);
-    console.log(data);
-  }
-  return;
-};
-
-// 좋아요 버튼 핸들러
+/*
 const handleLike = async messageId => {
   try {
     await axios.post(`${API_URL}/like/${messageId}`); // 좋아요 요청
@@ -77,28 +56,41 @@ const handleLike = async messageId => {
     console.log(error);
   }
 };
+*/
 
 const cardBackground = ['#343540', '#23242b'];
 
 // Start Component
 const ShowComment = () => {
-  const [messages, setMessages] = useState([
-    {
-      content: '..',
-      createDt: '..',
-      likeCount: 2,
-      username: '주경진진진진진진진진진',
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
+
+  const getComments = async () => {
+    const response = await fetch(
+      'http://api.peace-in-gaza.kr:8080/api/home?page=0&size=100',
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json, text/plain',
+          'Content-Type': 'application/json;charset=UTF-8',
+        },
+      },
+    );
+    if (response.status === 200) {
+      const data = await response.json();
+      setMessages(data);
+    }
+    return;
+  };
 
   const handlePopupScroll = event => {
     // 이벤트 전파를 막음
     event.preventDefault();
     // event.stopPropagation();
   };
+
   const size = useWindowSize();
   useEffect(() => {
-    // getComments();
+    getComments();
   }, []);
 
   return (

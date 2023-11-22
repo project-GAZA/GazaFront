@@ -16,7 +16,7 @@ const TopButton = styled.button`
   font-size: 18px;
   font-weight: bold;
   line-height: 18px;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.3px;ㅛㅁ
   padding: 7px 16px;
   border-radius: 16px;
   -webkit-transition: background 0.25s linear;
