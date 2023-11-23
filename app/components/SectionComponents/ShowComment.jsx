@@ -102,11 +102,11 @@ const ShowComment = () => {
           backgroundColor: '#23242b',
           display: 'flex',
           maxHeight: '80%',
-
+          maxWidth: '1200px',
           flexDirection: 'column', // 내용을 세로로 정렬
           // alignItems: 'center',
           justifyContent: 'flex-start', // 내용을 위에서부터 시작하도록 정렬
-          margin: '0 20px',
+          margin: '0 auto',
           overflowY: 'auto', // 세로 스크롤만 허용
         }}
       >

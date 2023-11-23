@@ -7,15 +7,16 @@ import { useToast } from '@chakra-ui/react';
 import {
   Heading,
   Stack,
-  Card,
-  CardHeader,
-  CardBody,
-  Divider,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
   Textarea,
-  CardFooter,
+  ModalFooter,
   Button,
   Input,
   Box,
+  Divider,
   FormControl,
 } from '@chakra-ui/react';
 
@@ -31,11 +32,10 @@ const postComment = async (content, username) => {
       username,
     }),
   });
-  console.log(content, username);
   return response.status;
 };
 
-const InputComment = () => {
+const InputComment = ({ mode }) => {
   const toast = useToast();
   const [content, setContent] = useState('');
   const [username, setUsername] = useState('');
@@ -43,7 +43,6 @@ const InputComment = () => {
 
   const SubmitForm = e => {
     e.preventDefault();
-    console.log(content, username);
     toast.promise(postComment(content, username), {
       success: { title: '댓글작성완료', description: 'Looks great' },
       error: {
@@ -56,17 +55,18 @@ const InputComment = () => {
   };
 
   return (
-    <Card sx={{ maxWidth: '500px', margin: '0 auto' }}>
-      <CardHeader sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button colorScheme="teal" size="xs">
-          기부
-        </Button>
+    <ModalContent sx={{ maxWidth: '500px', margin: '0 auto' }}>
+      <ModalHeader sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box color="teal" fontSize="sm">
+          {mode === 'donate' ? '기부' : '응원'}
+        </Box>
         <Heading size="md">응원 메세지 입력창</Heading>
         <Box />
-      </CardHeader>
+      </ModalHeader>
+      <ModalCloseButton />
       <form onSubmit={SubmitForm}>
         <FormControl as="fieldset">
-          <CardBody>
+          <ModalBody>
             <Stack mt="6" spacing="3">
               <Textarea
                 value={content}
@@ -85,9 +85,11 @@ const InputComment = () => {
                 }}
               ></Box>
             </Stack>
-          </CardBody>
+          </ModalBody>
           <Divider />
-          <CardFooter sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <ModalFooter
+            sx={{ display: 'flex', justifyContent: 'space-between' }}
+          >
             <Input
               value={username}
               onChange={e => {
@@ -105,10 +107,10 @@ const InputComment = () => {
             >
               보내기
             </Button>
-          </CardFooter>
+          </ModalFooter>
         </FormControl>
       </form>
-    </Card>
+    </ModalContent>
   );
 };
 
