@@ -23,27 +23,6 @@ const SectionBox = styled(Box)`
   background-attachment: fixed; // 스크롤 시 배경 고정
 `;
 
-const UpButton = styled.button`
-  display: block;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 10;
-  width: 60px;
-  height: 60px;
-  background: url(https://campaign-cdn.pstatic.net/0/campaign/2022/08/band-10th-anniversary/img/btn_top.png)
-    no-repeat 0 0;
-  background-size: 60px 60px;
-  -webkit-transition: background 0.2s linear;
-  -o-transition: background 0.2s linear;
-  transition: background 0.2s linear;
-  &:hover {
-    background: url(https://campaign-cdn.pstatic.net/0/campaign/2022/08/band-10th-anniversary/img/btn_top_hover.png)
-      no-repeat 0 0;
-    background-size: 60px 60px;
-  }
-`;
-
 const Home = () => {
   const [currentSection, setCurrentSection] = useState('');
   useEffect(() => {
@@ -108,9 +87,6 @@ const Home = () => {
           <InputSection />
         </SectionBox>
       </Box>
-      <UpButton>
-        <a href="#section1" />
-      </UpButton>
     </>
   );
 };
