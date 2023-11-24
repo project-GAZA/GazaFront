@@ -1,11 +1,9 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import $ from 'jquery';
-
-import useWindowSize from './hooks/useWindowSize';
 
 import Header from './components/Header';
 
@@ -47,6 +45,7 @@ const UpButton = styled.button`
 `;
 
 const Home = () => {
+  const [currentSection, setCurrentSection] = useState('');
   useEffect(() => {
     // 클라이언트 사이드에서만 실행되도록 보장합니다.
 
@@ -64,6 +63,7 @@ const Home = () => {
             menu: '.gnb',
             anchors: ['section1', 'section2', 'section3', 'section4'],
             afterLoad: (anchorLink, _index) => {
+              setCurrentSection(anchorLink);
               // 모든 메뉴 항목에서 'on' 클래스 제거
               document.querySelectorAll('.gnb li').forEach(li => {
                 li.classList.remove('on');
@@ -84,9 +84,13 @@ const Home = () => {
     });
   }, []);
 
+  // 완료창으로 보내기,
+  // 공유하기 버튼
+  // 공유버튼..?
+
   return (
     <>
-      <Header />
+      {currentSection !== 'section1' && <Header />}
 
       <Box id="fullpage">
         <SectionBox className="section" data-menuanchor="section1">

@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { useToast } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 
 import {
   Heading,
@@ -35,7 +36,7 @@ const postComment = async (content, username) => {
   return response.status;
 };
 
-const InputComment = ({ mode }) => {
+const InputComment = ({ mode, onClose }) => {
   const toast = useToast();
   const [content, setContent] = useState('');
   const [username, setUsername] = useState('');
@@ -52,6 +53,7 @@ const InputComment = ({ mode }) => {
       loading: { title: '서버에 전송중입니다.', description: 'Please wait' },
     });
     setDisable(true);
+    onClose();
   };
 
   return (

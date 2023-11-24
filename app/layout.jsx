@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import './globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 

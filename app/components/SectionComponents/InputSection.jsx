@@ -5,6 +5,7 @@ import { Box, Modal, ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 import InputComment from '../InputComment';
+import DonateComponent from '../DonateComponent';
 
 const InputButton = styled(Box)`
   font-size: 34px;
@@ -74,7 +75,8 @@ const InputSection = () => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay />
-        <InputComment mode={mode} />
+        {mode === 'message' && <InputComment mode={mode} onClose={onClose} />}
+        {mode === 'donate' && <DonateComponent mode={mode} />}
       </Modal>
     </>
   );

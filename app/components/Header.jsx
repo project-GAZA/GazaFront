@@ -2,6 +2,8 @@
 
 import styled from '@emotion/styled';
 import '@/app/style/header.css';
+import { IconButton } from '@chakra-ui/react';
+import { CiShare1 } from 'react-icons/ci';
 
 const HeaderWrapper = styled.header`
   z-index: 1000;
@@ -36,7 +38,13 @@ const PCHeader = () => {
   return (
     <HeaderWrapper>
       <MenuInner className="gnb">
-        <li data-menuanchor="section2">
+        <IconButton
+          colorScheme="black"
+          aria-label="Send email"
+          size="md"
+          icon={<CiShare1 size="md" />}
+        />
+        <li className="on" data-menuanchor="section2">
           <a href="#section2" onClick={onClickHandle}>
             프로젝트 설명
           </a>
