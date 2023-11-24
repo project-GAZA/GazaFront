@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Modal, ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import $ from 'jquery';
 
@@ -9,6 +9,7 @@ import Header from './components/Header';
 
 import ShowComment from './components/SectionComponents/ShowComment';
 import InputSection from './components/SectionComponents/InputSection';
+import SendMail from './components/SendMail';
 
 // JANG: 테스트용 import
 import ShowInfo_1 from './components/SectionComponents/ShowInfo_1';
@@ -25,6 +26,8 @@ const SectionBox = styled(Box)`
 
 const Home = () => {
   const [currentSection, setCurrentSection] = useState('');
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   useEffect(() => {
     // 클라이언트 사이드에서만 실행되도록 보장합니다.
 
@@ -69,7 +72,7 @@ const Home = () => {
 
   return (
     <>
-      {currentSection !== 'section1' && <Header />}
+      {currentSection !== 'section1' && <Header onOpen={onOpen} />}
 
       <Box id="fullpage">
         <SectionBox className="section" data-menuanchor="section1">
@@ -86,6 +89,16 @@ const Home = () => {
         <SectionBox className="section" data-menuanchor="section4">
           <InputSection />
         </SectionBox>
+
+        <Modal
+          isCentered
+          onClose={onClose}
+          isOpen={isOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalOverlay />
+          {isOpen && <SendMail />}
+        </Modal>
       </Box>
     </>
   );

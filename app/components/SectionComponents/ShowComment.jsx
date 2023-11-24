@@ -155,7 +155,11 @@ const ShowComment = () => {
               <InputLeftElement pointerEvents="none">
                 <Icon as={FaSearch} color="gray.300" />
               </InputLeftElement>
-              <Input color="white" type="text" placeholder="Input Nickname" />
+              <Input
+                color="white"
+                type="text"
+                placeholder="닉네임을 입력해주세요"
+              />
             </InputGroup>
           </Box>
 
