@@ -3,7 +3,7 @@ import './globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 
 export const metadata = {
-  title: 'Peace-In-GAZA',
+  title: 'PEACE IN GAZA',
   description: 'cheering for GAZA',
   httpEquiv: 'Content-Security-Policy',
   content: 'upgrade-insecure-requests',

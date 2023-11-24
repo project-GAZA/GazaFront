@@ -11,7 +11,6 @@ import ShowComment from './components/SectionComponents/ShowComment';
 import InputSection from './components/SectionComponents/InputSection';
 import SendMail from './components/SendMail';
 
-// JANG: 테스트용 import
 import ShowInfo_1 from './components/SectionComponents/ShowInfo_1';
 import ShowGazaMap from './components/SectionComponents/ShowGazaMap';
 

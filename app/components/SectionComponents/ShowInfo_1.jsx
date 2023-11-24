@@ -1,5 +1,5 @@
 'use client';
-// test_section_1 : 프로젝트 설명 1
+//JANG: 프로젝트 설명 부분 수정!
 
 import { Flex, Image } from '@chakra-ui/react';
 import { css, keyframes } from '@emotion/react';
@@ -43,18 +43,6 @@ const ShowInfo = () => {
           // maxH = "20%"
           // objectFit="contain"
         />
-        {/* <Text
-        fontSize='2rem'
-        fontWeight='bold'
-        color='white'
-        textAlign='center'
-        css={anuimationStyle}
-      >
-        도는 하얀 도라지<br/>
-        레는 빨간 레코드<br/>
-        미는 파란 미나리<br/>
-        와 이거 짱이다!!
-      </Text> */}
       </Flex>
     </>
   );

@@ -1,14 +1,11 @@
 'use clients';
-// test_section_5 : 가자지구 시각화 창
 
 import React, { useEffect } from 'react';
 import { Box, Text, VStack } from '@chakra-ui/react';
 
-// JANG: API URL 변경
 const API_URL = '//13.124.123.16:8080/api/message';
 
 const ShowGazaMap = () => {
-  // JANG: API 호출
   //   const [percentage, setPercentage] = useState(0);
 
   //   const getPercentage = async () => {
@@ -33,7 +30,7 @@ const ShowGazaMap = () => {
   //     return;
   //   };
 
-  // JANG: 테스트용 데이터 (임시 하드코딩)
+  // 테스트용 데이터 (임시 하드코딩)
   const percentage = 80;
 
   useEffect(() => {
