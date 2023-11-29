@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Box, Modal, ModalOverlay, useDisclosure } from '@chakra-ui/react';
+import { Box, Modal, ModalOverlay } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import $ from 'jquery';
 
@@ -13,6 +13,7 @@ import SendMail from './components/SendMail';
 
 import ShowInfo_1 from './components/SectionComponents/ShowInfo_1';
 import ShowGazaMap from './components/SectionComponents/ShowGazaMap';
+import ShareLink from './components/ShareLink';
 
 const SectionBox = styled(Box)`
   text-align: center;
@@ -25,7 +26,8 @@ const SectionBox = styled(Box)`
 
 const Home = () => {
   const [currentSection, setCurrentSection] = useState('');
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [mailModal, setMailModal] = useState(false);
+  const [shareModal, setShareModal] = useState(false);
 
   useEffect(() => {
     // 클라이언트 사이드에서만 실행되도록 보장합니다.
@@ -43,7 +45,9 @@ const Home = () => {
             scrollOverflow: true,
             menu: '.gnb',
             anchors: ['section1', 'section2', 'section3', 'section4'],
+
             afterLoad: (anchorLink, _index) => {
+              // 페이지가 스크롤 됬을 때 발생되는 이벤트
               setCurrentSection(anchorLink);
               // 모든 메뉴 항목에서 'on' 클래스 제거
               document.querySelectorAll('.gnb li').forEach(li => {
@@ -71,7 +75,12 @@ const Home = () => {
 
   return (
     <>
-      {currentSection !== 'section1' && <Header onOpen={onOpen} />}
+      {currentSection !== 'section1' && (
+        <Header
+          onOpenMail={() => setMailModal(true)}
+          onOpenShare={() => setShareModal(true)}
+        />
+      )}
 
       <Box id="fullpage">
         <SectionBox className="section" data-menuanchor="section1">
@@ -91,12 +100,21 @@ const Home = () => {
 
         <Modal
           isCentered
-          onClose={onClose}
-          isOpen={isOpen}
+          onClose={() => setMailModal(false)}
+          isOpen={mailModal}
           motionPreset="slideInBottom"
         >
           <ModalOverlay />
-          {isOpen && <SendMail />}
+          {mailModal && <SendMail />}
+        </Modal>
+        <Modal
+          isCentered
+          onClose={() => setShareModal(false)}
+          isOpen={shareModal}
+          motionPreset="slideInBottom"
+        >
+          <ModalOverlay />
+          {shareModal && <ShareLink />}
         </Modal>
       </Box>
     </>

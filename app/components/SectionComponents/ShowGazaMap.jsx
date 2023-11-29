@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { Box, Text, VStack } from '@chakra-ui/react';
 
-const API_URL = '//13.124.123.16:8080/api/message';
+const API_URL = '//192.168.100.10:8080/api/message';
 
 const ShowGazaMap = () => {
   //   const [percentage, setPercentage] = useState(0);

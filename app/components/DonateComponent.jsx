@@ -78,7 +78,7 @@ const donateSection = ({ mode }) => {
         orderId: +new Date(),
         orderName: +new Date(),
         customerName: username,
-        successUrl: `${window.location.origin}#section1`,
+        successUrl: `http://192.168.0.67:8080/success`,
         failUrl: `${window.location.origin}/fail`,
       });
     } catch (err) {

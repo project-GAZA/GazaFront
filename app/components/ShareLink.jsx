@@ -20,16 +20,16 @@ import {
   FormControl,
 } from '@chakra-ui/react';
 
-const SendMail = () => {
+const ShareLink = () => {
   const [content, setContent] = useState('');
 
   return (
     <ModalContent sx={{ maxWidth: '500px', margin: '0 auto' }}>
       <ModalHeader sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box color="teal" fontSize="sm">
-          문의
+          공유
         </Box>
-        <Heading size="md">불편사항 또는 개선사항 입력해주세요!</Heading>
+        <Heading size="md">공유하기</Heading>
         <Box />
       </ModalHeader>
       <ModalCloseButton />
@@ -69,4 +69,4 @@ const SendMail = () => {
   );
 };
 
-export default SendMail;
+export default ShareLink;

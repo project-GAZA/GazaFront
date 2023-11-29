@@ -39,24 +39,6 @@ const CommentHeader = styled(Box)`
   }
 `;
 
-/*
-const handleLike = async messageId => {
-  try {
-    await axios.post(`${API_URL}/like/${messageId}`); // 좋아요 요청
-    // 좋아요 수 업데이트 로직
-    setMessages(
-      messages.map(message => {
-        message.createDt === messageId
-          ? { ...message, likeCount: message.likeCount + 1 }
-          : message;
-      }),
-    );
-  } catch (error) {
-    console.log(error);
-  }
-};
-*/
-
 const cardBackground = ['#343540', '#23242b'];
 
 // Start Component
@@ -65,7 +47,7 @@ const ShowComment = () => {
 
   const getComments = async () => {
     const response = await fetch(
-      'http://api.peace-in-gaza.kr:8080/api/home?page=0&size=100',
+      'http://192.168.100.10:8080/api/home?page=0&size=100&sort=new',
       {
         method: 'GET',
         headers: {
@@ -103,7 +85,6 @@ const ShowComment = () => {
           maxHeight: '80%',
           maxWidth: '1200px',
           flexDirection: 'column', // 내용을 세로로 정렬
-          // alignItems: 'center',
           justifyContent: 'flex-start', // 내용을 위에서부터 시작하도록 정렬
           margin: '0 auto',
           overflowY: 'auto', // 세로 스크롤만 허용

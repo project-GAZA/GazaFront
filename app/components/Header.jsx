@@ -39,9 +39,23 @@ const MenuWrapper = styled.div`
   width: 100vw;
   overflow-y: auto;
   background-color: #fff;
+  padding-top: 80px;
 `;
 
-const Header = ({ onOpen }) => {
+const AWrapperMobile = styled.a`
+  padding: 7px 20px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 66px;
+  letter-spacing: -1px;
+`;
+
+const MobileUlWrapper = styled.ul`
+  list-style: none;
+`;
+
+const Header = ({ onOpenMail, onOpenShare }) => {
+  console.log(onOpenMail, onOpenShare);
   const [display, setDisplay] = useState('none');
 
   const toggleDisplay = () => {
@@ -61,42 +75,42 @@ const Header = ({ onOpen }) => {
   return (
     <>
       <MenuWrapper ds={display}>
-        <>
+        <MobileUlWrapper className="gnb">
           <li>
-            <a
+            <AWrapperMobile
               href="#section2"
               onClick={() => {
                 toggleDisplay();
               }}
             >
               프로젝트 설명
-            </a>
+            </AWrapperMobile>
           </li>
           <li>
-            <a href="#section3" onClick={toggleDisplay}>
+            <AWrapperMobile href="#section3" onClick={toggleDisplay}>
               응원 메세지 보기
-            </a>
+            </AWrapperMobile>
           </li>
           <li>
-            <a href="#section4" onClick={toggleDisplay}>
+            <AWrapperMobile href="#section4" onClick={toggleDisplay}>
               응원 메세지 남기기
-            </a>
+            </AWrapperMobile>
           </li>
-        </>
+        </MobileUlWrapper>
       </MenuWrapper>
 
       <HeaderWrapper>
         <MenuInner className="gnb" sz={size.width}>
           <Box sx={{ display: 'flex', gap: '20px' }}>
             <IconButton
-              onClick={onOpen}
+              onClick={onOpenShare}
               colorScheme="black"
               aria-label="Send email"
               size="md"
               icon={<CiShare1 size="md" />}
             />
             <IconButton
-              onClick={onOpen}
+              onClick={onOpenMail}
               colorScheme="black"
               aria-label="Send email"
               size="md"
