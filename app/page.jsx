@@ -17,7 +17,6 @@ import ShareLink from './components/ShareLink';
 
 const SectionBox = styled(Box)`
   text-align: center;
-  background-image: url('/home-bg-img.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -84,9 +83,7 @@ const Home = () => {
 
       <Box id="fullpage">
         <SectionBox className="section" data-menuanchor="section1">
-          <Box>
-            <ShowGazaMap />
-          </Box>
+          <ShowGazaMap />
         </SectionBox>
         <SectionBox className="section" data-menuanchor="section2">
           <ShowInfo_1 />

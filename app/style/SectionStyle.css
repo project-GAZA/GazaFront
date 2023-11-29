@@ -1,0 +1,19 @@
+/* First Section */
+.firstSction {
+  background-image: url('../../assets/Main_Universe.jpg');
+}
+
+.mobile {
+  background-size: 1000%;
+  background-position: 65% 50%;
+}
+
+.ShowGazaMapTitleFontOne {
+  color: #fff;
+  text-align: center;
+  font-family: 'Paytone One';
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 129.828%;
+}

@@ -47,7 +47,7 @@ const ShowComment = () => {
 
   const getComments = async () => {
     const response = await fetch(
-      'http://192.168.100.10:8080/api/home?page=0&size=100&sort=new',
+      'http://localhost:8080/api/home?page=0&size=100&sort=new',
       {
         method: 'GET',
         headers: {
@@ -58,6 +58,7 @@ const ShowComment = () => {
     );
     if (response.status === 200) {
       const data = await response.json();
+      console.log(data);
       setMessages(data);
     }
     return;

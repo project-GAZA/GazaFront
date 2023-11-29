@@ -1,7 +1,6 @@
 'use client';
 
 import styled from '@emotion/styled';
-import '@/app/style/header.css';
 import { IconButton, Box } from '@chakra-ui/react';
 import { CiShare1, CiMail, CiMenuBurger } from 'react-icons/ci';
 import useWindowSize from '../hooks/useWindowSize';
@@ -55,7 +54,6 @@ const MobileUlWrapper = styled.ul`
 `;
 
 const Header = ({ onOpenMail, onOpenShare }) => {
-  console.log(onOpenMail, onOpenShare);
   const [display, setDisplay] = useState('none');
 
   const toggleDisplay = () => {

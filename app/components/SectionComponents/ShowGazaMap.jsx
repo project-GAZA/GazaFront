@@ -3,34 +3,9 @@
 import React, { useEffect } from 'react';
 import { Box, Text, VStack } from '@chakra-ui/react';
 
-const API_URL = '//192.168.100.10:8080/api/message';
+const API_URL = '//localhost:8080/api/message';
 
 const ShowGazaMap = () => {
-  //   const [percentage, setPercentage] = useState(0);
-
-  //   const getPercentage = async () => {
-  //     const response = await fetch(API_URL, {
-  //       method: 'GET',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json;charset=UTF-8',
-  //       },
-  //     });
-  //     try {
-  //         if (response.status === 200){
-  //             const { number } = await response.json();
-  //             setPercentage(number);
-  //             console.log(number);
-  //         } else {
-  //             console.error('Failed to fetch data:', response.status);
-  //         }
-  //     } catch (error) {
-  //         console.error('Error fetching data:', error);
-  //     }
-  //     return;
-  //   };
-
-  // 테스트용 데이터 (임시 하드코딩)
   const percentage = 80;
 
   useEffect(() => {
@@ -38,11 +13,10 @@ const ShowGazaMap = () => {
   }, []);
 
   return (
-    <>
+    <Box className="firstSction mobile">
       <VStack justify="center" align="center" height="100vh" spacing={4}>
-        <Text color="yellow.400" fontSize="35px" fontWeight="bold">
-          메시지 참여 현황
-        </Text>
+        <Text className="ShowGazaMapTitleFontOne">PEACE IN GAZA</Text>
+
         {/* 노란색 큰 박스 */}
         <Box
           width="90%"
@@ -80,7 +54,7 @@ const ShowGazaMap = () => {
           </Text>
         </Box>
       </VStack>
-    </>
+    </Box>
   );
 };
 

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-sync-scripts */
-import './globals.css';
+import './style/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 
 export const metadata = {
