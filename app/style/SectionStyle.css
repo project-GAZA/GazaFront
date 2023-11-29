@@ -1,6 +1,11 @@
 /* First Section */
 .firstSction {
   background-image: url('../../assets/svg/Main_Universe.jpg');
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile {
@@ -24,7 +29,7 @@
 }
 
 .Section1Header {
-  padding-top: 98px;
+  padding-top: 45px;
 }
 
 .MailIcon {
@@ -36,7 +41,7 @@
   z-index: 1;
   position: relative;
   top: -105px;
-  left: 80px;
+  left: 160px;
 }
 
 .SubTitle {
@@ -59,7 +64,6 @@
 }
 
 .GazaEmpty {
-  margin-top: 41px;
   background-image: url('../../assets/svg/GazaEmpty.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -69,7 +73,6 @@
 }
 .GazaFull {
   position: relative;
-
   clip-path: inset(24.8826% 0px 0px);
   transition: 3s clip-path ease-in;
   background-image: url('../../assets/svg/GazaFull.svg');
@@ -87,7 +90,6 @@
 
 .GoalText {
   color: #ffc500;
-
   text-align: center;
   font-family: 'NanumSquareNeo';
   font-size: 24px;
@@ -124,7 +126,76 @@
 }
 
 .SectionOneFooter {
+  margin-top: -100px;
   display: flex;
   justify-content: center;
   gap: 30px;
+}
+
+/* Second Section */
+.SecondSection {
+}
+
+.SecondTopText {
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 165%;
+}
+
+.SecondExplainText {
+  margin-top: 23px;
+  color: #757575;
+
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 19.2px */
+}
+
+.SecondExplainStrong {
+  font-weight: 700;
+}
+
+.EarthWrapper {
+  background-image: url('../../assets/svg/Icon_Earth.png');
+  background-size: 260px 260px;
+  width: 260px;
+  height: 260px;
+  margin: 42px auto 0 auto;
+}
+
+.Pin {
+  background-image: url('../../assets/svg/EarthPin.svg');
+  background-size: 56px 74px;
+  width: 56px;
+  height: 74px;
+  position: relative;
+  top: 30px;
+  left: 120px;
+}
+
+.PinShadow {
+  background-image: url('../../assets/svg/PinShadow.svg');
+  background-size: 15px 5px;
+  width: 15px;
+  height: 5px;
+  position: relative;
+  top: 30px;
+  left: 140px;
+}
+.EarthText {
+  display: inline;
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 165%;
 }

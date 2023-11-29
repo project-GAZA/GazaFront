@@ -6,26 +6,13 @@ import { CiShare1, CiMail, CiMenuBurger } from 'react-icons/ci';
 import useWindowSize from '../hooks/useWindowSize';
 import { useState } from 'react';
 
-const HeaderWrapper = styled.header`
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  height: 58px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  padding: 12px 0px;
-`;
-
 const MenuInner = styled.ul`
   display: flex;
   align-items: center;
   justify-content: ${props => (props.sz >= 900 ? 'center' : 'space-between')};
   ${props => props.sz < 900 && 'padding:0px 20px;'}
   gap: 10px;
-  color: white;
+  color: gray;
   width: 100vw;
 `;
 
@@ -97,26 +84,26 @@ const Header = ({ onOpenMail, onOpenShare }) => {
         </MobileUlWrapper>
       </MenuWrapper>
 
-      <HeaderWrapper>
+      <Box className="HeaderWrapper">
         <MenuInner className="gnb" sz={size.width}>
-          <Box sx={{ display: 'flex', gap: '20px' }}>
-            <IconButton
-              onClick={onOpenShare}
-              colorScheme="black"
-              aria-label="Send email"
-              size="md"
-              icon={<CiShare1 size="md" />}
-            />
-            <IconButton
-              onClick={onOpenMail}
-              colorScheme="black"
-              aria-label="Send email"
-              size="md"
-              icon={<CiMail size="md" />}
-            />
-          </Box>
           {size.width >= 900 ? (
             <>
+              <Box sx={{ display: 'flex', gap: '20px' }}>
+                <IconButton
+                  onClick={onOpenShare}
+                  colorScheme="black"
+                  aria-label="Send email"
+                  size="md"
+                  icon={<CiShare1 size="md" />}
+                />
+                <IconButton
+                  onClick={onOpenMail}
+                  colorScheme="black"
+                  aria-label="Send email"
+                  size="md"
+                  icon={<CiMail size="md" />}
+                />
+              </Box>
               <li className="on" data-menuanchor="section2">
                 <a href="#section2" onClick={onClickHandle}>
                   프로젝트 설명
@@ -148,7 +135,7 @@ const Header = ({ onOpenMail, onOpenShare }) => {
             </>
           )}
         </MenuInner>
-      </HeaderWrapper>
+      </Box>
     </>
   );
 };
