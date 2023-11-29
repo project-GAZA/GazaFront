@@ -1,59 +1,79 @@
 'use clients';
 
-import React, { useEffect } from 'react';
-import { Box, Text, VStack } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import Image from 'next/image';
+import { Box, Text } from '@chakra-ui/react';
+import IconMessage from '../../../assets/svg/IconMessage.svg';
+import GazaFullImage from '../../../assets/svg/GazaFull.svg';
 
-const API_URL = '//localhost:8080/api/message';
+const GazaFullComponent = styled(Box)`
+  position: relative;
+  clip-path: inset(${props => props.percentage}% 0px 0px);
+  transition: 3s clip-path ease-in;
+  background-image: url('${GazaFullImage.src}');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 221.73px;
+  height: 328.717px;
+  flex-shrink: 0;
+`;
+
+const wait = timeToDelay =>
+  new Promise(resolve => setTimeout(resolve, timeToDelay)); //이와 같이 선언 후
 
 const ShowGazaMap = () => {
-  const percentage = 80;
+  const [percentage, setPercentage] = useState(80); //80이 안보이는 거임!
+  const [realMoney, setRealMoney] = useState(10000000);
 
   useEffect(() => {
     // getPercentage();
+    const PercentAnimation = async () => {
+      await wait(1000);
+      setPercentage(30);
+    };
+    PercentAnimation();
   }, []);
 
   return (
     <Box className="firstSction mobile">
-      <VStack justify="center" align="center" height="100vh" spacing={4}>
-        <Text className="ShowGazaMapTitleFontOne">PEACE IN GAZA</Text>
-
-        {/* 노란색 큰 박스 */}
-        <Box
-          width="90%"
-          height="70%"
-          maxWidth="400px"
-          // maxHeight="800px"
-          position="relative"
-          border="5px solid"
-          borderColor="yellow.400"
-          borderRadius="10px"
-          backgroundColor="blackAlpha.800"
-        >
-          {/* 내부 파랗게 차오르는 영역 */}
-          <Box
-            position="absolute"
-            bottom="0"
-            width="100%"
-            height={`${percentage}%`}
-            backgroundColor="blue.500"
-            transition="height 0.6s ease-out"
+      <Box justify="center" align="center" height="100vh" spacing={4}>
+        <Box className="Section1Header">
+          <Text className="ShowGazaMapTitleFontOne">PEACE</Text>
+          <Text className="ShowGazaMapTitleFontOne Two">IN GAZA</Text>
+          <Image
+            width={43}
+            height={43}
+            src={IconMessage.src}
+            className="MessageIconInTitle"
           />
-
-          {/* 노란색 박스 앞에 수치 표시 -> percentage를 0~100까지로만 일단 제한함 (나중에 목표치에 대한 비율로 설정!) */}
-          <Text
-            position="absolute"
-            top="50%"
-            left="50%"
-            transform="translate(-50%, -50%)"
-            color="white"
-            fontWeight="bold"
-            fontSize="50px"
-            zIndex="999"
-          >
-            {percentage}%
+        </Box>
+        <Box className="SubTitleSection1">
+          <Text className="SubTitle">가자지구 아이들을 위한</Text>
+          <Text className="SubTitle Two">
+            <strong className="yellowFont">희망 메세지 책자</strong> 전달
+            프로젝트
           </Text>
         </Box>
-      </VStack>
+        <Box className="GazaEmpty">
+          <GazaFullComponent percentage={percentage.toFixed(4)} />
+        </Box>
+        <Box className="GoalTextBox">
+          <Text className="GoalText">
+            {percentage}% <strong className="GoalFixedText">달성</strong>
+          </Text>
+        </Box>
+        <Box className="SectionOneFooter">
+          <Box className="RealGoalWrapper">
+            <Text className="RealGoalText">총 모금액</Text>
+            <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text>
+          </Box>
+          <Box className="RealGoalWrapper">
+            <Text className="RealGoalText">목표 모금액</Text>
+            <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text>
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 };

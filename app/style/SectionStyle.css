@@ -1,6 +1,6 @@
 /* First Section */
 .firstSction {
-  background-image: url('../../assets/Main_Universe.jpg');
+  background-image: url('../../assets/svg/Main_Universe.jpg');
 }
 
 .mobile {
@@ -9,11 +9,122 @@
 }
 
 .ShowGazaMapTitleFontOne {
+  position: relative;
   color: #fff;
-  text-align: center;
-  font-family: 'Paytone One';
+  font-family: 'Paytone One', sans-serif;
   font-size: 50px;
   font-style: normal;
   font-weight: 400;
   line-height: 129.828%;
+  z-index: 2;
+}
+
+.Two {
+  color: #ffc500;
+}
+
+.Section1Header {
+  padding-top: 98px;
+}
+
+.MailIcon {
+  width: 43px;
+  height: 43px;
+}
+
+.MessageIconInTitle {
+  z-index: 1;
+  position: relative;
+  top: -105px;
+  left: 80px;
+}
+
+.SubTitle {
+  color: #fff;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 215%;
+}
+
+.yellowFont {
+  color: #ffc500;
+}
+
+.GazaMapImageBox {
+  display: flex;
+  justify-content: center;
+}
+
+.GazaEmpty {
+  margin-top: 41px;
+  background-image: url('../../assets/svg/GazaEmpty.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 221.73px;
+  height: 328.717px;
+  flex-shrink: 0;
+}
+.GazaFull {
+  position: relative;
+
+  clip-path: inset(24.8826% 0px 0px);
+  transition: 3s clip-path ease-in;
+  background-image: url('../../assets/svg/GazaFull.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 221.73px;
+  height: 328.717px;
+  flex-shrink: 0;
+}
+.GoalTextBox {
+  position: relative;
+  top: -200px;
+  left: 60px;
+}
+
+.GoalText {
+  color: #ffc500;
+
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 165%; /* 39.6px */
+}
+
+.GoalFixedText {
+  font-size: 15px;
+}
+
+.RealGoalWrapper {
+}
+
+.RealGoalText {
+  color: rgba(255, 255, 255, 0.71);
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%;
+}
+
+.RealGoalMoney {
+  color: #fff;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%;
+}
+
+.SectionOneFooter {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }

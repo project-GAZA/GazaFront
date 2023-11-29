@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-sync-scripts */
 import './style/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -14,6 +15,12 @@ export default function RootLayout({ children }) {
     <html lang="kr">
       <head>
         <meta />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <ChakraProvider>{children}</ChakraProvider>

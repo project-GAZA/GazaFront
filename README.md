@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## 스타일링 규칙
+
+1. 변하지 않는건 css파일에 클래스로!
+2. 변하는 속성값이 존재한다면 styledComponent로!
+
 ## Getting Started
 
 First, run the development server:
