@@ -31,6 +31,10 @@ const Home = () => {
 
   useEffect(() => {
     // 클라이언트 사이드에서만 실행되도록 보장합니다.
+    let commentWrapper = document.querySelector('.ShowCommentWrapper');
+    let handleScrollStart;
+    let handleScrollEnd;
+
     import('fullpage.js/vendors/scrolloverflow').then(() => {
       import('fullpage.js').then(() => {
         import('fullpage.js/dist/jquery.fullpage.min.css').then(() => {
@@ -41,8 +45,8 @@ const Home = () => {
 
           let section4Trigger = false;
           $('#fullpage').fullpage({
-            normalScrollElements: '.nonfullpage',
-            scrollOverflow: true,
+            normalScrollElements: '.ShowCommentWrapper',
+            scrollOverflow: false,
             menu: '.gnb',
             anchors: [
               'section1',
@@ -68,7 +72,6 @@ const Home = () => {
               document.querySelectorAll('.gnb li').forEach(li => {
                 li.classList.remove('on');
               });
-
               // 현재 활성화된 섹션에 해당하는 메뉴 항목에 'on' 클래스 추가
               const activeMenuItem = document.querySelector(
                 `li[data-menuanchor="${anchorLink}"]`,
@@ -79,29 +82,38 @@ const Home = () => {
               }
             },
           });
+          commentWrapper = document.querySelector('.ShowCommentWrapper');
+          // ShowCommnet에서 댓글영역에 마우스가 들어가면 풀페이지 멈추기!!
+          handleScrollStart = () => {
+            $.fn.fullpage.setAllowScrolling(false);
+          };
+          handleScrollEnd = () => {
+            $.fn.fullpage.setAllowScrolling(true);
+          };
 
+          commentWrapper.addEventListener('mouseenter', handleScrollStart);
+          commentWrapper.addEventListener('mouseleave', handleScrollEnd);
           // 풀페이지 스크롤링 관련(섹션4는 풀페이지 스크롤이 잠시 멈춰야됨)!
           const section4 = document.querySelector('.InputWrapper');
           section4.addEventListener('scroll', () => {
             section4Trigger = true;
             // 섹션 내부에서 스크롤이 끝에 도달했는지 확인
             const scrollHeight = section4.scrollHeight - section4.scrollTop;
-            if (
-              scrollHeight - section4.clientHeight === -0.5 &&
-              section4Trigger
-            ) {
+
+            if (scrollHeight - section4.clientHeight === -0.5) {
               // Fullpage.js 스크롤 재활성화
               $.fn.fullpage.setAllowScrolling(true);
-            } else if (
-              scrollHeight - section4.clientHeight === 465 &&
-              section4Trigger
-            ) {
+            } else if (scrollHeight - section4.clientHeight === 465) {
               $.fn.fullpage.setAllowScrolling(true);
             }
           });
         });
       });
     });
+    return () => {
+      commentWrapper.removeEventListener('mouseenter', handleScrollStart);
+      commentWrapper.removeEventListener('mouseleave', handleScrollEnd);
+    };
   }, []);
 
   // 완료창으로 보내기,

@@ -1,50 +1,28 @@
 'use clients';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
-  Heading,
   Divider,
   Stack,
   Box,
   Text,
-  IconButton,
   InputGroup,
   Input,
   InputRightElement,
-  Icon,
 } from '@chakra-ui/react';
-import styled from '@emotion/styled';
 import { FaHeart, FaSearchengin } from 'react-icons/fa';
 import { CiHeart } from 'react-icons/ci';
 
-import useWindowSize from '../../hooks/useWindowSize';
-
-const LikeWrapper = styled(IconButton)`
-  height: 20px;
-  min-width: 20px;
-  width: 20px;
-  padding: 0px;
-  & :hover {
-    background: ${props => props.actBtn};
-  }
-`;
-const CommentHeader = styled(Box)`
-  display: flex;
-  alignitems: center;
-  gap: 5px;
-  & button {
-    background: ${props => props.actBtn};
-  }
-`;
-
-const cardBackground = ['#343540', '#23242b'];
+import { APIURL } from '@/app/define';
 
 const ShowComment = () => {
   const [messages, setMessages] = useState([]);
+  const newButton = useRef();
+  const BestButton = useRef();
 
-  const getComments = async () => {
+  const getComments = async sort => {
     const response = await fetch(
-      'http://localhost:8080/api/home?page=0&size=100&sort=new',
+      `${APIURL}/api/home?page=0&size=100&sort=${sort}`,
       {
         method: 'GET',
         headers: {
@@ -55,25 +33,28 @@ const ShowComment = () => {
     );
     if (response.status === 200) {
       const data = await response.json();
-      console.log(data);
       setMessages(data);
     }
     return;
   };
 
-  const handlePopupScroll = event => {
-    // 이벤트 전파를 막음
-    event.preventDefault();
-    // event.stopPropagation();
-  };
-
-  const size = useWindowSize();
+  // const size = useWindowSize(); 윈도우 사이즈 조정되면...
   useEffect(() => {
-    // getComments();
+    getComments('new');
   }, []);
 
+  const BestClick = e => {
+    BestButton.current.classList.add('SortOn');
+    newButton.current.classList.remove('SortOn');
+    getComments('best');
+  };
+  const NewClick = e => {
+    BestButton.current.classList.remove('SortOn');
+    newButton.current.classList.add('SortOn');
+    getComments('new');
+  };
   return (
-    <Box className="ThirdSection" onScroll={handlePopupScroll}>
+    <Box className="ThirdSection">
       <Box className="TitleBox">
         <Text className="ThirdHeaderText">
           <strong className="ThirdHeaderTextStrong">전세계 각지에서</strong>
@@ -84,9 +65,17 @@ const ShowComment = () => {
       </Box>
       <Box className="CommentWrapper">
         <Box className="CommentHeader">
-          <Box className="SortOn CommentSortButton">Best</Box>
+          <Box
+            ref={BestButton}
+            onClick={BestClick}
+            className="SortOn CommentSortButton"
+          >
+            Best
+          </Box>
           <Divider height="17px" orientation="vertical" />
-          <Box className="CommentSortButton">New</Box>
+          <Box ref={newButton} onClick={NewClick} className="CommentSortButton">
+            New
+          </Box>
           <InputGroup className="Search">
             <Input
               className="SearchInput"
@@ -104,7 +93,7 @@ const ShowComment = () => {
               <Box className="OneCommentHeader">
                 <Box className="OneCommentHeaderLeft">
                   <Text className="NickName">{v.username} 님</Text>
-                  <Text className="Date">{v.create_dt}</Text>
+                  <Text className="Date">{v.createDt.slice(0, 10)}</Text>
                 </Box>
                 <Box className="OneCommentHeaderRight">
                   {v.likeHeat ? <CiHeart /> : <FaHeart color="red" />}

@@ -236,6 +236,7 @@
 }
 
 .CommentSortButton {
+  cursor: pointer;
   color: #fff;
   text-align: center;
   font-family: 'NanumSquareNeo';
@@ -318,8 +319,8 @@
 }
 
 .ShowCommentWrapper {
-  overflow-y: scroll;
-  max-height: 50%;
+  max-height: 72vh; /* 또는 적절한 높이 */
+  overflow-y: auto;
   margin-top: 30px;
   padding: 16px;
 }
