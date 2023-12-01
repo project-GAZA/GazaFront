@@ -3,110 +3,124 @@
 
 import { useState } from 'react';
 import { useToast } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
 
 import {
-  Heading,
-  Stack,
+  Text,
   ModalContent,
   ModalHeader,
   ModalCloseButton,
   ModalBody,
   Textarea,
-  ModalFooter,
   Button,
   Input,
-  Box,
-  Divider,
   FormControl,
+  Box,
 } from '@chakra-ui/react';
 
-const postComment = async (content, username) => {
-  const response = await fetch('http://localhost:8080/api/message', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json, text/plain',
-      'Content-Type': 'application/json;charset=UTF-8',
-    },
-    body: JSON.stringify({
-      content,
-      username,
-    }),
-  });
-  return response.status;
-};
-
-const InputComment = ({ mode, onClose }) => {
-  const toast = useToast();
+const InputComment = ({
+  onClose,
+  onSubmitForm,
+  mode = 'Comment',
+  setSaveInfo,
+  setPage,
+}) => {
   const [content, setContent] = useState('');
   const [username, setUsername] = useState('');
-  const [disable, setDisable] = useState(false);
+  const toast = useToast();
 
-  const SubmitForm = e => {
+  const CheckValid = () => {
+    if (username.length < 2) {
+      toast({
+        position: 'bottom-center',
+        render: () => (
+          <Box color="white" p={3} bg="red.500">
+            닉네임은 2자 이상 입력해주세요
+          </Box>
+        ),
+      });
+      return false;
+    } else if (username.length > 8) {
+      toast({
+        position: 'bottom-center',
+        render: () => (
+          <Box color="white" p={3} bg="red.500">
+            닉네임은 8자 이하로 입력해주세요
+          </Box>
+        ),
+      });
+      return false;
+    } else if (content.length === 0) {
+      toast({
+        position: 'bottom-center',
+        render: () => (
+          <Box color="white" p={3} bg="red.500">
+            내용을 입력해주세요.
+          </Box>
+        ),
+      });
+      return false;
+    }
+    return true;
+  };
+  const onSubmitComment = e => {
     e.preventDefault();
-    toast.promise(postComment(content, username), {
-      success: { title: '댓글작성완료', description: 'Looks great' },
-      error: {
-        title: '서버에 에러가 났습니다.',
-        description: 'Something wrong',
-      },
-      loading: { title: '서버에 전송중입니다.', description: 'Please wait' },
-    });
-    setDisable(true);
-    onClose();
+    if (!CheckValid()) return;
+    if (mode === 'Comment') {
+      onSubmitForm(content, username);
+      onClose();
+    } else {
+      setSaveInfo({
+        content,
+        username,
+      });
+      setPage(1);
+    }
   };
 
   return (
-    <ModalContent sx={{ maxWidth: '500px', margin: '0 auto' }}>
-      <ModalHeader sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Heading size="md">응원 메세지 입력창</Heading>
-        <Box />
+    <ModalContent className="CommentModalWrapper">
+      <ModalHeader className="CommentModalHeader">
+        <Text className="CommentModalHeaderText">응원메세지 한 줄 보내기</Text>
       </ModalHeader>
-      <ModalCloseButton />
-      <form onSubmit={SubmitForm}>
+      <ModalCloseButton className="ModalCloseIcon" width={12} height={12} />
+      <form onSubmit={onSubmitComment}>
         <FormControl as="fieldset">
-          <ModalBody>
-            <Stack mt="6" spacing="3">
-              <Textarea
-                value={content}
-                onChange={e => {
-                  setContent(e.target.value);
-                }}
-                placeholder="내용을 입력하세요"
-                mb={2} // 하단 마진 추가
-                resize="none"
-              />
-              <Box
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: ' 1fr 1fr',
-                  columnGap: '20px',
-                }}
-              ></Box>
-            </Stack>
-          </ModalBody>
-          <Divider />
-          <ModalFooter
-            sx={{ display: 'flex', justifyContent: 'space-between' }}
-          >
-            <Input
-              value={username}
+          <ModalBody className="CommentModalBody">
+            <Textarea
+              className="CommentModalInput"
+              value={content}
               onChange={e => {
-                setUsername(e.target.value);
+                setContent(e.target.value);
               }}
-              variant="outline"
-              placeholder="닉네임"
-              width="200px"
+              placeholder="응원메세지를 입력해주세요."
+              mb={2} // 하단 마진 추가
+              resize="none"
             />
-            <Button
-              isDisabled={disable}
-              type="submit"
-              variant="solid"
-              colorScheme="blue"
-            >
-              보내기
-            </Button>
-          </ModalFooter>
+            <Text className="ModalCommentAlertText">
+              ”어린이들에게 전하는 따뜻한 응원의 말 남겨주세요!
+              <br />
+              나쁜 말은 피하고, 따뜻한 말로 마음을 전해주세요.
+              <br />
+              (부적절한 내용은 삭제될 수 있습니다.)”
+              <br />
+            </Text>
+          </ModalBody>
+          <Input
+            className="CommentModalInputNickname"
+            value={username}
+            onChange={e => {
+              setUsername(e.target.value);
+            }}
+            placeholder="작성자를 입력해주세요."
+          />
+          <Button
+            className="CommentModalSubmit"
+            type="submit"
+            variant="solid"
+            colorScheme="blue"
+          >
+            {mode === 'Comment' ? '보내기' : '다음으로'}
+          </Button>
         </FormControl>
       </form>
     </ModalContent>

@@ -19,15 +19,15 @@ import {
 } from '@chakra-ui/react';
 import { loadPaymentWidget, ANONYMOUS } from '@tosspayments/payment-widget-sdk';
 import styled from '@emotion/styled';
+import CommentModal from './CommentModal';
 const PriceInputBox = styled(Box)`
   display: flex;
 `;
 
-const donateSection = ({ mode }) => {
+const donateSection = ({ onClose, onSubmitMessage }) => {
   const [page, setPage] = useState(0);
 
-  const [content, setContent] = useState('');
-  const [username, setUsername] = useState('');
+  const [SaveInfo, setSaveInfo] = useState(undefined);
   const [price, setPrice] = useState(0);
   const [disablePrcie, setDisablePrice] = useState(false);
   const [priceButtonText, setPriceButtonText] = useState('결정하기');
@@ -35,9 +35,6 @@ const donateSection = ({ mode }) => {
   const paymentMethodsWidgetRef = useRef();
 
   // pageButton
-  const onClickNext = () => {
-    setPage(prev => prev + 1);
-  };
   const onClickBack = () => {
     setPage(prev => prev - 1);
   };
@@ -92,55 +89,12 @@ const donateSection = ({ mode }) => {
 
   if (page === 0) {
     return (
-      <ModalContent sx={{ maxWidth: '500px', margin: '0 auto' }}>
-        <ModalHeader sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Box color="teal" fontSize="sm">
-            {mode === 'donate' ? '기부' : '응원'}
-          </Box>
-          <Heading size="md">응원 메세지 입력창(기부)</Heading>
-          <Box />
-        </ModalHeader>
-        <ModalCloseButton />
-        <FormControl as="fieldset">
-          <ModalBody>
-            <Stack mt="6" spacing="3">
-              <Textarea
-                value={content}
-                onChange={e => {
-                  setContent(e.target.value);
-                }}
-                placeholder="내용을 입력하세요"
-                mb={2} // 하단 마진 추가
-                resize="none"
-              />
-              <Box
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: ' 1fr 1fr',
-                  columnGap: '20px',
-                }}
-              ></Box>
-            </Stack>
-          </ModalBody>
-          <Divider />
-          <ModalFooter
-            sx={{ display: 'flex', justifyContent: 'space-between' }}
-          >
-            <Input
-              value={username}
-              onChange={e => {
-                setUsername(e.target.value);
-              }}
-              variant="outline"
-              placeholder="닉네임"
-              width="200px"
-            />
-            <Button onClick={onClickNext} variant="solid" colorScheme="blue">
-              보내기
-            </Button>
-          </ModalFooter>
-        </FormControl>
-      </ModalContent>
+      <CommentModal
+        mode="Donate"
+        onClose={onClose}
+        setSaveInfo={setSaveInfo}
+        setPage={setPage}
+      />
     );
   } else if (page === 1) {
     return (

@@ -1,6 +1,8 @@
 'use clients';
 
 import { useEffect, useState } from 'react';
+import { useToast } from '@chakra-ui/react';
+
 import {
   Box,
   Modal,
@@ -10,15 +12,46 @@ import {
   Button,
 } from '@chakra-ui/react';
 import Image from 'next/image';
+
 import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
 import Icon_Present from '@/assets/svg/Icon_Present.svg';
 import CommentModal from '../CommentModal';
-import DonateComponent from '../DonateComponent';
+import DonateModal from '../DonateModal';
 
+import { APIURL } from '@/app/define';
 const InputSection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
+
   const [mode, setMode] = useState('');
+
+  const postComment = async (content, username) => {
+    console.log(content, username);
+    const response = await fetch(`${APIURL}/api/message`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain',
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+      body: JSON.stringify({
+        content,
+        username,
+      }),
+    });
+    return response.status;
+  };
+
+  const SubmitMessage = (content, username) => {
+    toast.promise(postComment(content, username), {
+      success: { title: '댓글작성완료', description: 'Looks great' },
+      error: {
+        title: '서버에 에러가 났습니다.',
+        description: 'Something wrong',
+      },
+      loading: { title: '서버에 전송중입니다.', description: 'Please wait' },
+    });
+  };
 
   const ClickOnlyMessage = () => {
     setMode('message');
@@ -107,8 +140,12 @@ const InputSection = () => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay />
-        {mode === 'message' && <CommentModal mode={mode} onClose={onClose} />}
-        {mode === 'donate' && <DonateComponent mode={mode} />}
+        {mode === 'message' && (
+          <CommentModal onSubmitForm={SubmitMessage} onClose={onClose} />
+        )}
+        {mode === 'donate' && (
+          <DonateModal onSubmitMessage={SubmitMessage} onClose={onClose} />
+        )}
       </Modal>
     </>
   );

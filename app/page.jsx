@@ -31,7 +31,6 @@ const Home = () => {
 
   useEffect(() => {
     // 클라이언트 사이드에서만 실행되도록 보장합니다.
-
     import('fullpage.js/vendors/scrolloverflow').then(() => {
       import('fullpage.js').then(() => {
         import('fullpage.js/dist/jquery.fullpage.min.css').then(() => {

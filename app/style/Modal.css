@@ -1,0 +1,135 @@
+.CommentModalWrapper {
+  width: 315px !important;
+  height: 566px;
+  margin: 0 auto;
+  border-radius: 34px !important;
+  background: #fff !important;
+  box-shadow: 0px 0px 27.3px 0px rgba(90, 90, 90, 0.25) !important;
+}
+.CommentModalHeader {
+  margin-top: 44px;
+  padding: 0px !important;
+  display: flex;
+  justify-content: center;
+}
+
+.CommentModalHeaderText {
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 165%; /* 28.05px */
+}
+.ModalCloseIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.CommentModalInput {
+  margin: 0 auto;
+  font-family: 'NanumSquareNeo';
+  font-size: 13px !important;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 21.45px */
+  padding: 18px !important;
+  background: #f3f3f3 !important;
+  width: 253px !important;
+  height: 222px !important;
+  flex-shrink: 0;
+}
+
+.CommentModalBody {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ModalCommentAlertText {
+  margin-top: 17px;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 200%; /* 14px */
+}
+.CommentModalFooter {
+  display: block !important;
+}
+
+.CommentModalInputNickname {
+  font-family: 'NanumSquareNeo';
+  font-size: 12px !important;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 19.8px */
+
+  margin: 35px 66px 0 66px;
+  width: calc(100% - 132px) !important;
+  height: 40px !important;
+  flex-shrink: 0 !important;
+  border: 1px solid #cacaca !important;
+  background: #fff !important;
+}
+.CommentModalSubmit {
+  margin: 14px 73px 0 73px;
+  width: calc(100% - 146px) !important;
+  height: 47px;
+  flex-shrink: 0;
+  border-radius: 37px !important;
+  background: #ffc500 !important;
+}
+
+.DonateModalHeader {
+  margin-top: 44px;
+  padding: 0px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.DonateSubText {
+  color: #565656;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 14.85px */
+}
+.DonateModalLinkBox {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1px solid #d1d1d1;
+  margin: 0 auto;
+}
+
+.DonateModalSubmit {
+  color: black !important;
+  margin: 14px 73px 40px 73px;
+  width: calc(100% - 146px) !important;
+  height: 47px !important;
+  flex-shrink: 0;
+  border-radius: 37px !important;
+  background: #ffc500 !important;
+}
+
+.DonateExplainBox {
+  margin: 60px auto 0 auto;
+  width: 95%;
+  color: #757575;
+  text-align: left;
+  font-family: 'NanumSquareNeo';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 19.2px */
+}
