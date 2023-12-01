@@ -42,6 +42,7 @@ const cardBackground = ['#343540', '#23242b'];
 // Start Component
 const ShowComment = () => {
   const [messages, setMessages] = useState([
+    /*
     {
       create_dt: '2020-02-02',
       username: 'rud7167x',
@@ -265,6 +266,7 @@ const ShowComment = () => {
       content:
         '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
     },
+    */
   ]);
 
   const getComments = async () => {

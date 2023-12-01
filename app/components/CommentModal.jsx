@@ -59,9 +59,6 @@ const InputComment = ({ mode, onClose }) => {
   return (
     <ModalContent sx={{ maxWidth: '500px', margin: '0 auto' }}>
       <ModalHeader sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Box color="teal" fontSize="sm">
-          {mode === 'donate' ? '기부' : '응원'}
-        </Box>
         <Heading size="md">응원 메세지 입력창</Heading>
         <Box />
       </ModalHeader>

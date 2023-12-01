@@ -38,8 +38,10 @@ const ShowGazaMap = () => {
   return (
     <Box className="firstSction mobile">
       <Box className="Section1Header">
-        <Text className="ShowGazaMapTitleFontOne">PEACE</Text>
-        <Text className="ShowGazaMapTitleFontOne Two">IN GAZA</Text>
+        <Text className="ShowGazaMapTitleFontOne">Gaza’s Child </Text>
+        <Text className="ShowGazaMapTitleFontOne">
+          Read <strong className="Two">HOPE</strong>
+        </Text>
         <Image
           alt="message Icon"
           width={43}

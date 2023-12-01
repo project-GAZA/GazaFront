@@ -9,10 +9,11 @@ import Header from './components/Header';
 
 import ShowComment from './components/SectionComponents/ShowComment';
 import InputSection from './components/SectionComponents/InputSection';
-import SendMail from './components/SendMail';
-
 import ShowInfo_1 from './components/SectionComponents/ShowInfo_1';
 import ShowGazaMap from './components/SectionComponents/ShowGazaMap';
+import ExplainSectoin from './components/SectionComponents/ExplainSectoin';
+
+import SendMail from './components/SendMail';
 import ShareLink from './components/ShareLink';
 
 const SectionBox = styled(Box)`
@@ -39,14 +40,30 @@ const Home = () => {
             $.fn.fullpage.destroy('all');
           }
 
+          let section4Trigger = false;
           $('#fullpage').fullpage({
             normalScrollElements: '.nonfullpage',
             scrollOverflow: true,
             menu: '.gnb',
-            anchors: ['section1', 'section2', 'section3', 'section4'],
+            anchors: [
+              'section1',
+              'section2',
+              'section3',
+              'section4',
+              'section5',
+            ],
 
             afterLoad: (anchorLink, _index) => {
-              // 페이지가 스크롤 됬을 때 발생되는 이벤트
+              // 풀페이지 스크롤링 관련(섹션4는 풀페이지 스크롤이 잠시 멈춰야됨)!!
+              if (_index === 4) {
+                $.fn.fullpage.setAllowScrolling(false);
+                section4Trigger = false;
+              } else {
+                $.fn.fullpage.setAllowScrolling(true);
+                section4Trigger = true;
+              }
+
+              // 페이지가 스크롤 됬을 때 발생되는 이벤트 => 헤더 관련 부분!!
               setCurrentSection(anchorLink);
               // 모든 메뉴 항목에서 'on' 클래스 제거
               document.querySelectorAll('.gnb li').forEach(li => {
@@ -62,6 +79,26 @@ const Home = () => {
                 activeMenuItem.classList.add('on');
               }
             },
+          });
+
+          // 풀페이지 스크롤링 관련(섹션4는 풀페이지 스크롤이 잠시 멈춰야됨)!
+          const section4 = document.querySelector('.InputWrapper');
+          section4.addEventListener('scroll', () => {
+            section4Trigger = true;
+            // 섹션 내부에서 스크롤이 끝에 도달했는지 확인
+            const scrollHeight = section4.scrollHeight - section4.scrollTop;
+            if (
+              scrollHeight - section4.clientHeight === -0.5 &&
+              section4Trigger
+            ) {
+              // Fullpage.js 스크롤 재활성화
+              $.fn.fullpage.setAllowScrolling(true);
+            } else if (
+              scrollHeight - section4.clientHeight === 465 &&
+              section4Trigger
+            ) {
+              $.fn.fullpage.setAllowScrolling(true);
+            }
           });
         });
       });
@@ -93,6 +130,9 @@ const Home = () => {
         </SectionBox>
         <SectionBox className="section" data-menuanchor="section4">
           <InputSection />
+        </SectionBox>
+        <SectionBox className="section" data-menuanchor="section5">
+          <ExplainSectoin />
         </SectionBox>
 
         <Modal

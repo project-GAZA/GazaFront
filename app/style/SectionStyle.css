@@ -40,8 +40,8 @@
 .MessageIconInTitle {
   z-index: 1;
   position: relative;
-  top: -105px;
-  left: 160px;
+  top: -108px;
+  left: 290px;
 }
 
 .SubTitle {
@@ -322,4 +322,184 @@
   max-height: 50%;
   margin-top: 30px;
   padding: 16px;
+}
+
+/* Input Section */
+.InputWrapper {
+  padding-top: 61px;
+  overflow: auto;
+  max-height: 100vh;
+}
+.section[data-anchor='section4'] > .fp-tableCell {
+  vertical-align: top !important;
+}
+.InputTopMessage {
+  color: #000;
+
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+}
+.InputTopMessage2 {
+  margin-top: 10px;
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 165%; /* 33px */
+}
+.InputMessageWrapper {
+  margin: 0 auto;
+  width: 352px;
+  height: 523px;
+  flex-shrink: 0;
+  border-radius: 46px;
+  padding-top: 42px;
+}
+.TopMessageInbox {
+  color: #fff;
+  font-family: 'NanumSquareNeo';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 24.75px */
+}
+.SecondMessageInbox {
+  color: #fff;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 165%; /* 42.9px */
+}
+.ComeCheerBox {
+  width: 215px;
+  height: 62px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  margin: 31px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ComeCheerText {
+  color: #fff;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 165%; /* 21.45px */
+}
+
+.CommentInput {
+  margin-top: 16px;
+  width: 197px;
+  height: 55px !important;
+  flex-shrink: 0 !important;
+  border-radius: 37px !important;
+  background: #fff;
+}
+
+.CommentInputText {
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 165%; /* 26.4px */
+}
+
+.WatchAddBox {
+  position: relative;
+  top: -16px;
+  left: 140px;
+}
+.WatchAddText {
+  position: relative;
+  top: -15px;
+  color: #686868;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 14.85px */
+}
+
+/* Explain Section */
+.section[data-anchor='section5'] > .fp-tableCell {
+  background-color: #f5f5f5;
+}
+.ExplainSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ExplainTitleText {
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 165%; /* 33px */
+}
+
+.ExplainWrapper {
+  margin: 33px 15px 0 15px;
+}
+
+.ExplainWrapper > .chakra-accordion {
+  border: none;
+}
+.ExplainWrapper .chakra-accordion__item {
+  border: none;
+  border-radius: 13px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.ExplainButton:hover {
+  background-color: #fff !important;
+}
+.ExplainButton {
+  padding: 22px 0px !important;
+  background-color: #fff !important;
+  border-radius: 13px;
+  background: #fff;
+  justify-content: center;
+}
+.ExplainText {
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 165%; /* 23.1px */
+  margin-right: 10px;
+}
+
+.SNSIconBox {
+  display: flex;
+  gap: 10px;
+  margin: 38px auto 18px auto;
+}
+.ExplainFooterText {
+  color: #8f8f8f;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 18.15px */
 }
