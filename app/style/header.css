@@ -21,7 +21,6 @@ a {
 
 .HeaderWrapper {
   z-index: 1000;
-  background-color: rgba(10, 10, 10, 0.3);
   backdrop-filter: blur(15px);
   height: 58px;
   position: fixed;
@@ -30,4 +29,12 @@ a {
   display: flex;
   align-items: center;
   padding: 12px 0px;
+}
+.OneCommentHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.OneCommentHeaderLeft {
+  display: flex;
+  gap: 10px;
 }

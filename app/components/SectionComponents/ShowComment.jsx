@@ -1,23 +1,21 @@
 'use clients';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  Card,
-  CardHeader,
   Heading,
+  Divider,
   Stack,
   Box,
   Text,
-  CardBody,
   IconButton,
   InputGroup,
-  InputLeftElement,
-  Button,
-  Icon,
   Input,
+  InputRightElement,
+  Icon,
 } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import { FaHeart, FaSearch } from 'react-icons/fa';
+import { FaHeart, FaSearchengin } from 'react-icons/fa';
+import { CiHeart } from 'react-icons/ci';
 
 import useWindowSize from '../../hooks/useWindowSize';
 
@@ -43,7 +41,231 @@ const cardBackground = ['#343540', '#23242b'];
 
 // Start Component
 const ShowComment = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+    {
+      create_dt: '2020-02-02',
+      username: 'rud7167x',
+      content:
+        '멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.멀리서 항상 응원하고 있습니다.',
+    },
+  ]);
 
   const getComments = async () => {
     const response = await fetch(
@@ -72,128 +294,54 @@ const ShowComment = () => {
 
   const size = useWindowSize();
   useEffect(() => {
-    getComments();
+    // getComments();
   }, []);
 
   return (
-    <>
-      <Card
-        className="nonfullpage"
-        onScroll={handlePopupScroll}
-        sx={{
-          backgroundColor: '#23242b',
-          display: 'flex',
-          maxHeight: '80%',
-          maxWidth: '1200px',
-          flexDirection: 'column', // 내용을 세로로 정렬
-          justifyContent: 'flex-start', // 내용을 위에서부터 시작하도록 정렬
-          margin: '0 auto',
-          overflowY: 'auto', // 세로 스크롤만 허용
-        }}
-      >
-        <CardHeader
-          sx={{
-            backgroundColor: '#85f9ad',
-            height: `${size.width >= 900 ? 45 : 35}px`,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Heading
-            sx={{
-              fontSize: `${size.width >= 900 ? 18 : 16}px`,
-              fontWeight: 700,
-            }}
-          >
-            응원 메시지
-          </Heading>
-        </CardHeader>
-
-        <CardBody
-          sx={{
-            padding: '0px',
-            overscrollBehavior: 'contain',
-            overflowY: 'auto', // CardBody 내부에서 스크롤 가능하도록 설정
-          }}
-        >
-          <Box
-            sx={{
-              padding: '10px',
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Box sx={{ width: '150px', minWidth: '150px' }}>
-              <Button sx={{ marginRight: '10px' }} colorScheme="teal" size="sm">
-                Best
-              </Button>
-              <Button colorScheme="teal" size="sm">
-                New
-              </Button>
-            </Box>
-            <InputGroup sx={{ minWidth: 130, maxWidth: 300 }}>
-              <InputLeftElement pointerEvents="none">
-                <Icon as={FaSearch} color="gray.300" />
-              </InputLeftElement>
-              <Input
-                color="white"
-                type="text"
-                placeholder="닉네임을 입력해주세요"
-              />
-            </InputGroup>
-          </Box>
-
-          <Stack spacing="0">
-            {messages.map((v, index) => (
-              <Box
-                sx={{ backgroundColor: cardBackground[index % 2] }}
-                key={index}
-              >
-                <Box
-                  sx={{
-                    padding: '10px',
-                  }}
-                >
-                  <CommentHeader actBtn="red">
-                    <Heading size="xs" textAlign="left" color="#2c7ca3">
-                      From. {v.username}
-                    </Heading>
-                    <LikeWrapper
-                      isRound={true}
-                      variant="solid"
-                      backgroundColor="#23242b"
-                      color="#eee"
-                      colorScheme="red"
-                      fontSize="12px"
-                      icon={<FaHeart />}
-                    />
-                    <Text
-                      sx={{
-                        color: '#babdce',
-                        fontSize: '14px',
-                        fontWeight: '400',
-                      }}
-                    >
-                      {v.likeCount}
-                    </Text>
-                  </CommentHeader>
-                  <Text
-                    pt="2"
-                    fontSize="sm"
-                    textAlign="left"
-                    color="#eee"
-                    fontWeight="600"
-                  >
-                    {v.content}
-                  </Text>
+    <Box className="ThirdSection" onScroll={handlePopupScroll}>
+      <Box className="TitleBox">
+        <Text className="ThirdHeaderText">
+          <strong className="ThirdHeaderTextStrong">전세계 각지에서</strong>
+          <br />
+          많은 사람들이 응원글 작성에
+          <br /> 참여하고 있어요
+        </Text>
+      </Box>
+      <Box className="CommentWrapper">
+        <Box className="CommentHeader">
+          <Box className="SortOn CommentSortButton">Best</Box>
+          <Divider height="17px" orientation="vertical" />
+          <Box className="CommentSortButton">New</Box>
+          <InputGroup className="Search">
+            <Input
+              className="SearchInput"
+              variant="unstyled"
+              placeholder="닉네임 검색"
+            />
+            <InputRightElement className="SearchIcon">
+              <FaSearchengin color="white" />
+            </InputRightElement>
+          </InputGroup>
+        </Box>
+        <Stack className="ShowCommentWrapper">
+          {messages.map((v, index) => (
+            <Box className="OneCommentWrapper" key={v.username}>
+              <Box className="OneCommentHeader">
+                <Box className="OneCommentHeaderLeft">
+                  <Text className="NickName">{v.username} 님</Text>
+                  <Text className="Date">{v.create_dt}</Text>
+                </Box>
+                <Box className="OneCommentHeaderRight">
+                  {v.likeHeat ? <CiHeart /> : <FaHeart color="red" />}
+                  <Text className="Report">신고하기</Text>
                 </Box>
               </Box>
-            ))}
-          </Stack>
-        </CardBody>
-      </Card>
-    </>
+              <Box className="OneCommentContent">{v.content}</Box>
+            </Box>
+          ))}
+        </Stack>
+      </Box>
+    </Box>
   );
 };
 
