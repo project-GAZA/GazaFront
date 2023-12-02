@@ -15,21 +15,27 @@ const ShowInfo = () => {
   return (
     <Box className="SecondSection mobile">
       <Text className="SecondTopText">
-        “가자지구 아이들에게 희망의 메세지를
-        <br /> 전달하는 프로젝트를 시작합니다.”
+        “아이들은 잘못이 없습니다!”
       </Text>
       <Text className="SecondExplainText">
-        분쟁의 그늘 아래 고통받는 가자지구 아이들에게
-        <br /> 사랑과 희망의 메시지로 세상의 따스함을 전하려 합니다.
-        <br /> 우리의 마음이 하나로 모여 전달될 때,
-        <br /> 이 메시지는 아이들에게 전쟁과 분쟁에서 비롯된 증오 대신
-        <br /> 밝은 미래로 나아갈 수 있는 희망의 기반을 제공할 것입니다.
-        <br />전 세계에서 모인 따뜻한 마음과 응원의 메시지들을 책자로
-        <br /> 엮어 가자지구 난민캠프의 어린이들에게 전달함으로써,
-        <br />
+        10월 7일에 시작된 <span style={{ fontWeight: 'bold' }}>이스라엘 하마스 간의 분쟁</span>은
+        <br /> 가자지구의 <span style={{ fontWeight: 'bold' }}>많은 아이들에게 깊은 상처</span>를 남겼습니다.
+        <br /> 이 아프마은 향후 분쟁이 끝난 가자지구 안에서 다시금
+        <br /> <span style={{ fontWeight: 'bold' }}>세상을 향한 분노와 증오의 불씨</span>로 남게 될 것이며,
+        <br /> 이렇게 된다면 <span style={{ fontWeight: 'bold' }}>전 세계 평화에도 큰 위협</span>이 될 수 있습니다.
+        
+        <br /><br />
         <strong className="SecondExplainStrong">
-          그들의 삶에 작지만 의미있는 변화를 선사합니다!
+          이제 우리가 행동할 때입니다.
         </strong>
+        <br />
+
+        <br /> <span style={{ fontWeight: 'bold', color: 'red' }}>가자지구 아이들을 위한 희망 메시지 전달 프로젝트</span>로
+        <br /> 가자지구의 아이들이 분쟁의 어둠을 넘어 
+        <br /> <span style={{ fontWeight: 'bold' }}>밝은 내일을 향해 나아가도록</span> 돕고자 합니다.
+        <br /> 우리의 관심과 사랑이 이 아이들에게
+        <br /> <span style={{ fontWeight: 'bold' }}>긍정적인 변화</span>를 가져오고,
+        <br /> <span style={{ fontWeight: 'bold' }}>전 세계에 평화의 메시지</span>를 전파할 것입니다.
       </Text>
       <Box className="EarthWrapper">
         <Box className="Pin"></Box>

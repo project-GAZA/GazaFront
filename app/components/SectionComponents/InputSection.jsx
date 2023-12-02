@@ -121,7 +121,8 @@ const InputSection = () => {
             <Text className="CommentInputText">작성하러 가기</Text>
           </Button>
         </Box>
-        <button className="WatchAddBox">
+        {/* JANG: 최종 배포 이후 진행 (구글 애드센스) */}
+        {/* <button className="WatchAddBox">
           <Image
             alt="PresentIcon"
             src={Icon_Present.src}
@@ -129,7 +130,7 @@ const InputSection = () => {
             height={76}
           />
           <Text className="WatchAddText">광고보고 기부하기</Text>
-        </button>
+        </button> */}
       </Box>
 
       <Modal
