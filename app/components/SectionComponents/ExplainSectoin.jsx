@@ -6,9 +6,11 @@ import Image from 'next/image';
 import ExplainComponent from '../ExplainComponent';
 import Icon_Facebook from '@/assets/svg/Icon_Facebook.png';
 import Icon_insta from '@/assets/svg/Icon_insta.png';
-import { useEffect } from 'react';
 
 const ExplainSection = () => {
+  const onClickInsta = () => {
+    window.open('https://www.instagram.com/gazaschildreadhope/');
+  };
   return (
     <Box className="ExplainSection">
       <Text className="ExplainTitleText">Peace-IN-GAZA 프로젝트</Text>
@@ -22,7 +24,13 @@ const ExplainSection = () => {
           src={Icon_Facebook.src}
           alt="FaceBookIcon"
         />
-        <Image width={31} height={31} src={Icon_insta.src} alt="Icon_insta" />
+        <Image
+          onClick={onClickInsta}
+          width={31}
+          height={31}
+          src={Icon_insta.src}
+          alt="Icon_insta"
+        />
       </Box>
       <Text className="ExplainFooterText">
         “프로젝트의 진행 과정을 SNS에서 함께 지켜봐 주세요!

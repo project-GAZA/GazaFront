@@ -86,21 +86,22 @@ const ShowComment = () => {
           </InputGroup>
         </Box>
         <Stack className="ShowCommentWrapper">
-          {messages.map((v, index) => (
-            <Box className="OneCommentWrapper" key={v.username}>
-              <Box className="OneCommentHeader">
-                <Box className="OneCommentHeaderLeft">
-                  <Text className="NickName">{v.username} 님</Text>
-                  <Text className="Date">{v.createDt.slice(0, 10)}</Text>
+          {messages &&
+            messages.map((v, index) => (
+              <Box className="OneCommentWrapper" key={v.username}>
+                <Box className="OneCommentHeader">
+                  <Box className="OneCommentHeaderLeft">
+                    <Text className="NickName">{v.username} 님</Text>
+                    <Text className="Date">{v.createDt.slice(0, 10)}</Text>
+                  </Box>
+                  <Box className="OneCommentHeaderRight">
+                    {v.likeHeat ? <CiHeart /> : <FaHeart color="red" />}
+                    <Text className="Report">신고하기</Text>
+                  </Box>
                 </Box>
-                <Box className="OneCommentHeaderRight">
-                  {v.likeHeat ? <CiHeart /> : <FaHeart color="red" />}
-                  <Text className="Report">신고하기</Text>
-                </Box>
+                <Box className="OneCommentContent">{v.content}</Box>
               </Box>
-              <Box className="OneCommentContent">{v.content}</Box>
-            </Box>
-          ))}
+            ))}
         </Stack>
       </Box>
     </Box>
