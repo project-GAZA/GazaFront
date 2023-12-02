@@ -13,16 +13,16 @@ import {
 import { FaHeart, FaSearchengin } from 'react-icons/fa';
 import { CiHeart } from 'react-icons/ci';
 
-import { APIURL } from '@/app/define';
-
 const ShowComment = () => {
   const [messages, setMessages] = useState([]);
   const newButton = useRef();
   const BestButton = useRef();
 
-  const getComments = async sort => {
+  // const size = useWindowSize(); 윈도우 사이즈 조정되면...
+
+  const getComments = async (sort, size = 100, page = 0) => {
     const response = await fetch(
-      `${APIURL}/api/home?page=0&size=100&sort=${sort}`,
+      `/api/message?sort=${sort}&page=${page}&size=${size}`,
       {
         method: 'GET',
         headers: {
@@ -31,14 +31,12 @@ const ShowComment = () => {
         },
       },
     );
+
     if (response.status === 200) {
       const data = await response.json();
       setMessages(data);
     }
-    return;
   };
-
-  // const size = useWindowSize(); 윈도우 사이즈 조정되면...
   useEffect(() => {
     getComments('new');
   }, []);

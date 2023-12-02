@@ -27,8 +27,7 @@ const InputSection = () => {
   const [mode, setMode] = useState('');
 
   const postComment = async (content, username) => {
-    console.log(content, username);
-    const response = await fetch(`${APIURL}/api/message`, {
+    const response = await fetch(`/api/message`, {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain',
