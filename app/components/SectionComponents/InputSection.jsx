@@ -89,8 +89,8 @@ const InputSection = () => {
           />
           <Box className="ComeCheerBox" backgroundColor="#ff430e">
             <Text className="ComeCheerText">
-              세계적으로 많은 사람들이
-              <br /> 참여중이에요!
+              작성한 메시지는
+              <br /> 이 사이트에서 공유돼요!
             </Text>
           </Box>
           <Button onClick={ClickOnlyMessage} className="CommentInput">
@@ -113,8 +113,8 @@ const InputSection = () => {
           />
           <Box className="ComeCheerBox" backgroundColor="#EBB600">
             <Text className="ComeCheerText">
-              세계적으로 많은 사람들이
-              <br /> 참여중이에요!
+              작성한 메시지는
+              <br /> 실제 책자에 들어갈 거에요!
             </Text>
           </Box>
           <Button onClick={ClickDonate} className="CommentInput">
