@@ -34,7 +34,7 @@ const Home = () => {
     let commentWrapper = document.querySelector('.ShowCommentWrapper');
     let handleScrollStart;
     let handleScrollEnd;
-
+    /*
     import('fullpage.js/vendors/scrolloverflow').then(() => {
       import('fullpage.js').then(() => {
         import('fullpage.js/dist/jquery.fullpage.min.css').then(() => {
@@ -114,6 +114,7 @@ const Home = () => {
       commentWrapper.removeEventListener('mouseenter', handleScrollStart);
       commentWrapper.removeEventListener('mouseleave', handleScrollEnd);
     };
+    */
   }, []);
 
   // 완료창으로 보내기,
@@ -133,16 +134,16 @@ const Home = () => {
         <SectionBox className="section" data-menuanchor="section1">
           <ShowGazaMap />
         </SectionBox>
-        <SectionBox className="section" data-menuanchor="section2">
+        <SectionBox className="" data-menuanchor="section2">
           <ShowInfo_1 />
         </SectionBox>
         <SectionBox className="section" data-menuanchor="section3">
           <ShowComment />
         </SectionBox>
-        <SectionBox className="section" data-menuanchor="section4">
+        <SectionBox className="" data-menuanchor="section4">
           <InputSection />
         </SectionBox>
-        <SectionBox className="section" data-menuanchor="section5">
+        <SectionBox className="" data-menuanchor="section5">
           <ExplainSectoin />
         </SectionBox>
 
