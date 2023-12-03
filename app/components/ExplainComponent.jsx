@@ -17,17 +17,12 @@ const ExplainComponent = () => {
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel className="ArcdText" pb={4}>
-          “가자지구 아이들이 겪고 있는 아픔에 조금리아도 도움이 되고 싶다”라는
-          마음에서 시작했습니다.
-          <br />
-          <br />
-          프로젝트를 기획하는 과정에서, 그 어떤 종교적 정치적 편향 없이
-          ‘아이들’에 초점이 맞춰질 수 있도록 노력했습니다. <br />
-          <br />
-          전쟁이라는 같은 아픔을 겪어온 우리나라 선조들이, 지금의 대한민국을
-          세웠듯 가자지구 아이들이 밝은 미래를 그리고, 이들이 다음 세상의 더
-          나은 일부가 될 수 있도록 작지만 확실한 변화를 주기 위한 목적을 가지고
-          있습니다.
+        이 프로젝트는 "가자지구 어린이들의 겪고 있는 고통에 조금이라도 도움이 되고 싶다"라는 마음에서 시작했습니다.
+        프로젝트를 기획하는 과정에서, 그 어떤 종교적 정치적 편향 없이  ‘아이들’에 초점이 맞춰질 수 있도록 노력했습니다.
+        <br />  
+        우리나라 선조들이 전쟁의 고통을 극복하고 오늘날의 대한민국을 건설한 것처럼, 
+        가자지구의 어린이들이 희망찬 미래를 그리며, 이들이 더 나은 내일의 세계를 만들어 나갈 수 있도록, 
+        작지만 의미 있는 변화를 일으키는 것이 우리의 목적입니다.
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
@@ -48,7 +43,7 @@ const ExplainComponent = () => {
           가자지구의 아이들에게 전달합니다!
           <br />
           <br />
-          ※ 진행 상황은 인스타그램을 통해 계속 업데이트 될 예정입니다.
+          ※ 더 자세한 진행 상황은 인스타그램을 통해 업데이트 될 예정이에요! 지켜봐 주세요:)
           <br />
         </AccordionPanel>
       </AccordionItem>
@@ -59,7 +54,7 @@ const ExplainComponent = () => {
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel className="ArcdText" pb={4}>
-          <span style={{ fontWeight: 'bold' }}>기부금 처리는,</span>
+          <span style={{ fontWeight: 'bold' }}>기부금 처리</span>
           <br />
           <br />
           현재 지정기부금단체 컨택 중에 있습니다! 연말정산 세액공제를 위해
@@ -67,17 +62,16 @@ const ExplainComponent = () => {
           그때 기부 부탁드립니다:) 그 전까지는 토스 아이디를 통해 기부금을
           받으며, 기부금은 토스 내역으로 투명하게 공개됩니다. <br />
           <br />
-          <span style={{ fontWeight: 'bold' }}>책자는,</span>
+          <span style={{ fontWeight: 'bold' }}>책자</span>
           <br />
           <br />
-          1만 부 발행을 우선 목표로 하고 있습니다. 이 진행 상황 또한 인스타에
-          업데이트 예정이니 지켜봐 주세요!
+          1차 발행 부수를 조율 중에 있습니다. 앞으로의 진행 상황 또한 인스타에서 말씀 드리겠습니다!
           <br />
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionButton className="ExplainButton">
-          <Box className="ExplainText">기부금 및 책자 관련 공지</Box>
+          <Box className="ExplainText">추가 공지</Box>
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel className="ArcdText" pb={4}>
@@ -85,7 +79,7 @@ const ExplainComponent = () => {
           <br />
           <br />
           서버가 다운되면 웹 사이트 접속이 안 될 수 있어요! 그래도 모두의
-          메시지는 남아 있으니 놀라지 마시고 인스타 DM으로 남겨 주세요!
+          메시지는 남아 있으니 놀라지 마시고 인스타 DM으로 알려주시면 감사하겠습니다:)
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

@@ -61,17 +61,23 @@ const ShowGazaMap = () => {
       </Box>
       <Box className="GoalTextBox">
         <Text className="GoalText">
-          {percentage}% <strong className="GoalFixedText">달성</strong>
+          {/* {percentage}% <strong className="GoalFixedText">달성</strong> */}
+          {/* JANG: 12/3 임시 수정 */}
+          ??% <strong className="GoalFixedText">달성</strong>
         </Text>
       </Box>
       <Box className="SectionOneFooter">
         <Box className="RealGoalWrapper">
           <Text className="RealGoalText">총 모금액</Text>
-          <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text>
+          {/* <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text> */}
+          {/* JANG: 12/3 임시 수정 */}
+          <Text className="RealGoalMoney">??</Text>
         </Box>
         <Box className="RealGoalWrapper">
           <Text className="RealGoalText">목표 모금액</Text>
-          <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text>
+          {/* <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text> */}
+          {/* JANG: 12/3 임시 수정 */}
+          <Text className="RealGoalMoney">??</Text>
         </Box>
       </Box>
     </Box>

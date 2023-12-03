@@ -20,7 +20,7 @@ const ShowInfo = () => {
       <Text className="SecondExplainText">
         10월 7일에 시작된 <span style={{ fontWeight: 'bold' }}>이스라엘 하마스 간의 분쟁</span>은
         <br /> 가자지구의 <span style={{ fontWeight: 'bold' }}>많은 아이들에게 깊은 상처</span>를 남겼습니다.
-        <br /> 이 아프마은 향후 분쟁이 끝난 가자지구 안에서 다시금
+        <br /> 이 아픔은 향후 분쟁이 끝난 가자지구 안에서 다시금
         <br /> <span style={{ fontWeight: 'bold' }}>세상을 향한 분노와 증오의 불씨</span>로 남게 될 것이며,
         <br /> 이렇게 된다면 <span style={{ fontWeight: 'bold' }}>전 세계 평화에도 큰 위협</span>이 될 수 있습니다.
         
