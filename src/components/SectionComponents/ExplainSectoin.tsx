@@ -3,7 +3,7 @@
 import { Box, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
-import ExplainComponent from '../ExplainComponent';
+import ExplainComponent from '@/components/ExplainComponent';
 import Icon_Facebook from '@/assets/svg/Icon_Facebook.png';
 import Icon_insta from '@/assets/svg/Icon_insta.png';
 

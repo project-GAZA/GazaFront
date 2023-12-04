@@ -1,10 +1,10 @@
-import { APIURL } from '@/app/define';
 import { NextResponse } from 'next/server';
 import { useRouter } from 'next/navigation';
+import { APIURL } from '@/constants';
 
 export async function GET(req, res) {
   try {
-    const searchParams = req.nextUrl.searchParams;
+    const { searchParams } = req.nextUrl;
     const size = searchParams.get('size');
     const sort = searchParams.get('sort');
     const page = searchParams.get('page');

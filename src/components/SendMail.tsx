@@ -1,10 +1,10 @@
 'use clients';
+
 // test_section_3 : 응원 메시지 입력창
 
 import { useState } from 'react';
-import { useToast } from '@chakra-ui/react';
-
 import {
+  useToast,
   Heading,
   Stack,
   ModalContent,
@@ -52,7 +52,7 @@ const SendMail = () => {
                   gridTemplateColumns: ' 1fr 1fr',
                   columnGap: '20px',
                 }}
-              ></Box>
+              />
             </Stack>
           </ModalBody>
           <Divider />

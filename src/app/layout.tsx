@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-sync-scripts */
-import './style/globals.css';
+import '@/style/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
   content: 'upgrade-insecure-requests',
 };
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="kr">
       <head>
@@ -27,4 +27,6 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

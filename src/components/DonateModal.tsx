@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+
 'use clients';
 
 import { useEffect, useState, useRef } from 'react';
@@ -11,7 +12,7 @@ import {
   Button,
   Box,
 } from '@chakra-ui/react';
-import CommentModal from './CommentModal';
+import CommentModal from '@/components/CommentModal';
 
 const donateSection = ({ onClose, onSubmitMessage }) => {
   const [page, setPage] = useState(0);
@@ -39,7 +40,8 @@ const donateSection = ({ onClose, onSubmitMessage }) => {
         setPage={setPage}
       />
     );
-  } else if (page === 1) {
+  }
+  if (page === 1) {
     return (
       <ModalContent className="CommentModalWrapper">
         <ModalHeader className="DonateModalHeader">

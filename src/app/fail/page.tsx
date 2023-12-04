@@ -1,12 +1,16 @@
 'use client';
-import {} from 'react';
+
 import { Center } from '@chakra-ui/react';
+import { useSearchParams } from 'next/navigation';
 
 const FailPage = () => {
+  const params = useSearchParams();
+  const msg = params.get('message');
+
   return (
     <Center
       sx={{ height: '100vh', fontSize: '40px' }}
-    >{`결제가 완료되었습니다.`}</Center>
+    >{`결제실패사유:${msg}`}</Center>
   );
 };
 

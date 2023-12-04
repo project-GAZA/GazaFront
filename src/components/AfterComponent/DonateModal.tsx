@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+
 'use clients';
 
 import { useEffect, useState, useRef } from 'react';
@@ -19,7 +20,8 @@ import {
 } from '@chakra-ui/react';
 import { loadPaymentWidget, ANONYMOUS } from '@tosspayments/payment-widget-sdk';
 import styled from '@emotion/styled';
-import CommentModal from './CommentModal';
+import CommentModal from '@/components/CommentModal';
+
 const PriceInputBox = styled(Box)`
   display: flex;
 `;
@@ -96,7 +98,8 @@ const donateSection = ({ onClose, onSubmitMessage }) => {
         setPage={setPage}
       />
     );
-  } else if (page === 1) {
+  }
+  if (page === 1) {
     return (
       <ModalContent>
         <ModalHeader
@@ -122,7 +125,7 @@ const donateSection = ({ onClose, onSubmitMessage }) => {
             />
             <Button onClick={onClickPrice}>{priceButtonText}</Button>
           </PriceInputBox>
-          <div id="payment-widget"></div>
+          <div id="payment-widget" />
         </ModalBody>
         <Divider />
         <ModalFooter sx={{ display: 'flex', justifyContent: 'space-between' }}>

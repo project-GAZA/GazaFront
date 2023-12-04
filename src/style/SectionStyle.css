@@ -1,6 +1,6 @@
 /* First Section */
 .firstSction {
-  background-image: url('../../assets/svg/Main_Universe.jpg');
+  background-image: url('../assets/svg/Main_Universe.jpg');
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@
 }
 
 .GazaEmpty {
-  background-image: url('../../assets/svg/GazaEmpty.svg');
+  background-image: url('../assets/svg/GazaEmpty.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 221.73px;
@@ -75,7 +75,7 @@
   position: relative;
   clip-path: inset(24.8826% 0px 0px);
   transition: 3s clip-path ease-in;
-  background-image: url('../../assets/svg/GazaFull.svg');
+  background-image: url('../assets/svg/GazaFull.svg');
   background-size: contain;
   background-repeat: no-repeat;
   width: 221.73px;
@@ -165,7 +165,7 @@
 }
 
 .EarthWrapper {
-  background-image: url('../../assets/svg/Icon_Earth.png');
+  background-image: url('../assets/svg/Icon_Earth.png');
   background-size: 260px 260px;
   width: 260px;
   height: 260px;
@@ -173,7 +173,7 @@
 }
 
 .Pin {
-  background-image: url('../../assets/svg/EarthPin.svg');
+  background-image: url('../assets/svg/EarthPin.svg');
   background-size: 56px 74px;
   width: 56px;
   height: 74px;
@@ -183,7 +183,7 @@
 }
 
 .PinShadow {
-  background-image: url('../../assets/svg/PinShadow.svg');
+  background-image: url('../assets/svg/PinShadow.svg');
   background-size: 15px 5px;
   width: 15px;
   height: 5px;
@@ -204,7 +204,7 @@
 
 /* Third Section */
 .ThirdSection {
-  background-image: url('../../assets/svg/Main_firefly.jpg');
+  background-image: url('../assets/svg/Main_firefly.jpg');
   height: 100vh;
 }
 

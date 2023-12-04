@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import { IconButton, Box, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import { CiShare1, CiMail, CiMenuBurger } from 'react-icons/ci';
-import useWindowSize from '../hooks/useWindowSize';
 import { useState } from 'react';
+import useWindowSize from '@/hooks/useWindowSize';
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
 import CallIcon from '@/assets/svg/CallIcon.svg';
 
@@ -63,7 +63,7 @@ const Header = ({ onOpenMail, onOpenShare }) => {
   const toggleDisplay = () => {
     setDisplay(prev => {
       if (prev === 'none') return 'flex';
-      else return 'none';
+      return 'none';
     });
   };
 

@@ -5,16 +5,16 @@ import { Box, Modal, ModalOverlay } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import $ from 'jquery';
 
-import Header from './components/Header';
+import Header from '@/components/Header';
 
-import ShowComment from './components/SectionComponents/ShowComment';
-import InputSection from './components/SectionComponents/InputSection';
-import ShowInfo_1 from './components/SectionComponents/ShowInfo_1';
-import ShowGazaMap from './components/SectionComponents/ShowGazaMap';
-import ExplainSectoin from './components/SectionComponents/ExplainSectoin';
+import ShowComment from '@/components/SectionComponents/ShowComment';
+import InputSection from '@/components/SectionComponents/InputSection';
+import ShowInfo_1 from '@/components/SectionComponents/ShowInfo_1';
+import ShowGazaMap from '@/components/SectionComponents/ShowGazaMap';
+import ExplainSectoin from '@/components/SectionComponents/ExplainSectoin';
 
-import SendMail from './components/SendMail';
-import ShareLink from './components/ShareLink';
+import SendMail from '@/components/SendMail';
+import ShareLink from '@/components/ShareLink';
 
 const SectionBox = styled(Box)`
   text-align: center;
@@ -31,7 +31,7 @@ const Home = () => {
 
   useEffect(() => {
     // 클라이언트 사이드에서만 실행되도록 보장합니다.
-    let commentWrapper = document.querySelector('.ShowCommentWrapper');
+    const commentWrapper = document.querySelector('.ShowCommentWrapper');
     let handleScrollStart;
     let handleScrollEnd;
     /*

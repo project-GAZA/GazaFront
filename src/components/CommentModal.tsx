@@ -1,10 +1,10 @@
 'use clients';
+
 // test_section_3 : 응원 메시지 입력창
 
 import { useState } from 'react';
-import { useToast } from '@chakra-ui/react';
-
 import {
+  useToast,
   Text,
   ModalContent,
   ModalHeader,
@@ -39,7 +39,8 @@ const InputComment = ({
         ),
       });
       return false;
-    } else if (username.length > 8) {
+    }
+    if (username.length > 8) {
       toast({
         position: 'bottom-center',
         render: () => (
@@ -49,7 +50,8 @@ const InputComment = ({
         ),
       });
       return false;
-    } else if (content.length === 0) {
+    }
+    if (content.length === 0) {
       toast({
         position: 'bottom-center',
         render: () => (

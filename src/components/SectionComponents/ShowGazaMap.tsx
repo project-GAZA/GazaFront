@@ -20,10 +20,10 @@ const GazaFullComponent = styled(Box)`
 `;
 
 const wait = timeToDelay =>
-  new Promise(resolve => setTimeout(resolve, timeToDelay)); //이와 같이 선언 후
+  new Promise(resolve => setTimeout(resolve, timeToDelay)); // 이와 같이 선언 후
 
 const ShowGazaMap = () => {
-  const [percentage, setPercentage] = useState(80); //80이 안보이는 거임!
+  const [percentage, setPercentage] = useState(80); // 80이 안보이는 거임!
   const [realMoney, setRealMoney] = useState(10000000);
 
   useEffect(() => {

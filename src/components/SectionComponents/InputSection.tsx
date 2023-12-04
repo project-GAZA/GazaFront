@@ -1,9 +1,8 @@
 'use clients';
 
 import { useEffect, useState } from 'react';
-import { useToast } from '@chakra-ui/react';
-
 import {
+  useToast,
   Box,
   Modal,
   ModalOverlay,
@@ -11,15 +10,15 @@ import {
   Text,
   Button,
 } from '@chakra-ui/react';
+
 import Image from 'next/image';
 
 import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
 import Icon_Present from '@/assets/svg/Icon_Present.svg';
-import CommentModal from '../CommentModal';
-import DonateModal from '../DonateModal';
+import CommentModal from '@/components/CommentModal';
+import DonateModal from '@/components/DonateModal';
 
-import { APIURL } from '@/app/define';
 const InputSection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();

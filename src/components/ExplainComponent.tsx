@@ -8,6 +8,7 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from '@chakra-ui/react';
+
 const ExplainComponent = () => {
   return (
     <Accordion allowMultiple>
