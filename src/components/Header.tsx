@@ -9,7 +9,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
 import CallIcon from '@/assets/svg/CallIcon.svg';
 
-const MenuInner = styled.ul`
+const MenuInner = styled.ul<{ sz: number }>`
   display: flex;
   align-items: center;
   justify-content: ${props => (props.sz >= 900 ? 'center' : 'space-between')};
@@ -18,7 +18,7 @@ const MenuInner = styled.ul`
   color: gray;
   width: 100vw;
 `;
-const HeaderWrapper = styled(Box)`
+const HeaderWrapper = styled(Box)<{ ds: string }>`
   z-index: 1000;
   ${props => props.ds === 'none' && `backdrop-filter: blur(15px)`};
   height: 58px;
@@ -30,7 +30,7 @@ const HeaderWrapper = styled(Box)`
   padding: 12px 0px;
 `;
 
-const MenuWrapper = styled.div`
+const MenuWrapper = styled.div<{ ds: string }>`
   display: ${props => props.ds};
   z-index: 999;
   position: fixed;

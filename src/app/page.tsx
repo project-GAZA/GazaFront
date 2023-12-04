@@ -1,9 +1,11 @@
+/* eslint-disable react/jsx-pascal-case */
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import { Box, Modal, ModalOverlay } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 import Header from '@/components/Header';
 
@@ -25,15 +27,16 @@ const SectionBox = styled(Box)`
 `;
 
 const Home = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentSection, setCurrentSection] = useState('');
   const [mailModal, setMailModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
 
   useEffect(() => {
     // 클라이언트 사이드에서만 실행되도록 보장합니다.
-    const commentWrapper = document.querySelector('.ShowCommentWrapper');
-    let handleScrollStart;
-    let handleScrollEnd;
+    // const commentWrapper = document.querySelector('.ShowCommentWrapper');
+    // let handleScrollStart;
+    // let handleScrollEnd;
     /*
     import('fullpage.js/vendors/scrolloverflow').then(() => {
       import('fullpage.js').then(() => {

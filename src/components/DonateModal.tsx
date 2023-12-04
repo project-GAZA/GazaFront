@@ -2,7 +2,7 @@
 
 'use clients';
 
-import { useEffect, useState, useRef } from 'react';
+import { useState } from 'react';
 import {
   Text,
   ModalContent,
@@ -14,19 +14,20 @@ import {
 } from '@chakra-ui/react';
 import CommentModal from '@/components/CommentModal';
 
+// eslint-disable-next-line consistent-return
 const donateSection = ({ onClose, onSubmitMessage }) => {
   const [page, setPage] = useState(0);
 
-  const [SaveInfo, setSaveInfo] = useState(undefined);
+  const [SaveInfo, setSaveInfo] = useState({ content: '', username: '' });
 
   const onClickSubmit = () => {
     onSubmitMessage(SaveInfo.content, SaveInfo.username);
     onClose();
   };
   // pageButton
-  const onClickBack = () => {
-    setPage(prev => prev - 1);
-  };
+  // const onClickBack = () => {
+  //   setPage(prev => prev - 1);
+  // };
 
   const onClickLick = () => {
     window.open('https://toss.me/peacegaza');

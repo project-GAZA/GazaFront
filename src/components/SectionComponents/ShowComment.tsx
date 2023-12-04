@@ -15,8 +15,8 @@ import { CiHeart } from 'react-icons/ci';
 
 const ShowComment = () => {
   const [messages, setMessages] = useState([]);
-  const newButton = useRef();
-  const BestButton = useRef();
+  const newButton = useRef<HTMLDivElement>();
+  const BestButton = useRef<HTMLDivElement>();
 
   // const size = useWindowSize(); 윈도우 사이즈 조정되면...
 
@@ -41,12 +41,12 @@ const ShowComment = () => {
     getComments('new');
   }, []);
 
-  const BestClick = e => {
+  const BestClick = () => {
     BestButton.current.classList.add('SortOn');
     newButton.current.classList.remove('SortOn');
     getComments('best');
   };
-  const NewClick = e => {
+  const NewClick = () => {
     BestButton.current.classList.remove('SortOn');
     newButton.current.classList.add('SortOn');
     getComments('new');
@@ -87,7 +87,7 @@ const ShowComment = () => {
         </Box>
         <Stack className="ShowCommentWrapper">
           {messages &&
-            messages.map((v, index) => (
+            messages.map(v => (
               <Box className="OneCommentWrapper" key={v.username}>
                 <Box className="OneCommentHeader">
                   <Box className="OneCommentHeaderLeft">

@@ -29,7 +29,9 @@
       2,
       { "namedComponents": "arrow-function" }
     ],
-    "import/prefer-default-export": "warn",
-    "import/extensions": "off"
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "react/require-default-props": "off",
+    "react/no-unescaped-entities": "warn"
   }
 }

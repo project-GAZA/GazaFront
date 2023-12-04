@@ -15,7 +15,7 @@ import Image from 'next/image';
 
 import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
-import Icon_Present from '@/assets/svg/Icon_Present.svg';
+// import Icon_Present from '@/assets/svg/Icon_Present.svg';
 import CommentModal from '@/components/CommentModal';
 import DonateModal from '@/components/DonateModal';
 
@@ -40,7 +40,7 @@ const InputSection = () => {
     return response.status;
   };
 
-  const SubmitMessage = (content, username) => {
+  const SubmitMessage = (content: string, username: string) => {
     toast.promise(postComment(content, username), {
       success: { title: '댓글작성완료', description: 'Looks great' },
       error: {

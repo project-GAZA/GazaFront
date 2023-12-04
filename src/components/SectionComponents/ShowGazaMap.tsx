@@ -7,7 +7,7 @@ import { Box, Text } from '@chakra-ui/react';
 import IconMessage from '@/assets/svg/IconMessage.svg';
 import GazaFullImage from '@/assets/svg/GazaFull.svg';
 
-const GazaFullComponent = styled(Box)`
+const GazaFullComponent = styled(Box)<{ percentage: string }>`
   position: relative;
   clip-path: inset(${props => props.percentage}% 0px 0px);
   transition: 3s clip-path ease-in;
@@ -20,11 +20,13 @@ const GazaFullComponent = styled(Box)`
 `;
 
 const wait = timeToDelay =>
-  new Promise(resolve => setTimeout(resolve, timeToDelay)); // 이와 같이 선언 후
+  new Promise(resolve => {
+    setTimeout(resolve, timeToDelay);
+  }); // 이와 같이 선언 후
 
 const ShowGazaMap = () => {
   const [percentage, setPercentage] = useState(80); // 80이 안보이는 거임!
-  const [realMoney, setRealMoney] = useState(10000000);
+  // const [realMoney, setRealMoney] = useState(10000000);
 
   useEffect(() => {
     // getPercentage();

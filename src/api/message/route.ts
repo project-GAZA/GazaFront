@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
-import { useRouter } from 'next/navigation';
 import { APIURL } from '@/constants';
 
-export async function GET(req, res) {
+export async function GET(req) {
   try {
     const { searchParams } = req.nextUrl;
     const size = searchParams.get('size');
@@ -28,7 +27,7 @@ export async function GET(req, res) {
   }
 }
 
-export async function POST(req, res) {
+export async function POST(req) {
   const { username, content } = await req.json();
 
   try {

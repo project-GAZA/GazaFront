@@ -2,7 +2,7 @@
 
 // test_section_3 : 응원 메시지 입력창
 
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   useToast,
   Text,
@@ -17,13 +17,26 @@ import {
   Box,
 } from '@chakra-ui/react';
 
-const InputComment = ({
+type Props = {
+  onClose: () => void;
+  onSubmitForm?: (content: string, username: string) => void;
+  mode?: string;
+  setSaveInfo?: Dispatch<
+    SetStateAction<{
+      content: string;
+      username: string;
+    }>
+  >;
+  setPage?: Dispatch<SetStateAction<number>>;
+};
+
+const CommentModal = ({
   onClose,
   onSubmitForm,
   mode = 'Comment',
   setSaveInfo,
   setPage,
-}) => {
+}: Props) => {
   const [content, setContent] = useState('');
   const [username, setUsername] = useState('');
   const toast = useToast();
@@ -31,7 +44,7 @@ const InputComment = ({
   const CheckValid = () => {
     if (username.length < 2) {
       toast({
-        position: 'bottom-center',
+        position: 'bottom',
         render: () => (
           <Box color="white" p={3} bg="red.500">
             닉네임은 2자 이상 입력해주세요
@@ -42,7 +55,7 @@ const InputComment = ({
     }
     if (username.length > 8) {
       toast({
-        position: 'bottom-center',
+        position: 'bottom',
         render: () => (
           <Box color="white" p={3} bg="red.500">
             닉네임은 8자 이하로 입력해주세요
@@ -53,7 +66,7 @@ const InputComment = ({
     }
     if (content.length === 0) {
       toast({
-        position: 'bottom-center',
+        position: 'bottom',
         render: () => (
           <Box color="white" p={3} bg="red.500">
             내용을 입력해주세요.
@@ -129,4 +142,4 @@ const InputComment = ({
   );
 };
 
-export default InputComment;
+export default CommentModal;

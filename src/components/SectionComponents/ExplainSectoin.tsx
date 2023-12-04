@@ -13,7 +13,9 @@ const ExplainSection = () => {
   };
   return (
     <Box className="ExplainSection">
-      <Text className="ExplainTitleText">Gaza's Child Read HOPE 프로젝트</Text>
+      <Text className="ExplainTitleText">
+        Gaza&apos;s Child Read HOPE 프로젝트
+      </Text>
       <Box className="ExplainWrapper">
         <ExplainComponent />
       </Box>
