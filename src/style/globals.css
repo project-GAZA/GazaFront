@@ -1,7 +1,6 @@
 /* About Font Import */
 @import './fonts.css';
 @import './SectionStyle.css';
-@import './Modal.css';
 
 ul {
   list-style: none;

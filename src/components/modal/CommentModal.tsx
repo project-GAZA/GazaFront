@@ -3,19 +3,19 @@
 // test_section_3 : 응원 메시지 입력창
 
 import { Dispatch, SetStateAction, useState } from 'react';
+import { useToast, FormControl, Box } from '@chakra-ui/react';
+
 import {
-  useToast,
-  Text,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  Textarea,
-  Button,
-  Input,
-  FormControl,
-  Box,
-} from '@chakra-ui/react';
+  CommentModalWrapper,
+  CommentModalHeader,
+  CommentModalHeaderText,
+  ModalCloseIcon,
+  CommentModalInput,
+  CommentModalBody,
+  ModalCommentAlertText,
+  CommentModalSubmit,
+  CommentModalInputNickname,
+} from './style';
 
 type Props = {
   onClose: () => void;
@@ -93,16 +93,15 @@ const CommentModal = ({
   };
 
   return (
-    <ModalContent className="CommentModalWrapper">
-      <ModalHeader className="CommentModalHeader">
-        <Text className="CommentModalHeaderText">응원메세지 한 줄 보내기</Text>
-      </ModalHeader>
-      <ModalCloseButton className="ModalCloseIcon" width={12} height={12} />
+    <CommentModalWrapper>
+      <CommentModalHeader>
+        <CommentModalHeaderText>응원메세지 한 줄 보내기</CommentModalHeaderText>
+      </CommentModalHeader>
+      <ModalCloseIcon width={12} height={12} />
       <form onSubmit={onSubmitComment}>
         <FormControl as="fieldset">
-          <ModalBody className="CommentModalBody">
-            <Textarea
-              className="CommentModalInput"
+          <CommentModalBody>
+            <CommentModalInput
               value={content}
               onChange={e => {
                 setContent(e.target.value);
@@ -111,34 +110,28 @@ const CommentModal = ({
               mb={2} // 하단 마진 추가
               resize="none"
             />
-            <Text className="ModalCommentAlertText">
+            <ModalCommentAlertText>
               ”어린이들에게 전하는 따뜻한 응원의 말 남겨주세요!
               <br />
               나쁜 말은 피하고, 따뜻한 말로 마음을 전해주세요.
               <br />
               (부적절한 내용은 삭제될 수 있습니다.)”
               <br />
-            </Text>
-          </ModalBody>
-          <Input
-            className="CommentModalInputNickname"
+            </ModalCommentAlertText>
+          </CommentModalBody>
+          <CommentModalInputNickname
             value={username}
             onChange={e => {
               setUsername(e.target.value);
             }}
             placeholder="작성자를 입력해주세요."
           />
-          <Button
-            className="CommentModalSubmit"
-            type="submit"
-            variant="solid"
-            colorScheme="blue"
-          >
+          <CommentModalSubmit type="submit" variant="solid" colorScheme="blue">
             {mode === 'Comment' ? '보내기' : '다음으로'}
-          </Button>
+          </CommentModalSubmit>
         </FormControl>
       </form>
-    </ModalContent>
+    </CommentModalWrapper>
   );
 };
 
