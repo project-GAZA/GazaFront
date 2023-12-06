@@ -56,11 +56,11 @@ export const MobileMenuTitle = styled(Text)`
 export const HamIcon = styled(IconButton)`
   background: none !important;
 `;
-/*
-.MobilLi {
+
+export const MobilLi = styled.li`
   margin-bottom: 27px;
-}
-.LangChanBox {
+`;
+export const LangChanBox = styled(Box)`
   position: absolute;
   left: 150px;
   bottom: 118px;
@@ -72,8 +72,8 @@ export const HamIcon = styled(IconButton)`
   width: 144px;
   height: 41px;
   flex-shrink: 0;
-}
-.LangChanText {
+`;
+export const LangChanText = styled(Text)`
   color: #6c6c6c;
   text-align: center;
   font-family: 'NanumSquareNeo';
@@ -81,16 +81,16 @@ export const HamIcon = styled(IconButton)`
   font-style: normal;
   font-weight: 600;
   line-height: 165%;
-}
+`;
 
-.IconBoxMenu {
+export const IconBoxMenu = styled(Box)`
   display: flex;
   gap: 11px;
   position: absolute;
   left: 168px;
   bottom: 43px;
-}
-.IconInMenu {
+`;
+export const IconInMenu = styled(Box)`
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -98,5 +98,45 @@ export const HamIcon = styled(IconButton)`
   display: flex;
   align-items: center;
   justify-content: center;
-}
-*/
+`;
+
+export const MenuInner = styled.ul<{ sz: number }>`
+  display: flex;
+  align-items: center;
+  justify-content: ${props => (props.sz >= 900 ? 'center' : 'space-between')};
+  ${props => props.sz < 900 && 'padding:0px 20px;'}
+  gap: 10px;
+  color: gray;
+  width: 100vw;
+`;
+
+export const MenuWrapper = styled.div<{ ds: string }>`
+  display: ${props => props.ds};
+  z-index: 999;
+  position: fixed;
+  height: calc(100vh);
+  width: 100vw;
+  overflow-y: auto;
+  background-color: #fff;
+`;
+
+export const AWrapperMobile = styled.a`
+  color: #000;
+  text-align: center;
+  font-family: NanumSquareNeo;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 29.7px */
+  margin-bottom: 27px;
+`;
+export const MobileUlWrapper = styled.ul`
+  list-style: none;
+  padding-top: 80px;
+  padding-left: 10px;
+`;
+
+export const DesktopIconBox = styled(Box)`
+  display: flex;
+  gap: 20px;
+`;
