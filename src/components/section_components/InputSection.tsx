@@ -16,8 +16,8 @@ import Image from 'next/image';
 import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
 // import Icon_Present from '@/assets/svg/Icon_Present.svg';
-import CommentModal from '@/components/CommentModal';
-import DonateModal from '@/components/DonateModal';
+import CommentModal from '@/components/modal/CommentModal';
+import DonateModal from '@/components/modal/DonateModal';
 
 const InputSection = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

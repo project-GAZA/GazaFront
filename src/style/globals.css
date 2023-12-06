@@ -4,6 +4,12 @@
 @import './SectionStyle.css';
 @import './Modal.css';
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .section {
   height: 100vh;
 }

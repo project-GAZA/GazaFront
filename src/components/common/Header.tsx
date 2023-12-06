@@ -1,10 +1,19 @@
 'use client';
 
+import { useState } from 'react';
+import Image from 'next/image';
 import styled from '@emotion/styled';
 import { IconButton, Box, Text } from '@chakra-ui/react';
-import Image from 'next/image';
 import { CiShare1, CiMail, CiMenuBurger } from 'react-icons/ci';
-import { useState } from 'react';
+
+import {
+  MenuLink,
+  HeaderWrapper,
+  EmptyBox,
+  MobileMenuTitle,
+  HamIcon,
+} from './style';
+
 import useWindowSize from '@/hooks/useWindowSize';
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
 import CallIcon from '@/assets/svg/CallIcon.svg';
@@ -17,17 +26,6 @@ const MenuInner = styled.ul<{ sz: number }>`
   gap: 10px;
   color: gray;
   width: 100vw;
-`;
-const HeaderWrapper = styled(Box)<{ ds: string }>`
-  z-index: 1000;
-  ${props => props.ds === 'none' && `backdrop-filter: blur(15px)`};
-  height: 58px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  padding: 12px 0px;
 `;
 
 const MenuWrapper = styled.div<{ ds: string }>`
@@ -77,10 +75,10 @@ const Header = ({ onOpenMail, onOpenShare }) => {
   return (
     <>
       <MenuWrapper ds={display}>
-        <Box className="EmptyBox" />
+        <EmptyBox />
 
         <MobileUlWrapper className="gnb">
-          <Text className="MobileMenuTitle">Gaza’s Child Read HOPE</Text>
+          <MobileMenuTitle>Gaza’s Child Read HOPE</MobileMenuTitle>
           <li className="MobilLi" data-menuanchor="section3">
             <AWrapperMobile
               href="#section3"
@@ -141,26 +139,26 @@ const Header = ({ onOpenMail, onOpenShare }) => {
                 />
               </Box>
               <li data-menuanchor="section2">
-                <a href="#section2" onClick={onClickHandle}>
+                <MenuLink href="#section2" onClick={onClickHandle}>
                   프로젝트 설명
-                </a>
+                </MenuLink>
               </li>
               <li data-menuanchor="section3">
-                <a href="#section3" onClick={onClickHandle}>
+                <MenuLink href="#section3" onClick={onClickHandle}>
                   응원 메세지 보기
-                </a>
+                </MenuLink>
               </li>
               <li data-menuanchor="section4" style={{ marginRight: '50px' }}>
-                <a href="#section4" onClick={onClickHandle}>
+                <MenuLink href="#section4" onClick={onClickHandle}>
                   응원 메세지 남기기
-                </a>
+                </MenuLink>
               </li>
               <li>English/한국어</li>
             </>
           ) : (
             <>
               <Box />
-              <IconButton
+              <HamIcon
                 onClick={() => {
                   toggleDisplay();
                 }}

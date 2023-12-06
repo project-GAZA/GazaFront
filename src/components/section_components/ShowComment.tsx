@@ -38,7 +38,7 @@ const ShowComment = () => {
     }
   };
   useEffect(() => {
-    getComments('new');
+    // getComments('new');
   }, []);
 
   const BestClick = () => {

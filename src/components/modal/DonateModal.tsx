@@ -12,7 +12,7 @@ import {
   Button,
   Box,
 } from '@chakra-ui/react';
-import CommentModal from '@/components/CommentModal';
+import CommentModal from '@/components/modal/CommentModal';
 
 // eslint-disable-next-line consistent-return
 const donateSection = ({ onClose, onSubmitMessage }) => {
