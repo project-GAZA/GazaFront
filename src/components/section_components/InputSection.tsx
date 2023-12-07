@@ -13,6 +13,7 @@ import {
 
 import Image from 'next/image';
 
+import styled from '@emotion/styled';
 import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
 // import Icon_Present from '@/assets/svg/Icon_Present.svg';
@@ -72,54 +73,56 @@ const InputSection = () => {
           <br />
           응원 메세지를 남겨주세요!
         </Text>
-        <Box
-          marginTop="31px"
-          backgroundColor="#FF693F"
-          className="InputMessageWrapper"
-        >
-          <Text className="TopMessageInbox">마음을 전해요!</Text>
-          <Text className="SecondMessageInbox">응원메세지 작성하기</Text>
-          <Image
-            alt="CheerIcon"
-            width={188}
-            height={179}
-            src={Icon_Cheer.src}
-            style={{ margin: '15px auto 0px auto' }}
-          />
-          <Box className="ComeCheerBox" backgroundColor="#ff430e">
-            <Text className="ComeCheerText">
-              작성한 메시지는
-              <br /> 이 사이트에서 <strong>공유</strong>돼요!
-            </Text>
+        <MessageBoxWrapper>
+          <Box
+            marginTop="31px"
+            backgroundColor="#FF693F"
+            className="InputMessageWrapper"
+          >
+            <Text className="TopMessageInbox">마음을 전해요!</Text>
+            <Text className="SecondMessageInbox">응원메세지 작성하기</Text>
+            <Image
+              alt="CheerIcon"
+              width={188}
+              height={179}
+              src={Icon_Cheer.src}
+              style={{ margin: '15px auto 0px auto' }}
+            />
+            <Box className="ComeCheerBox" backgroundColor="#ff430e">
+              <Text className="ComeCheerText">
+                작성한 메시지는
+                <br /> 이 사이트에서 <strong>공유</strong>돼요!
+              </Text>
+            </Box>
+            <Button onClick={ClickOnlyMessage} className="CommentInput">
+              <Text className="CommentInputText">작성하러 가기</Text>
+            </Button>
           </Box>
-          <Button onClick={ClickOnlyMessage} className="CommentInput">
-            <Text className="CommentInputText">작성하러 가기</Text>
-          </Button>
-        </Box>
-        <Box
-          marginTop="31px"
-          backgroundColor="#FFC500"
-          className="InputMessageWrapper"
-        >
-          <Text className="TopMessageInbox">마음을 전해요!</Text>
-          <Text className="SecondMessageInbox">기부금 전달하기</Text>
-          <Image
-            alt="GiveMoneyIncon"
-            width={188}
-            height={179}
-            src={Icon_GiveMoney.src}
-            style={{ margin: '15px auto 0px auto' }}
-          />
-          <Box className="ComeCheerBox" backgroundColor="#EBB600">
-            <Text className="ComeCheerText">
-              작성한 메시지는
-              <br /> 실제 <strong>책자</strong>에 들어갈 거에요!
-            </Text>
+          <Box
+            marginTop="31px"
+            backgroundColor="#FFC500"
+            className="InputMessageWrapper"
+          >
+            <Text className="TopMessageInbox">마음을 전해요!</Text>
+            <Text className="SecondMessageInbox">기부금 전달하기</Text>
+            <Image
+              alt="GiveMoneyIncon"
+              width={188}
+              height={179}
+              src={Icon_GiveMoney.src}
+              style={{ margin: '15px auto 0px auto' }}
+            />
+            <Box className="ComeCheerBox" backgroundColor="#EBB600">
+              <Text className="ComeCheerText">
+                작성한 메시지는
+                <br /> 실제 <strong>책자</strong>에 들어갈 거에요!
+              </Text>
+            </Box>
+            <Button onClick={ClickDonate} className="CommentInput">
+              <Text className="CommentInputText">작성하러 가기</Text>
+            </Button>
           </Box>
-          <Button onClick={ClickDonate} className="CommentInput">
-            <Text className="CommentInputText">작성하러 가기</Text>
-          </Button>
-        </Box>
+        </MessageBoxWrapper>
         {/* JANG: 최종 배포 이후 진행 (구글 애드센스) */}
         {/* <button className="WatchAddBox">
           <Image
@@ -151,3 +154,11 @@ const InputSection = () => {
 };
 
 export default InputSection;
+
+const MessageBoxWrapper = styled.div`
+  @media (min-width: 726px) {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+`;

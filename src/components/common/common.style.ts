@@ -25,22 +25,22 @@ export const MenuLink = styled.a`
   }
 `;
 
-export const HeaderWrapper = styled(Box)<{ ds: string }>`
-  z-index: 1000;
-  ${props => props.ds === 'none' && `backdrop-filter: blur(15px)`};
-  height: 58px;
-  position: fixed;
-  top: 0;
-  left: 0;
+export const HeaderWrapper = styled(Box)`
+  height: 92px;
   display: flex;
   align-items: center;
-  padding: 12px 0px;
+  justify-content: space-between;
+  @media (max-width: 824px) {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    margin: 0 40px;
+  }
 `;
 
 export const EmptyBox = styled(Box)`
   width: 107px;
   border-right: 1px solid black;
-}
 `;
 
 export const MobileMenuTitle = styled(Text)`
@@ -54,6 +54,12 @@ export const MobileMenuTitle = styled(Text)`
   margin-bottom: 45px;
 `;
 export const HamIcon = styled(IconButton)`
+  @media (min-width: 824px) {
+    display: none;
+  }
+  position: fixed;
+  right: 24px;
+  top: 24px;
   background: none !important;
 `;
 
@@ -100,18 +106,41 @@ export const IconInMenu = styled(Box)`
   justify-content: center;
 `;
 
-export const MenuInner = styled.ul<{ sz: number }>`
-  display: flex;
-  align-items: center;
-  justify-content: ${props => (props.sz >= 900 ? 'center' : 'space-between')};
-  ${props => props.sz < 900 && 'padding:0px 20px;'}
-  gap: 10px;
-  color: gray;
-  width: 100vw;
+export const ChangeLanguageButton = styled.button`
+  width: 193px;
+  height: 41px;
+  border-radius: 37px;
+  border: 2px solid #6c6c6c;
+  color: #757575;
+
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
 `;
 
-export const MenuWrapper = styled.div<{ ds: string }>`
-  display: ${props => props.ds};
+export const MenuInner = styled.ul`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const MenuList = styled.li`
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+
+  border-radius: 37px;
+  border: 1px solid #000;
+  /* background: #000; */
+`;
+
+export const MenuWrapper = styled.div`
+  display: flex;
   z-index: 999;
   position: fixed;
   height: calc(100vh);
@@ -138,5 +167,5 @@ export const MobileUlWrapper = styled.ul`
 
 export const DesktopIconBox = styled(Box)`
   display: flex;
-  gap: 20px;
+  gap: 11px;
 `;

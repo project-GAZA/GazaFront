@@ -7,7 +7,13 @@
   align-items: center;
   justify-content: center;
 }
-
+@media (min-width: 824px) {
+  .firstSction {
+    flex-direction: row;
+    gap: 106px;
+    height: 618px;
+  }
+}
 .mobile {
   background-size: 1000%;
   background-position: 65% 50%;
@@ -240,6 +246,11 @@
   flex-shrink: 0;
   border-radius: 46px;
   padding-top: 42px;
+}
+@media (min-width: 824px) {
+  .InputMessageWrapper {
+    margin: 0;
+  }
 }
 .TopMessageInbox {
   color: #fff;

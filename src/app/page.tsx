@@ -19,6 +19,7 @@ import SendMail from '@/components/modal/SendMail';
 import ShareLink from '@/components/modal/ShareLink';
 
 import { KoreanExplain } from '@/constants';
+import MobileNav from '@/components/common/MobileNav';
 
 const SectionBox = styled(Box)`
   text-align: center;
@@ -126,54 +127,61 @@ const Home = () => {
   // 공유하기 버튼
   // 공유버튼..?
 
-  const [explain, setExplain] = useState(KoreanExplain);
+  // const [explain, setExplain] = useState(KoreanExplain);
+
+  const [isMobileNavShow, setIsMobileNavShow] = useState(false);
 
   return (
-    <>
-      {currentSection !== 'section1' && (
-        <Header
+    <Box id="fullpage">
+      {isMobileNavShow && (
+        <MobileNav
           onOpenMail={() => setMailModal(true)}
           onOpenShare={() => setShareModal(true)}
+          isMobileNavShow={isMobileNavShow}
+          setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
         />
       )}
+      <SectionBox className="section first_section" data-menuanchor="section1">
+        <ShowGazaMap />
+      </SectionBox>
+      <Header
+        onOpenMail={() => setMailModal(true)}
+        onOpenShare={() => setShareModal(true)}
+        isMobileNavShow={isMobileNavShow}
+        setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
+      />
+      <SectionBox className="" data-menuanchor="section2">
+        <ShowInfo_1 />
+      </SectionBox>
+      <SectionBox className="section" data-menuanchor="section3">
+        <ShowComment />
+      </SectionBox>
+      <SectionBox className="" data-menuanchor="section4">
+        <InputSection />
+      </SectionBox>
+      <SectionBox className="" data-menuanchor="section5">
+        <ExplainSectoin explain={undefined} />
+      </SectionBox>
 
-      <Box id="fullpage">
-        <SectionBox className="section" data-menuanchor="section1">
-          <ShowGazaMap />
-        </SectionBox>
-        <SectionBox className="" data-menuanchor="section2">
-          <ShowInfo_1 />
-        </SectionBox>
-        <SectionBox className="section" data-menuanchor="section3">
-          <ShowComment />
-        </SectionBox>
-        <SectionBox className="" data-menuanchor="section4">
-          <InputSection />
-        </SectionBox>
-        <SectionBox className="" data-menuanchor="section5">
-          <ExplainSectoin />
-        </SectionBox>
-
-        <Modal
-          isCentered
-          onClose={() => setMailModal(false)}
-          isOpen={mailModal}
-          motionPreset="slideInBottom"
-        >
-          <ModalOverlay />
-          {mailModal && <SendMail />}
-        </Modal>
-        <Modal
-          isCentered
-          onClose={() => setShareModal(false)}
-          isOpen={shareModal}
-          motionPreset="slideInBottom"
-        >
-          <ModalOverlay />
-          {shareModal && <ShareLink />}
-        </Modal>
-      </Box>
-    </>
+      <Modal
+        isCentered
+        onClose={() => setMailModal(false)}
+        isOpen={mailModal}
+        motionPreset="slideInBottom"
+      >
+        <ModalOverlay />
+        {mailModal && <SendMail />}
+      </Modal>
+      <Modal
+        isCentered
+        onClose={() => setShareModal(false)}
+        isOpen={shareModal}
+        motionPreset="slideInBottom"
+      >
+        <ModalOverlay />
+        {shareModal && <ShareLink />}
+      </Modal>
+    </Box>
   );
 };
 export default Home;
