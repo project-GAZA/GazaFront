@@ -1,17 +1,26 @@
 'use clients';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { FaSearchengin } from 'react-icons/fa';
+
 import {
-  Divider,
-  Stack,
-  Box,
-  Text,
-  InputGroup,
-  Input,
-  InputRightElement,
-} from '@chakra-ui/react';
-import { FaHeart, FaSearchengin } from 'react-icons/fa';
-import { CiHeart } from 'react-icons/ci';
+  ThirdSection,
+  TitleBox,
+  ThirdHeaderText,
+  ThirdHeaderTextStrong,
+  CommentWrapper,
+  CommentHeader,
+  CommentSortButton,
+  Search,
+  SearchInput,
+  SearchIcon,
+  ShowCommentWrapper,
+  DividerLine,
+} from './section.style';
+import Main_firefly from '@/assets/svg/Main_firefly.jpg';
+import MessageComponent from '@/components/MessageComponent';
+
+import { MessageType } from '@/types';
 
 const ShowComment = () => {
   const [messages, setMessages] = useState([]);
@@ -52,59 +61,43 @@ const ShowComment = () => {
     getComments('new');
   };
   return (
-    <Box className="ThirdSection">
-      <Box className="TitleBox">
-        <Text className="ThirdHeaderText">
-          <strong className="ThirdHeaderTextStrong">전세계 각지에서</strong>
+    <ThirdSection bgsrc={Main_firefly.src}>
+      <TitleBox>
+        <ThirdHeaderText>
+          <ThirdHeaderTextStrong>전세계 각지에서</ThirdHeaderTextStrong>
           <br />
           많은 사람들이 응원글 작성에
           <br /> 참여하고 있어요
-        </Text>
-      </Box>
-      <Box className="CommentWrapper">
-        <Box className="CommentHeader">
-          <Box
+        </ThirdHeaderText>
+      </TitleBox>
+      <CommentWrapper>
+        <CommentHeader>
+          <CommentSortButton
+            className="SortOn"
             ref={BestButton}
             onClick={BestClick}
-            className="SortOn CommentSortButton"
           >
             Best
-          </Box>
-          <Divider height="17px" orientation="vertical" />
-          <Box ref={newButton} onClick={NewClick} className="CommentSortButton">
+          </CommentSortButton>
+          <DividerLine orientation="vertical" />
+          <CommentSortButton ref={newButton} onClick={NewClick}>
             New
-          </Box>
-          <InputGroup className="Search">
-            <Input
-              className="SearchInput"
-              variant="unstyled"
-              placeholder="닉네임 검색"
-            />
-            <InputRightElement className="SearchIcon">
+          </CommentSortButton>
+          <Search>
+            <SearchInput variant="unstyled" placeholder="닉네임 검색" />
+            <SearchIcon>
               <FaSearchengin color="white" />
-            </InputRightElement>
-          </InputGroup>
-        </Box>
-        <Stack className="ShowCommentWrapper">
+            </SearchIcon>
+          </Search>
+        </CommentHeader>
+        <ShowCommentWrapper>
           {messages &&
-            messages.map(v => (
-              <Box className="OneCommentWrapper" key={v.username}>
-                <Box className="OneCommentHeader">
-                  <Box className="OneCommentHeaderLeft">
-                    <Text className="NickName">{v.username} 님</Text>
-                    <Text className="Date">{v.createDt.slice(0, 10)}</Text>
-                  </Box>
-                  <Box className="OneCommentHeaderRight">
-                    {v.likeHeat ? <CiHeart /> : <FaHeart color="red" />}
-                    <Text className="Report">신고하기</Text>
-                  </Box>
-                </Box>
-                <Box className="OneCommentContent">{v.content}</Box>
-              </Box>
+            messages.map((v: MessageType) => (
+              <MessageComponent key={v.messageId} message={v} />
             ))}
-        </Stack>
-      </Box>
-    </Box>
+        </ShowCommentWrapper>
+      </CommentWrapper>
+    </ThirdSection>
   );
 };
 

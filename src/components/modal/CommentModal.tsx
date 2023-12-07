@@ -15,7 +15,7 @@ import {
   ModalCommentAlertText,
   CommentModalSubmit,
   CommentModalInputNickname,
-} from './style';
+} from './modal.style';
 
 type Props = {
   onClose: () => void;

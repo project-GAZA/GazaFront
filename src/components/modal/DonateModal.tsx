@@ -15,7 +15,7 @@ import {
   DonateModalLinkBox,
   DonateModalSubmit,
   DonateExplainBox,
-} from './style';
+} from './modal.style';
 
 // eslint-disable-next-line consistent-return
 const donateSection = ({ onClose, onSubmitMessage }) => {

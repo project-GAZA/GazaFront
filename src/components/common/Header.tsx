@@ -21,7 +21,7 @@ import {
   MobileUlWrapper,
   MenuWrapper,
   DesktopIconBox,
-} from './style';
+} from './common.style';
 
 import useWindowSize from '@/hooks/useWindowSize';
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
