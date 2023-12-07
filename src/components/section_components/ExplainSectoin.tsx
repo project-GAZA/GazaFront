@@ -7,17 +7,18 @@ import ExplainComponent from '@/components/ExplainComponent';
 import Icon_Facebook from '@/assets/svg/Icon_Facebook.png';
 import Icon_insta from '@/assets/svg/Icon_insta.png';
 
-const ExplainSection = () => {
-  const onClickInsta = () => {
-    window.open('https://www.instagram.com/gazaschildreadhope/');
-  };
+const onClickInsta = () => {
+  window.open('https://www.instagram.com/gazaschildreadhope/');
+};
+
+const ExplainSection = ({ explain }) => {
   return (
     <Box className="ExplainSection">
       <Text className="ExplainTitleText">
         Gaza&apos;s Child Read HOPE 프로젝트
       </Text>
       <Box className="ExplainWrapper">
-        <ExplainComponent />
+        <ExplainComponent explain={explain} />
       </Box>
       <Box className="SNSIconBox">
         <Image

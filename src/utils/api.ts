@@ -27,3 +27,27 @@ export const fetchSearchComments = async (username, size, page) => {
   const data = await response.json();
   return data;
 };
+
+export const fetchLikeCountUp = async messageid => {
+  const response = await fetch(`/api/like?messageid=${messageid}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json, text/plain',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  });
+  const data = await response.json();
+  return data;
+};
+
+export const fetchReportCountUp = async messageid => {
+  const response = await fetch(`/api/report?messageid=${messageid}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json, text/plain',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  });
+  const data = await response.json();
+  return data;
+};

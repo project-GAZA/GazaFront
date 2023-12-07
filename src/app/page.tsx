@@ -18,6 +18,8 @@ import ExplainSectoin from '@/components/section_components/ExplainSectoin';
 import SendMail from '@/components/modal/SendMail';
 import ShareLink from '@/components/modal/ShareLink';
 
+import { KoreanExplain } from '@/constants';
+
 const SectionBox = styled(Box)`
   text-align: center;
   background-size: cover;
@@ -123,6 +125,8 @@ const Home = () => {
   // 완료창으로 보내기,
   // 공유하기 버튼
   // 공유버튼..?
+
+  const [explain, setExplain] = useState(KoreanExplain);
 
   return (
     <>
