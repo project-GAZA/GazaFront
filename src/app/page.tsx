@@ -151,7 +151,7 @@ const Home = () => {
           <InputSection />
         </SectionBox>
         <SectionBox className="" data-menuanchor="section5">
-          <ExplainSectoin />
+          <ExplainSectoin explain={explain} />
         </SectionBox>
 
         <Modal

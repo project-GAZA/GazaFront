@@ -350,27 +350,6 @@
   margin-bottom: 10px;
 }
 
-.ExplainButton:hover {
-  background-color: #fff !important;
-}
-.ExplainButton {
-  padding: 22px 0px !important;
-  background-color: #fff !important;
-  border-radius: 13px;
-  background: #fff;
-  justify-content: center;
-}
-.ExplainText {
-  color: #000;
-  text-align: center;
-  font-family: 'NanumSquareNeo';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 165%; /* 23.1px */
-  margin-right: 10px;
-}
-
 .SNSIconBox {
   display: flex;
   gap: 10px;
@@ -384,7 +363,4 @@
   font-style: normal;
   font-weight: 700;
   line-height: 165%; /* 18.15px */
-}
-.ArcdText {
-  text-align: left;
 }
