@@ -13,6 +13,7 @@ export const NickName = styled(Text)`
   font-size: 14px;
   font-weight: 800;
   line-height: 165%;
+  margin-right: 10px;
 `;
 export const OneCommentHeaderRight = styled(Box)`
   display: flex;
@@ -24,6 +25,7 @@ export const OneCommentHeaderLeft = styled(Box)`
   color: #000;
   font-family: 'NanumSquareNeo';
   font-style: normal;
+  display: flex;
 `;
 export const Date = styled(Text)`
   font-size: 12px;
@@ -50,3 +52,11 @@ export const OneCommentContent = styled(Box)`
   font-weight: 400;
   line-height: 180%;
 `;
+
+export const OneCommentHeader = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+`;
+
+export const LikeCountText = styled(Text)``;

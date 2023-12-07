@@ -13,22 +13,26 @@ import {
   Date,
   OneCommentContent,
   Report,
+  OneCommentHeader,
+  LikeCountText,
 } from './component.style';
 import { MessageType } from '@/types';
 
 const MessageComponent = ({ message }: { message: MessageType }) => {
   return (
     <OneCommentWrapper key={message.username}>
-      <Box>
+      <OneCommentHeader>
         <OneCommentHeaderLeft>
           <NickName>{message.username} 님</NickName>
           <Date>{message.createDt.slice(0, 10)}</Date>
         </OneCommentHeaderLeft>
         <OneCommentHeaderRight>
-          {message.likeCount ? <CiHeart /> : <FaHeart color="red" />}
+          <FaHeart color="red" />
+          <LikeCountText>{message.likeCount}</LikeCountText>
           <Report>신고하기</Report>
+          <LikeCountText>{message.cautionCount}</LikeCountText>
         </OneCommentHeaderRight>
-      </Box>
+      </OneCommentHeader>
       <OneCommentContent>{message.content}</OneCommentContent>
     </OneCommentWrapper>
   );
