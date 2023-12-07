@@ -38,6 +38,8 @@ export const CommentModalHeaderText = styled(Text)`
 `;
 
 export const ModalCloseIcon = styled(ModalCloseButton)`
+  top: 20px;
+  right: 20px;
   width: 12px;
   height: 12px;
 `;
