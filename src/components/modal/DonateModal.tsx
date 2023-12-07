@@ -49,8 +49,11 @@ const donateSection = ({ onClose, onSubmitMessage }) => {
     return (
       <CommentModalWrapper>
         <DonateModalHeader>
-          <CommentModalHeaderText>기부금 입금하기</CommentModalHeaderText>
-          <DonateSubText>천원도 기부 가능해요!</DonateSubText>
+          <CommentModalHeaderText>천원도 기부 가능해요!</CommentModalHeaderText>
+          <DonateSubText>
+            기부금은 (서버 비용 제외) ‘책자 제작’에 사용되며, 남은 금액은
+            가자지구 긴급구호 활동에 전달됩니다!
+          </DonateSubText>
         </DonateModalHeader>
         <ModalCloseIcon width={12} height={12} />
 

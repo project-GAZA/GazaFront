@@ -38,6 +38,8 @@ export const CommentModalHeaderText = styled(Text)`
 `;
 
 export const ModalCloseIcon = styled(ModalCloseButton)`
+  top: 20px;
+  right: 20px;
   width: 12px;
   height: 12px;
 `;
@@ -147,9 +149,65 @@ export const DonateExplainBox = styled(Box)`
   font-weight: 400;
   line-height: 160%;
 `;
-/*
+export const ShareURLButton = styled(Button)`
+  margin: 14px 40px 34px 40px;
+  width: calc(100% - 80px) !important;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  &:hover {
+    background: #eee;
+  }
+`;
 
-.CommentModalFooter {
-  display: block !important;
-}
-*/
+export const TextURL = styled(Text)`
+  color: #5e5e5e;
+  text-align: center;
+  font-family: NanumSquareNeo;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 165%; /* 21.45px */
+  margin-right: 9px;
+`;
+
+export const ShareModalWrapper = styled(ModalContent)`
+  width: 315px !important;
+  margin: 0 auto;
+  border-radius: 34px !important;
+  background: #fff !important;
+  box-shadow: 0px 0px 27.3px 0px rgba(90, 90, 90, 0.25) !important;
+`;
+
+export const ShareIconBox = styled(Box)`
+  width: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+`;
+
+export const IconText = styled(Text)`
+  color: #373737;
+
+  text-align: center;
+  font-family: NanumSquareNeo;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 21.45px */
+`;
+
+export const ShareModalBody = styled(ModalBody)`
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+`;
+
+export const SendMailBody = styled(ModalBody)`
+  margin: 133px 5px 133px 5px;
+`;

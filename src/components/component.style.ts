@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, AccordionButton, AccordionPanel } from '@chakra-ui/react';
 
 export const OneCommentWrapper = styled(Box)`
   border-radius: 13px;
@@ -60,3 +60,29 @@ export const OneCommentHeader = styled(Box)`
 `;
 
 export const LikeCountText = styled(Text)``;
+
+export const ExplainButton = styled(AccordionButton)`
+  padding: 22px 0px !important;
+  background-color: #fff !important;
+  border-radius: 13px;
+  background: #fff;
+  justify-content: center;
+  &:hover: {
+    background-color: #fff !important;
+  }
+`;
+
+export const ExplainText = styled(Box)`
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 165%; /* 23.1px */
+  margin-right: 10px;
+`;
+
+export const ArcdText = styled(AccordionPanel)`
+  text-align: left;
+`;

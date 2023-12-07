@@ -69,7 +69,7 @@ export const MobilLi = styled.li`
 export const LangChanBox = styled(Box)`
   position: absolute;
   left: 150px;
-  bottom: 118px;
+  bottom: 128px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +94,7 @@ export const IconBoxMenu = styled(Box)`
   gap: 11px;
   position: absolute;
   left: 168px;
-  bottom: 43px;
+  bottom: 60px;
 `;
 export const IconInMenu = styled(Box)`
   width: 48px;
