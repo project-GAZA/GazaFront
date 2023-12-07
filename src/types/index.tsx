@@ -1,8 +1,3 @@
-export type MessageType = {
-  messageId: number;
-  content: string;
-  createDt: string;
-  username: string;
-  likeCount: number;
-  cautionCount: number;
-};
+import { MessageType } from './props';
+
+export type { MessageType };

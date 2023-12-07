@@ -1,7 +1,7 @@
 'use clients';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { FaSearchengin } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 
 import {
   ThirdSection,
@@ -20,46 +20,60 @@ import {
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
 import MessageComponent from '@/components/MessageComponent';
 
+import { fetchComments, fetchSearchComments } from '@/utils/api';
+
 import { MessageType } from '@/types';
 
 const ShowComment = () => {
   const [messages, setMessages] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
   const newButton = useRef<HTMLDivElement>();
   const BestButton = useRef<HTMLDivElement>();
 
   // const size = useWindowSize(); 윈도우 사이즈 조정되면...
 
-  const getComments = async (sort, size = 100, page = 0) => {
-    const response = await fetch(
-      `/api/message?sort=${sort}&page=${page}&size=${size}`,
-      {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json, text/plain',
-          'Content-Type': 'application/json;charset=UTF-8',
-        },
-      },
-    );
-
-    if (response.status === 200) {
-      const data = await response.json();
-      setMessages(data);
+  const fetchAndSetMessage = async (sort, size = 100, page = 0) => {
+    try {
+      const result = await fetchComments(sort, size, page);
+      setMessages(result);
+    } catch (error) {
+      // Handle error
     }
   };
+
+  const SearchAndSetMessage = async (username, size = 100, page = 0) => {
+    try {
+      const result = await fetchSearchComments(username, size, page);
+      setMessages(result);
+    } catch (error) {
+      // Handle error
+    }
+  };
+
   useEffect(() => {
-    getComments('new');
+    fetchAndSetMessage('best');
   }, []);
 
   const BestClick = () => {
     BestButton.current.classList.add('SortOn');
     newButton.current.classList.remove('SortOn');
-    getComments('best');
+    fetchAndSetMessage('best');
   };
   const NewClick = () => {
     BestButton.current.classList.remove('SortOn');
     newButton.current.classList.add('SortOn');
-    getComments('new');
+    fetchAndSetMessage('new');
   };
+
+  const onClickSearch = e => {
+    e.preventDefault();
+    SearchAndSetMessage(searchInput);
+  };
+
+  const onChangeSearchInput = e => {
+    setSearchInput(e.target.value);
+  };
+
   return (
     <ThirdSection bgsrc={Main_firefly.src}>
       <TitleBox>
@@ -84,10 +98,17 @@ const ShowComment = () => {
             New
           </CommentSortButton>
           <Search>
-            <SearchInput variant="unstyled" placeholder="닉네임 검색" />
-            <SearchIcon>
-              <FaSearchengin color="white" />
-            </SearchIcon>
+            <form onSubmit={onClickSearch}>
+              <SearchInput
+                value={searchInput}
+                onChange={onChangeSearchInput}
+                variant="unstyled"
+                placeholder="작성자 검색"
+              />
+              <SearchIcon onClick={onClickSearch}>
+                <FaSearch color="white" />
+              </SearchIcon>
+            </form>
           </Search>
         </CommentHeader>
         <ShowCommentWrapper>
