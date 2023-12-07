@@ -1,6 +1,8 @@
 // export const APIURL = 'http://localhost:8080';
 export const APIURL = 'http://192.168.100.10:8080';
 
+export const urlToCopy = 'https://www.gazas-child-read-hope.kr';
+
 export const KoreanExplain = [
   {
     title: '프로젝트 소개',

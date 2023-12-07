@@ -81,10 +81,17 @@ const Header = ({ onOpenMail, onOpenShare }) => {
                 height={22}
                 src={ShareIcon.src}
                 alt="sharIcon"
+                onClick={onOpenShare}
               />
             </IconInMenu>
             <IconInMenu>
-              <Image width={22} height={22} src={CallIcon.src} alt="CallIcon" />
+              <Image
+                onClick={onOpenMail}
+                width={22}
+                height={22}
+                src={CallIcon.src}
+                alt="CallIcon"
+              />
             </IconInMenu>
           </IconBoxMenu>
         </MobileUlWrapper>

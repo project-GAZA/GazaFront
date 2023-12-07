@@ -16,7 +16,7 @@ import ShowGazaMap from '@/components/section_components/ShowGazaMap';
 import ExplainSectoin from '@/components/section_components/ExplainSectoin';
 
 import SendMail from '@/components/modal/SendMail';
-import ShareLink from '@/components/modal/ShareLink';
+import ShareModal from '@/components/modal/ShareModal';
 
 import { KoreanExplain } from '@/constants';
 
@@ -29,11 +29,6 @@ const SectionBox = styled(Box)`
 `;
 
 const Home = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [currentSection, setCurrentSection] = useState('');
-  const [mailModal, setMailModal] = useState(false);
-  const [shareModal, setShareModal] = useState(false);
-
   useEffect(() => {
     // 클라이언트 사이드에서만 실행되도록 보장합니다.
     // const commentWrapper = document.querySelector('.ShowCommentWrapper');
@@ -122,11 +117,11 @@ const Home = () => {
     */
   }, []);
 
-  // 완료창으로 보내기,
-  // 공유하기 버튼
-  // 공유버튼..?
-
   const [explain, setExplain] = useState(KoreanExplain);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [currentSection, setCurrentSection] = useState('');
+  const [mailModal, setMailModal] = useState(false);
+  const [shareModal, setShareModal] = useState(false);
 
   return (
     <>
@@ -170,7 +165,7 @@ const Home = () => {
           motionPreset="slideInBottom"
         >
           <ModalOverlay />
-          {shareModal && <ShareLink />}
+          {shareModal && <ShareModal />}
         </Modal>
       </Box>
     </>
