@@ -22,7 +22,7 @@ import MessageComponent from '@/components/MessageComponent';
 
 import { fetchComments, fetchSearchComments } from '@/utils/api';
 
-import { MessageType } from '@/types';
+import { MessageType } from '@/types/index.d';
 
 const ShowComment = () => {
   const [messages, setMessages] = useState([]);

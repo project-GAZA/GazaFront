@@ -14,7 +14,7 @@ import {
   OneCommentHeader,
   LikeCountText,
 } from './component.style';
-import { MessageType } from '@/types';
+import { MessageType } from '@/types/index.d';
 import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
 
 const MessageComponent = ({ message }: { message: MessageType }) => {
