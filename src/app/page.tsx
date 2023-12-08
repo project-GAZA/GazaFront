@@ -157,10 +157,10 @@ const Home = () => {
         <ShowComment />
       </SectionBox>
       <SectionBox className="" data-menuanchor="section4">
-        <InputSection />
+        <InputSection InputSectionText={explain.InputSectionText} />
       </SectionBox>
       <SectionBox className="" data-menuanchor="section5">
-        <ExplainSectoin explain={explain.Explain} />
+        <ExplainSectoin explain={explain} />
       </SectionBox>
 
       <Modal

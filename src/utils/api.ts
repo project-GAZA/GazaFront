@@ -51,3 +51,18 @@ export const fetchReportCountUp = async messageid => {
   const data = await response.json();
   return data;
 };
+
+export const fetchPostCommnet = async (content, username) => {
+  const response = await fetch(`/api/message`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json, text/plain',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+    body: JSON.stringify({
+      content,
+      username,
+    }),
+  });
+  return response.status;
+};

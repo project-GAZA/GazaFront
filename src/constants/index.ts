@@ -4,6 +4,32 @@ export const APIURL = 'http://192.168.100.10:8080';
 export const urlToCopy = 'https://www.gazas-child-read-hope.kr';
 
 export const Korean = {
+  InputSectionText: {
+    topMessage: '모두 메세지로 마음을 전해보세요.',
+    topeMessage2: `         가자지구 아이들에게
+    <br />
+    응원 메세지를 남겨주세요!`,
+    topMessageInBox: '마음을 전해요!',
+    CheerMessage: '응원메세지 작성하기',
+    CheerMessageInfo: `
+    작성한 메시지는
+    <br /> 이 사이트에서 <strong>공유</strong>돼요!
+    `,
+    CheerMessageGo: '작성하러 가기',
+    DonateMessage: '기부금 전달하기',
+    DonateMessageInfo: `
+    작성한 메시지는
+    <br /> 실제 <strong>책자</strong>에 들어갈 거에요!
+    `,
+    DonateMessageGo: '작성하러 가기',
+  },
+  ExplainSection: {
+    title: "Gaza's Child Read HOPE 프로젝트",
+    footerText: `
+    “프로젝트의 진행 과정을 SNS에서 함께 지켜봐 주세요!
+    <br />
+    페이스북과 인스타그램 팔로우로 이 여정에 동참해 주세요:)”`,
+  },
   Explain: [
     {
       title: '프로젝트 소개',

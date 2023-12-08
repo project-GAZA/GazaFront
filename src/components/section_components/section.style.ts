@@ -9,6 +9,7 @@ import {
   Input,
   InputRightElement,
   Divider,
+  Button,
 } from '@chakra-ui/react';
 
 export const DividerLine = styled(Divider)`
@@ -278,4 +279,157 @@ export const MessageIconInTitle = styled(Image)`
   position: relative;
   top: -108px;
   left: 290px;
+`;
+
+export const ExplainFooterText = styled(Text)`
+  color: #8f8f8f;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 18.15px */
+`;
+
+export const ExplainSectionWrapper = styled(Box)`
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 80px;
+`;
+export const ExplainTitleText = styled(Text)`
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 165%; /* 33px */
+`;
+
+export const ExplainWrapper = styled(Box)`
+  margin: 33px 15px 0 15px;
+  & .chakra-accordion {
+    border: none;
+  }
+  & .chakra-accordion__item {
+    border: none;
+    border-radius: 13px;
+    background: #fff;
+    margin-bottom: 10px;
+  }
+`;
+
+export const SNSIconBox = styled(Box)`
+  display: flex;
+  gap: 10px;
+  margin: 38px auto 18px auto;
+`;
+
+export const InputWrapper = styled(Box)`
+  padding-top: 61px;
+  /*
+  overflow: auto;
+  max-height: 100vh;
+  */
+`;
+
+export const InputTopMessage = styled(Text)`
+  color: #000;
+
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%;
+`;
+
+export const InputTopMessage2 = styled(Text)`
+  margin-top: 10px;
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 165%; /* 33px */
+`;
+
+export const InputMessageWrapper = styled(Box)`
+  margin: 0 auto;
+  width: 352px;
+  height: 523px;
+  flex-shrink: 0;
+  border-radius: 46px;
+  padding-top: 42px;
+  margin-top: 30px;
+
+  @media (min-width: 824px) {
+    margin: 0;
+  }
+`;
+
+export const TopMessageInbox = styled(Text)`
+  color: #fff;
+  font-family: 'NanumSquareNeo';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%; /* 24.75px */
+`;
+
+export const SecondMessageInbox = styled(Text)`
+  color: #fff;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 165%; /* 42.9px */
+`;
+
+export const IconCheerBox = styled(Image)`
+  margin: 15px auto 0px auto;
+`;
+
+export const ComeCheerBox = styled(Box)`
+  width: 215px;
+  height: 62px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  margin: 31px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ComeCheerText = styled(Text)`
+  color: #fff;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 165%; /* 21.45px */
+`;
+
+export const CommentInputButton = styled(Button)`
+  margin-top: 16px;
+  width: 197px;
+  height: 55px !important;
+  flex-shrink: 0 !important;
+  border-radius: 37px !important;
+  background: #fff;
+`;
+
+export const CommentInputText = styled(Text)`
+  color: #000;
+  text-align: center;
+  font-family: 'NanumSquareNeo';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 165%; /* 26.4px */
 `;
