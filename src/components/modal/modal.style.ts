@@ -183,6 +183,7 @@ export const ShareModalWrapper = styled(ModalContent)`
 `;
 
 export const ShareIconBox = styled(Box)`
+  cursor: pointer;
   width: 65px;
   display: flex;
   flex-direction: column;

@@ -1,7 +1,7 @@
 'use client';
 
+import { useState } from 'react';
 import { CiMenuBurger } from 'react-icons/ci';
-
 import Image from 'next/image';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
@@ -13,17 +13,15 @@ import {
   MenuList,
   HamIcon,
   MenuInner,
-  DesktopIconBox,
+  IconBox,
   IconInMenu,
   ChangeLanguageButton,
 } from './common.style';
+import MobileNav from '@/components/common/MobileNav';
 
-const Header = ({
-  onOpenMail,
-  onOpenShare,
-  isMobileNavShow,
-  setIsMobileNavShow,
-}) => {
+const Header = ({ onOpenMail, onOpenShare }) => {
+  const [isMobileNavShow, setIsMobileNavShow] = useState(false);
+
   const onClickHandle = e => {
     document.querySelectorAll('ul li').forEach(li => {
       li.classList.remove('on');
@@ -32,15 +30,21 @@ const Header = ({
   };
   return (
     <>
+      <MobileNav
+        onOpenMail={onOpenMail}
+        onOpenShare={onOpenShare}
+        isMobileNavShow={isMobileNavShow}
+        setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
+      />
       <HeaderWrapper>
-        <DesktopIconBox>
+        <IconBox>
           <IconInMenu onClick={onOpenShare}>
             <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
           </IconInMenu>
           <IconInMenu onClick={onOpenMail}>
             <Image width={22} height={22} src={CallIcon.src} alt="CallIcon" />
           </IconInMenu>
-        </DesktopIconBox>
+        </IconBox>
         <MenuInner className="gnb">
           <MenuList data-menuanchor="section2">
             <MenuLink href="#section2" onClick={onClickHandle}>
@@ -58,16 +62,14 @@ const Header = ({
             </MenuLink>
           </MenuList>
         </MenuInner>
-        <ChangeLanguageButton>English/한국어</ChangeLanguageButton>
+        <ChangeLanguageButton>한국어/영어</ChangeLanguageButton>
+        <HamIcon
+          aria-label="Menu"
+          size="md"
+          icon={<CiMenuBurger color="white" size="md" />}
+          onClick={() => setIsMobileNavShow(prev => !prev)}
+        />
       </HeaderWrapper>
-      <HamIcon
-        aria-label="Menu"
-        size="md"
-        icon={
-          <CiMenuBurger color={isMobileNavShow ? 'black' : 'white'} size="md" />
-        }
-        onClick={setIsMobileNavShow}
-      />
     </>
   );
 };

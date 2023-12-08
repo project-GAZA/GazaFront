@@ -111,7 +111,7 @@ const ShowComment = () => {
             </form>
           </Search>
         </CommentHeader>
-        <ShowCommentWrapper>
+        <ShowCommentWrapper id="CommentStack">
           {messages &&
             messages.map((v: MessageType) => (
               <MessageComponent key={v.messageId} message={v} />

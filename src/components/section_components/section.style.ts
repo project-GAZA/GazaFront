@@ -18,12 +18,11 @@ export const DividerLine = styled(Divider)`
 
 export const ThirdSection = styled(Box)<{ bgsrc: string }>`
   background-image: url('${props => props.bgsrc}');
+  padding: 80px 0px 80px 0px;
   height: 100vh;
 `;
 
-export const TitleBox = styled(Box)`
-  padding-top: 56px;
-`;
+export const TitleBox = styled(Box)``;
 
 export const ThirdHeaderText = styled(Text)`
   color: #fff;
@@ -82,7 +81,7 @@ export const SearchIcon = styled(InputRightElement)`
 `;
 
 export const ShowCommentWrapper = styled(Stack)`
-  max-height: 70vh;
+  max-height: calc(100vh - 275px);
   overflow-y: auto;
   margin-top: 30px;
   padding: 16px;
@@ -329,7 +328,8 @@ export const SNSIconBox = styled(Box)`
 `;
 
 export const InputWrapper = styled(Box)`
-  padding-top: 61px;
+  padding-top: 70px;
+  padding-bottom: 40px;
   /*
   overflow: auto;
   max-height: 100vh;
@@ -337,8 +337,8 @@ export const InputWrapper = styled(Box)`
 `;
 
 export const InputTopMessage = styled(Text)`
+  margin-top: 10px;
   color: #000;
-
   text-align: center;
   font-family: 'NanumSquareNeo';
   font-size: 15px;
@@ -366,7 +366,7 @@ export const InputMessageWrapper = styled(Box)`
   border-radius: 46px;
   padding-top: 42px;
   margin-top: 30px;
-
+  text-align: center;
   @media (min-width: 824px) {
     margin: 0;
   }
