@@ -25,18 +25,21 @@ const FullPageSetup = () => {
       credits={{ enabled: false }}
       normalScrollElements="#CommentStack"
       afterLoad={(origin, dest, direction, trigger) => {
-        const orgDom = document.querySelector(
+        const orgDom = document.querySelectorAll(
           `[data-menuanchor=${origin.anchor}`,
         );
-        const destDom = document.querySelector(
+        const destDom = document.querySelectorAll(
           `[data-menuanchor=${dest.anchor}`,
         );
-        console.log(orgDom, destDom);
         if (orgDom) {
-          orgDom.classList.remove('on');
+          for (let i = 0; i < orgDom.length; i += 1) {
+            orgDom[i].classList.remove('on');
+          }
         }
         if (destDom) {
-          destDom.classList.add('on');
+          for (let i = 0; i < destDom.length; i += 1) {
+            destDom[i].classList.add('on');
+          }
         }
       }}
       render={({ state, fullpageApi }) => {

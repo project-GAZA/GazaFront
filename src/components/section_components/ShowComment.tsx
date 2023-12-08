@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import useWindowSize from '@/hooks/useWindowSize';
 
 import {
   ThirdSection,
@@ -30,7 +31,7 @@ const ShowComment = () => {
   const newButton = useRef<HTMLDivElement>();
   const BestButton = useRef<HTMLDivElement>();
 
-  // const size = useWindowSize(); 윈도우 사이즈 조정되면...
+  const size = useWindowSize();
 
   const fetchAndSetMessage = async (sort, size = 100, page = 0) => {
     try {
@@ -81,7 +82,7 @@ const ShowComment = () => {
           <ThirdHeaderTextStrong>전세계 각지에서</ThirdHeaderTextStrong>
           <br />
           많은 사람들이 응원글 작성에
-          <br /> 참여하고 있어요
+          {size.width <= 820 && <br />} 참여하고 있어요
         </ThirdHeaderText>
       </TitleBox>
       <CommentWrapper>

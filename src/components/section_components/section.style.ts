@@ -20,6 +20,9 @@ export const ThirdSection = styled(Box)<{ bgsrc: string }>`
   background-image: url('${props => props.bgsrc}');
   padding: 80px 0px 80px 0px;
   height: 100vh;
+  @media (min-width: 820px) {
+    padding: 92px 0px 80px 0px;
+  }
 `;
 
 export const TitleBox = styled(Box)``;
@@ -40,6 +43,8 @@ export const ThirdHeaderTextStrong = styled.strong`
 
 export const CommentWrapper = styled(Box)`
   margin-top: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 export const CommentHeader = styled(Box)`
@@ -183,7 +188,7 @@ export const FirstSction = styled(Box)<{ bgsrc: string }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (min-width: 824px) {
+  @media (min-width: 820px) {
     flex-direction: row;
     gap: 106px;
     height: 618px;

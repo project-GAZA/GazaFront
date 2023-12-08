@@ -150,5 +150,6 @@ const MessageBoxWrapper = styled.div`
     display: flex;
     gap: 12px;
     justify-content: center;
+    margin-top: 20px;
   }
 `;
