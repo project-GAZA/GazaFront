@@ -1,7 +1,10 @@
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-sync-scripts */
+/* index.js */
 import '@/style/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
+
+import GoogleAnalytics from '@/components/lib/GoogleAnalytics';
 
 export const metadata = {
   title: 'GAZAS CHILD READ HOPE',
@@ -23,6 +26,7 @@ const RootLayout = ({ children }) => {
         />
       </head>
       <body>
+        <GoogleAnalytics />
         <ChakraProvider>{children}</ChakraProvider>
       </body>
     </html>
