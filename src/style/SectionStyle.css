@@ -1,67 +1,6 @@
-/* First Section */
-.firstSction {
-  background-image: url('../assets/svg/Main_Universe.jpg');
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-@media (min-width: 824px) {
-  .firstSction {
-    flex-direction: row;
-    gap: 106px;
-    height: 618px;
-  }
-}
-.mobile {
-  background-size: 1000%;
-  background-position: 65% 50%;
-}
-
-.ShowGazaMapTitleFontOne {
-  position: relative;
-  color: #fff;
-  font-family: 'Paytone One', sans-serif;
-  font-size: 50px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 129.828%;
-  z-index: 2;
-}
-
-.Two {
-  color: #ffc500;
-}
-
-.Section1Header {
-  padding-top: 45px;
-}
-
 .MailIcon {
   width: 43px;
   height: 43px;
-}
-
-.MessageIconInTitle {
-  z-index: 1;
-  position: relative;
-  top: -108px;
-  left: 290px;
-}
-
-.SubTitle {
-  color: #fff;
-  text-align: center;
-  font-family: 'NanumSquareNeo';
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 215%;
-}
-
-.yellowFont {
-  color: #ffc500;
 }
 
 .GazaMapImageBox {
@@ -69,14 +8,6 @@
   justify-content: center;
 }
 
-.GazaEmpty {
-  background-image: url('../assets/svg/GazaEmpty.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 221.73px;
-  height: 328.717px;
-  flex-shrink: 0;
-}
 .GazaFull {
   position: relative;
   clip-path: inset(24.8826% 0px 0px);
@@ -87,125 +18,6 @@
   width: 221.73px;
   height: 328.717px;
   flex-shrink: 0;
-}
-.GoalTextBox {
-  position: relative;
-  top: -200px;
-  left: 60px;
-}
-
-.GoalText {
-  color: #ffc500;
-  text-align: center;
-  font-family: 'NanumSquareNeo';
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 165%; /* 39.6px */
-}
-
-.GoalFixedText {
-  font-size: 15px;
-}
-
-.RealGoalWrapper {
-}
-
-.RealGoalText {
-  color: rgba(255, 255, 255, 0.71);
-  text-align: center;
-  font-family: 'NanumSquareNeo';
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 165%;
-}
-
-.RealGoalMoney {
-  color: #fff;
-  text-align: center;
-  font-family: 'NanumSquareNeo';
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 165%;
-}
-
-.SectionOneFooter {
-  margin-top: -100px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-/* Second Section */
-.SecondSection {
-  padding: 100px 0 100px 0;
-}
-
-.SecondTopText {
-  color: #000;
-  text-align: center;
-  font-family: 'NanumSquareNeo';
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 900;
-  line-height: 165%;
-}
-
-.SecondExplainText {
-  margin-top: 23px;
-  color: #000;
-
-  text-align: center;
-  font-family: 'NanumSquareNeo';
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 160%; /* 19.2px */
-}
-
-.SecondExplainStrong {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.EarthWrapper {
-  background-image: url('../assets/svg/Icon_Earth.png');
-  background-size: 260px 260px;
-  width: 260px;
-  height: 260px;
-  margin: 42px auto 0 auto;
-}
-
-.Pin {
-  background-image: url('../assets/svg/EarthPin.svg');
-  background-size: 56px 74px;
-  width: 56px;
-  height: 74px;
-  position: relative;
-  top: 30px;
-  left: 120px;
-}
-
-.PinShadow {
-  background-image: url('../assets/svg/PinShadow.svg');
-  background-size: 15px 5px;
-  width: 15px;
-  height: 5px;
-  position: relative;
-  top: 30px;
-  left: 140px;
-}
-.EarthText {
-  display: inline;
-  color: #000;
-  text-align: center;
-  font-family: 'NanumSquareNeo';
-  font-size: 12.5px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 165%;
 }
 
 /* Input Section */

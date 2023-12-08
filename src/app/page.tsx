@@ -18,7 +18,7 @@ import ExplainSectoin from '@/components/section_components/ExplainSectoin';
 import SendMail from '@/components/modal/SendMail';
 import ShareModal from '@/components/modal/ShareModal';
 
-import { KoreanExplain } from '@/constants';
+import { Korean } from '@/constants';
 import MobileNav from '@/components/common/MobileNav';
 
 const SectionBox = styled(Box)`
@@ -125,7 +125,7 @@ const Home = () => {
   // const [explain, setExplain] = useState(KoreanExplain);
 
   const [isMobileNavShow, setIsMobileNavShow] = useState(false);
-  const [explain, setExplain] = useState(KoreanExplain);
+  const [explain, setExplain] = useState(Korean);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentSection, setCurrentSection] = useState('');
   const [mailModal, setMailModal] = useState(false);
@@ -151,7 +151,7 @@ const Home = () => {
         setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
       />
       <SectionBox className="" data-menuanchor="section2">
-        <ShowInfo_1 />
+        <ShowInfo_1 ShowInfoText={explain.ShowInfo} />
       </SectionBox>
       <SectionBox className="section" data-menuanchor="section3">
         <ShowComment />
@@ -160,7 +160,7 @@ const Home = () => {
         <InputSection />
       </SectionBox>
       <SectionBox className="" data-menuanchor="section5">
-        <ExplainSectoin explain={explain} />
+        <ExplainSectoin explain={explain.Explain} />
       </SectionBox>
 
       <Modal

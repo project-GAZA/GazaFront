@@ -1,23 +1,29 @@
 'use clients';
 
 import React, { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
-import Image from 'next/image';
-import { Box, Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+
+import {
+  GazaFullComponent,
+  FirstSction,
+  ShowGazaMapTitleFontOne,
+  Two,
+  Section1Header,
+  SubTitle,
+  GazaEmpty,
+  GoalTextBox,
+  GoalText,
+  GoalFixedText,
+  RealGoalText,
+  SectionOneFooter,
+  RealGoalMoney,
+  MessageIconInTitle,
+} from './section.style';
+
 import IconMessage from '@/assets/svg/IconMessage.svg';
 import GazaFullImage from '@/assets/svg/GazaFull.svg';
-
-const GazaFullComponent = styled(Box)<{ percentage: string }>`
-  position: relative;
-  clip-path: inset(${props => props.percentage}% 0px 0px);
-  transition: 3s clip-path ease-in;
-  background-image: url('${GazaFullImage.src}');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 221.73px;
-  height: 328.717px;
-  flex-shrink: 0;
-`;
+import Main_Universe from '@/assets/svg/Main_Universe.jpg';
+import GazaEmptySvg from '@/assets/svg/GazaEmpty.svg';
 
 const wait = timeToDelay =>
   new Promise(resolve => {
@@ -38,56 +44,57 @@ const ShowGazaMap = () => {
   }, []);
 
   return (
-    <Box className="firstSction mobile">
+    <FirstSction bgsrc={Main_Universe.src}>
       <Box>
-        <Box className="Section1Header">
-          <Text className="ShowGazaMapTitleFontOne">Gaza’s Child </Text>
-          <Text className="ShowGazaMapTitleFontOne">
-            Read <strong className="Two">HOPE</strong>
-          </Text>
-          <Image
+        <Section1Header>
+          <ShowGazaMapTitleFontOne>Gaza’s Child </ShowGazaMapTitleFontOne>
+          <ShowGazaMapTitleFontOne>
+            Read <Two>HOPE</Two>
+          </ShowGazaMapTitleFontOne>
+          <MessageIconInTitle
             alt="message Icon"
             width={43}
             height={43}
             src={IconMessage.src}
-            className="MessageIconInTitle"
           />
-        </Box>
-        <Box className="SubTitleSection1">
-          <Text className="SubTitle">가자지구 아이들을 위한</Text>
-          <Text className="SubTitle Two">
-            <strong className="yellowFont">희망 메세지 책자</strong> 전달
-            프로젝트
-          </Text>
+        </Section1Header>
+        <Box>
+          <SubTitle>가자지구 아이들을 위한</SubTitle>
+          <SubTitle>
+            <Two>희망 메세지 책자</Two> 전달 프로젝트
+          </SubTitle>
         </Box>
       </Box>
       <Box>
-        <Box className="GazaEmpty">
-          <GazaFullComponent percentage={percentage.toFixed(4)} />
-        </Box>
-        <Box className="GoalTextBox">
-          <Text className="GoalText">
+        <GazaEmpty bgsrc={GazaEmptySvg.src}>
+          <GazaFullComponent
+            bgsrc={GazaFullImage.src}
+            percentage={percentage.toFixed(4)}
+          />
+        </GazaEmpty>
+        <GoalTextBox>
+          <GoalText>
             {/* {percentage}% <strong className="GoalFixedText">달성</strong> */}
             {/* JANG: 12/3 임시 수정 */}
-            ??% <strong className="GoalFixedText">달성</strong>
-          </Text>
-        </Box>
-        <Box className="SectionOneFooter">
-          <Box className="RealGoalWrapper">
-            <Text className="RealGoalText">총 모금액</Text>
+            ??% <GoalFixedText>달성</GoalFixedText>
+          </GoalText>
+        </GoalTextBox>
+        <SectionOneFooter>
+          <Box>
+            <RealGoalText>총 모금액</RealGoalText>
             {/* <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text> */}
             {/* JANG: 12/3 임시 수정 */}
-            <Text className="RealGoalMoney">??</Text>
+            <RealGoalMoney>??</RealGoalMoney>
           </Box>
-          <Box className="RealGoalWrapper">
-            <Text className="RealGoalText">목표 모금액</Text>
+          <Box>
+            <RealGoalText>목표 모금액</RealGoalText>
             {/* <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text> */}
             {/* JANG: 12/3 임시 수정 */}
-            <Text className="RealGoalMoney">??</Text>
+            <RealGoalMoney>??</RealGoalMoney>
           </Box>
-        </Box>
+        </SectionOneFooter>
       </Box>
-    </Box>
+    </FirstSction>
   );
 };
 
