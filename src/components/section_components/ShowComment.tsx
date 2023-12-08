@@ -31,7 +31,7 @@ const ShowComment = () => {
   const newButton = useRef<HTMLDivElement>();
   const BestButton = useRef<HTMLDivElement>();
 
-  const size = useWindowSize();
+  const nsize = useWindowSize();
 
   const fetchAndSetMessage = async (sort, size = 100, page = 0) => {
     try {
@@ -82,7 +82,7 @@ const ShowComment = () => {
           <ThirdHeaderTextStrong>전세계 각지에서</ThirdHeaderTextStrong>
           <br />
           많은 사람들이 응원글 작성에
-          {size.width <= 820 && <br />} 참여하고 있어요
+          {nsize.width <= 820 && <br />} 참여하고 있어요
         </ThirdHeaderText>
       </TitleBox>
       <CommentWrapper>
