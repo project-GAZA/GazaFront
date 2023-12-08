@@ -74,7 +74,11 @@ const InputSection = ({ InputSectionText }) => {
               src={Icon_Cheer.src}
             />
             <ComeCheerBox backgroundColor="#ff430e">
-              <ComeCheerText>{InputSectionText.CheerMessageInfo}</ComeCheerText>
+              <ComeCheerText
+                dangerouslySetInnerHTML={{
+                  __html: InputSectionText.CheerMessageInfo,
+                }}
+              />
             </ComeCheerBox>
             <CommentInputButton onClick={ClickOnlyMessage}>
               <CommentInputText>
@@ -96,9 +100,11 @@ const InputSection = ({ InputSectionText }) => {
               src={Icon_GiveMoney.src}
             />
             <ComeCheerBox backgroundColor="#EBB600">
-              <ComeCheerText>
-                {InputSectionText.DonateMessageInfo}
-              </ComeCheerText>
+              <ComeCheerText
+                dangerouslySetInnerHTML={{
+                  __html: InputSectionText.DonateMessageInfo,
+                }}
+              />
             </ComeCheerBox>
             <CommentInputButton onClick={ClickDonate}>
               <CommentInputText>

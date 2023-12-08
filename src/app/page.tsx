@@ -4,8 +4,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { Box, Modal, ModalOverlay } from '@chakra-ui/react';
-import styled from '@emotion/styled';
-// import $ from 'jquery';
 
 import Header from '@/components/common/Header';
 
@@ -21,13 +19,7 @@ import ShareModal from '@/components/modal/ShareModal';
 import { Korean } from '@/constants';
 import MobileNav from '@/components/common/MobileNav';
 
-const SectionBox = styled(Box)`
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; // 스크롤 시 배경 고정
-`;
+import { SectionBox } from './page.style';
 
 const Home = () => {
   useEffect(() => {
@@ -127,7 +119,6 @@ const Home = () => {
   const [isMobileNavShow, setIsMobileNavShow] = useState(false);
   const [explain, setExplain] = useState(Korean);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [currentSection, setCurrentSection] = useState('');
   const [mailModal, setMailModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
 
@@ -141,7 +132,23 @@ const Home = () => {
           setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
         />
       )}
-      <SectionBox className="section first_section" data-menuanchor="section1">
+      <SectionBox className="first_section" data-menuanchor="section1">
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            height: '100vh',
+            width: '100vw',
+            color: 'red',
+            fontSize: '50px',
+            display: 'flex',
+            justifyContent: 'center',
+            textAlign: 'center',
+            alignItems: 'center',
+          }}
+        >
+          Comming Soon
+        </Box>
         <ShowGazaMap />
       </SectionBox>
       <Header
@@ -150,16 +157,16 @@ const Home = () => {
         isMobileNavShow={isMobileNavShow}
         setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
       />
-      <SectionBox className="" data-menuanchor="section2">
+      <SectionBox data-menuanchor="section2">
         <ShowInfo_1 ShowInfoText={explain.ShowInfo} />
       </SectionBox>
       <SectionBox className="section" data-menuanchor="section3">
         <ShowComment />
       </SectionBox>
-      <SectionBox className="" data-menuanchor="section4">
+      <SectionBox data-menuanchor="section4">
         <InputSection InputSectionText={explain.InputSectionText} />
       </SectionBox>
-      <SectionBox className="" data-menuanchor="section5">
+      <SectionBox data-menuanchor="section5">
         <ExplainSectoin explain={explain} />
       </SectionBox>
 

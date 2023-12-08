@@ -177,6 +177,7 @@ export const EarthText = styled(Text)`
 `;
 
 export const FirstSction = styled(Box)<{ bgsrc: string }>`
+  opacity: 0.3;
   background-image: url('${props => props.bgsrc}');
   height: 100vh;
   display: flex;
