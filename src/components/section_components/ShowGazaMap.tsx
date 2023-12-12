@@ -18,6 +18,7 @@ import {
   SectionOneFooter,
   RealGoalMoney,
   MessageIconInTitle,
+  MoneyUpdateTextTemp,
 } from './section.style';
 
 import IconMessage from '@/assets/svg/IconMessage.svg';
@@ -85,12 +86,15 @@ const ShowGazaMap = () => {
         </GazaEmpty>
         <GoalTextBox>
           <GoalText>
-            {/* {percentage}% <strong className="GoalFixedText">달성</strong> */}
-            {/* JANG: 12/3 임시 수정 */}
             {percentage}% <GoalFixedText>달성</GoalFixedText>
           </GoalText>
         </GoalTextBox>
         <SectionOneFooter>
+          <MoneyUpdateTextTemp>
+            ※ 후원금 모금 현황은
+            <br /> 9~21시 동안 3시간마다 업데이트 됩니다!
+            <br /> (결제 PG 연동 이후, 자동 반영 예정)
+          </MoneyUpdateTextTemp>
           <Box>
             <RealGoalText>총 모금액</RealGoalText>
             <RealGoalMoney>{currentMoney.toLocaleString()}</RealGoalMoney>

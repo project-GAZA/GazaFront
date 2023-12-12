@@ -438,3 +438,14 @@ export const CommentInputText = styled(Text)`
   font-weight: 800;
   line-height: 165%; /* 26.4px */
 `;
+
+//JANG: 23.12.13 (후원금 내역 업데이트 임시 공지)
+export const MoneyUpdateTextTemp = styled(Box)`
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  bottom: 15%;
+  left: 70%; 
+  transform: translateX(-50%); 
+  text-align: center; 
+`;
