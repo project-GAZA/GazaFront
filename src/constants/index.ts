@@ -16,7 +16,7 @@ export const Korean = {
     <br /> 이 사이트에서 <strong>공유</strong>돼요!
     `,
     CheerMessageGo: '작성하러 가기',
-    DonateMessage: '기부금 전달하기',
+    DonateMessage: '후원금 전달하기',
     DonateMessageInfo: `
     작성한 메시지는
     <br /> 실제 <strong>책자</strong>에 들어갈 거에요!
@@ -66,12 +66,12 @@ export const Korean = {
       `,
     },
     {
-      title: '기부금 및 책자 관련 공지',
+      title: '후원금 및 책자 관련 공지',
       content: `
-      <strong>기부금 관련</strong>
+      <strong>후원금 관련</strong>
   <br/><br/>
-  ● 서버 비용을 제외한 모든 기부금은 ‘책자 제작’에 사용되며, 남은 금액은 가자지구 긴급구호활동에 전달됩니다.<br/>
-  ● 기부금 모금 현황은 토스 아이디(peacegaza) 내역에서 투명하게 공개되고 있으며, 누적 기부금은 매 정시마다 이 웹사이트에 업데이트 됩니다.<br/>
+  ● 서버 비용을 제외한 모든 후원금은 ‘책자 제작’에 사용되며, 남은 금액은 가자지구 긴급구호활동에 전달됩니다.<br/>
+  ● 후원금 모금 현황은 토스 아이디(peacegaza) 내역에서 투명하게 공개되고 있으며, 누적 후원금은 매 정시마다 이 웹사이트에 업데이트 됩니다.<br/>
   ● 또한, 결제 pg 연동 및 후원금 세액공제 협력을 위한 지정기부금단체를 찾고 있습니다. peace.in.gaza.kr@gmail.com으로 문의 부탁드립니다.<br/>
       <br/>
       <strong>책자 관련</strong>
