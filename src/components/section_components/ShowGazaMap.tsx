@@ -24,23 +24,34 @@ import IconMessage from '@/assets/svg/IconMessage.svg';
 import GazaFullImage from '@/assets/svg/GazaFull.svg';
 import Main_Universe from '@/assets/svg/Main_Universe.jpg';
 import GazaEmptySvg from '@/assets/svg/GazaEmpty.svg';
+import { fetchGetDonateMoney } from '@/utils/api';
 
 const wait = timeToDelay =>
   new Promise(resolve => {
     setTimeout(resolve, timeToDelay);
   }); // 이와 같이 선언 후
 
+const calculatePercent = (goal, cur) => {
+  const ratio = (cur / goal) * 100;
+  return +ratio.toFixed(2);
+};
+
 const ShowGazaMap = () => {
-  const [percentage, setPercentage] = useState(80); // 80이 안보이는 거임!
-  // const [realMoney, setRealMoney] = useState(10000000);
+  const goals = [1000000]; // 목표금액 배열
+  const [currentMoney, setCurrentMoneny] = useState(0); // 현재 금액 배열
+  const [percentage, setPercentage] = useState(0); // 80이 안보이는 거임!
+
+  const FetchAndSetMoney = async () => {
+    const res = await fetchGetDonateMoney();
+    setCurrentMoneny(res);
+    setPercentage(calculatePercent(goals[0], res));
+  };
 
   useEffect(() => {
-    // getPercentage();
-    const PercentAnimation = async () => {
-      await wait(1000);
-      setPercentage(30);
+    const excute = async () => {
+      await FetchAndSetMoney();
     };
-    PercentAnimation();
+    excute();
   }, []);
 
   return (
@@ -69,28 +80,24 @@ const ShowGazaMap = () => {
         <GazaEmpty bgsrc={GazaEmptySvg.src}>
           <GazaFullComponent
             bgsrc={GazaFullImage.src}
-            percentage={percentage.toFixed(4)}
+            percentage={80 - +percentage * 0.8}
           />
         </GazaEmpty>
         <GoalTextBox>
           <GoalText>
             {/* {percentage}% <strong className="GoalFixedText">달성</strong> */}
             {/* JANG: 12/3 임시 수정 */}
-            ??% <GoalFixedText>달성</GoalFixedText>
+            {percentage}% <GoalFixedText>달성</GoalFixedText>
           </GoalText>
         </GoalTextBox>
         <SectionOneFooter>
           <Box>
             <RealGoalText>총 모금액</RealGoalText>
-            {/* <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text> */}
-            {/* JANG: 12/3 임시 수정 */}
-            <RealGoalMoney>??</RealGoalMoney>
+            <RealGoalMoney>{currentMoney.toLocaleString()}</RealGoalMoney>
           </Box>
           <Box>
             <RealGoalText>목표 모금액</RealGoalText>
-            {/* <Text className="RealGoalMoney">{realMoney.toLocaleString()}</Text> */}
-            {/* JANG: 12/3 임시 수정 */}
-            <RealGoalMoney>??</RealGoalMoney>
+            <RealGoalMoney>{goals[0].toLocaleString()}</RealGoalMoney>
           </Box>
         </SectionOneFooter>
       </Box>

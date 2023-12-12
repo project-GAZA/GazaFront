@@ -46,22 +46,6 @@ const FullPageSetup = () => {
         return (
           <ReactFullpage.Wrapper>
             <Box className="section" data-anchor="section1">
-              <Box
-                sx={{
-                  position: 'absolute',
-                  top: 0,
-                  height: '100vh',
-                  width: '100vw',
-                  color: 'red',
-                  fontSize: '50px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                Comming Soon
-              </Box>
               <ShowGazaMap />
             </Box>
             <Box className="section" data-anchor="section2">

@@ -66,3 +66,18 @@ export const fetchPostCommnet = async (content, username) => {
   });
   return response.status;
 };
+
+/* CALL Donate Money */
+
+export const fetchGetDonateMoney = async () => {
+  const response = await fetch(`/api/donate`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json, text/plain',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  });
+  const data = await response.json();
+
+  return data;
+};

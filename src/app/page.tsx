@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Modal, ModalOverlay } from '@chakra-ui/react';
 
 import Header from '@/components/common/Header';
@@ -8,11 +8,14 @@ import FullPage from '@/components/common/FullPage';
 
 import SendMail from '@/components/modal/SendMail';
 import ShareModal from '@/components/modal/ShareModal';
+// import channelInit from '@/lib/channel';
 
 const Home = () => {
   const [mailModal, setMailModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
-
+  useEffect(() => {
+    // channelInit();
+  });
   return (
     <Box>
       <Header
