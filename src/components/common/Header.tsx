@@ -46,11 +46,6 @@ const Header = ({ onOpenMail, onOpenShare }) => {
           </IconInMenu>
         </IconBox>
         <MenuInner className="gnb">
-          <MenuList data-menuanchor="section2">
-            <MenuLink href="#section2" onClick={onClickHandle}>
-              프로젝트 설명
-            </MenuLink>
-          </MenuList>
           <MenuList data-menuanchor="section3">
             <MenuLink href="#section3" onClick={onClickHandle}>
               응원 메세지 보기
@@ -59,6 +54,11 @@ const Header = ({ onOpenMail, onOpenShare }) => {
           <MenuList data-menuanchor="section4" style={{ marginRight: '50px' }}>
             <MenuLink href="#section4" onClick={onClickHandle}>
               응원 메세지 남기기
+            </MenuLink>
+          </MenuList>
+          <MenuList data-menuanchor="section5">
+            <MenuLink href="#section5" onClick={onClickHandle}>
+              프로젝트 설명
             </MenuLink>
           </MenuList>
         </MenuInner>
