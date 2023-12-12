@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { CiMenuBurger } from 'react-icons/ci';
 import Image from 'next/image';
+import { Box } from '@chakra-ui/react';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
 import CallIcon from '@/assets/svg/CallIcon.svg';
@@ -15,7 +16,6 @@ import {
   MenuInner,
   IconBox,
   IconInMenu,
-  ChangeLanguageButton,
 } from './common.style';
 import MobileNav from '@/components/common/MobileNav';
 
@@ -62,7 +62,8 @@ const Header = ({ onOpenMail, onOpenShare }) => {
             </MenuLink>
           </MenuList>
         </MenuInner>
-        <ChangeLanguageButton>한국어/영어</ChangeLanguageButton>
+        {/* <ChangeLanguageButton>한국어/영어</ChangeLanguageButton> */}
+        <Box />
         <HamIcon
           aria-label="Menu"
           size="md"

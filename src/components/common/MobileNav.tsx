@@ -66,13 +66,11 @@ const MobileNav = ({
             프로젝트 소개
           </AWrapperMobile>
         </MobilLi>
-        <LangChanBox
-          onClick={() => {
-            setIsMobileNavShow();
-          }}
-        >
+        {/* 
+        <LangChanBox>
           <LangChanText>한국어/영어</LangChanText>
         </LangChanBox>
+        */}
         <IconBoxMenu>
           <IconInMenu onClick={onOpenShare}>
             <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
