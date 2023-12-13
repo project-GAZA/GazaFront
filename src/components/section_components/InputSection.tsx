@@ -1,7 +1,13 @@
 'use clients';
 
 import { useEffect, useState } from 'react';
-import { useToast, Modal, ModalOverlay, useDisclosure } from '@chakra-ui/react';
+import {
+  useToast,
+  Modal,
+  ModalOverlay,
+  useDisclosure,
+  Box,
+} from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 import CommentModal from '@/components/modal/CommentModal';
@@ -85,6 +91,27 @@ const InputSection = ({ InputSectionText }) => {
                 {InputSectionText.CheerMessageGo}
               </CommentInputText>
             </CommentInputButton>
+          </InputMessageWrapper>
+          <InputMessageWrapper paddingTop={0} backgroundColor="gray.600">
+            <Box
+              sx={{
+                fontFamily: 'NanumSquareNeo',
+                fontSize: 26,
+                fontWeight: 800,
+                display: 'grid',
+                placeItems: 'center',
+                height: '100%',
+                color: 'white',
+                lineHeight: '200%',
+              }}
+            >
+              안정적인 서비스를 위해
+              <br />
+              테스트 중입니다.
+              <br />
+              잠시만 기다려주세요!
+              <br />
+            </Box>
           </InputMessageWrapper>
           {/* 
           <InputMessageWrapper backgroundColor="#FFC500">
