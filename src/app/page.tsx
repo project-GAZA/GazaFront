@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Box, Modal, ModalOverlay } from '@chakra-ui/react';
+import * as ChannelService from '@channel.io/channel-web-sdk-loader';
 
 import Header from '@/components/common/Header';
 import FullPage from '@/components/common/FullPage';
 
 import SendMail from '@/components/modal/SendMail';
 import ShareModal from '@/components/modal/ShareModal';
-// import channelInit from '@/lib/channel';
 
 const Home = () => {
   const [mailModal, setMailModal] = useState(false);
@@ -25,6 +25,11 @@ const Home = () => {
     // 페이지가 언로드될 때 스크롤 위치를 저장합니다.
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('scrollPosition', window.scrollY.toString());
+    });
+
+    ChannelService.loadScript();
+    ChannelService.boot({
+      pluginKey: '2826a0c1-d132-47f1-824e-1067fc765688', // fill your plugin key
     });
   });
   return (
