@@ -13,8 +13,8 @@ import {
   GazaEmpty,
   GoalTextBox,
   GoalText,
-  GoalFixedText,
   RealGoalText,
+  GoalFixedText,
   SectionOneFooter,
   RealGoalMoney,
   MessageIconInTitle,
@@ -23,14 +23,11 @@ import {
 
 import IconMessage from '@/assets/svg/IconMessage.svg';
 import GazaFullImage from '@/assets/svg/GazaFull.svg';
-import Main_Universe from '@/assets/svg/Main_Universe.jpg';
 import GazaEmptySvg from '@/assets/svg/GazaEmpty.svg';
+
 import { fetchGetDonateMoney } from '@/utils/api';
 
-const wait = timeToDelay =>
-  new Promise(resolve => {
-    setTimeout(resolve, timeToDelay);
-  }); // 이와 같이 선언 후
+import { backgrounds } from '@/constants/index';
 
 const calculatePercent = (goal, cur) => {
   const ratio = (cur / goal) * 100;
@@ -41,6 +38,7 @@ const ShowGazaMap = () => {
   const goals = [1000000]; // 목표금액 배열
   const [currentMoney, setCurrentMoneny] = useState(0); // 현재 금액 배열
   const [percentage, setPercentage] = useState(0); // 80이 안보이는 거임!
+  const [background, setBackground] = useState(''); // 80이 안보이는 거임!
 
   const FetchAndSetMoney = async () => {
     const res = await fetchGetDonateMoney();
@@ -52,11 +50,13 @@ const ShowGazaMap = () => {
     const excute = async () => {
       await FetchAndSetMoney();
     };
+    const rand = Math.ceil(Math.random() * 6) - 1;
+    setBackground(backgrounds[rand]);
     excute();
   }, []);
 
   return (
-    <FirstSction bgsrc={Main_Universe.src}>
+    <FirstSction bgsrc={background}>
       <Box>
         <Section1Header>
           <ShowGazaMapTitleFontOne>Gaza’s Child </ShowGazaMapTitleFontOne>
@@ -92,15 +92,15 @@ const ShowGazaMap = () => {
         <SectionOneFooter>
           <MoneyUpdateTextTemp>
             ※ 후원금 모금 현황은
-            <br /> 9~21시 동안 3시간마다 업데이트 됩니다!
             <br /> (결제 PG 연동 이후, 자동 반영 예정)
+            <br /> 9~21시 동안 3시간마다 업데이트 됩니다!
           </MoneyUpdateTextTemp>
           <Box>
-            <RealGoalText>총 모금액</RealGoalText>
+            <RealGoalText>총 메세지</RealGoalText>
             <RealGoalMoney>{currentMoney.toLocaleString()}</RealGoalMoney>
           </Box>
           <Box>
-            <RealGoalText>목표 모금액</RealGoalText>
+            <RealGoalText>목표 메세지</RealGoalText>
             <RealGoalMoney>{goals[0].toLocaleString()}</RealGoalMoney>
           </Box>
         </SectionOneFooter>

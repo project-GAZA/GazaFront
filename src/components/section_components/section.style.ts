@@ -444,8 +444,11 @@ export const MoneyUpdateTextTemp = styled(Box)`
   color: red;
   font-size: 10px;
   position: absolute;
-  bottom: 15%;
+  bottom: 25%;
   left: 70%;
   transform: translateX(-50%);
   text-align: center;
+  @media (max-width: 820px) {
+    bottom: 20%;
+  }
 `;

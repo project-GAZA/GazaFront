@@ -86,6 +86,7 @@ const InputSection = ({ InputSectionText }) => {
               </CommentInputText>
             </CommentInputButton>
           </InputMessageWrapper>
+          {/* 
           <InputMessageWrapper backgroundColor="#FFC500">
             <TopMessageInbox>
               {InputSectionText.topMessageInBox}
@@ -112,6 +113,7 @@ const InputSection = ({ InputSectionText }) => {
               </CommentInputText>
             </CommentInputButton>
           </InputMessageWrapper>
+          */}
         </MessageBoxWrapper>
         {/* JANG: 최종 배포 이후 진행 (구글 애드센스) */}
         {/* <button className="WatchAddBox">

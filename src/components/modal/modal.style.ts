@@ -113,6 +113,7 @@ export const DonateSubText = styled(Text)`
   font-style: normal;
   font-weight: 700;
   line-height: 165%;
+  padding: 0 40px;
 `;
 
 export const DonateModalLinkBox = styled(Box)`
