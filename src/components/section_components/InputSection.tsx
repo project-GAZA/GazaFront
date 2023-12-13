@@ -92,29 +92,7 @@ const InputSection = ({ InputSectionText }) => {
               </CommentInputText>
             </CommentInputButton>
           </InputMessageWrapper>
-          <InputMessageWrapper paddingTop={0} backgroundColor="gray.600">
-            <Box
-              sx={{
-                fontFamily: 'NanumSquareNeo',
-                fontSize: 26,
-                fontWeight: 800,
-                display: 'grid',
-                placeItems: 'center',
-                height: '100%',
-                color: 'white',
-                lineHeight: '200%',
-              }}
-            >
-              안정적인 서비스를 위해
-              <br />
-              테스트 중입니다.
-              <br />
-              잠시만 기다려주세요!
-              <br />
-            </Box>
-          </InputMessageWrapper>
-          {/* 
-          <InputMessageWrapper backgroundColor="#FFC500">
+          <InputMessageWrapper paddingTop={0} backgroundColor="#FFC500">
             <TopMessageInbox>
               {InputSectionText.topMessageInBox}
             </TopMessageInbox>
@@ -139,8 +117,30 @@ const InputSection = ({ InputSectionText }) => {
                 {InputSectionText.DonateMessageGo}
               </CommentInputText>
             </CommentInputButton>
+            <Box
+              sx={{
+                fontFamily: 'NanumSquareNeo',
+                fontSize: 26,
+                fontWeight: 800,
+                display: 'grid',
+                placeItems: 'center',
+                height: '108.75%',
+                lineHeight: '200%',
+                color: 'white',
+                position: 'relative',
+                top: '-97.5%',
+                background: 'rgba(0,0,0,0.3)',
+                borderRadius: '46px',
+              }}
+            >
+              안정적인 서비스를 위해
+              <br />
+              테스트 중입니다.
+              <br />
+              잠시만 기다려주세요!
+              <br />
+            </Box>
           </InputMessageWrapper>
-          */}
         </MessageBoxWrapper>
         {/* JANG: 최종 배포 이후 진행 (구글 애드센스) */}
         {/* <button className="WatchAddBox">
