@@ -195,7 +195,7 @@ export const IconBox = styled(Box)`
   @media (max-width: 820px) {
     display: none;
   }
-  margin-right: 20px;
+  margin-left: 20px;
   display: flex;
   gap: 11px;
 `;
