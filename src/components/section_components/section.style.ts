@@ -86,10 +86,13 @@ export const SearchIcon = styled(InputRightElement)`
 `;
 
 export const ShowCommentWrapper = styled(Stack)`
-  max-height: calc(100vh - 275px);
+  max-height: calc(105.75vh - 275px);
   overflow-y: auto;
   margin-top: 30px;
   padding: 16px;
+  @media (max-width: 820px) {
+    max-height: calc(103.25vh - 275px);
+  }
 `;
 
 export const GazaFullComponent = styled(Box)<{

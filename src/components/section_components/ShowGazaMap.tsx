@@ -1,7 +1,7 @@
 'use clients';
 
 import React, { useEffect, useState } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, useToast } from '@chakra-ui/react';
 
 import {
   GazaFullComponent,
@@ -37,6 +37,7 @@ const calculatePercent = (goal, cur) => {
 };
 
 const ShowGazaMap = () => {
+  const toast = useToast();
   const goals = [1000000]; // 목표금액 배열
   const [percentage, setPercentage] = useState(0); // 80이 안보이는 거임!
   const [background, setBackground] = useState('');
@@ -45,11 +46,23 @@ const ShowGazaMap = () => {
   const [currentMoney, setCurrentMoneny] = useState(0); // 현재 금액 배열
 
   const FetchAndSetData = async () => {
-    const mCount = await fetchGetMessageCount();
-    setPercentage(calculatePercent(goalMessage, mCount));
-    setCurrentMessage(mCount);
-    const curMoney = await fetchGetDonateMoney();
-    setCurrentMoneny(curMoney || 0);
+    try {
+      const mCount = await fetchGetMessageCount();
+      setPercentage(calculatePercent(goalMessage, mCount));
+      setCurrentMessage(mCount);
+      const curMoney = await fetchGetDonateMoney();
+      setCurrentMoneny(curMoney || 0);
+    } catch (error) {
+      toast({
+        position: 'bottom',
+        render: () => (
+          <Box color="white" p={3} bg="red.500">
+            에러내용: {error.message} <br />
+            서버에러가 났습니다 관리자에게 문의해주세요.
+          </Box>
+        ),
+      });
+    }
   };
 
   useEffect(() => {

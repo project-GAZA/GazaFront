@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { useToast, Box } from '@chakra-ui/react';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import {
@@ -30,6 +31,7 @@ const ShowComment = () => {
   const [searchInput, setSearchInput] = useState('');
   const newButton = useRef<HTMLDivElement>();
   const BestButton = useRef<HTMLDivElement>();
+  const toast = useToast();
 
   const nsize = useWindowSize();
 
@@ -38,17 +40,32 @@ const ShowComment = () => {
       const result = await fetchComments(sort, size, page);
       setMessages(result);
     } catch (error) {
-      // Handle error
+      toast({
+        position: 'bottom',
+        render: () => (
+          <Box color="white" p={3} bg="red.500">
+            에러내용: {error.message} <br />
+            서버에러가 났습니다 관리자에게 문의해주세요.
+          </Box>
+        ),
+      });
     }
   };
 
   const SearchAndSetMessage = async (username, size = 100, page = 0) => {
     try {
       const result = await fetchSearchComments(username, size, page);
-      console.log(result);
       setMessages(result);
     } catch (error) {
-      // Handle error
+      toast({
+        position: 'bottom',
+        render: () => (
+          <Box color="white" p={3} bg="red.500">
+            에러내용: {error.message} <br />
+            서버에러가 났습니다 관리자에게 문의해주세요.
+          </Box>
+        ),
+      });
     }
   };
 
@@ -114,7 +131,7 @@ const ShowComment = () => {
           </Search>
         </CommentHeader>
         <ShowCommentWrapper id="CommentStack">
-          {messages &&
+          {Array.isArray(messages) &&
             messages.map((v: MessageType) => (
               <MessageComponent key={v.messageId} message={v} />
             ))}

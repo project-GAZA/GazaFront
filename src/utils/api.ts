@@ -9,8 +9,11 @@ export const fetchComments = async (sort, size, page) => {
       },
     },
   );
-  const data = await response.json();
-  return data;
+  if (response.status === 200) {
+    const data = await response.json();
+    return data;
+  }
+  throw new Error(response.statusText);
 };
 
 export const fetchSearchComments = async (username, size, page) => {
@@ -24,9 +27,11 @@ export const fetchSearchComments = async (username, size, page) => {
       },
     },
   );
-  const data = await response.json();
-  console.log(data);
-  return data;
+  if (response.status === 200) {
+    const data = await response.json();
+    return data;
+  }
+  throw new Error(response.statusText);
 };
 
 export const fetchLikeCountUp = async messageid => {
@@ -37,8 +42,11 @@ export const fetchLikeCountUp = async messageid => {
       'Content-Type': 'application/json;charset=UTF-8',
     },
   });
-  const data = await response.json();
-  return data;
+  if (response.status === 200) {
+    const data = await response.json();
+    return data;
+  }
+  throw new Error(response.statusText);
 };
 
 export const fetchReportCountUp = async messageid => {
@@ -49,8 +57,11 @@ export const fetchReportCountUp = async messageid => {
       'Content-Type': 'application/json;charset=UTF-8',
     },
   });
-  const data = await response.json();
-  return data;
+  if (response.status === 200) {
+    const data = await response.json();
+    return data;
+  }
+  throw new Error(response.statusText);
 };
 
 export const fetchPostCommnet = async (content, username) => {
@@ -78,9 +89,11 @@ export const fetchGetDonateMoney = async () => {
       'Content-Type': 'application/json;charset=UTF-8',
     },
   });
-  const data = await response.json();
-
-  return data;
+  if (response.status === 200) {
+    const data = await response.json();
+    return data;
+  }
+  throw new Error(response.statusText);
 };
 
 export const fetchGetMessageCount = async () => {
@@ -91,7 +104,9 @@ export const fetchGetMessageCount = async () => {
       'Content-Type': 'application/json;charset=UTF-8',
     },
   });
-  const data = await response.json();
-
-  return data;
+  if (response.status === 200) {
+    const data = await response.json();
+    return data;
+  }
+  throw new Error(response.statusText);
 };

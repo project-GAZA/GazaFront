@@ -10,6 +10,9 @@ export async function GET(req) {
       return NextResponse.json(response.data);
     }
   } catch (err) {
-    return NextResponse.json({ error: 'Internal Server Error' });
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
   }
 }
