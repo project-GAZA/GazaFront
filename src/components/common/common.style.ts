@@ -14,7 +14,6 @@ export const HeaderWrapper = styled(Box)`
   position: fixed;
   z-index: 99999;
 
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;

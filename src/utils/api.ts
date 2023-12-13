@@ -81,3 +81,16 @@ export const fetchGetDonateMoney = async () => {
 
   return data;
 };
+
+export const fetchGetMessageCount = async () => {
+  const response = await fetch(`/api/message/count`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json, text/plain',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  });
+  const data = await response.json();
+
+  return data;
+};

@@ -232,11 +232,7 @@ export const GazaEmpty = styled(Box)<{ bgsrc: string }>`
   flex-shrink: 0;
 `;
 
-export const GoalTextBox = styled(Box)`
-  position: relative;
-  top: -200px;
-  left: 60px;
-`;
+export const GoalTextBox = styled(Box)``;
 export const GoalText = styled(Text)`
   color: #ffc500;
   text-align: center;
@@ -252,7 +248,9 @@ export const GoalFixedText = styled.strong`
 `;
 
 export const SectionOneFooter = styled(Box)`
-  margin-top: -100px;
+  position: relative;
+  left: 42px;
+  top: 20px;
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -439,16 +437,27 @@ export const CommentInputText = styled(Text)`
   line-height: 165%; /* 26.4px */
 `;
 
+export const ValuableBox = styled(Box)`
+  position: relative;
+  top: -220px;
+  left: 60px;
+`;
+
 // JANG: 23.12.13 (후원금 내역 업데이트 임시 공지)
 export const MoneyUpdateTextTemp = styled(Box)`
   color: red;
   font-size: 10px;
-  position: absolute;
-  bottom: 25%;
-  left: 70%;
-  transform: translateX(-50%);
+  position: relative;
   text-align: center;
+  left: 70px;
+  top: -50px;
   @media (max-width: 820px) {
     bottom: 20%;
+  }
+`;
+
+export const MapWrapper = styled(Box)`
+  @media (min-width: 820px) {
+    padding-top: 80px;
   }
 `;

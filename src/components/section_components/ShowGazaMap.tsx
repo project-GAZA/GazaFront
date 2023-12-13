@@ -18,14 +18,16 @@ import {
   SectionOneFooter,
   RealGoalMoney,
   MessageIconInTitle,
+  ValuableBox,
   MoneyUpdateTextTemp,
+  MapWrapper,
 } from './section.style';
 
 import IconMessage from '@/assets/svg/IconMessage.svg';
 import GazaFullImage from '@/assets/svg/GazaFull.svg';
 import GazaEmptySvg from '@/assets/svg/GazaEmpty.svg';
 
-import { fetchGetDonateMoney } from '@/utils/api';
+import { fetchGetDonateMoney, fetchGetMessageCount } from '@/utils/api';
 
 import { backgrounds } from '@/constants/index';
 
@@ -36,19 +38,23 @@ const calculatePercent = (goal, cur) => {
 
 const ShowGazaMap = () => {
   const goals = [1000000]; // 목표금액 배열
-  const [currentMoney, setCurrentMoneny] = useState(0); // 현재 금액 배열
   const [percentage, setPercentage] = useState(0); // 80이 안보이는 거임!
-  const [background, setBackground] = useState(''); // 80이 안보이는 거임!
+  const [background, setBackground] = useState('');
+  const [goalMessage, setGoalMessage] = useState(1000);
+  const [currentMessage, setCurrentMessage] = useState(0);
+  const [currentMoney, setCurrentMoneny] = useState(0); // 현재 금액 배열
 
-  const FetchAndSetMoney = async () => {
-    const res = await fetchGetDonateMoney();
-    setCurrentMoneny(res);
-    setPercentage(calculatePercent(goals[0], res));
+  const FetchAndSetData = async () => {
+    const mCount = await fetchGetMessageCount();
+    setPercentage(calculatePercent(goalMessage, mCount));
+    setCurrentMessage(mCount);
+    const curMoney = await fetchGetDonateMoney();
+    setCurrentMoneny(curMoney);
   };
 
   useEffect(() => {
     const excute = async () => {
-      await FetchAndSetMoney();
+      await FetchAndSetData();
     };
     const rand = Math.ceil(Math.random() * 6) - 1;
     setBackground(backgrounds[rand]);
@@ -77,34 +83,39 @@ const ShowGazaMap = () => {
           </SubTitle>
         </Box>
       </Box>
-      <Box>
+      <MapWrapper>
         <GazaEmpty bgsrc={GazaEmptySvg.src}>
           <GazaFullComponent
             bgsrc={GazaFullImage.src}
             percentage={80 - +percentage * 0.8}
           />
+          <ValuableBox>
+            <GoalTextBox>
+              <GoalText>
+                <GoalFixedText>{goalMessage}개의 메세지</GoalFixedText>
+              </GoalText>
+              <GoalText>
+                {percentage}% <GoalFixedText>달성</GoalFixedText>
+              </GoalText>
+            </GoalTextBox>
+            <SectionOneFooter>
+              <Box>
+                <RealGoalText>총 모금액</RealGoalText>
+                <RealGoalMoney>{currentMoney.toLocaleString()}</RealGoalMoney>
+              </Box>
+              <Box>
+                <RealGoalText>목표 모금액</RealGoalText>
+                <RealGoalMoney>{goals[0].toLocaleString()}</RealGoalMoney>
+              </Box>
+            </SectionOneFooter>
+          </ValuableBox>
         </GazaEmpty>
-        <GoalTextBox>
-          <GoalText>
-            {percentage}% <GoalFixedText>달성</GoalFixedText>
-          </GoalText>
-        </GoalTextBox>
-        <SectionOneFooter>
-          <MoneyUpdateTextTemp>
-            ※ 후원금 모금 현황은
-            <br /> (결제 PG 연동 이후, 자동 반영 예정)
-            <br /> 9~21시 동안 3시간마다 업데이트 됩니다!
-          </MoneyUpdateTextTemp>
-          <Box>
-            <RealGoalText>총 메세지</RealGoalText>
-            <RealGoalMoney>{currentMoney.toLocaleString()}</RealGoalMoney>
-          </Box>
-          <Box>
-            <RealGoalText>목표 메세지</RealGoalText>
-            <RealGoalMoney>{goals[0].toLocaleString()}</RealGoalMoney>
-          </Box>
-        </SectionOneFooter>
-      </Box>
+        <MoneyUpdateTextTemp>
+          ※ 후원금 모금 현황은
+          <br /> 9~21시 동안 3시간마다 업데이트 됩니다!
+          <br /> (결제 PG 연동 이후, 자동 반영 예정)
+        </MoneyUpdateTextTemp>
+      </MapWrapper>
     </FirstSction>
   );
 };
