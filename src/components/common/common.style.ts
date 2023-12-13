@@ -206,6 +206,8 @@ export const SectionWrapper = styled(Box)`
   }
 `;
 export const LastSectionWrapper = styled(Box)`
+  max-width: 900px;
+  margin: 0 auto;
   @media (max-width: 820px) {
     height: inherit;
   }

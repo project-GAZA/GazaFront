@@ -14,7 +14,18 @@ const Home = () => {
   const [mailModal, setMailModal] = useState(false);
   const [shareModal, setShareModal] = useState(false);
   useEffect(() => {
-    // channelInit();
+    // 페이지가 로드될 때 스크롤 위치를 복원합니다.
+    window.addEventListener('load', () => {
+      const savedScrollPosition = localStorage.getItem('scrollPosition');
+      if (savedScrollPosition !== null) {
+        window.scrollTo(0, parseInt(savedScrollPosition, 10));
+      }
+    });
+
+    // 페이지가 언로드될 때 스크롤 위치를 저장합니다.
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('scrollPosition', window.scrollY.toString());
+    });
   });
   return (
     <Box>
