@@ -35,6 +35,7 @@ export const ThirdHeaderText = styled(Text)`
   font-style: normal;
   font-weight: 900;
   line-height: 165%;
+  margin-bottom: 30px;
 `;
 
 export const ThirdHeaderTextStrong = styled.strong`
@@ -86,12 +87,12 @@ export const SearchIcon = styled(InputRightElement)`
 `;
 
 export const ShowCommentWrapper = styled(Stack)`
-  max-height: calc(105.75vh - 275px);
+  max-height: calc(102.35vh - 275px);
   overflow-y: auto;
   margin-top: 30px;
   padding: 16px;
   @media (max-width: 820px) {
-    max-height: calc(103.25vh - 275px);
+    max-height: calc(99.85vh - 275px);
   }
 `;
 
