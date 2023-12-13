@@ -22,6 +22,7 @@ const MobileNav = ({
   onOpenShare,
   isMobileNavShow,
   setIsMobileNavShow,
+  activeSection,
 }) => {
   return (
     <MenuWrapper isOpen={isMobileNavShow}>
@@ -36,9 +37,15 @@ const MobileNav = ({
       <EmptyBox />
       <MobileUlWrapper className="gnb">
         <MobileMenuTitle>Gaza’s Child Read HOPE</MobileMenuTitle>
-        <MobilLi data-menuanchor="section3">
+        <MobilLi
+          className={activeSection === 'section3' ? 'on' : ''}
+          data-menuanchor="section3"
+        >
           <AWrapperMobile
-            href="#section3"
+            to="section3"
+            spy
+            smooth
+            duration={800}
             onClick={() => {
               setIsMobileNavShow();
             }}
@@ -46,9 +53,15 @@ const MobileNav = ({
             응원메세지 보기
           </AWrapperMobile>
         </MobilLi>
-        <MobilLi data-menuanchor="section4">
+        <MobilLi
+          className={activeSection === 'section4' ? 'on' : ''}
+          data-menuanchor="section4"
+        >
           <AWrapperMobile
-            href="#section4"
+            to="section4"
+            spy
+            smooth
+            duration={800}
             onClick={() => {
               setIsMobileNavShow();
             }}
@@ -56,9 +69,15 @@ const MobileNav = ({
             응원메세지 남기기
           </AWrapperMobile>
         </MobilLi>
-        <MobilLi data-menuanchor="section5">
+        <MobilLi
+          className={activeSection === 'section5' ? 'on' : ''}
+          data-menuanchor="section5"
+        >
           <AWrapperMobile
-            href="#section5"
+            to="section5"
+            spy
+            smooth
+            duration={800}
             onClick={() => {
               setIsMobileNavShow();
             }}

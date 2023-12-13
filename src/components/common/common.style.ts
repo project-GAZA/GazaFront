@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { IconButton, Box, Text } from '@chakra-ui/react';
+import { Link as ScrollLink } from 'react-scroll';
 
-export const MenuLink = styled.a`
+export const MenuLink = styled(ScrollLink)`
   font-size: 18px;
   font-weight: bold;
   line-height: 18px;
@@ -174,7 +175,7 @@ export const MenuWrapper = styled.div<{ isOpen: boolean }>`
   background-color: #fff;
 `;
 
-export const AWrapperMobile = styled.a`
+export const AWrapperMobile = styled(ScrollLink)`
   color: #000;
   text-align: center;
   font-family: NanumSquareNeo;
@@ -196,4 +197,16 @@ export const IconBox = styled(Box)`
   }
   display: flex;
   gap: 11px;
+`;
+
+export const SectionWrapper = styled(Box)`
+  height: 102vh;
+  @media (max-width: 820px) {
+    height: inherit;
+  }
+`;
+export const LastSectionWrapper = styled(Box)`
+  @media (max-width: 820px) {
+    height: inherit;
+  }
 `;

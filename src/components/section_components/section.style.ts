@@ -115,10 +115,13 @@ export const EarthTextWrapper = styled(Box)`
   position: relative;
 `;
 export const SecondSection = styled(Box)`
-  padding: 100px 0 100px 0;
+  padding: 0 0 100px 0;
   &.mobile {
     background-size: 1000%;
     background-position: 65% 50%;
+  }
+  @media (max-width: 820px) {
+    padding: 100px 0 100px 0;
   }
 `;
 
@@ -298,7 +301,7 @@ export const ExplainSectionWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 80px;
+  padding-top: 80px;
 `;
 export const ExplainTitleText = styled(Text)`
   color: #000;
