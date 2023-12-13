@@ -5,6 +5,7 @@ import axiosInstance from '../axiosInstance';
 export async function GET(req) {
   try {
     const response = await axiosInstance.get(`api/donate`);
+    console.log(response);
     if (response.status === 200) {
       return NextResponse.json(response.data);
     }

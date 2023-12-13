@@ -25,6 +25,7 @@ export const fetchSearchComments = async (username, size, page) => {
     },
   );
   const data = await response.json();
+  console.log(data);
   return data;
 };
 

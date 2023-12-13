@@ -45,6 +45,7 @@ const ShowComment = () => {
   const SearchAndSetMessage = async (username, size = 100, page = 0) => {
     try {
       const result = await fetchSearchComments(username, size, page);
+      console.log(result);
       setMessages(result);
     } catch (error) {
       // Handle error

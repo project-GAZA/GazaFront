@@ -49,7 +49,7 @@ const ShowGazaMap = () => {
     setPercentage(calculatePercent(goalMessage, mCount));
     setCurrentMessage(mCount);
     const curMoney = await fetchGetDonateMoney();
-    setCurrentMoneny(curMoney);
+    setCurrentMoneny(curMoney || 0);
   };
 
   useEffect(() => {
