@@ -1,8 +1,7 @@
 'use clients';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import { useToast, Box } from '@chakra-ui/react';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import {
@@ -22,71 +21,31 @@ import {
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
 import MessageComponent from '@/components/MessageComponent';
 
-import { fetchComments, fetchSearchComments } from '@/utils/api';
-
 import { MessageType } from '@/types/index.d';
 
-const ShowComment = () => {
-  const [messages, setMessages] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
-  const newButton = useRef<HTMLDivElement>();
-  const BestButton = useRef<HTMLDivElement>();
-  const toast = useToast();
+const AddClassSortOn = str => {
+  document.querySelectorAll('.sort').forEach(e => {
+    if (e.innerHTML === str) {
+      e.classList.add('SortOn');
+      return;
+    }
+    e.classList.remove('SortOn');
+  });
+};
 
+const ShowComment = ({ messages, setSort, fetchSearch, fetchMessage }) => {
+  const [searchInput, setSearchInput] = useState('');
   const nsize = useWindowSize();
 
-  const fetchAndSetMessage = async (sort, size = 100, page = 0) => {
-    try {
-      const result = await fetchComments(sort, size, page);
-      setMessages(result);
-    } catch (error) {
-      toast({
-        position: 'bottom',
-        render: () => (
-          <Box color="white" p={3} bg="red.500">
-            에러내용: {error.message} <br />
-            서버에러가 났습니다 관리자에게 문의해주세요.
-          </Box>
-        ),
-      });
-    }
-  };
-
-  const SearchAndSetMessage = async (username, size = 100, page = 0) => {
-    try {
-      const result = await fetchSearchComments(username, size, page);
-      setMessages(result);
-    } catch (error) {
-      toast({
-        position: 'bottom',
-        render: () => (
-          <Box color="white" p={3} bg="red.500">
-            에러내용: {error.message} <br />
-            서버에러가 났습니다 관리자에게 문의해주세요.
-          </Box>
-        ),
-      });
-    }
-  };
-
-  useEffect(() => {
-    fetchAndSetMessage('best');
-  }, []);
-
-  const BestClick = () => {
-    BestButton.current.classList.add('SortOn');
-    newButton.current.classList.remove('SortOn');
-    fetchAndSetMessage('best');
-  };
-  const NewClick = () => {
-    BestButton.current.classList.remove('SortOn');
-    newButton.current.classList.add('SortOn');
-    fetchAndSetMessage('new');
+  const SortClick = (sort: string) => {
+    AddClassSortOn(sort);
+    fetchMessage(sort.toLowerCase());
+    setSort(sort.toLowerCase());
   };
 
   const onClickSearch = e => {
     e.preventDefault();
-    SearchAndSetMessage(searchInput);
+    fetchSearch(searchInput);
   };
 
   const onChangeSearchInput = e => {
@@ -106,14 +65,18 @@ const ShowComment = () => {
       <CommentWrapper>
         <CommentHeader>
           <CommentSortButton
-            className="SortOn"
-            ref={BestButton}
-            onClick={BestClick}
+            id="best"
+            className="SortOn sort"
+            onClick={() => SortClick('Best')}
           >
             Best
           </CommentSortButton>
           <DividerLine orientation="vertical" />
-          <CommentSortButton ref={newButton} onClick={NewClick}>
+          <CommentSortButton
+            id="new"
+            className="sort"
+            onClick={() => SortClick('New')}
+          >
             New
           </CommentSortButton>
           <Search>

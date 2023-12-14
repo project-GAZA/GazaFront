@@ -31,14 +31,19 @@ import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
 // import Icon_Present from '@/assets/svg/Icon_Present.svg';
 
-const InputSection = ({ InputSectionText }) => {
+const InputSection = ({ fetchMessage, sort, InputSectionText }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
   const [mode, setMode] = useState('');
 
-  const SubmitMessage = (content: string, username: string) => {
-    toast.promise(fetchPostCommnet(content, username), {
+  const SubmitAndSetMessage = async (content: string, username: string) => {
+    await fetchPostCommnet(content, username);
+    await fetchMessage(sort);
+  };
+
+  const onClickSubmit = (content: string, username: string) => {
+    toast.promise(SubmitAndSetMessage(content, username), {
       success: { title: '댓글작성완료', description: 'Looks great' },
       error: {
         title: '서버에 에러가 났습니다.',
@@ -162,10 +167,10 @@ const InputSection = ({ InputSectionText }) => {
       >
         <ModalOverlay />
         {mode === 'message' && (
-          <CommentModal onSubmitForm={SubmitMessage} onClose={onClose} />
+          <CommentModal onSubmitForm={onClickSubmit} onClose={onClose} />
         )}
         {mode === 'donate' && (
-          <DonateModal onSubmitMessage={SubmitMessage} onClose={onClose} />
+          <DonateModal onSubmitMessage={onClickSubmit} onClose={onClose} />
         )}
       </Modal>
     </>
