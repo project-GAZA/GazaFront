@@ -31,21 +31,21 @@ import { fetchGetDonateMoney, fetchGetMessageCount } from '@/utils/api';
 
 import { backgrounds } from '@/constants/index';
 
-const calculatePercent = (goal, cur) => {
+const calculatePercent = (goal: number, cur: number) => {
   const ratio = (cur / goal) * 100;
   return +ratio.toFixed(2);
 };
 
 const ShowGazaMap = () => {
   const toast = useToast();
-  const goals = [1000000]; // 목표금액 배열
-  const [percentage, setPercentage] = useState(0); // 80이 안보이는 거임!
-  const [background, setBackground] = useState('');
-  const [goalMessage, setGoalMessage] = useState(1000);
-  const [currentMessage, setCurrentMessage] = useState(0);
-  const [currentMoney, setCurrentMoneny] = useState(0); // 현재 금액 배열
+  const goals: Array<number> = [1000000]; // 목표금액 배열
+  const [percentage, setPercentage] = useState<number>(0); // 80이 안보이는 거임!
+  const [background, setBackground] = useState<string>('');
+  const [goalMessage, setGoalMessage] = useState<number>(1000);
+  const [currentMessage, setCurrentMessage] = useState<number>(0);
+  const [currentMoney, setCurrentMoneny] = useState<number>(0); // 현재 금액 배열
 
-  const FetchAndSetData = async () => {
+  const FetchAndSetData = async (): Promise<void> => {
     try {
       const mCount = await fetchGetMessageCount();
       setPercentage(calculatePercent(goalMessage, mCount));

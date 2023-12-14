@@ -3,10 +3,12 @@
 import { Accordion, AccordionItem, AccordionIcon } from '@chakra-ui/react';
 import { ExplainButton, ExplainText, ArcdText } from './component.style';
 
+import { dataTypes } from '@/types';
+
 const ExplainComponent = ({ explain }) => {
   return (
     <Accordion allowMultiple>
-      {explain.map(v => {
+      {explain.map((v: dataTypes.ExplainType): JSX.Element => {
         return (
           <AccordionItem key={v.title}>
             <ExplainButton>

@@ -1,6 +1,5 @@
 'use clients';
 
-import { ModalBody } from '@chakra-ui/react';
 import {
   CommentModalHeader,
   CommentModalHeaderText,

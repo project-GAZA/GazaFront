@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
 'use clients';
 
 import { useState } from 'react';
@@ -17,11 +15,17 @@ import {
   DonateExplainBox,
 } from './modal.style';
 
-// eslint-disable-next-line consistent-return
-const donateSection = ({ onClose, onSubmitMessage }) => {
-  const [page, setPage] = useState(0);
+import { propsTypes } from '@/types';
 
-  const [SaveInfo, setSaveInfo] = useState({ content: '', username: '' });
+const DonateModal = ({
+  onClose,
+  onSubmitMessage,
+}: propsTypes.DonateModalPropType) => {
+  const [page, setPage] = useState<number>(0);
+  const [SaveInfo, setSaveInfo] = useState<{
+    content: string;
+    username: string;
+  }>({ content: '', username: '' });
 
   const onClickSubmit = () => {
     onSubmitMessage(SaveInfo.content, SaveInfo.username);
@@ -32,19 +36,9 @@ const donateSection = ({ onClose, onSubmitMessage }) => {
   //   setPage(prev => prev - 1);
   // };
 
-  const onClickLick = () => {
+  const onClickLick = (): void => {
     window.open('https://toss.me/peacegaza');
   };
-  if (page === 0) {
-    return (
-      <CommentModal
-        mode="Donate"
-        onClose={onClose}
-        setSaveInfo={setSaveInfo}
-        setPage={setPage}
-      />
-    );
-  }
   if (page === 1) {
     return (
       <CommentModalWrapper>
@@ -81,6 +75,14 @@ const donateSection = ({ onClose, onSubmitMessage }) => {
       </CommentModalWrapper>
     );
   }
+  return (
+    <CommentModal
+      mode="Donate"
+      onClose={onClose}
+      setSaveInfo={setSaveInfo}
+      setPage={setPage}
+    />
+  );
 };
 
-export default donateSection;
+export default DonateModal;

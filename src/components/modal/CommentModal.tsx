@@ -2,7 +2,7 @@
 
 // test_section_3 : 응원 메시지 입력창
 
-import { Dispatch, SetStateAction, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useToast, FormControl, Box } from '@chakra-ui/react';
 
 import {
@@ -17,18 +17,7 @@ import {
   CommentModalInputNickname,
 } from './modal.style';
 
-type Props = {
-  onClose: () => void;
-  onSubmitForm?: (content: string, username: string) => void;
-  mode?: string;
-  setSaveInfo?: Dispatch<
-    SetStateAction<{
-      content: string;
-      username: string;
-    }>
-  >;
-  setPage?: Dispatch<SetStateAction<number>>;
-};
+import { propsTypes } from '@/types';
 
 const CommentModal = ({
   onClose,
@@ -36,50 +25,40 @@ const CommentModal = ({
   mode = 'Comment',
   setSaveInfo,
   setPage,
-}: Props) => {
-  const [content, setContent] = useState('');
-  const [username, setUsername] = useState('');
+}: propsTypes.CommentModalPropType) => {
+  const [content, setContent] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
   const toast = useToast();
+  const CreateAlertToast = (str: string): void => {
+    toast({
+      position: 'bottom',
+      render: () => (
+        <Box color="white" p={3} bg="red.500">
+          {str}
+        </Box>
+      ),
+    });
+  };
 
-  const CheckValid = () => {
-    if (username.length < 2) {
-      toast({
-        position: 'bottom',
-        render: () => (
-          <Box color="white" p={3} bg="red.500">
-            닉네임은 2자 이상 입력해주세요
-          </Box>
-        ),
-      });
+  const CheckValid = (user: string, text: string): boolean => {
+    if (user.length < 2) {
+      CreateAlertToast('닉네임은 2자 이상 입력해주세요');
       return false;
     }
-    if (username.length > 8) {
-      toast({
-        position: 'bottom',
-        render: () => (
-          <Box color="white" p={3} bg="red.500">
-            닉네임은 8자 이하로 입력해주세요
-          </Box>
-        ),
-      });
+    if (user.length > 8) {
+      CreateAlertToast('닉네임은 8자 이하 입력해주세요');
       return false;
     }
-    if (content.length === 0) {
-      toast({
-        position: 'bottom',
-        render: () => (
-          <Box color="white" p={3} bg="red.500">
-            내용을 입력해주세요.
-          </Box>
-        ),
-      });
+    if (text.length === 0) {
+      CreateAlertToast('내용을 입력해주세요.');
       return false;
     }
     return true;
   };
-  const onSubmitComment = e => {
+
+  const onSubmitComment = (e: FormEvent): void => {
     e.preventDefault();
-    if (!CheckValid()) return;
+    if (!CheckValid(username, content)) return;
     if (mode === 'Comment') {
       onSubmitForm(content, username);
       onClose();

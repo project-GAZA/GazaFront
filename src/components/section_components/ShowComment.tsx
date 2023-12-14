@@ -21,9 +21,9 @@ import {
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
 import MessageComponent from '@/components/MessageComponent';
 
-import { MessageType } from '@/types/index.d';
+import { dataTypes } from '@/types';
 
-const AddClassSortOn = str => {
+const AddClassSortOn = (str: string): void => {
   document.querySelectorAll('.sort').forEach(e => {
     if (e.innerHTML === str) {
       e.classList.add('SortOn');
@@ -43,12 +43,12 @@ const ShowComment = ({ messages, setSort, fetchSearch, fetchMessage }) => {
     setSort(sort.toLowerCase());
   };
 
-  const onClickSearch = e => {
+  const onClickSearch = (e: React.FormEvent): void => {
     e.preventDefault();
     fetchSearch(searchInput);
   };
 
-  const onChangeSearchInput = e => {
+  const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
 
@@ -95,7 +95,7 @@ const ShowComment = ({ messages, setSort, fetchSearch, fetchMessage }) => {
         </CommentHeader>
         <ShowCommentWrapper id="CommentStack">
           {Array.isArray(messages) &&
-            messages.map((v: MessageType) => (
+            messages.map((v: dataTypes.MessageType) => (
               <MessageComponent key={v.messageId} message={v} />
             ))}
         </ShowCommentWrapper>

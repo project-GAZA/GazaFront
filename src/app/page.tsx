@@ -11,8 +11,8 @@ import SendMail from '@/components/modal/SendMail';
 import ShareModal from '@/components/modal/ShareModal';
 
 const Home = () => {
-  const [mailModal, setMailModal] = useState(false);
-  const [shareModal, setShareModal] = useState(false);
+  const [mailModal, setMailModal] = useState<boolean>(false);
+  const [shareModal, setShareModal] = useState<boolean>(false);
 
   useEffect(() => {
     // 페이지가 로드될 때 스크롤 위치를 복원합니다.

@@ -14,13 +14,15 @@ import { SectionWrapper, LastSectionWrapper } from './common.style';
 
 import { fetchComments, fetchSearchComments } from '@/utils/api';
 
+import { dataTypes } from '@/types';
+
 const Main = () => {
   const toast = useToast();
   const [explain, setExplain] = useState(Korean);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Array<dataTypes.MessageType>>([]);
   const [sort, setSort] = useState('best');
 
-  const CreateErrorMessage = str => {
+  const CreateErrorMessage = (str: string) => {
     toast({
       position: 'bottom',
       render: () => (
@@ -32,7 +34,11 @@ const Main = () => {
     });
   };
 
-  const fetchAndSetMessage = async (sortstr: string, size = 100, page = 0) => {
+  const fetchAndSetMessage = async (
+    sortstr: string,
+    size: number = 100,
+    page: number = 0,
+  ) => {
     try {
       const result = await fetchComments(sortstr, size, page);
       setMessages(result);
@@ -43,8 +49,8 @@ const Main = () => {
 
   const SearchAndSetMessage = async (
     username: string,
-    size = 100,
-    page = 0,
+    size: number = 100,
+    page: number = 0,
   ) => {
     try {
       const result = await fetchSearchComments(username, size, page);

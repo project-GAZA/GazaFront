@@ -7,8 +7,6 @@ import {
   MobileMenuTitle,
   MobilLi,
   AWrapperMobile,
-  LangChanBox,
-  LangChanText,
   IconBoxMenu,
   IconInMenu,
   HamIcon,
@@ -17,13 +15,15 @@ import {
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
 import CallIcon from '@/assets/svg/CallIcon.svg';
 
+import { propsTypes } from '@/types';
+
 const MobileNav = ({
   onOpenMail,
   onOpenShare,
   isMobileNavShow,
   setIsMobileNavShow,
   activeSection,
-}) => {
+}: propsTypes.MobileNavPropsType) => {
   return (
     <MenuWrapper isOpen={isMobileNavShow}>
       <HamIcon

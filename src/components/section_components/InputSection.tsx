@@ -1,6 +1,6 @@
 'use clients';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   useToast,
   Modal,
@@ -8,7 +8,6 @@ import {
   useDisclosure,
   Box,
 } from '@chakra-ui/react';
-import styled from '@emotion/styled';
 
 import CommentModal from '@/components/modal/CommentModal';
 import DonateModal from '@/components/modal/DonateModal';
@@ -26,12 +25,19 @@ import {
   ComeCheerText,
   CommentInputButton,
   CommentInputText,
+  MessageBoxWrapper,
 } from './section.style';
 import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
 // import Icon_Present from '@/assets/svg/Icon_Present.svg';
 
-const InputSection = ({ fetchMessage, sort, InputSectionText }) => {
+import { propsTypes } from '@/types';
+
+const InputSection = ({
+  fetchMessage,
+  sort,
+  InputSectionText,
+}: propsTypes.InputSectionPropType) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
@@ -53,16 +59,15 @@ const InputSection = ({ fetchMessage, sort, InputSectionText }) => {
     });
   };
 
-  const ClickOnlyMessage = () => {
+  const ClickOnlyMessage = (): void => {
     setMode('message');
     onOpen();
   };
-  const ClickDonate = () => {
+  const ClickDonate = (): void => {
     setMode('donate');
     onOpen();
   };
 
-  useEffect(() => {}, []);
   return (
     <>
       <InputWrapper>
@@ -178,12 +183,3 @@ const InputSection = ({ fetchMessage, sort, InputSectionText }) => {
 };
 
 export default InputSection;
-
-const MessageBoxWrapper = styled.div`
-  @media (min-width: 726px) {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin-top: 20px;
-  }
-`;

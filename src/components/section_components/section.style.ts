@@ -468,3 +468,12 @@ export const MapWrapper = styled(Box)`
     padding-top: 80px;
   }
 `;
+
+export const MessageBoxWrapper = styled.div`
+  @media (min-width: 726px) {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+`;

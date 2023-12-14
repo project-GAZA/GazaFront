@@ -14,10 +14,11 @@ import {
   OneCommentHeader,
   LikeCountText,
 } from './component.style';
-import { MessageType } from '@/types/index.d';
 import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
 
-const MessageComponent = ({ message }: { message: MessageType }) => {
+import { dataTypes } from '@/types';
+
+const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
   const [like, setLike] = useState(message.likeCount);
 
   const onClickLike = async () => {

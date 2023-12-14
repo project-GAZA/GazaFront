@@ -14,7 +14,7 @@ import {
   SNSIconBox,
 } from './section.style';
 
-const onClickInsta = () => {
+const onClickInsta = (): void => {
   window.open('https://www.instagram.com/gazaschildreadhope/');
 };
 

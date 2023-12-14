@@ -1,6 +1,5 @@
 'use clients';
 
-import { Dispatch, SetStateAction, useState } from 'react';
 import { useToast, FormControl } from '@chakra-ui/react';
 import Image from 'next/image';
 
@@ -26,10 +25,9 @@ const ShareModal = () => {
   const toast = useToast();
 
   // Need Clipboard API
-  const onClickShareLink = async () => {
+  const onClickShareLink = async (): Promise<void> => {
     try {
       if (navigator) await navigator.clipboard.writeText(urlToCopy);
-
       // Show a success toast
       toast({
         title: '클립보드에 복사되었습니다!',
@@ -48,7 +46,7 @@ const ShareModal = () => {
     }
   };
 
-  const ShareSNSClick = sns => {
+  const ShareSNSClick = (sns: string): void => {
     const snsTitle = '가자지구 아이들에게 응원 메세지를 남겨주세요!';
     if (sns === 'facebook') {
       const url = `http://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(

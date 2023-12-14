@@ -19,12 +19,14 @@ import {
 } from './common.style';
 import MobileNav from '@/components/common/MobileNav';
 
-const Header = ({ onOpenMail, onOpenShare }) => {
-  const [isMobileNavShow, setIsMobileNavShow] = useState(false);
-  const [activeSection, setActiveSection] = useState(null);
+import { propsTypes } from '@/types';
+
+const Header = ({ onOpenMail, onOpenShare }: propsTypes.HeaderPropsType) => {
+  const [isMobileNavShow, setIsMobileNavShow] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       // 스크롤 바닥 위치 구함 아래로 내려갈수록 위치값이 커짐

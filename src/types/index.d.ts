@@ -1,6 +1,7 @@
-import { MessageType } from './props';
+import * as propsTypes from './props';
+import * as dataTypes from './data';
 
-export type { MessageType };
+export { propsTypes, dataTypes };
 
 declare global {
   interface Window {
