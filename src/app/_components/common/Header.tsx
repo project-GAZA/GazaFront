@@ -17,7 +17,7 @@ import {
   IconBox,
   IconInMenu,
 } from './common.style';
-import MobileNav from '@/components/common/MobileNav';
+import MobileNav from '@/app/_components/common/MobileNav';
 
 import { propsTypes } from '@/types';
 

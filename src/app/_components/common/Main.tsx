@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Box, useToast } from '@chakra-ui/react';
 
-import ShowComment from '@/components/section_components/ShowComment';
-import InputSection from '@/components/section_components/InputSection';
-import ShowInfo1 from '@/components/section_components/ShowInfo1';
-import ShowGazaMap from '@/components/section_components/ShowGazaMap';
-import ExplainSectoin from '@/components/section_components/ExplainSectoin';
+import ShowComment from '@/app/_components/section_components/ShowComment';
+import InputSection from '@/app/_components/section_components/InputSection';
+import ShowInfo1 from '@/app/_components/section_components/ShowInfo1';
+import ShowGazaMap from '@/app/_components/section_components/ShowGazaMap';
+import ExplainSectoin from '@/app/_components/section_components/ExplainSectoin';
 import { Korean } from '@/constants';
 
 import { SectionWrapper, LastSectionWrapper } from './common.style';

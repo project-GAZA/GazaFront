@@ -19,7 +19,7 @@ import {
   DividerLine,
 } from './section.style';
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
-import MessageComponent from '@/components/MessageComponent';
+import MessageComponent from '@/app/_components/MessageComponent';
 
 import { dataTypes } from '@/types';
 

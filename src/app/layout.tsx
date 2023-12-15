@@ -4,7 +4,7 @@
 import '@/style/globals.css';
 import { ChakraProvider } from '@chakra-ui/react';
 
-import GoogleAnalytics from '@/components/lib/GoogleAnalytics';
+import GoogleAnalytics from '@/app/_components/lib/GoogleAnalytics';
 
 export const metadata = {
   title: 'GAZAS CHILD READ HOPE',

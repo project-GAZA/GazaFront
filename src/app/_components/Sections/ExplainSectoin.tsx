@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import ExplainComponent from '@/components/ExplainComponent';
+import ExplainComponent from '@/app/_components/ExplainComponent';
 import Icon_Facebook from '@/assets/svg/Icon_Facebook.png';
 import Icon_insta from '@/assets/svg/Icon_insta.png';
 

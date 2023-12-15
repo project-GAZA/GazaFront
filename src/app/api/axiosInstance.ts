@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const DEV_API_URL =
-  process.env.NEXT_PUBLIC_API_URL || 'http://api.peace-in-gaza.kr:8080/';
+  process.env.NEXT_PUBLIC_API_URL || 'http://175.45.192.159:8080/';
 
-//  'http://175.45.192.159:8080/';
+//  '';
 
 const axiosInstance = axios.create({
   baseURL: `${DEV_API_URL}`,

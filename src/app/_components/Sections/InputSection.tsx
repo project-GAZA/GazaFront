@@ -9,8 +9,8 @@ import {
   Box,
 } from '@chakra-ui/react';
 
-import CommentModal from '@/components/modal/CommentModal';
-import DonateModal from '@/components/modal/DonateModal';
+import CommentModal from '@/app/_components/modal/Comment';
+import DonateModal from '@/app/_components/modal/DonateModal';
 
 import { fetchPostCommnet } from '@/utils/api';
 import {

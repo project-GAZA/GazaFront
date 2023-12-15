@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Text, ModalBody } from '@chakra-ui/react';
-import CommentModal from '@/components/modal/CommentModal';
+import CommentModal from '@/app/_components/modal/Comment';
 
 import {
   CommentModalWrapper,

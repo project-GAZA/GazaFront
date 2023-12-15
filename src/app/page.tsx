@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { Box, Modal, ModalOverlay } from '@chakra-ui/react';
 import * as ChannelService from '@channel.io/channel-web-sdk-loader';
 
-import Header from '@/components/common/Header';
-import Main from '@/components/common/Main';
+import Header from '@/app/_components/common/Header';
+import Main from '@/app/_components/common/Main';
 
-import SendMail from '@/components/modal/SendMail';
-import ShareModal from '@/components/modal/ShareModal';
+import SendMail from '@/app/_components/modal/SendMail';
+import ShareModal from '@/app/_components/modal/ShareModal';
 
 const Home = () => {
   const [mailModal, setMailModal] = useState<boolean>(false);
