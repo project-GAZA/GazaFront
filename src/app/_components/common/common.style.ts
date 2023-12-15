@@ -24,7 +24,7 @@ export const HeaderWrapper = styled(Box)`
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 
-  @media (min-width: 820px) {
+  @media (min-width: 890px) {
     padding: 0 calc((100vw - 1200px) / 2);
     height: 92px;
     display: flex;
@@ -54,7 +54,7 @@ export const HamIcon = styled(IconButton)`
   top: 15px;
   right: 24px;
   background: none !important;
-  @media (min-width: 820px) {
+  @media (min-width: 890px) {
     display: none;
     top: 24px;
   }
@@ -116,7 +116,7 @@ export const IconInMenu = styled(Box)`
 `;
 
 export const ChangeLanguageButton = styled.button`
-  @media (max-width: 820px) {
+  @media (max-width: 890px) {
     display: none;
   }
   width: 193px;
@@ -133,7 +133,7 @@ export const ChangeLanguageButton = styled.button`
 `;
 
 export const MenuInner = styled.ul`
-  @media (max-width: 820px) {
+  @media (max-width: 890px) {
     display: none;
   }
   display: flex;
@@ -192,7 +192,7 @@ export const MobileUlWrapper = styled.ul`
 `;
 
 export const IconBox = styled(Box)`
-  @media (max-width: 820px) {
+  @media (max-width: 890px) {
     display: none;
   }
   margin-left: 20px;
@@ -202,14 +202,14 @@ export const IconBox = styled(Box)`
 
 export const SectionWrapper = styled(Box)`
   height: 102vh;
-  @media (max-width: 820px) {
+  @media (max-width: 890px) {
     height: inherit;
   }
 `;
 export const LastSectionWrapper = styled(Box)`
   max-width: 900px;
   margin: 0 auto;
-  @media (max-width: 820px) {
+  @media (max-width: 890px) {
     height: inherit;
   }
 `;

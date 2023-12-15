@@ -20,7 +20,7 @@ export const ThirdSection = styled(Box)<{ bgsrc: string }>`
   background-image: url('${props => props.bgsrc}');
   padding: 80px 0px 80px 0px;
   height: 100vh;
-  @media (min-width: 820px) {
+  @media (min-width: 890px) {
     padding: 92px 0px 80px 0px;
   }
 `;
@@ -91,7 +91,7 @@ export const ShowCommentWrapper = styled(Stack)`
   overflow-y: auto;
   margin-top: 30px;
   padding: 16px;
-  @media (max-width: 820px) {
+  @media (max-width: 890px) {
     max-height: calc(99.85vh - 275px);
   }
 `;
@@ -106,9 +106,13 @@ export const GazaFullComponent = styled(Box)<{
   background-image: url('${props => props.bgsrc}');
   background-size: contain;
   background-repeat: no-repeat;
-  width: 221.73px;
-  height: 328.717px;
+  width: 241.73px;
+  height: 348.717px;
   flex-shrink: 0;
+  @media (min-width: 890px) {
+    width: 281.73px;
+    height: 388.717px;
+  }
 `;
 
 export const EarthTextWrapper = styled(Box)`
@@ -120,13 +124,9 @@ export const EarthTextWrapper = styled(Box)`
 `;
 export const SecondSection = styled(Box)`
   padding: 0 0 100px 0;
-  &.mobile {
-    background-size: 1000%;
-    background-position: 65% 50%;
-  }
-  @media (max-width: 820px) {
-    padding: 100px 0 100px 0;
-  }
+  background-size: 1000%;
+  background-position: 65% 50%;
+  padding: 100px 0 100px 0;
 `;
 
 export const SecondTopText = styled(Text)`
@@ -148,6 +148,9 @@ export const SecondExplainText = styled(Text)`
   font-style: normal;
   font-weight: 500;
   line-height: 160%;
+  & .redstrong {
+    color: #dc0000;
+  }
 `;
 
 export const EarthWrapper = styled(Box)<{ bgsrc: string }>`
@@ -194,7 +197,8 @@ export const FirstSction = styled(Box)<{ bgsrc: string }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (min-width: 820px) {
+  @media (min-width: 890px) {
+    margin-top: 90px;
     flex-direction: row;
     gap: 106px;
     height: 618px;
@@ -210,6 +214,10 @@ export const ShowGazaMapTitleFontOne = styled(Text)`
   font-weight: 400;
   line-height: 129.828%;
   z-index: 2;
+  @media (min-width: 890px) {
+    margin: 0;
+    font-size: 80px;
+  }
 `;
 
 export const Two = styled.strong`
@@ -218,6 +226,7 @@ export const Two = styled.strong`
 
 export const Section1Header = styled(Box)`
   padding-top: 45px;
+  text-align: center;
 `;
 
 export const SubTitle = styled(Text)`
@@ -228,6 +237,10 @@ export const SubTitle = styled(Text)`
   font-style: normal;
   font-weight: 700;
   line-height: 215%;
+  @media (min-width: 890px) {
+    margin: 0;
+    font-size: 25px;
+  }
 `;
 
 export const GazaEmpty = styled(Box)<{ bgsrc: string }>`
@@ -237,6 +250,10 @@ export const GazaEmpty = styled(Box)<{ bgsrc: string }>`
   width: 221.73px;
   height: 328.717px;
   flex-shrink: 0;
+  @media (min-width: 890px) {
+    width: 281.73px;
+    height: 388.717px;
+  }
 `;
 
 export const GoalTextBox = styled(Box)``;
@@ -376,7 +393,7 @@ export const InputMessageWrapper = styled(Box)`
   padding-top: 42px;
   margin-top: 30px;
   text-align: center;
-  @media (min-width: 824px) {
+  @media (min-width: 890px) {
     margin: 0;
   }
 `;
@@ -458,19 +475,19 @@ export const MoneyUpdateTextTemp = styled(Box)`
   text-align: center;
   left: 70px;
   top: -50px;
-  @media (max-width: 820px) {
+  @media (max-width: 890px) {
     bottom: 20%;
   }
 `;
 
 export const MapWrapper = styled(Box)`
-  @media (min-width: 820px) {
+  @media (min-width: 890px) {
     padding-top: 80px;
   }
 `;
 
 export const MessageBoxWrapper = styled.div`
-  @media (min-width: 726px) {
+  @media (min-width: 890px) {
     display: flex;
     gap: 12px;
     justify-content: center;
