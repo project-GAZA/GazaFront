@@ -62,6 +62,7 @@ export const HamIcon = styled(IconButton)`
 
 export const MobilLi = styled.li`
   margin-bottom: 27px;
+  cursor: pointer;
   &.on > a {
     padding: 7px 26px 7px 26px;
     -webkit-transition: background 0.25s linear;
@@ -142,6 +143,7 @@ export const MenuInner = styled.ul`
 `;
 
 export const MenuList = styled.li`
+  cursor: pointer;
   flex-shrink: 0;
   text-align: center;
   font-size: 20px;
@@ -212,4 +214,7 @@ export const LastSectionWrapper = styled(Box)`
   @media (max-width: 890px) {
     height: inherit;
   }
+`;
+export const LastSectionBackgroundWrapper = styled(Box)`
+  background: #f5f5f5;
 `;

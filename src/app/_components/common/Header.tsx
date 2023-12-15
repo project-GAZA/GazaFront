@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Box } from '@chakra-ui/react';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
-import CallIcon from '@/assets/svg/CallIcon.svg';
 
 import {
   MenuLink,
@@ -21,7 +20,7 @@ import MobileNav from '@/app/_components/common/MobileNav';
 
 import { propsTypes } from '@/types';
 
-const Header = ({ onOpenMail, onOpenShare }: propsTypes.HeaderPropsType) => {
+const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
   const [isMobileNavShow, setIsMobileNavShow] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('');
 
@@ -67,7 +66,6 @@ const Header = ({ onOpenMail, onOpenShare }: propsTypes.HeaderPropsType) => {
   return (
     <>
       <MobileNav
-        onOpenMail={onOpenMail}
         onOpenShare={onOpenShare}
         isMobileNavShow={isMobileNavShow}
         setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
@@ -77,9 +75,6 @@ const Header = ({ onOpenMail, onOpenShare }: propsTypes.HeaderPropsType) => {
         <IconBox>
           <IconInMenu onClick={onOpenShare}>
             <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
-          </IconInMenu>
-          <IconInMenu onClick={onOpenMail}>
-            <Image width={22} height={22} src={CallIcon.src} alt="CallIcon" />
           </IconInMenu>
         </IconBox>
         <MenuInner className="gnb">

@@ -13,12 +13,10 @@ import {
 } from './common.style';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
-import CallIcon from '@/assets/svg/CallIcon.svg';
 
 import { propsTypes } from '@/types';
 
 const MobileNav = ({
-  onOpenMail,
   onOpenShare,
   isMobileNavShow,
   setIsMobileNavShow,
@@ -93,9 +91,6 @@ const MobileNav = ({
         <IconBoxMenu>
           <IconInMenu onClick={onOpenShare}>
             <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
-          </IconInMenu>
-          <IconInMenu onClick={onOpenMail}>
-            <Image width={22} height={22} src={CallIcon.src} alt="CallIcon" />
           </IconInMenu>
         </IconBoxMenu>
       </MobileUlWrapper>

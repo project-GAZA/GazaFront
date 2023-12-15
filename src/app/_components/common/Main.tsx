@@ -8,7 +8,11 @@ import InputSection from '@/app/_components/Sections/InputSection';
 import ShowInfo1 from '@/app/_components/Sections/ShowInfo1';
 import ShowGazaMap from '@/app/_components/Sections/ShowGazaMap';
 import ExplainSectoin from '@/app/_components/Sections/ExplainSectoin';
-import { SectionWrapper, LastSectionWrapper } from './common.style';
+import {
+  SectionWrapper,
+  LastSectionWrapper,
+  LastSectionBackgroundWrapper,
+} from './common.style';
 
 import { fetchComments, fetchSearchComments } from '@/utils/api';
 import { dataTypes } from '@/types';
@@ -103,9 +107,11 @@ const Main = () => {
           InputSectionText={explain.InputSectionText}
         />
       </SectionWrapper>
-      <LastSectionWrapper data-anchor="section5" id="section5">
-        <ExplainSectoin explain={explain} />
-      </LastSectionWrapper>
+      <LastSectionBackgroundWrapper>
+        <LastSectionWrapper data-anchor="section5" id="section5">
+          <ExplainSectoin explain={explain} />
+        </LastSectionWrapper>
+      </LastSectionBackgroundWrapper>
     </Box>
   );
 };
