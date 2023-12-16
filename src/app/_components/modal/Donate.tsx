@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Text, ModalBody } from '@chakra-ui/react';
-import CommentModal from '@/app/_components/modal/Comment';
+import Comment from '@/app/_components/modal/Comment';
 
 import {
   CommentModalWrapper,
@@ -17,7 +17,7 @@ import {
 
 import { propsTypes } from '@/types';
 
-const DonateModal = ({
+const Donate = ({
   onClose,
   onSubmitMessage,
 }: propsTypes.DonateModalPropType) => {
@@ -76,8 +76,11 @@ const DonateModal = ({
     );
   }
   return (
-    <CommentModal
+    <Comment
       mode="Donate"
+      onSubmitForm={(t1, t2) => {
+        console.log(t1, t2);
+      }}
       onClose={onClose}
       setSaveInfo={setSaveInfo}
       setPage={setPage}
@@ -85,4 +88,4 @@ const DonateModal = ({
   );
 };
 
-export default DonateModal;
+export default Donate;

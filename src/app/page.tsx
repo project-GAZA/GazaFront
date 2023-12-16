@@ -7,11 +7,9 @@ import * as ChannelService from '@channel.io/channel-web-sdk-loader';
 import Header from '@/app/_components/common/Header';
 import Main from '@/app/_components/common/Main';
 
-import SendMail from '@/app/_components/modal/SendMail';
 import ShareModal from '@/app/_components/modal/ShareModal';
 
 const Home = () => {
-  const [mailModal, setMailModal] = useState<boolean>(false);
   const [shareModal, setShareModal] = useState<boolean>(false);
 
   useEffect(() => {
@@ -36,21 +34,9 @@ const Home = () => {
 
   return (
     <Box>
-      <Header
-        onOpenMail={() => setMailModal(true)}
-        onOpenShare={() => setShareModal(true)}
-      />
+      <Header onOpenShare={() => setShareModal(true)} />
 
       <Main />
-      <Modal
-        isCentered
-        onClose={() => setMailModal(false)}
-        isOpen={mailModal}
-        motionPreset="slideInBottom"
-      >
-        <ModalOverlay />
-        {mailModal && <SendMail />}
-      </Modal>
       <Modal
         isCentered
         onClose={() => setShareModal(false)}

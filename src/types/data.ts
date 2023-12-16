@@ -10,3 +10,15 @@ export interface ExplainType {
   title: string;
   content: string;
 }
+
+export interface InputSectionTextType {
+  topMessage: string;
+  topeMessage2: string;
+  topMessageInBox: string;
+  CheerMessage: string;
+  CheerMessageInfo: string;
+  CheerMessageGo: string;
+  DonateMessage: string;
+  DonateMessageInfo: string;
+  DonateMessageGo: string;
+}

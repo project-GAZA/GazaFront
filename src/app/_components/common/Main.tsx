@@ -16,6 +16,7 @@ import {
 
 import { fetchComments, fetchSearchComments } from '@/utils/api';
 import { dataTypes } from '@/types';
+import { errorToString } from '@/utils/usefull';
 import { Korean } from '@/constants';
 
 const Main = () => {
@@ -45,7 +46,7 @@ const Main = () => {
       const result = await fetchComments(sortstr, size, page);
       setMessages(result);
     } catch (error) {
-      CreateErrorMessage(error.message);
+      CreateErrorMessage(errorToString(error));
     }
   };
 
@@ -58,7 +59,7 @@ const Main = () => {
       const result = await fetchSearchComments(username, size, page);
       setMessages(result);
     } catch (error) {
-      CreateErrorMessage(error.message);
+      CreateErrorMessage(errorToString(error));
     }
   };
 

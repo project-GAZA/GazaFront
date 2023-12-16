@@ -1,15 +1,23 @@
 import styled from '@emotion/styled';
 import { IconButton, Box, Text } from '@chakra-ui/react';
-import { Link as ScrollLink } from 'react-scroll';
 
-export const MenuLink = styled(ScrollLink)`
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 18px;
-  letter-spacing: -0.3px;
-  padding: 7px 16px;
-  border-radius: 16px;
-`;
+export const MenuLink = {
+  fontSize: '18px',
+  fontWeight: 'bold',
+  lineHeight: '18px',
+  letterSpacing: '-0.3px',
+  padding: '7px 16px',
+  borderRadius: '16px',
+};
+export const AWrapperMobile = {
+  textAlign: 'center' as const,
+  fontFamily: 'NanumSquareNeo',
+  fontSize: '18px',
+  fontStyle: 'normal',
+  fontWeight: 700,
+  lineHeight: '165%',
+  marginBottom: '27px',
+};
 
 export const HeaderWrapper = styled(Box)`
   position: fixed;
@@ -177,16 +185,6 @@ export const MenuWrapper = styled.div<{ isOpen: boolean }>`
   background-color: #fff;
 `;
 
-export const AWrapperMobile = styled(ScrollLink)`
-  color: #000;
-  text-align: center;
-  font-family: NanumSquareNeo;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 165%; /* 29.7px */
-  margin-bottom: 27px;
-`;
 export const MobileUlWrapper = styled.ul`
   list-style: none;
   padding-top: 80px;

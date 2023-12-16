@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { CiMenuBurger } from 'react-icons/ci';
 import Image from 'next/image';
 import { Box } from '@chakra-ui/react';
+import { Link as ScrollLink } from 'react-scroll';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
 
@@ -22,7 +23,7 @@ import { propsTypes } from '@/types';
 
 const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
   const [isMobileNavShow, setIsMobileNavShow] = useState<boolean>(false);
-  const [activeSection, setActiveSection] = useState<string>('');
+  const [activeSection, setActiveSection] = useState<string | undefined>('');
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -39,7 +40,7 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
       ];
 
       // Find the section that is currently in view
-      const active = sections.find(section => {
+      const active: string | undefined = sections.find(section => {
         const target = document.getElementById(section);
         if (target) {
           // 타겟의 바닥 위치 구함
@@ -79,22 +80,40 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
         </IconBox>
         <MenuInner className="gnb">
           <MenuList className={activeSection === 'section3' ? 'on' : ''}>
-            <MenuLink to="section3" spy smooth duration={800}>
+            <ScrollLink
+              style={MenuLink}
+              to="section3"
+              spy
+              smooth
+              duration={800}
+            >
               응원 메세지 보기
-            </MenuLink>
+            </ScrollLink>
           </MenuList>
           <MenuList
             className={activeSection === 'section4' ? 'on' : ''}
             style={{ marginRight: '50px' }}
           >
-            <MenuLink to="section4" spy smooth duration={800}>
+            <ScrollLink
+              style={MenuLink}
+              to="section4"
+              spy
+              smooth
+              duration={800}
+            >
               응원 메세지 남기기
-            </MenuLink>
+            </ScrollLink>
           </MenuList>
           <MenuList className={activeSection === 'section5' ? 'on' : ''}>
-            <MenuLink to="section5" spy smooth duration={800}>
+            <ScrollLink
+              style={MenuLink}
+              to="section5"
+              spy
+              smooth
+              duration={800}
+            >
               프로젝트 설명
-            </MenuLink>
+            </ScrollLink>
           </MenuList>
         </MenuInner>
         {/* <ChangeLanguageButton>한국어/영어</ChangeLanguageButton> */}

@@ -25,7 +25,7 @@ const CommentModal = ({
   mode = 'Comment',
   setSaveInfo,
   setPage,
-}: propsTypes.CommentModalPropType) => {
+}: propsTypes.CommentPropType) => {
   const [content, setContent] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const toast = useToast();
@@ -63,11 +63,12 @@ const CommentModal = ({
       onSubmitForm(content, username);
       onClose();
     } else {
-      setSaveInfo({
-        content,
-        username,
-      });
-      setPage(1);
+      if (setSaveInfo)
+        setSaveInfo({
+          content,
+          username,
+        });
+      if (setPage) setPage(1);
     }
   };
 

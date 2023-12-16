@@ -1,22 +1,20 @@
 import { Dispatch, SetStateAction } from 'react';
-import { MessageType } from './data';
+import { InputSectionTextType, MessageType } from './data';
 
 export interface HeaderPropsType {
-  onOpenMail(): void;
   onOpenShare(): void;
 }
 
 export interface MobileNavPropsType {
-  onOpenMail(): void;
   onOpenShare(): void;
   isMobileNavShow: boolean;
   setIsMobileNavShow(): void;
-  activeSection: string;
+  activeSection: string | undefined;
 }
 
-export interface CommentModalPropType {
+export interface CommentPropType {
   onClose: () => void;
-  onSubmitForm?: (content: string, username: string) => void;
+  onSubmitForm: (content: string, username: string) => void;
   mode?: string;
   setSaveInfo?: Dispatch<
     SetStateAction<{
@@ -29,7 +27,7 @@ export interface CommentModalPropType {
 
 export interface DonateModalPropType {
   onClose: () => void;
-  onSubmitMessage?: (content: string, username: string) => void;
+  onSubmitMessage: (content: string, username: string) => void;
 }
 
 export interface ShowCommentPropType {
@@ -42,15 +40,5 @@ export interface ShowCommentPropType {
 export interface InputSectionPropType {
   fetchMessage: (sort: string) => Promise<void>;
   sort: string;
-  InputSectionText?: {
-    topMessage: string;
-    topeMessage2: string;
-    topMessageInBox: string;
-    CheerMessage: string;
-    CheerMessageInfo: string;
-    CheerMessageGo: string;
-    DonateMessage: string;
-    DonateMessageInfo: string;
-    DonateMessageGo: string;
-  };
+  InputSectionText: InputSectionTextType;
 }

@@ -1,15 +1,17 @@
 import Image from 'next/image';
 import { CiMenuBurger } from 'react-icons/ci';
+import { Link as ScrollLink } from 'react-scroll';
+
 import {
   MenuWrapper,
   EmptyBox,
   MobileUlWrapper,
   MobileMenuTitle,
   MobilLi,
-  AWrapperMobile,
   IconBoxMenu,
   IconInMenu,
   HamIcon,
+  AWrapperMobile,
 } from './common.style';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
@@ -39,7 +41,8 @@ const MobileNav = ({
           className={activeSection === 'section3' ? 'on' : ''}
           data-menuanchor="section3"
         >
-          <AWrapperMobile
+          <ScrollLink
+            style={AWrapperMobile}
             to="section3"
             spy
             smooth
@@ -49,13 +52,14 @@ const MobileNav = ({
             }}
           >
             응원메세지 보기
-          </AWrapperMobile>
+          </ScrollLink>
         </MobilLi>
         <MobilLi
           className={activeSection === 'section4' ? 'on' : ''}
           data-menuanchor="section4"
         >
-          <AWrapperMobile
+          <ScrollLink
+            style={AWrapperMobile}
             to="section4"
             spy
             smooth
@@ -65,13 +69,14 @@ const MobileNav = ({
             }}
           >
             응원메세지 남기기
-          </AWrapperMobile>
+          </ScrollLink>
         </MobilLi>
         <MobilLi
           className={activeSection === 'section5' ? 'on' : ''}
           data-menuanchor="section5"
         >
-          <AWrapperMobile
+          <ScrollLink
+            style={AWrapperMobile}
             to="section5"
             spy
             smooth
@@ -81,7 +86,7 @@ const MobileNav = ({
             }}
           >
             프로젝트 소개
-          </AWrapperMobile>
+          </ScrollLink>
         </MobilLi>
         {/* 
         <LangChanBox>

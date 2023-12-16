@@ -53,11 +53,14 @@ const ShowGazaMap = () => {
       const curMoney = await fetchGetDonateMoney();
       setCurrentMoneny(curMoney || 0);
     } catch (error) {
+      let message: string;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
       toast({
         position: 'bottom',
         render: () => (
           <Box color="white" p={3} bg="red.500">
-            에러내용: {error.message} <br />
+            에러내용: {message} <br />
             서버에러가 났습니다 관리자에게 문의해주세요.
           </Box>
         ),

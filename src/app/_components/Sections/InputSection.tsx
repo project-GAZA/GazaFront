@@ -9,8 +9,8 @@ import {
   Box,
 } from '@chakra-ui/react';
 
-import CommentModal from '@/app/_components/modal/Comment';
-import DonateModal from '@/app/_components/modal/Donate';
+import Comment from '@/app/_components/modal/Comment';
+import Donate from '@/app/_components/modal/Donate';
 
 import { fetchPostCommnet } from '@/utils/api';
 import {
@@ -172,10 +172,10 @@ const InputSection = ({
       >
         <ModalOverlay />
         {mode === 'message' && (
-          <CommentModal onSubmitForm={onClickSubmit} onClose={onClose} />
+          <Comment onSubmitForm={onClickSubmit} onClose={onClose} />
         )}
         {mode === 'donate' && (
-          <DonateModal onSubmitMessage={onClickSubmit} onClose={onClose} />
+          <Donate onSubmitMessage={onClickSubmit} onClose={onClose} />
         )}
       </Modal>
     </>
