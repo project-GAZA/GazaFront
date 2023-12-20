@@ -200,19 +200,23 @@ export const IconBox = styled(Box)`
   gap: 11px;
 `;
 
-export const SectionWrapper = styled(Box)`
-  height: 102vh;
-  @media (max-width: 890px) {
-    height: inherit;
-  }
-`;
-export const LastSectionWrapper = styled(Box)`
-  max-width: 900px;
-  margin: 0 auto;
-  @media (max-width: 890px) {
-    height: inherit;
-  }
-`;
-export const LastSectionBackgroundWrapper = styled(Box)`
-  background: #f5f5f5;
-`;
+const Common = {
+  SectionWrapper: styled(Box)`
+    height: 102vh;
+    @media (max-width: 890px) {
+      height: inherit;
+    }
+  `,
+  LastSectionWrapper: styled(Box)`
+    max-width: 900px;
+    margin: 0 auto;
+    @media (max-width: 890px) {
+      height: inherit;
+    }
+  `,
+  LastSectionBackgroundWrapper: styled(Box)`
+    background: #f5f5f5;
+  `,
+};
+
+export default Common;

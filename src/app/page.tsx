@@ -10,7 +10,6 @@ import Main from '@/app/_components/common/Main';
 import ShareModal from '@/app/_components/modal/ShareModal';
 
 const Home = () => {
-  const test = 'hi';
   const [shareModal, setShareModal] = useState<boolean>(false);
 
   useEffect(() => {
@@ -27,17 +26,21 @@ const Home = () => {
       localStorage.setItem('scrollPosition', window.scrollY.toString());
     });
 
-    ChannelService.loadScript();
-    ChannelService.boot({
-      pluginKey: '2826a0c1-d132-47f1-824e-1067fc765688', // fill your plugin key
-    });
+    // 채널톡 로드
+    if (process.env.NEXT_PUBLIC_CHANNELTALK) {
+      const pluginKey = process.env.NEXT_PUBLIC_CHANNELTALK;
+      ChannelService.loadScript();
+      ChannelService.boot({
+        pluginKey,
+      });
+    }
   });
 
   return (
     <Box>
       <Header onOpenShare={() => setShareModal(true)} />
-
       <Main />
+
       <Modal
         isCentered
         onClose={() => setShareModal(false)}
@@ -45,7 +48,7 @@ const Home = () => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay />
-        {shareModal && <ShareModal />}
+        <ShareModal />
       </Modal>
     </Box>
   );

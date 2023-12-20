@@ -5,10 +5,14 @@ export async function GET(req) {
   try {
     const { searchParams } = req.nextUrl;
     const size = searchParams.get('size');
+    const username: string = searchParams.get('username');
     const sort = searchParams.get('sort');
     const page = searchParams.get('page');
+
     const response = await axiosInstance.get(
-      `api/home?page=${page}&size=${size}&sort=${sort}`,
+      `api/home?page=${page}&size=${size}&sort=${sort}${
+        username !== null && `&username=${username}`
+      }`,
     );
 
     if (response.status === 200) {
