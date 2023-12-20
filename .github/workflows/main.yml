@@ -27,5 +27,5 @@ jobs:
             rm -rf .next/
             yarn devbuild
             pm2 kill
-            pm2 start "yarn start" --watch
+            pm2 start "yarn devstart" --watch
             netstat -lntp
