@@ -18,8 +18,11 @@ jobs:
           script: |
             whoami
             cd GazaFront
+            pwd
             git pull origin dev
             pm2 kill
+            netstat -lntp
             yarn install
             yarn build
             pm2 start "yarn start" --watch
+            netstat -lntp
