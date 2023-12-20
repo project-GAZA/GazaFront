@@ -3,5 +3,5 @@
   publish = "build"
 
 [context.production.environment]
-  NEXT_PUBLIC_API_URL="http://api.gazas-child-read-hope.kr:8080/"
+  NEXT_PUBLIC_API_URL="http://223.130.139.138:8080/"
   NEXT_PUBLIC_GOOGLE_ANALYTICS="G-7PVEJHBZC0"
