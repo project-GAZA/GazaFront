@@ -22,7 +22,5 @@ jobs:
             git pull origin dev
             pm2 kill
             netstat -lntp
-            yarn install
-            yarn build
-            pm2 start "yarn start" --watch
+            pm2 start "yarn dev" --watch
             netstat -lntp
