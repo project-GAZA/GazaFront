@@ -19,12 +19,5 @@ jobs:
             whoami
             cd GazaFront
             pwd
-            echo $NVM_DIR
-            nvm -v
-            nvm use 21
-            nvm ls
             git pull origin dev
-            pm2 kill
-            netstat -lntp
-            pm2 start "yarn dev" --watch
             netstat -lntp
