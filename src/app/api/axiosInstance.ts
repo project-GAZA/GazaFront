@@ -7,8 +7,6 @@ if (process.env.NEXT_LOCAL_API_URL) {
 } else {
   DEV_API_URL = process.env.NEXT_PUBLIC_API_URL;
 }
-console.log(DEV_API_URL);
-
 //  '';
 
 const axiosInstance = axios.create({
