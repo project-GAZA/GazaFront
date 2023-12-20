@@ -19,6 +19,8 @@ jobs:
             whoami
             cd GazaFront
             pwd
+            nvm use 21
+            nvm ls
             git pull origin dev
             pm2 kill
             netstat -lntp
