@@ -46,4 +46,5 @@ const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
     </OneCommentWrapper>
   );
 };
+
 export default MessageComponent;

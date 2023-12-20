@@ -7,7 +7,9 @@ export const OneCommentWrapper = styled(Box)`
   background: #fff;
   box-shadow: 0px 2px 20.5px 0px rgba(160, 160, 160, 0.25);
   padding: 20px 22px 15px 22px;
+  margin-bottom: 10px; // 여기에 추가
 `;
+
 export const NickName = styled(Text)`
   text-align: center;
   font-size: 14px;

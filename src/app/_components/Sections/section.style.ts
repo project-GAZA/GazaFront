@@ -494,3 +494,33 @@ export const MessageBoxWrapper = styled.div`
     margin-top: 20px;
   }
 `;
+
+export const StyledScrollbar = styled.div`
+  overflow-x: auto;
+  overflow-y: auto;
+  padding-right: 10px; // 여기에 추가
+
+  ::-webkit-scrollbar {
+    width: 13px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(
+      to right,
+      transparent,
+      transparent calc(50% - 0.75px),
+      #ffffff8a calc(50% - 0.75px),
+      #ffffff8a calc(50% + 0.75px),
+      transparent calc(50% + 0.75px),
+      transparent
+    );
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 5px;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #ffffff8a;
+`;

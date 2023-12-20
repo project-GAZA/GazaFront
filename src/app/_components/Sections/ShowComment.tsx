@@ -14,6 +14,7 @@ import {
   TitleBox,
   ThirdHeaderText,
   ThirdHeaderTextStrong,
+  StyledScrollbar,
   CommentWrapper,
   CommentHeader,
   CommentSortButton,
@@ -95,10 +96,12 @@ const ShowComment = ({ messages, setSort, fetchSearch, fetchMessage }) => {
           </Search>
         </CommentHeader>
         <ShowCommentWrapper id="CommentStack">
-          {Array.isArray(messages) &&
-            messages.map((v: dataTypes.MessageType) => (
-              <MessageComponent key={v.messageId} message={v} />
-            ))}
+          <StyledScrollbar>
+            {Array.isArray(messages) &&
+              messages.map((v: dataTypes.MessageType) => (
+                <MessageComponent key={v.messageId} message={v} />
+              ))}
+          </StyledScrollbar>
         </ShowCommentWrapper>
       </CommentWrapper>
     </ThirdSection>
