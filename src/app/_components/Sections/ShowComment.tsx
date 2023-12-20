@@ -2,7 +2,12 @@
 
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+
 import useWindowSize from '@/hooks/useWindowSize';
+import { dataTypes } from '@/types';
+
+import Main_firefly from '@/assets/svg/Main_firefly.jpg';
+import MessageComponent from '@/app/_components/MessageComponent';
 
 import {
   ThirdSection,
@@ -18,10 +23,6 @@ import {
   ShowCommentWrapper,
   DividerLine,
 } from './section.style';
-import Main_firefly from '@/assets/svg/Main_firefly.jpg';
-import MessageComponent from '@/app/_components/MessageComponent';
-
-import { dataTypes } from '@/types';
 
 const AddClassSortOn = (str: string): void => {
   document.querySelectorAll('.sort').forEach(e => {

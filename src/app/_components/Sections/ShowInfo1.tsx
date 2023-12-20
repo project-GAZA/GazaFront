@@ -1,5 +1,8 @@
 'use client';
 
+import Icon_Earth from '@/assets/svg/Icon_Earth.png';
+import EarthPin from '@/assets/svg/EarthPin.svg';
+import PinShadowIcon from '@/assets/svg/PinShadow.svg';
 import {
   EarthTextWrapper,
   SecondSection,
@@ -10,9 +13,6 @@ import {
   PinShadow,
   EarthText,
 } from './section.style';
-import Icon_Earth from '@/assets/svg/Icon_Earth.png';
-import EarthPin from '@/assets/svg/EarthPin.svg';
-import PinShadowIcon from '@/assets/svg/PinShadow.svg';
 
 const ShowInfo = ({ ShowInfoText }) => {
   return (

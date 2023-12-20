@@ -13,6 +13,10 @@ import Comment from '@/app/_components/modal/Comment';
 import Donate from '@/app/_components/modal/Donate';
 
 import { fetchPostCommnet } from '@/utils/api';
+import { propsTypes } from '@/types';
+import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
+import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
+// import Icon_Present from '@/assets/svg/Icon_Present.svg';
 import {
   InputWrapper,
   InputTopMessage,
@@ -27,11 +31,6 @@ import {
   CommentInputText,
   MessageBoxWrapper,
 } from './section.style';
-import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
-import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
-// import Icon_Present from '@/assets/svg/Icon_Present.svg';
-
-import { propsTypes } from '@/types';
 
 const InputSection = ({
   fetchMessage,

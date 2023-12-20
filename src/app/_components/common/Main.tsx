@@ -8,16 +8,16 @@ import InputSection from '@/app/_components/Sections/InputSection';
 import ShowInfo1 from '@/app/_components/Sections/ShowInfo1';
 import ShowGazaMap from '@/app/_components/Sections/ShowGazaMap';
 import ExplainSectoin from '@/app/_components/Sections/ExplainSectoin';
-import {
-  SectionWrapper,
-  LastSectionWrapper,
-  LastSectionBackgroundWrapper,
-} from './common.style';
 
 import { fetchComments, fetchSearchComments } from '@/utils/api';
 import { dataTypes } from '@/types';
 import { errorToString } from '@/utils/usefull';
 import { Korean } from '@/constants';
+import {
+  SectionWrapper,
+  LastSectionWrapper,
+  LastSectionBackgroundWrapper,
+} from './common.style';
 
 const Main = () => {
   const toast = useToast();

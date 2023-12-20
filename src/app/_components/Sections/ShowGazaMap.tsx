@@ -3,6 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import { Box, useToast } from '@chakra-ui/react';
 
+import IconMessage from '@/assets/svg/IconMessage.svg';
+import GazaFullImage from '@/assets/svg/GazaFull.svg';
+import GazaEmptySvg from '@/assets/svg/GazaEmpty.svg';
+
+import { fetchGetDonateMoney, fetchGetMessageCount } from '@/utils/api';
+
+import { backgrounds } from '@/constants/index';
 import {
   GazaFullComponent,
   FirstSction,
@@ -22,14 +29,6 @@ import {
   MoneyUpdateTextTemp,
   MapWrapper,
 } from './section.style';
-
-import IconMessage from '@/assets/svg/IconMessage.svg';
-import GazaFullImage from '@/assets/svg/GazaFull.svg';
-import GazaEmptySvg from '@/assets/svg/GazaEmpty.svg';
-
-import { fetchGetDonateMoney, fetchGetMessageCount } from '@/utils/api';
-
-import { backgrounds } from '@/constants/index';
 
 const calculatePercent = (goal: number, cur: number) => {
   const ratio = (cur / goal) * 100;

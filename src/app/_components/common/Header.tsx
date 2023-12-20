@@ -8,6 +8,9 @@ import { Link as ScrollLink } from 'react-scroll';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
 
+import MobileNav from '@/app/_components/common/MobileNav';
+
+import { propsTypes } from '@/types';
 import {
   MenuLink,
   HeaderWrapper,
@@ -17,9 +20,6 @@ import {
   IconBox,
   IconInMenu,
 } from './common.style';
-import MobileNav from '@/app/_components/common/MobileNav';
-
-import { propsTypes } from '@/types';
 
 const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
   const [isMobileNavShow, setIsMobileNavShow] = useState<boolean>(false);

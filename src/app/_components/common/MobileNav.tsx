@@ -2,6 +2,9 @@ import Image from 'next/image';
 import { CiMenuBurger } from 'react-icons/ci';
 import { Link as ScrollLink } from 'react-scroll';
 
+import ShareIcon from '@/assets/svg/ShareIcon.svg';
+
+import { propsTypes } from '@/types';
 import {
   MenuWrapper,
   EmptyBox,
@@ -13,10 +16,6 @@ import {
   HamIcon,
   AWrapperMobile,
 } from './common.style';
-
-import ShareIcon from '@/assets/svg/ShareIcon.svg';
-
-import { propsTypes } from '@/types';
 
 const MobileNav = ({
   onOpenShare,

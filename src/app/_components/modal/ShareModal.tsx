@@ -3,6 +3,12 @@
 import { useToast, FormControl } from '@chakra-ui/react';
 import Image from 'next/image';
 
+import DocIcon from '@/assets/svg/DocIcon.svg';
+import FacebookIcon from '@/assets/svg/FacebookIcon.svg';
+import InstaIcon from '@/assets/svg/InstaIcon.svg';
+import KakaoIcon from '@/assets/svg/KakaoIcon.svg';
+
+import { urlToCopy } from '@/constants/index';
 import {
   CommentModalHeader,
   CommentModalHeaderText,
@@ -14,12 +20,6 @@ import {
   ShareIconBox,
   IconText,
 } from './modal.style';
-import DocIcon from '@/assets/svg/DocIcon.svg';
-import FacebookIcon from '@/assets/svg/FacebookIcon.svg';
-import InstaIcon from '@/assets/svg/InstaIcon.svg';
-import KakaoIcon from '@/assets/svg/KakaoIcon.svg';
-
-import { urlToCopy } from '@/constants/index';
 
 const ShareModal = () => {
   const toast = useToast();

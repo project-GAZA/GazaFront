@@ -10,6 +10,7 @@ import Main from '@/app/_components/common/Main';
 import ShareModal from '@/app/_components/modal/ShareModal';
 
 const Home = () => {
+  const test = 'hi';
   const [shareModal, setShareModal] = useState<boolean>(false);
 
   useEffect(() => {
