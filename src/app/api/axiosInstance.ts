@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-const DEV_API_URL =
-  process.env.NEXT_LOCAL_API_URL || process.env.NEXT_PUBLIC_API_URL;
+let DEV_API_URL: undefined | string = '';
+
+if (process.env.NEXT_LOCAL_API_URL) {
+  DEV_API_URL = process.env.NEXT_LOCAL_API_URL;
+} else {
+  DEV_API_URL = process.env.NEXT_PUBLIC_API_URL;
+}
+console.log(DEV_API_URL);
 
 //  '';
 
