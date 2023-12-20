@@ -20,4 +20,10 @@ jobs:
             cd GazaFront
             pwd
             git pull origin dev
+            source ~/.nvm/nvm.sh
+            nvm -v
+            nvm use 21
+            yarn install
+            pm2 kill
+            pm2 start "yarn devbuild" --watch
             netstat -lntp
