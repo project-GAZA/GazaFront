@@ -1,9 +1,8 @@
 'use clients';
 
 import { Accordion, AccordionItem, AccordionIcon } from '@chakra-ui/react';
-import { ExplainButton, ExplainText, ArcdText } from './component.style';
-
 import { dataTypes } from '@/types';
+import { ExplainButton, ExplainText, ArcdText } from './component.style';
 
 const ExplainComponent = ({ explain }) => {
   return (

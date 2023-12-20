@@ -5,6 +5,7 @@
 import { FormEvent, useState } from 'react';
 import { useToast, FormControl, Box } from '@chakra-ui/react';
 
+import { propsTypes } from '@/types';
 import {
   CommentModalWrapper,
   CommentModalHeader,
@@ -16,8 +17,6 @@ import {
   CommentModalSubmit,
   CommentModalInputNickname,
 } from './modal.style';
-
-import { propsTypes } from '@/types';
 
 const CommentModal = ({
   onClose,

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Text, ModalBody } from '@chakra-ui/react';
 import Comment from '@/app/_components/modal/Comment';
 
+import { propsTypes } from '@/types';
 import {
   CommentModalWrapper,
   ModalCloseIcon,
@@ -14,8 +15,6 @@ import {
   DonateModalSubmit,
   DonateExplainBox,
 } from './modal.style';
-
-import { propsTypes } from '@/types';
 
 const Donate = ({
   onClose,

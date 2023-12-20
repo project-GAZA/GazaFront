@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 
+import { dataTypes } from '@/types';
+import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
 import {
   NickName,
   OneCommentWrapper,
@@ -14,9 +16,6 @@ import {
   OneCommentHeader,
   LikeCountText,
 } from './component.style';
-import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
-
-import { dataTypes } from '@/types';
 
 const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
   const [like, setLike] = useState(message.likeCount);
