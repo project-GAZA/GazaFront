@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-// eslint-disable-next-line import/no-named-as-default
-import axiosInstance from '@/app/api/AxiosInstance';
+import axiosInstance from '@/app/api/axiosInstance';
 
 export async function GET(req) {
   try {
