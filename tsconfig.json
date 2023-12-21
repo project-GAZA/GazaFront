@@ -11,7 +11,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noImplicitAny": false,
     "jsx": "preserve",
     "plugins": [
       {

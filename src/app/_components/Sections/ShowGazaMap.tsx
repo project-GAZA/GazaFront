@@ -1,7 +1,7 @@
 'use clients';
 
 import React, { useEffect, useState } from 'react';
-import { Box, useToast } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import IconMessage from '@/assets/svg/IconMessage.svg';
 import GazaFullImage from '@/assets/svg/GazaFull.svg';
@@ -10,6 +10,7 @@ import GazaEmptySvg from '@/assets/svg/GazaEmpty.svg';
 import { fetchGetDonateMoney, fetchGetMessageCount } from '@/utils/api';
 
 import { backgrounds } from '@/constants/index';
+import useCustomToast from '@/hooks/useCustomToast';
 import {
   GazaFullComponent,
   FirstSction,
@@ -36,7 +37,7 @@ const calculatePercent = (goal: number, cur: number) => {
 };
 
 const ShowGazaMap = () => {
-  const toast = useToast();
+  const toast = useCustomToast();
   const goals: Array<number> = [1000000]; // 목표금액 배열
   const [percentage, setPercentage] = useState<number>(0); // 80이 안보이는 거임!
   const [background, setBackground] = useState<string>('');
@@ -52,18 +53,7 @@ const ShowGazaMap = () => {
       const curMoney = await fetchGetDonateMoney();
       setCurrentMoneny(curMoney || 0);
     } catch (error) {
-      let message: string;
-      if (error instanceof Error) message = error.message;
-      else message = String(error);
-      toast({
-        position: 'bottom',
-        render: () => (
-          <Box color="white" p={3} bg="red.500">
-            에러내용: {message} <br />
-            서버에러가 났습니다 관리자에게 문의해주세요.
-          </Box>
-        ),
-      });
+      toast.createErrorMessage(error);
     }
   };
 
