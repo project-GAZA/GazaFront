@@ -6,17 +6,7 @@ import { FormEvent, useState } from 'react';
 import { useToast, FormControl, Box } from '@chakra-ui/react';
 
 import { propsTypes } from '@/types';
-import {
-  CommentModalWrapper,
-  CommentModalHeader,
-  CommentModalHeaderText,
-  ModalCloseIcon,
-  CommentModalInput,
-  CommentModalBody,
-  ModalCommentAlertText,
-  CommentModalSubmit,
-  CommentModalInputNickname,
-} from './modal.style';
+import Modal from './modal.style';
 
 const CommentModal = ({
   onClose,
@@ -73,17 +63,17 @@ const CommentModal = ({
   };
 
   return (
-    <CommentModalWrapper>
-      <CommentModalHeader>
-        <CommentModalHeaderText>
+    <Modal.CommentModalWrapper>
+      <Modal.CommentModalHeader>
+        <Modal.CommentModalHeaderText>
           {ModalText.CommentHeader}
-        </CommentModalHeaderText>
-      </CommentModalHeader>
-      <ModalCloseIcon width={12} height={12} />
+        </Modal.CommentModalHeaderText>
+      </Modal.CommentModalHeader>
+      <Modal.ModalCloseIcon width={12} height={12} />
       <form onSubmit={onSubmitComment}>
         <FormControl as="fieldset">
-          <CommentModalBody>
-            <CommentModalInput
+          <Modal.CommentModalBody>
+            <Modal.CommentModalInput
               value={content}
               onChange={e => {
                 setContent(e.target.value);
@@ -92,25 +82,29 @@ const CommentModal = ({
               mb={2} // 하단 마진 추가
               resize="none"
             />
-            <ModalCommentAlertText
+            <Modal.ModalCommentAlertText
               dangerouslySetInnerHTML={{ __html: ModalText.CommentInfoText }}
             />
-          </CommentModalBody>
-          <CommentModalInputNickname
+          </Modal.CommentModalBody>
+          <Modal.CommentModalInputNickname
             value={username}
             onChange={e => {
               setUsername(e.target.value);
             }}
             placeholder={ModalText.CommentInputNickPlaceholder}
           />
-          <CommentModalSubmit type="submit" variant="solid" colorScheme="blue">
+          <Modal.CommentModalSubmit
+            type="submit"
+            variant="solid"
+            colorScheme="blue"
+          >
             {mode === 'Comment'
               ? ModalText.CommentButtonText
               : ModalText.DonateCommentButtonText}
-          </CommentModalSubmit>
+          </Modal.CommentModalSubmit>
         </FormControl>
       </form>
-    </CommentModalWrapper>
+    </Modal.CommentModalWrapper>
   );
 };
 

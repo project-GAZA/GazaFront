@@ -5,16 +5,7 @@ import { Text, ModalBody } from '@chakra-ui/react';
 import Comment from '@/app/_components/modal/Comment';
 
 import { propsTypes } from '@/types';
-import {
-  CommentModalWrapper,
-  ModalCloseIcon,
-  CommentModalHeaderText,
-  DonateModalHeader,
-  DonateSubText,
-  DonateModalLinkBox,
-  DonateModalSubmit,
-  DonateExplainBox,
-} from './modal.style';
+import Modal from './modal.style';
 
 const Donate = ({
   onClose,
@@ -41,21 +32,23 @@ const Donate = ({
   };
   if (page === 1) {
     return (
-      <CommentModalWrapper>
-        <DonateModalHeader>
-          <CommentModalHeaderText>천원도 후원 가능해요!</CommentModalHeaderText>
-          <DonateSubText>
+      <Modal.CommentModalWrapper>
+        <Modal.DonateModalHeader>
+          <Modal.CommentModalHeaderText>
+            천원도 후원 가능해요!
+          </Modal.CommentModalHeaderText>
+          <Modal.DonateSubText>
             기부금은 (서버 비용 제외) ‘책자 제작’에 사용되며,
             <br /> 남은 금액은 가자지구 긴급구호 활동에 전달됩니다!
-          </DonateSubText>
-        </DonateModalHeader>
-        <ModalCloseIcon width={12} height={12} />
+          </Modal.DonateSubText>
+        </Modal.DonateModalHeader>
+        <Modal.ModalCloseIcon width={12} height={12} />
 
         <ModalBody>
-          <DonateModalLinkBox onClick={onClickLick}>
+          <Modal.DonateModalLinkBox onClick={onClickLick}>
             <Text>https://toss.me/peacegaza</Text>
-          </DonateModalLinkBox>
-          <DonateExplainBox>
+          </Modal.DonateModalLinkBox>
+          <Modal.DonateExplainBox>
             현재 지정기부금단체 컨택 중에 있습니다!
             <br />
             연말정산을 위한 기부금 영수증이 필요하신 분들은
@@ -63,16 +56,16 @@ const Donate = ({
             조금만 기다려주세요!
             <br />
             (인스타로 공지 드리겠습니다!)
-          </DonateExplainBox>
+          </Modal.DonateExplainBox>
         </ModalBody>
-        <DonateModalSubmit
+        <Modal.DonateModalSubmit
           onClick={onClickSubmit}
           variant="solid"
           colorScheme="blue"
         >
           확인
-        </DonateModalSubmit>
-      </CommentModalWrapper>
+        </Modal.DonateModalSubmit>
+      </Modal.CommentModalWrapper>
     );
   }
   return (
