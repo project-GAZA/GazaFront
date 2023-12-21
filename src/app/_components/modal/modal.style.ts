@@ -57,7 +57,8 @@ export const CommentModalInput = styled(Textarea)`
   line-height: 165%;
   padding: 18px !important;
   background: #f3f3f3 !important;
-  width: 253px !important;
+  min-width: 253px !important;
+  width: 80%;
   height: 222px !important;
   flex-shrink: 0;
 `;
