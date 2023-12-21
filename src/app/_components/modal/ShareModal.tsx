@@ -1,6 +1,6 @@
 'use clients';
 
-import { useToast, FormControl } from '@chakra-ui/react';
+import { FormControl } from '@chakra-ui/react';
 import Image from 'next/image';
 
 import DocIcon from '@/assets/svg/DocIcon.svg';
@@ -9,6 +9,7 @@ import InstaIcon from '@/assets/svg/InstaIcon.svg';
 import KakaoIcon from '@/assets/svg/KakaoIcon.svg';
 
 import { urlToCopy } from '@/constants/index';
+import useCustomToast from '@/hooks/useCustomToast';
 import {
   CommentModalHeader,
   CommentModalHeaderText,
@@ -22,27 +23,15 @@ import {
 } from './modal.style';
 
 const ShareModal = () => {
-  const toast = useToast();
+  const toast = useCustomToast();
 
   // Need Clipboard API
   const onClickShareLink = async (): Promise<void> => {
     try {
       if (navigator) await navigator.clipboard.writeText(urlToCopy);
-      // Show a success toast
-      toast({
-        title: '클립보드에 복사되었습니다!',
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
-      });
-    } catch (error) {
-      // Show an error toast
-      toast({
-        title: '클립보드 복사에 실패했습니다.',
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-      });
+      toast.successCopyClip();
+    } catch (_err) {
+      toast.failCopyClip();
     }
   };
 

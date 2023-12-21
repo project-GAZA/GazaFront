@@ -3,9 +3,10 @@
 // test_section_3 : 응원 메시지 입력창
 
 import { FormEvent, useState } from 'react';
-import { useToast, FormControl, Box } from '@chakra-ui/react';
+import { FormControl } from '@chakra-ui/react';
 
 import { propsTypes } from '@/types';
+import useCustomToast from '@/hooks/useCustomToast';
 import {
   CommentModalWrapper,
   CommentModalHeader,
@@ -27,29 +28,19 @@ const CommentModal = ({
 }: propsTypes.CommentPropType) => {
   const [content, setContent] = useState<string>('');
   const [username, setUsername] = useState<string>('');
-  const toast = useToast();
-  const CreateAlertToast = (str: string): void => {
-    toast({
-      position: 'bottom',
-      render: () => (
-        <Box color="white" p={3} bg="red.500">
-          {str}
-        </Box>
-      ),
-    });
-  };
+  const toast = useCustomToast();
 
   const CheckValid = (user: string, text: string): boolean => {
     if (user.length < 2) {
-      CreateAlertToast('닉네임은 2자 이상 입력해주세요');
+      toast.createAlertMessaeg('닉네임은 2자 이상 입력해주세요');
       return false;
     }
     if (user.length > 8) {
-      CreateAlertToast('닉네임은 8자 이하 입력해주세요');
+      toast.createAlertMessaeg('닉네임은 8자 이하 입력해주세요');
       return false;
     }
     if (text.length === 0) {
-      CreateAlertToast('내용을 입력해주세요.');
+      toast.createAlertMessaeg('내용을 입력해주세요.');
       return false;
     }
     return true;
