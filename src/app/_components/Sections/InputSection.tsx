@@ -1,13 +1,7 @@
 'use clients';
 
 import { useState } from 'react';
-import {
-  useToast,
-  Modal,
-  ModalOverlay,
-  useDisclosure,
-  Box,
-} from '@chakra-ui/react';
+import { Modal, ModalOverlay, useDisclosure, Box } from '@chakra-ui/react';
 
 import Comment from '@/app/_components/modal/Comment';
 import Donate from '@/app/_components/modal/Donate';
@@ -17,6 +11,7 @@ import { propsTypes } from '@/types';
 import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
 // import Icon_Present from '@/assets/svg/Icon_Present.svg';
+import useCustomToast from '@/hooks/useCustomToast';
 import {
   InputWrapper,
   InputTopMessage,
@@ -38,7 +33,7 @@ const InputSection = ({
   InputSectionText,
 }: propsTypes.InputSectionPropType) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast();
+  const toast = useCustomToast();
 
   const [mode, setMode] = useState('');
 
@@ -48,13 +43,8 @@ const InputSection = ({
   };
 
   const onClickSubmit = (content: string, username: string) => {
-    toast.promise(SubmitAndSetMessage(content, username), {
-      success: { title: '댓글작성완료', description: 'Looks great' },
-      error: {
-        title: '서버에 에러가 났습니다.',
-        description: 'Something wrong',
-      },
-      loading: { title: '서버에 전송중입니다.', description: 'Please wait' },
+    toast.promiseToast(async () => {
+      await SubmitAndSetMessage(content, username);
     });
   };
 

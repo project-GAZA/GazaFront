@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Box, useToast } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import ShowComment from '@/app/_components/Sections/ShowComment';
 import InputSection from '@/app/_components/Sections/InputSection';
@@ -11,28 +11,17 @@ import ExplainSectoin from '@/app/_components/Sections/ExplainSectoin';
 
 import { fetchComments } from '@/utils/api';
 import { dataTypes } from '@/types';
-import { errorToString } from '@/utils/usefull';
 import { Korean } from '@/constants';
+
+import useCustomToast from '@/hooks/useCustomToast';
 
 import Common from './common.style';
 
 const Main = () => {
-  const toast = useToast();
   const [explain, setExplain] = useState(Korean.mobile);
   const [messages, setMessages] = useState<Array<dataTypes.MessageType>>([]);
   const [sort, setSort] = useState('best');
-
-  const CreateErrorMessage = (str: string) => {
-    toast({
-      position: 'bottom',
-      render: () => (
-        <Box color="white" p={3} bg="red.500">
-          에러내용: {str} <br />
-          서버에러가 났습니다 관리자에게 문의해주세요.
-        </Box>
-      ),
-    });
-  };
+  const toast = useCustomToast();
 
   const fetchAndSetMessage = async (
     sortstr: string,
@@ -43,7 +32,7 @@ const Main = () => {
       const result = await fetchComments('', sortstr, size, page);
       setMessages(result);
     } catch (error) {
-      CreateErrorMessage(errorToString(error));
+      toast.createErrorMessage(error);
     }
   };
 
@@ -57,7 +46,7 @@ const Main = () => {
       const result = await fetchComments(username, sortstr, size, page);
       setMessages(result);
     } catch (error) {
-      CreateErrorMessage(errorToString(error));
+      toast.createErrorMessage(error);
     }
   };
 
