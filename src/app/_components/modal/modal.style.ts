@@ -101,6 +101,12 @@ export const CommentModalSubmit = styled(Button)`
   flex-shrink: 0;
   border-radius: 37px !important;
   background: #ffc500 !important;
+  color: black;
+  font-family: 'NanumSquareNeo';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 165%;
 `;
 
 export const DonateModalHeader = styled(Box)`
