@@ -26,6 +26,20 @@ const Modal = {
     }
   `,
 
+  DonateModalWrapper: styled(ModalContent)`
+    width: 690px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    max-width: inherit;
+    border-radius: 34px !important;
+    background: #fff !important;
+    box-shadow: 0px 0px 27.3px 0px rgba(90, 90, 90, 0.25) !important;
+
+    @media (max-width: 890px) {
+      width: 81% !important;
+    }
+  `,
+
   CommentModalHeader: styled(ModalHeader)`
     margin-top: 44px;
     padding: 0px !important;
@@ -41,13 +55,19 @@ const Modal = {
     font-style: normal;
     font-weight: 900;
     line-height: 165%;
+    @media (min-width: 890px) {
+      font-size: 25px;
+    }
   `,
 
   ModalCloseIcon: styled(ModalCloseButton)`
-    top: 20px;
-    right: 20px;
+    top: 50px;
+    right: 40px;
     width: 12px;
     height: 12px;
+    @media (min-width: 890px) {
+      top: 60px;
+    }
   `,
   CommentModalInput: styled(Textarea)`
     margin: 0 auto;
@@ -125,21 +145,37 @@ const Modal = {
     font-size: 9px;
     font-style: normal;
     font-weight: 700;
-    line-height: 165%;
+    line-height: 250%;
     padding: 0 40px;
+    @media (min-width: 890px) {
+      font-size: 12px;
+    }
+    & strong {
+      color: red;
+    }
   `,
 
   DonateModalLinkBox: styled(Box)`
+    background: #1f4ef5;
     cursor: pointer;
+    width: 70%;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    border-radius: 37px;
+    margin: 0 auto;
+    color: #fff;
+
+    font-family: NanumSquareNeo;
+    font-size: 17px;
+    font-weight: 700;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    height: 42px;
-    flex-shrink: 0;
-    border-radius: 6px;
-    border: 1px solid #d1d1d1;
-    margin: 0 auto;
+
+    @media (max-width: 890px) {
+      font-size: 12px;
+    }
   `,
 
   DonateModalSubmit: styled(Button)`
@@ -153,16 +189,34 @@ const Modal = {
   `,
 
   DonateExplainBox: styled(Box)`
-    margin: 60px auto 0 auto;
-    width: 95%;
-    color: #757575;
-    text-align: left;
-    font-family: 'NanumSquareNeo';
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 160%;
+    margin: 60px 10px 0 10px;
+    padding: 58px 10px 10px 10px;
+    background: #b7b7b7;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    @media (max-width: 890px) {
+      padding-top: 0px;
+      grid-template-columns: 1fr;
+      height: 370px;
+      overflow: scroll;
+    }
   `,
+  DonateExplainText: styled(Text)`
+    color: #fff;
+    text-align: center;
+    font-family: NanumSquareNeo;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 165%;
+  `,
+  DonateExplainMoney: styled(Box)`
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+  `,
+
   ShareURLButton: styled(Button)`
     margin: 14px 40px 34px 40px;
     width: calc(100% - 80px) !important;
