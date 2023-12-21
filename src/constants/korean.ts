@@ -32,6 +32,8 @@ const modalCommentInfoTextPC = `
   (부적절한 내용은 삭제될 수 있습니다.)”
   <br />
 `;
+const modalCommentButtonText = '응원메세지 보내기';
+const modalDonateCommentButtonText = '응원메세지 저장하기';
 
 const InputSectionTexts = {
   topMessage: inputtopMessage,
@@ -53,6 +55,8 @@ export const InputSectionText = {
       CommentInfoText: modalCommentInfoTextMobile,
       CommentInputPlaceholder: modalCommentInputPlaceholder,
       CommentInputNickPlaceholder: modalCommentInputNickPlaceholder,
+      CommentButtonText: modalCommentButtonText,
+      DonateCommentButtonText: modalDonateCommentButtonText,
     },
   },
   pc: {
@@ -62,6 +66,8 @@ export const InputSectionText = {
       CommentInfoText: modalCommentInfoTextPC,
       CommentInputPlaceholder: modalCommentInputPlaceholder,
       CommentInputNickPlaceholder: modalCommentInputNickPlaceholder,
+      CommentButtonText: modalCommentButtonText,
+      DonateCommentButtonText: modalDonateCommentButtonText,
     },
   },
 };

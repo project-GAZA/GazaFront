@@ -29,4 +29,6 @@ export interface ModalTextType {
   CommentInfoText: string;
   CommentInputPlaceholder: string;
   CommentInputNickPlaceholder: string;
+  CommentButtonText: string;
+  DonateCommentButtonText: string;
 }

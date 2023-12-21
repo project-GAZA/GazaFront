@@ -19,6 +19,7 @@ import {
 const Donate = ({
   onClose,
   onSubmitMessage,
+  ModalText,
 }: propsTypes.DonateModalPropType) => {
   const [page, setPage] = useState<number>(0);
   const [SaveInfo, setSaveInfo] = useState<{
@@ -83,6 +84,7 @@ const Donate = ({
       onClose={onClose}
       setSaveInfo={setSaveInfo}
       setPage={setPage}
+      ModalText={ModalText}
     />
   );
 };

@@ -149,7 +149,11 @@ const InputSection = ({
           />
         )}
         {mode === 'donate' && (
-          <Donate onSubmitMessage={onClickSubmit} onClose={onClose} />
+          <Donate
+            ModalText={InputSectionText.ModalText}
+            onSubmitMessage={onClickSubmit}
+            onClose={onClose}
+          />
         )}
       </Modal>
     </>

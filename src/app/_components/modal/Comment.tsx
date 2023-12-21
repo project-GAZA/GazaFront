@@ -104,7 +104,9 @@ const CommentModal = ({
             placeholder={ModalText.CommentInputNickPlaceholder}
           />
           <CommentModalSubmit type="submit" variant="solid" colorScheme="blue">
-            {mode === 'Comment' ? '보내기' : '다음으로'}
+            {mode === 'Comment'
+              ? ModalText.CommentButtonText
+              : ModalText.DonateCommentButtonText}
           </CommentModalSubmit>
         </FormControl>
       </form>

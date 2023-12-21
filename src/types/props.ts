@@ -29,6 +29,7 @@ export interface CommentPropType {
 export interface DonateModalPropType {
   onClose: () => void;
   onSubmitMessage: (content: string, username: string) => void;
+  ModalText: ModalTextType;
 }
 
 export interface ShowCommentPropType {
