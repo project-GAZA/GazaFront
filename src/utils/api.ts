@@ -1,24 +1,6 @@
-export const fetchComments = async (sort, size, page) => {
+export const fetchComments = async (username, sort, size, page) => {
   const response = await fetch(
-    `/api/message?sort=${sort}&page=${page}&size=${size}`,
-    {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json, text/plain',
-        'Content-Type': 'application/json;charset=UTF-8',
-      },
-    },
-  );
-  if (response.status === 200) {
-    const data = await response.json();
-    return data;
-  }
-  throw new Error(response.statusText);
-};
-
-export const fetchSearchComments = async (username, size, page) => {
-  const response = await fetch(
-    `/api/home?username=${username}&size=${size}&page=${page}`,
+    `/api/message?sort=${sort}&page=${page}&size=${size}&username=${username}`,
     {
       method: 'GET',
       headers: {

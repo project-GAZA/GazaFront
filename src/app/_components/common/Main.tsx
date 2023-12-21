@@ -9,15 +9,12 @@ import ShowInfo1 from '@/app/_components/Sections/ShowInfo1';
 import ShowGazaMap from '@/app/_components/Sections/ShowGazaMap';
 import ExplainSectoin from '@/app/_components/Sections/ExplainSectoin';
 
-import { fetchComments, fetchSearchComments } from '@/utils/api';
+import { fetchComments } from '@/utils/api';
 import { dataTypes } from '@/types';
 import { errorToString } from '@/utils/usefull';
 import { Korean } from '@/constants';
-import {
-  SectionWrapper,
-  LastSectionWrapper,
-  LastSectionBackgroundWrapper,
-} from './common.style';
+
+import Common from './common.style';
 
 const Main = () => {
   const toast = useToast();
@@ -43,7 +40,7 @@ const Main = () => {
     page: number = 0,
   ) => {
     try {
-      const result = await fetchComments(sortstr, size, page);
+      const result = await fetchComments('', sortstr, size, page);
       setMessages(result);
     } catch (error) {
       CreateErrorMessage(errorToString(error));
@@ -54,9 +51,10 @@ const Main = () => {
     username: string,
     size: number = 100,
     page: number = 0,
+    sortstr: string = 'new',
   ) => {
     try {
-      const result = await fetchSearchComments(username, size, page);
+      const result = await fetchComments(username, sortstr, size, page);
       setMessages(result);
     } catch (error) {
       CreateErrorMessage(errorToString(error));
@@ -93,26 +91,34 @@ const Main = () => {
       <Box id="section2" data-anchor="section2">
         <ShowInfo1 ShowInfoText={explain.ShowInfo} />
       </Box>
-      <SectionWrapper className="section" id="section3" data-anchor="section3">
+      <Common.SectionWrapper
+        className="section"
+        id="section3"
+        data-anchor="section3"
+      >
         <ShowComment
           setSort={setSort}
           messages={messages}
           fetchSearch={SearchAndSetMessage}
           fetchMessage={fetchAndSetMessage}
         />
-      </SectionWrapper>
-      <SectionWrapper className="section" data-anchor="section4" id="section4">
+      </Common.SectionWrapper>
+      <Common.SectionWrapper
+        className="section"
+        data-anchor="section4"
+        id="section4"
+      >
         <InputSection
           fetchMessage={fetchAndSetMessage}
           sort={sort}
           InputSectionText={explain.InputSectionText}
         />
-      </SectionWrapper>
-      <LastSectionBackgroundWrapper>
-        <LastSectionWrapper data-anchor="section5" id="section5">
+      </Common.SectionWrapper>
+      <Common.LastSectionBackgroundWrapper>
+        <Common.LastSectionWrapper data-anchor="section5" id="section5">
           <ExplainSectoin explain={explain} />
-        </LastSectionWrapper>
-      </LastSectionBackgroundWrapper>
+        </Common.LastSectionWrapper>
+      </Common.LastSectionBackgroundWrapper>
     </Box>
   );
 };
