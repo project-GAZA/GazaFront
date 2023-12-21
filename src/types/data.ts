@@ -32,3 +32,19 @@ export interface ModalTextType {
   CommentButtonText: string;
   DonateCommentButtonText: string;
 }
+export interface ExplainSectionType {
+  title: string;
+  footerText: string;
+}
+export interface ShowInfoType {
+  TopText: string;
+  WordCloud: Array<string>;
+  ExplainText: string;
+}
+
+export interface ServiceLanguage {
+  InputSectionText: InputSectionTextType;
+  Explain: Array<ExplainType>;
+  ExplainSection: ExplainSectionType;
+  ShowInfo: ShowInfoType;
+}

@@ -4,7 +4,11 @@ import { Accordion, AccordionItem, AccordionIcon } from '@chakra-ui/react';
 import { dataTypes } from '@/types';
 import { ExplainButton, ExplainText, ArcdText } from './component.style';
 
-const ExplainComponent = ({ explain }) => {
+const ExplainComponent = ({
+  explain,
+}: {
+  explain: Array<dataTypes.ExplainType>;
+}) => {
   return (
     <Accordion allowMultiple>
       {explain.map((v: dataTypes.ExplainType): JSX.Element => {

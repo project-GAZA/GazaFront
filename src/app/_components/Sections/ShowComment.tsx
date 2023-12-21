@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 import useWindowSize from '@/hooks/useWindowSize';
-import { dataTypes } from '@/types';
+import { dataTypes, propsTypes } from '@/types';
 
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
 import MessageComponent from '@/app/_components/MessageComponent';
@@ -35,19 +35,24 @@ const AddClassSortOn = (str: string): void => {
   });
 };
 
-const ShowComment = ({ messages, setSort, fetchSearch, fetchMessage }) => {
+const ShowComment = ({
+  messages,
+  setSort,
+  fetchSearch,
+  fetchMessage,
+}: propsTypes.ShowCommentPropType) => {
   const [searchInput, setSearchInput] = useState('');
   const nsize = useWindowSize();
 
   const SortClick = (sort: string) => {
     AddClassSortOn(sort);
-    fetchMessage(sort.toLowerCase());
+    if (fetchMessage) fetchMessage(sort.toLowerCase());
     setSort(sort.toLowerCase());
   };
 
   const onClickSearch = (e: React.FormEvent): void => {
     e.preventDefault();
-    fetchSearch(searchInput);
+    if (fetchSearch) fetchSearch(searchInput, 50, 0);
   };
 
   const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
