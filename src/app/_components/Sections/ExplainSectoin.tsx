@@ -6,6 +6,7 @@ import ExplainComponent from '@/app/_components/ExplainComponent';
 import Icon_Facebook from '@/assets/svg/Icon_Facebook.png';
 import Icon_insta from '@/assets/svg/Icon_insta.png';
 
+import { dataTypes } from '@/types';
 import {
   ExplainFooterText,
   ExplainSectionWrapper,
@@ -18,7 +19,11 @@ const onClickInsta = (): void => {
   window.open('https://www.instagram.com/gazaschildreadhope/');
 };
 
-const ExplainSection = ({ explain }) => {
+const ExplainSection = ({
+  explain,
+}: {
+  explain: dataTypes.ServiceLanguage;
+}) => {
   return (
     <ExplainSectionWrapper>
       <ExplainTitleText>{explain.ExplainSection.title}</ExplainTitleText>

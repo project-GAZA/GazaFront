@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
 import axiosInstance from '../axiosInstance';
 
 export async function GET(req) {
