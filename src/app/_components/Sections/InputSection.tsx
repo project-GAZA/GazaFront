@@ -116,29 +116,6 @@ const InputSection = ({
                 {InputSectionText.DonateMessageGo}
               </CommentInputText>
             </CommentInputButton>
-            <Box
-              sx={{
-                fontFamily: 'NanumSquareNeo',
-                fontSize: 26,
-                fontWeight: 800,
-                display: 'grid',
-                placeItems: 'center',
-                height: '108.75%',
-                lineHeight: '200%',
-                color: 'white',
-                position: 'relative',
-                top: '-97.5%',
-                background: 'rgba(0,0,0,0.3)',
-                borderRadius: '46px',
-              }}
-            >
-              안정적인 서비스를 위해
-              <br />
-              테스트 중입니다.
-              <br />
-              잠시만 기다려주세요!
-              <br />
-            </Box>
           </InputMessageWrapper>
         </MessageBoxWrapper>
         {/* JANG: 최종 배포 이후 진행 (구글 애드센스) */}
@@ -161,10 +138,18 @@ const InputSection = ({
       >
         <ModalOverlay />
         {mode === 'message' && (
-          <Comment onSubmitForm={onClickSubmit} onClose={onClose} />
+          <Comment
+            ModalText={InputSectionText.ModalText}
+            onSubmitForm={onClickSubmit}
+            onClose={onClose}
+          />
         )}
         {mode === 'donate' && (
-          <Donate onSubmitMessage={onClickSubmit} onClose={onClose} />
+          <Donate
+            ModalText={InputSectionText.ModalText}
+            onSubmitMessage={onClickSubmit}
+            onClose={onClose}
+          />
         )}
       </Modal>
     </>
