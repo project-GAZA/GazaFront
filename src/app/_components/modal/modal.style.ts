@@ -12,12 +12,16 @@ import {
 import styled from '@emotion/styled';
 
 export const CommentModalWrapper = styled(ModalContent)`
-  width: 315px !important;
+  width: 49% !important;
+  min-width: 315px;
   height: 566px;
   margin: 0 auto;
   border-radius: 34px !important;
   background: #fff !important;
   box-shadow: 0px 0px 27.3px 0px rgba(90, 90, 90, 0.25) !important;
+  @media (max-width: 890px) {
+    width: 81% !important;
+  }
 `;
 
 export const CommentModalHeader = styled(ModalHeader)`
