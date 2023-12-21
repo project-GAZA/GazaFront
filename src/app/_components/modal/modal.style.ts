@@ -12,8 +12,9 @@ import {
 import styled from '@emotion/styled';
 
 export const CommentModalWrapper = styled(ModalContent)`
-  width: 49% !important;
+  width: 60% !important;
   min-width: 315px;
+  max-width: 540px;
   height: 566px;
   margin: 0 auto;
   border-radius: 34px !important;

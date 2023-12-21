@@ -21,4 +21,12 @@ export interface InputSectionTextType {
   DonateMessage: string;
   DonateMessageInfo: string;
   DonateMessageGo: string;
+  ModalText: ModalTextType;
+}
+
+export interface ModalTextType {
+  CommentHeader: string;
+  CommentInfoText: string;
+  CommentInputPlaceholder: string;
+  CommentInputNickPlaceholder: string;
 }

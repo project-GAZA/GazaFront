@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { InputSectionTextType, MessageType } from './data';
+import { ModalTextType, InputSectionTextType, MessageType } from './data';
 
 export interface HeaderPropsType {
   onOpenShare(): void;
@@ -23,6 +23,7 @@ export interface CommentPropType {
     }>
   >;
   setPage?: Dispatch<SetStateAction<number>>;
+  ModalText: ModalTextType;
 }
 
 export interface DonateModalPropType {

@@ -1,13 +1,7 @@
 'use clients';
 
 import { useState } from 'react';
-import {
-  useToast,
-  Modal,
-  ModalOverlay,
-  useDisclosure,
-  Box,
-} from '@chakra-ui/react';
+import { useToast, Modal, ModalOverlay, useDisclosure } from '@chakra-ui/react';
 
 import Comment from '@/app/_components/modal/Comment';
 import Donate from '@/app/_components/modal/Donate';
@@ -148,7 +142,11 @@ const InputSection = ({
       >
         <ModalOverlay />
         {mode === 'message' && (
-          <Comment onSubmitForm={onClickSubmit} onClose={onClose} />
+          <Comment
+            ModalText={InputSectionText.ModalText}
+            onSubmitForm={onClickSubmit}
+            onClose={onClose}
+          />
         )}
         {mode === 'donate' && (
           <Donate onSubmitMessage={onClickSubmit} onClose={onClose} />
