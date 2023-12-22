@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Box, Text, AccordionButton, AccordionPanel } from '@chakra-ui/react';
 
-const Common = {
+const Component = {
   OneCommentWrapper: styled(Box)`
     border-radius: 13px;
     border: 1px solid #e2e2e2;
@@ -90,4 +90,4 @@ const Common = {
     text-align: left;
   `,
 };
-export default Common;
+export default Component;

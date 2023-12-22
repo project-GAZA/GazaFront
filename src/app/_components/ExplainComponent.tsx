@@ -2,7 +2,7 @@
 
 import { Accordion, AccordionItem, AccordionIcon } from '@chakra-ui/react';
 import { dataTypes } from '@/types';
-import Common from './component.style';
+import Component from './component.style';
 
 const ExplainComponent = ({
   explain,
@@ -14,11 +14,13 @@ const ExplainComponent = ({
       {explain.map((v: dataTypes.ExplainType): JSX.Element => {
         return (
           <AccordionItem key={v.title}>
-            <Common.ExplainButton>
-              <Common.ExplainText>{v.title}</Common.ExplainText>
+            <Component.ExplainButton>
+              <Component.ExplainText>{v.title}</Component.ExplainText>
               <AccordionIcon />
-            </Common.ExplainButton>
-            <Common.ArcdText dangerouslySetInnerHTML={{ __html: v.content }} />
+            </Component.ExplainButton>
+            <Component.ArcdText
+              dangerouslySetInnerHTML={{ __html: v.content }}
+            />
           </AccordionItem>
         );
       })}
