@@ -5,6 +5,7 @@ import { ModalBody } from '@chakra-ui/react';
 import Image from 'next/image';
 
 import Comment from '@/app/_components/modal/Comment';
+import RegistModal from '@/app/_components/modal/RegistModal';
 
 import { propsTypes } from '@/types';
 import ExplainSendMoneyImg1 from '@/assets/svg/ExplainSendMoney/ExplainSendMoney1.svg';
@@ -44,10 +45,6 @@ const Donate = ({
     username: string;
   }>({ content: '', username: '' });
 
-  const onClickSubmit = () => {
-    onSubmitMessage(SaveInfo.content, SaveInfo.username);
-    onClose();
-  };
   // pageButton
   // const onClickBack = () => {
   //   setPage(prev => prev - 1);
@@ -55,6 +52,7 @@ const Donate = ({
 
   const onClickLick = (): void => {
     window.open('https://toss.me/peacegaza');
+    setPage(prev => prev + 1);
   };
   if (page === 1) {
     return (
@@ -97,12 +95,20 @@ const Donate = ({
       </Modal.DonateModalWrapper>
     );
   }
+  if (page === 2) {
+    return (
+      <RegistModal
+        onSubmitMessage={async () => {
+          onSubmitMessage(SaveInfo.content, SaveInfo.username);
+        }}
+        onClose={onClose}
+        ModalText={ModalText}
+      />
+    );
+  }
   return (
     <Comment
       mode="Donate"
-      onSubmitForm={(t1, t2) => {
-        console.log(t1, t2);
-      }}
       onClose={onClose}
       setSaveInfo={setSaveInfo}
       setPage={setPage}

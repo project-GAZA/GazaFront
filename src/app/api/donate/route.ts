@@ -1,17 +1,22 @@
-import { NextResponse } from 'next/server';
-import { NextApiRequest, NextApiResponse } from 'next';
 import axiosInstance from '../axiosInstance';
 
-export async function GET(req) {
+export async function GET() {
   try {
     const response = await axiosInstance.get(`api/donate`);
     if (response.status === 200) {
-      return NextResponse.json(response.data);
+      return Response.json(response.data);
     }
   } catch (err) {
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 },
-    );
+    return Response.json(err);
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const response = await axiosInstance.post(`api/donate`, body);
+    return Response.json(response.data);
+  } catch (err) {
+    return Response.json(err);
   }
 }

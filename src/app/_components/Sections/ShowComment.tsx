@@ -9,21 +9,7 @@ import { dataTypes, propsTypes } from '@/types';
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
 import MessageComponent from '@/app/_components/MessageComponent';
 
-import {
-  ThirdSection,
-  TitleBox,
-  ThirdHeaderText,
-  ThirdHeaderTextStrong,
-  StyledScrollbar,
-  CommentWrapper,
-  CommentHeader,
-  CommentSortButton,
-  Search,
-  SearchInput,
-  SearchIcon,
-  ShowCommentWrapper,
-  DividerLine,
-} from './section.style';
+import Section from './section.style';
 
 const AddClassSortOn = (str: string): void => {
   document.querySelectorAll('.sort').forEach(e => {
@@ -60,56 +46,58 @@ const ShowComment = ({
   };
 
   return (
-    <ThirdSection bgsrc={Main_firefly.src}>
-      <TitleBox>
-        <ThirdHeaderText>
-          <ThirdHeaderTextStrong>전세계 각지에서</ThirdHeaderTextStrong>
+    <Section.ThirdSection bgsrc={Main_firefly.src}>
+      <Section.TitleBox>
+        <Section.ThirdHeaderText>
+          <Section.ThirdHeaderTextStrong>
+            전세계 각지에서
+          </Section.ThirdHeaderTextStrong>
           <br />
           많은 사람들이 응원글 작성에
           {nsize.width <= 820 && <br />} 참여하고 있어요
-        </ThirdHeaderText>
-      </TitleBox>
-      <CommentWrapper>
-        <CommentHeader>
-          <CommentSortButton
+        </Section.ThirdHeaderText>
+      </Section.TitleBox>
+      <Section.CommentWrapper>
+        <Section.CommentHeader>
+          <Section.CommentSortButton
             id="best"
             className="SortOn sort"
             onClick={() => SortClick('Best')}
           >
             Best
-          </CommentSortButton>
-          <DividerLine orientation="vertical" />
-          <CommentSortButton
+          </Section.CommentSortButton>
+          <Section.DividerLine orientation="vertical" />
+          <Section.CommentSortButton
             id="new"
             className="sort"
             onClick={() => SortClick('New')}
           >
             New
-          </CommentSortButton>
-          <Search>
+          </Section.CommentSortButton>
+          <Section.Search>
             <form onSubmit={onClickSearch}>
-              <SearchInput
+              <Section.SearchInput
                 value={searchInput}
                 onChange={onChangeSearchInput}
                 variant="unstyled"
                 placeholder="작성자 검색"
               />
-              <SearchIcon onClick={onClickSearch}>
+              <Section.SearchIcon onClick={onClickSearch}>
                 <FaSearch color="white" />
-              </SearchIcon>
+              </Section.SearchIcon>
             </form>
-          </Search>
-        </CommentHeader>
-        <ShowCommentWrapper id="CommentStack">
-          <StyledScrollbar>
+          </Section.Search>
+        </Section.CommentHeader>
+        <Section.ShowCommentWrapper id="CommentStack">
+          <Section.StyledScrollbar>
             {Array.isArray(messages) &&
               messages.map((v: dataTypes.MessageType) => (
                 <MessageComponent key={v.messageId} message={v} />
               ))}
-          </StyledScrollbar>
-        </ShowCommentWrapper>
-      </CommentWrapper>
-    </ThirdSection>
+          </Section.StyledScrollbar>
+        </Section.ShowCommentWrapper>
+      </Section.CommentWrapper>
+    </Section.ThirdSection>
   );
 };
 

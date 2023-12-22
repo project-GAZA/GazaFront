@@ -11,25 +11,7 @@ import { fetchGetDonateMoney, fetchGetMessageCount } from '@/utils/api';
 
 import { backgrounds } from '@/constants/index';
 import useCustomToast from '@/hooks/useCustomToast';
-import {
-  GazaFullComponent,
-  FirstSction,
-  ShowGazaMapTitleFontOne,
-  Two,
-  Section1Header,
-  SubTitle,
-  GazaEmpty,
-  GoalTextBox,
-  GoalText,
-  RealGoalText,
-  GoalFixedText,
-  SectionOneFooter,
-  RealGoalMoney,
-  MessageIconInTitle,
-  ValuableBox,
-  MoneyUpdateTextTemp,
-  MapWrapper,
-} from './section.style';
+import Section from './section.style';
 
 const calculatePercent = (goal: number, cur: number) => {
   const ratio = (cur / goal) * 100;
@@ -67,62 +49,71 @@ const ShowGazaMap = () => {
   }, []);
 
   return (
-    <FirstSction bgsrc={background}>
+    <Section.FirstSction bgsrc={background}>
       <Box>
-        <Section1Header>
-          <ShowGazaMapTitleFontOne>Gaza’s Child </ShowGazaMapTitleFontOne>
-          <ShowGazaMapTitleFontOne>
-            Read <Two>HOPE</Two>
-          </ShowGazaMapTitleFontOne>
-          <MessageIconInTitle
+        <Section.Section1Header>
+          <Section.ShowGazaMapTitleFontOne>
+            Gaza’s Child{' '}
+          </Section.ShowGazaMapTitleFontOne>
+          <Section.ShowGazaMapTitleFontOne>
+            Read <Section.Two>HOPE</Section.Two>
+          </Section.ShowGazaMapTitleFontOne>
+          <Section.MessageIconInTitle
             alt="message Icon"
             width={43}
             height={43}
             src={IconMessage.src}
           />
-        </Section1Header>
+        </Section.Section1Header>
         <Box>
-          <SubTitle>가자지구 아이들을 위한</SubTitle>
-          <SubTitle>
-            <Two>희망 메세지 책자</Two> 전달 프로젝트
-          </SubTitle>
+          <Section.SubTitle>가자지구 아이들을 위한</Section.SubTitle>
+          <Section.SubTitle>
+            <Section.Two>희망 메세지 책자</Section.Two> 전달 프로젝트
+          </Section.SubTitle>
         </Box>
       </Box>
-      <MapWrapper>
-        <GazaEmpty bgsrc={GazaEmptySvg.src}>
-          <GazaFullComponent
+      <Section.MapWrapper>
+        <Section.GazaEmpty bgsrc={GazaEmptySvg.src}>
+          <Section.GazaFullComponent
             bgsrc={GazaFullImage.src}
             percentage={80 - +percentage * 0.8}
           />
-          <ValuableBox>
-            <GoalTextBox>
-              <GoalText>
-                <GoalFixedText>{goalMessage}개의 메세지</GoalFixedText>
-              </GoalText>
-              <GoalText>
-                {percentage}% <GoalFixedText>달성</GoalFixedText>
-              </GoalText>
-            </GoalTextBox>
-            <SectionOneFooter>
+          <Section.ValuableBox>
+            <Section.GoalTextBox>
+              <Section.GoalText>
+                <Section.GoalFixedText>
+                  {goalMessage}개의 메세지
+                </Section.GoalFixedText>
+              </Section.GoalText>
+              <Section.GoalText>
+                {percentage}%{' '}
+                <Section.GoalFixedText>달성</Section.GoalFixedText>
+              </Section.GoalText>
+            </Section.GoalTextBox>
+            <Section.SectionOneFooter>
               <Box>
-                <RealGoalText>총 모금액</RealGoalText>
-                <RealGoalMoney>{currentMoney.toLocaleString()}</RealGoalMoney>
+                <Section.RealGoalText>총 모금액</Section.RealGoalText>
+                <Section.RealGoalMoney>
+                  {currentMoney.toLocaleString()}
+                </Section.RealGoalMoney>
               </Box>
 
               <Box>
-                <RealGoalText>목표 모금액</RealGoalText>
-                <RealGoalMoney>{goals[0].toLocaleString()}</RealGoalMoney>
+                <Section.RealGoalText>목표 모금액</Section.RealGoalText>
+                <Section.RealGoalMoney>
+                  {goals[0].toLocaleString()}
+                </Section.RealGoalMoney>
               </Box>
-            </SectionOneFooter>
-          </ValuableBox>
-        </GazaEmpty>
-        <MoneyUpdateTextTemp>
+            </Section.SectionOneFooter>
+          </Section.ValuableBox>
+        </Section.GazaEmpty>
+        <Section.MoneyUpdateTextTemp>
           ※ 후원금 모금 현황은
           <br /> 9~21시 동안 3시간마다 업데이트 됩니다!
           <br /> (결제 PG 연동 이후, 자동 반영 예정)
-        </MoneyUpdateTextTemp>
-      </MapWrapper>
-    </FirstSction>
+        </Section.MoneyUpdateTextTemp>
+      </Section.MapWrapper>
+    </Section.FirstSction>
   );
 };
 
