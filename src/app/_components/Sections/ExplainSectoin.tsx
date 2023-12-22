@@ -7,13 +7,7 @@ import Icon_Facebook from '@/assets/svg/Icon_Facebook.png';
 import Icon_insta from '@/assets/svg/Icon_insta.png';
 
 import { dataTypes } from '@/types';
-import {
-  ExplainFooterText,
-  ExplainSectionWrapper,
-  ExplainTitleText,
-  ExplainWrapper,
-  SNSIconBox,
-} from './section.style';
+import Section from './section.style';
 
 const onClickInsta = (): void => {
   window.open('https://www.instagram.com/gazaschildreadhope/');
@@ -25,12 +19,14 @@ const ExplainSection = ({
   explain: dataTypes.ServiceLanguage;
 }) => {
   return (
-    <ExplainSectionWrapper>
-      <ExplainTitleText>{explain.ExplainSection.title}</ExplainTitleText>
-      <ExplainWrapper>
+    <Section.ExplainSectionWrapper>
+      <Section.ExplainTitleText>
+        {explain.ExplainSection.title}
+      </Section.ExplainTitleText>
+      <Section.ExplainWrapper>
         <ExplainComponent explain={explain.Explain} />
-      </ExplainWrapper>
-      <SNSIconBox>
+      </Section.ExplainWrapper>
+      <Section.SNSIconBox>
         <Image
           width={31}
           height={31}
@@ -44,11 +40,11 @@ const ExplainSection = ({
           src={Icon_insta.src}
           alt="Icon_insta"
         />
-      </SNSIconBox>
-      <ExplainFooterText
+      </Section.SNSIconBox>
+      <Section.ExplainFooterText
         dangerouslySetInnerHTML={{ __html: explain.ExplainSection.footerText }}
       />
-    </ExplainSectionWrapper>
+    </Section.ExplainSectionWrapper>
   );
 };
 
