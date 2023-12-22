@@ -14,7 +14,7 @@ export interface MobileNavPropsType {
 
 export interface CommentPropType {
   onClose: () => void;
-  onSubmitForm: (content: string, username: string) => void;
+  onSubmitForm?: (content: string, username: string) => void;
   mode?: string;
   setSaveInfo?: Dispatch<
     SetStateAction<{

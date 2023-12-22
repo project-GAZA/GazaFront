@@ -34,6 +34,14 @@ const modalCommentInfoTextPC = `
 `;
 const modalCommentButtonText = '응원메세지 보내기';
 const modalDonateCommentButtonText = '응원메세지 저장하기';
+const RegistHeaderText = '후원자님의 정보를 남겨주세요!';
+const RegistInfoText =
+  '후원금 확인 후, 후원자님의 메시지에 특별한 표시를 남겨드립니다!';
+const RegistButtonText = '후원자 등록하기';
+const RegistPhonePlaceHolder = '전화번호를 입력하세요(-빼고입력하세요)';
+const RegistPhoneLabel = '전화번호';
+const RegistTossLabel = '토스 송금 아이디';
+const RegistTossPlaceHolder = '토스 송금 아이디를 입력하세요';
 
 const InputSectionTexts = {
   topMessage: inputtopMessage,
@@ -57,6 +65,13 @@ export const InputSectionText = {
       CommentInputNickPlaceholder: modalCommentInputNickPlaceholder,
       CommentButtonText: modalCommentButtonText,
       DonateCommentButtonText: modalDonateCommentButtonText,
+      RegistHeaderText,
+      RegistInfoText,
+      RegistButtonText,
+      RegistPhonePlaceHolder,
+      RegistPhoneLabel,
+      RegistTossLabel,
+      RegistTossPlaceHolder,
     },
   },
   pc: {
@@ -68,6 +83,13 @@ export const InputSectionText = {
       CommentInputNickPlaceholder: modalCommentInputNickPlaceholder,
       CommentButtonText: modalCommentButtonText,
       DonateCommentButtonText: modalDonateCommentButtonText,
+      RegistHeaderText,
+      RegistInfoText,
+      RegistButtonText,
+      RegistPhonePlaceHolder,
+      RegistPhoneLabel,
+      RegistTossLabel,
+      RegistTossPlaceHolder,
     },
   },
 };

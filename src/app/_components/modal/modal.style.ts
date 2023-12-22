@@ -12,6 +12,101 @@ import {
 import styled from '@emotion/styled';
 
 const Modal = {
+  RegistSubmitButton: styled(Button)`
+    height: 47px;
+    border-radius: 37px;
+    background: #ffc500 !important;
+    color: black;
+    font-family: 'NanumSquareNeo';
+    font-style: normal;
+    font-weight: 700;
+
+    font-size: 15px;
+    margin: 14px 73px 0 73px;
+    width: calc(100% - 146px) !important;
+
+    @media (max-width: 890px) {
+      margin: 14px 50px 0 50px;
+      width: calc(100% - 100px) !important;
+      font-size: 13px;
+    }
+  `,
+  RegistCloseIcon: styled(ModalCloseButton)`
+    top: 50px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    @media (min-width: 890px) {
+      top: 55px;
+      right: 40px;
+    }
+  `,
+  RegistInput: styled(Input)`
+    font-family: 'NanumSquareNeo';
+    font-size: 12px !important;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 165%;
+
+    height: 40px !important;
+    flex-shrink: 0 !important;
+    border: 1px solid #cacaca !important;
+    background: #fff !important;
+  `,
+  RegistInputLabel: styled.label`
+    color: #676767;
+    text-align: center;
+    font-family: NanumSquareNeo;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    @media (max-width: 890px) {
+      font-size: 11px;
+    }
+  `,
+  RegistInputBox: styled(Box)`
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 60px;
+    align-items: center;
+  `,
+  RegistInfoText: styled(Text)`
+    color: #dc0000;
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    font-family: 'NanumSquareNeo';
+    margin: 30px auto;
+    @media (max-width: 890px) {
+      font-size: 9px;
+      margin: 10px auto;
+    }
+  `,
+  RegistHeaderText: styled(Text)`
+    color: #000;
+    text-align: center;
+    font-family: 'NanumSquareNeo';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 165%;
+    @media (min-width: 890px) {
+      font-size: 22px;
+    }
+  `,
+  RegistModalWrapper: styled(ModalContent)`
+    width: 60% !important;
+    min-width: 315px;
+    max-width: 540px;
+    border-radius: 34px;
+    box-shadow: 0px 0px 27.3px 0px rgba(90, 90, 90, 0.25);
+    padding-bottom: 20px;
+    @media (max-width: 890px) {
+      width: 81% !important;
+    }
+  `,
+
   CommentModalWrapper: styled(ModalContent)`
     width: 60% !important;
     min-width: 315px;

@@ -31,6 +31,13 @@ export interface ModalTextType {
   CommentInputNickPlaceholder: string;
   CommentButtonText: string;
   DonateCommentButtonText: string;
+  RegistHeaderText: string;
+  RegistInfoText: string;
+  RegistButtonText: string;
+  RegistPhonePlaceHolder: string;
+  RegistPhoneLabel: string;
+  RegistTossLabel: string;
+  RegistTossPlaceHolder: string;
 }
 export interface ExplainSectionType {
   title: string;
