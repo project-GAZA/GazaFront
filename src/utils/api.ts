@@ -1,4 +1,9 @@
-export const fetchComments = async (username, sort, size, page) => {
+export const fetchComments = async (
+  username: string,
+  sort: number,
+  size: number,
+  page: number,
+) => {
   const response = await fetch(
     `/api/message?sort=${sort}&page=${page}&size=${size}&username=${username}`,
     {
@@ -16,7 +21,7 @@ export const fetchComments = async (username, sort, size, page) => {
   throw new Error(response.statusText);
 };
 
-export const fetchLikeCountUp = async messageid => {
+export const fetchLikeCountUp = async (messageid: number) => {
   const response = await fetch(`/api/like?messageid=${messageid}`, {
     method: 'GET',
     headers: {
@@ -31,7 +36,7 @@ export const fetchLikeCountUp = async messageid => {
   throw new Error(response.statusText);
 };
 
-export const fetchReportCountUp = async messageid => {
+export const fetchReportCountUp = async (messageid: number) => {
   const response = await fetch(`/api/report?messageid=${messageid}`, {
     method: 'GET',
     headers: {
@@ -46,7 +51,7 @@ export const fetchReportCountUp = async messageid => {
   throw new Error(response.statusText);
 };
 
-export const fetchPostCommnet = async (content, username) => {
+export const fetchPostCommnet = async (content: string, username: string) => {
   const response = await fetch(`/api/message`, {
     method: 'POST',
     headers: {
