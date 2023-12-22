@@ -5,17 +5,7 @@ import { FaHeart } from 'react-icons/fa';
 
 import { dataTypes } from '@/types';
 import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
-import {
-  NickName,
-  OneCommentWrapper,
-  OneCommentHeaderRight,
-  OneCommentHeaderLeft,
-  Date,
-  OneCommentContent,
-  Report,
-  OneCommentHeader,
-  LikeCountText,
-} from './component.style';
+import Common from './component.style';
 
 const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
   const [like, setLike] = useState(message.likeCount);
@@ -30,20 +20,20 @@ const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
     if (res === 0) alert('이미 신고하기 눌렀습니다!');
   };
   return (
-    <OneCommentWrapper key={message.username}>
-      <OneCommentHeader>
-        <OneCommentHeaderLeft>
-          <NickName>{message.username} 님</NickName>
-          <Date>{message.createDt.slice(0, 10)}</Date>
-        </OneCommentHeaderLeft>
-        <OneCommentHeaderRight>
+    <Common.OneCommentWrapper key={message.username}>
+      <Common.OneCommentHeader>
+        <Common.OneCommentHeaderLeft>
+          <Common.NickName>{message.username} 님</Common.NickName>
+          <Common.Date>{message.createDt.slice(0, 10)}</Common.Date>
+        </Common.OneCommentHeaderLeft>
+        <Common.OneCommentHeaderRight>
           <FaHeart onClick={onClickLike} color="red" />
-          <LikeCountText>{like}</LikeCountText>
-          <Report onClick={onClickReport}>신고하기</Report>
-        </OneCommentHeaderRight>
-      </OneCommentHeader>
-      <OneCommentContent>{message.content}</OneCommentContent>
-    </OneCommentWrapper>
+          <Common.LikeCountText>{like}</Common.LikeCountText>
+          <Common.Report onClick={onClickReport}>신고하기</Common.Report>
+        </Common.OneCommentHeaderRight>
+      </Common.OneCommentHeader>
+      <Common.OneCommentContent>{message.content}</Common.OneCommentContent>
+    </Common.OneCommentWrapper>
   );
 };
 
