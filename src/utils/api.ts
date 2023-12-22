@@ -78,6 +78,21 @@ export const fetchGetDonateMoney = async () => {
   throw new Error(response.statusText);
 };
 
+export const fetchPostDonateMoney = async () => {
+  const response = await fetch(`/api/donate`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json, text/plain',
+      'Content-Type': 'application/json;charset=UTF-8',
+    },
+  });
+  if (response.status === 200) {
+    const data = await response.json();
+    return data;
+  }
+  throw new Error(response.statusText);
+};
+
 export const fetchGetMessageCount = async () => {
   const response = await fetch(`/api/message/count`, {
     method: 'GET',

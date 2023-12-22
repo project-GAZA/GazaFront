@@ -32,6 +32,12 @@ export interface DonateModalPropType {
   ModalText: ModalTextType;
 }
 
+export interface RegistModalPropType {
+  onClose: () => void;
+  onSubmitMessage: () => Promise<void>;
+  ModalText: ModalTextType;
+}
+
 export interface ShowCommentPropType {
   messages?: Array<MessageType>;
   setSort: Dispatch<SetStateAction<string>>;

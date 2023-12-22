@@ -39,16 +39,12 @@ const Donate = ({
   onSubmitMessage,
   ModalText,
 }: propsTypes.DonateModalPropType) => {
-  const [page, setPage] = useState<number>(2);
+  const [page, setPage] = useState<number>(0);
   const [SaveInfo, setSaveInfo] = useState<{
     content: string;
     username: string;
   }>({ content: '', username: '' });
 
-  const onClickSubmit = () => {
-    onSubmitMessage(SaveInfo.content, SaveInfo.username);
-    onClose();
-  };
   // pageButton
   // const onClickBack = () => {
   //   setPage(prev => prev - 1);
@@ -100,7 +96,15 @@ const Donate = ({
     );
   }
   if (page === 2) {
-    return <RegistModal ModalText={ModalText} />;
+    return (
+      <RegistModal
+        onSubmitMessage={async () => {
+          onSubmitMessage(SaveInfo.content, SaveInfo.username);
+        }}
+        onClose={onClose}
+        ModalText={ModalText}
+      />
+    );
   }
   return (
     <Comment

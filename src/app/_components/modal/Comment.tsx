@@ -41,7 +41,7 @@ const CommentModal = ({
     e.preventDefault();
     if (!CheckValid(username, content)) return;
     if (mode === 'Comment') {
-      onSubmitForm(content, username);
+      if (onSubmitForm) onSubmitForm(content, username);
       onClose();
     } else {
       if (setSaveInfo)
