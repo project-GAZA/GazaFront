@@ -5,17 +5,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
 
 import { propsTypes } from '@/types';
-import {
-  MenuWrapper,
-  EmptyBox,
-  MobileUlWrapper,
-  MobileMenuTitle,
-  MobilLi,
-  IconBoxMenu,
-  IconInMenu,
-  HamIcon,
-  AWrapperMobile,
-} from './common.style';
+import Common from './common.style';
 
 const MobileNav = ({
   onOpenShare,
@@ -24,8 +14,8 @@ const MobileNav = ({
   activeSection,
 }: propsTypes.MobileNavPropsType) => {
   return (
-    <MenuWrapper isOpen={isMobileNavShow}>
-      <HamIcon
+    <Common.MenuWrapper isOpen={isMobileNavShow}>
+      <Common.HamIcon
         aria-label="Menu"
         size="md"
         icon={
@@ -33,15 +23,15 @@ const MobileNav = ({
         }
         onClick={setIsMobileNavShow}
       />
-      <EmptyBox />
-      <MobileUlWrapper className="gnb">
-        <MobileMenuTitle>Gaza’s Child Read HOPE</MobileMenuTitle>
-        <MobilLi
+      <Common.EmptyBox />
+      <Common.MobileUlWrapper className="gnb">
+        <Common.MobileMenuTitle>Gaza’s Child Read HOPE</Common.MobileMenuTitle>
+        <Common.MobilLi
           className={activeSection === 'section3' ? 'on' : ''}
           data-menuanchor="section3"
         >
           <ScrollLink
-            style={AWrapperMobile}
+            style={Common.AWrapperMobile}
             to="section3"
             spy
             smooth
@@ -52,13 +42,13 @@ const MobileNav = ({
           >
             응원메세지 보기
           </ScrollLink>
-        </MobilLi>
-        <MobilLi
+        </Common.MobilLi>
+        <Common.MobilLi
           className={activeSection === 'section4' ? 'on' : ''}
           data-menuanchor="section4"
         >
           <ScrollLink
-            style={AWrapperMobile}
+            style={Common.AWrapperMobile}
             to="section4"
             spy
             smooth
@@ -69,13 +59,13 @@ const MobileNav = ({
           >
             응원메세지 남기기
           </ScrollLink>
-        </MobilLi>
-        <MobilLi
+        </Common.MobilLi>
+        <Common.MobilLi
           className={activeSection === 'section5' ? 'on' : ''}
           data-menuanchor="section5"
         >
           <ScrollLink
-            style={AWrapperMobile}
+            style={Common.AWrapperMobile}
             to="section5"
             spy
             smooth
@@ -86,19 +76,19 @@ const MobileNav = ({
           >
             프로젝트 소개
           </ScrollLink>
-        </MobilLi>
+        </Common.MobilLi>
         {/* 
         <LangChanBox>
           <LangChanText>한국어/영어</LangChanText>
         </LangChanBox>
         */}
-        <IconBoxMenu>
-          <IconInMenu onClick={onOpenShare}>
+        <Common.IconBoxMenu>
+          <Common.IconInMenu onClick={onOpenShare}>
             <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
-          </IconInMenu>
-        </IconBoxMenu>
-      </MobileUlWrapper>
-    </MenuWrapper>
+          </Common.IconInMenu>
+        </Common.IconBoxMenu>
+      </Common.MobileUlWrapper>
+    </Common.MenuWrapper>
   );
 };
 
