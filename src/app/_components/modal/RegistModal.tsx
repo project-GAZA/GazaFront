@@ -17,7 +17,12 @@ const RegistModal = ({
   const [phone, setPhone] = useState('');
   const [tossid, setTossid] = useState('');
 
-  const PostDonateAndComment = async (p, toss, username, content) => {
+  const PostDonateAndComment = async (
+    p: string,
+    toss: string,
+    username: string,
+    content: string,
+  ) => {
     await fetchPostDonate(p, toss, username, content);
   };
 

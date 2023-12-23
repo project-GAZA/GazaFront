@@ -1,6 +1,6 @@
 export const fetchComments = async (
   username: string,
-  sort: number,
+  sort: string,
   size: number,
   page: number,
 ) => {
