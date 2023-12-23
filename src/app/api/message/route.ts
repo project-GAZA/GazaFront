@@ -10,7 +10,7 @@ export async function GET(req) {
     const page = searchParams.get('page');
 
     const response = await axiosInstance.get(
-      `api/home?page=${page}&size=${size}&sort=${sort}${
+      `api/home?page=${page}&size=${size}&type=${sort}${
         username !== null && `&username=${username}`
       }`,
     );

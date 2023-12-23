@@ -34,11 +34,7 @@ const ExplainSendMoney = [
   },
 ];
 
-const Donate = ({
-  onClose,
-  onSubmitMessage,
-  ModalText,
-}: propsTypes.DonateModalPropType) => {
+const Donate = ({ onClose, ModalText }: propsTypes.DonateModalPropType) => {
   const [page, setPage] = useState<number>(0);
   const [SaveInfo, setSaveInfo] = useState<{
     content: string;
@@ -98,9 +94,7 @@ const Donate = ({
   if (page === 2) {
     return (
       <RegistModal
-        onSubmitMessage={async () => {
-          onSubmitMessage(SaveInfo.content, SaveInfo.username);
-        }}
+        saveInfo={SaveInfo}
         onClose={onClose}
         ModalText={ModalText}
       />

@@ -83,16 +83,28 @@ export const fetchGetDonateMoney = async () => {
   throw new Error(response.statusText);
 };
 
-export const fetchPostDonateMoney = async () => {
+export const fetchPostDonate = async (
+  phonenumber: string,
+  toss: string,
+  username: string,
+  content: string,
+) => {
   const response = await fetch(`/api/donate`, {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain',
       'Content-Type': 'application/json;charset=UTF-8',
     },
+    body: JSON.stringify({
+      telNumber: phonenumber,
+      tossid: toss,
+      username,
+      content,
+    }),
   });
   if (response.status === 200) {
     const data = await response.json();
+    console.log(data);
     return data;
   }
   throw new Error(response.statusText);
