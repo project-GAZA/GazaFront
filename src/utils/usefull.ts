@@ -1,4 +1,4 @@
-import useCustomToast from '@/hooks/useCustomToast';
+import { dataTypes } from '@/types';
 
 export const errorToString = (err: unknown): string => {
   let message: string;
@@ -7,7 +7,10 @@ export const errorToString = (err: unknown): string => {
   return message;
 };
 
-export const phoneValid = (toast: any, phone: string): boolean => {
+export const phoneValid = (
+  toast: dataTypes.CustomToast,
+  phone: string,
+): boolean => {
   if (phone.length < 11) {
     toast.createAlertMessaeg('11자리 이상 입력해주세요');
     return false;
@@ -19,7 +22,7 @@ export const phoneValid = (toast: any, phone: string): boolean => {
   return true;
 };
 
-export const idValid = (toast: any, id: string): boolean => {
+export const idValid = (toast: dataTypes.CustomToast, id: string): boolean => {
   if (id.length < 2) {
     toast.createAlertMessaeg('닉네임은 2자 이상 입력해주세요');
     return false;

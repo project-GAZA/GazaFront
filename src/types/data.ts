@@ -55,3 +55,7 @@ export interface ServiceLanguage {
   ExplainSection: ExplainSectionType;
   ShowInfo: ShowInfoType;
 }
+
+export interface CustomToast {
+  createAlertMessaeg: (message: string) => void;
+}
