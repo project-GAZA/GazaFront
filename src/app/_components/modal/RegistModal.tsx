@@ -3,23 +3,32 @@
 import { useState } from 'react';
 import { FormControl, ModalBody } from '@chakra-ui/react';
 import { propsTypes } from '@/types';
+import { fetchPostDonate } from '@/utils/api';
+import { idValid, phoneValid } from '@/utils/usefull';
+import useCustomToast from '@/hooks/useCustomToast';
 import Modal from './modal.style';
-import {} from '@/utils/api';
 
 const RegistModal = ({
-  onSubmitMessage,
+  saveInfo,
   onClose,
   ModalText,
 }: propsTypes.RegistModalPropType) => {
+  const toast = useCustomToast();
   const [phone, setPhone] = useState('');
   const [tossid, setTossid] = useState('');
+
+  const PostDonateAndComment = async (p, toss, username, content) => {
+    await fetchPostDonate(p, toss, username, content);
+  };
 
   const onClickSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
-    await onSubmitMessage();
-    onClose();
+    if (idValid(toast, tossid) && phoneValid(toast, phone)) {
+      PostDonateAndComment(phone, tossid, saveInfo.username, saveInfo.content);
+      onClose();
+    }
   };
   return (
     <Modal.RegistModalWrapper>

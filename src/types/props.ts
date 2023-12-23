@@ -28,13 +28,15 @@ export interface CommentPropType {
 
 export interface DonateModalPropType {
   onClose: () => void;
-  onSubmitMessage: (content: string, username: string) => void;
   ModalText: ModalTextType;
 }
 
 export interface RegistModalPropType {
   onClose: () => void;
-  onSubmitMessage: () => Promise<void>;
+  saveInfo: {
+    content: string;
+    username: string;
+  };
   ModalText: ModalTextType;
 }
 
