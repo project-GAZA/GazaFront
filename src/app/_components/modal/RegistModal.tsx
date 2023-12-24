@@ -12,6 +12,7 @@ const RegistModal = ({
   saveInfo,
   onClose,
   ModalText,
+  fetchAndSetMessage,
 }: propsTypes.RegistModalPropType) => {
   const toast = useCustomToast();
   const [phone, setPhone] = useState('');
@@ -31,7 +32,15 @@ const RegistModal = ({
   ): Promise<void> => {
     e.preventDefault();
     if (idValid(toast, tossid) && phoneValid(toast, phone)) {
-      PostDonateAndComment(phone, tossid, saveInfo.username, saveInfo.content);
+      toast.promiseToast(async () => {
+        await PostDonateAndComment(
+          phone,
+          tossid,
+          saveInfo.username,
+          saveInfo.content,
+        );
+        await fetchAndSetMessage('new');
+      });
       onClose();
     }
   };

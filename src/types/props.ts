@@ -29,6 +29,7 @@ export interface CommentPropType {
 export interface DonateModalPropType {
   onClose: () => void;
   ModalText: ModalTextType;
+  fetchAndSetMessage: (sort: string) => Promise<void>;
 }
 
 export interface RegistModalPropType {
@@ -38,6 +39,7 @@ export interface RegistModalPropType {
     username: string;
   };
   ModalText: ModalTextType;
+  fetchAndSetMessage: (sort: string) => Promise<void>;
 }
 
 export interface ShowCommentPropType {
