@@ -5,6 +5,7 @@ import { FaHeart } from 'react-icons/fa';
 
 import { dataTypes } from '@/types';
 import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
+import GiftIcon from '@/assets/svg/gifticon.svg';
 import Component from './component.style';
 
 const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
@@ -25,6 +26,14 @@ const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
         <Component.OneCommentHeaderLeft>
           <Component.NickName>{message.username} 님</Component.NickName>
           <Component.Date>{message.createDt.slice(0, 10)}</Component.Date>
+          {message.donateType === 'donate' && (
+            <Component.GiftIcon
+              alt="선물아이콘"
+              src={GiftIcon.src}
+              width={19}
+              height={19}
+            />
+          )}
         </Component.OneCommentHeaderLeft>
         <Component.OneCommentHeaderRight>
           <FaHeart onClick={onClickLike} color="red" />

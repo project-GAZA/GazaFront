@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Box, Text, AccordionButton, AccordionPanel } from '@chakra-ui/react';
+import Image from 'next/image';
 
 const Component = {
   OneCommentWrapper: styled(Box)`
@@ -88,6 +89,9 @@ const Component = {
 
   ArcdText: styled(AccordionPanel)`
     text-align: left;
+  `,
+  GiftIcon: styled(Image)`
+    margin-left: 10px;
   `,
 };
 export default Component;
