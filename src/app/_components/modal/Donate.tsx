@@ -34,7 +34,11 @@ const ExplainSendMoney = [
   },
 ];
 
-const Donate = ({ onClose, ModalText }: propsTypes.DonateModalPropType) => {
+const Donate = ({
+  fetchAndSetMessage,
+  onClose,
+  ModalText,
+}: propsTypes.DonateModalPropType) => {
   const [page, setPage] = useState<number>(0);
   const [SaveInfo, setSaveInfo] = useState<{
     content: string;
@@ -97,6 +101,7 @@ const Donate = ({ onClose, ModalText }: propsTypes.DonateModalPropType) => {
         saveInfo={SaveInfo}
         onClose={onClose}
         ModalText={ModalText}
+        fetchAndSetMessage={fetchAndSetMessage}
       />
     );
   }

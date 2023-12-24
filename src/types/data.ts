@@ -5,6 +5,7 @@ export interface MessageType {
   username: string;
   likeCount: number;
   cautionCount: number;
+  donateType: string;
 }
 export interface ExplainType {
   title: string;
