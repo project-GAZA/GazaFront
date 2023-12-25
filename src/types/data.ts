@@ -5,6 +5,7 @@ export interface MessageType {
   username: string;
   likeCount: number;
   cautionCount: number;
+  donateType: string;
 }
 export interface ExplainType {
   title: string;
@@ -21,4 +22,41 @@ export interface InputSectionTextType {
   DonateMessage: string;
   DonateMessageInfo: string;
   DonateMessageGo: string;
+  ModalText: ModalTextType;
+}
+
+export interface ModalTextType {
+  CommentHeader: string;
+  CommentInfoText: string;
+  CommentInputPlaceholder: string;
+  CommentInputNickPlaceholder: string;
+  CommentButtonText: string;
+  DonateCommentButtonText: string;
+  RegistHeaderText: string;
+  RegistInfoText: string;
+  RegistButtonText: string;
+  RegistPhonePlaceHolder: string;
+  RegistPhoneLabel: string;
+  RegistTossLabel: string;
+  RegistTossPlaceHolder: string;
+}
+export interface ExplainSectionType {
+  title: string;
+  footerText: string;
+}
+export interface ShowInfoType {
+  TopText: string;
+  WordCloud: Array<string>;
+  ExplainText: string;
+}
+
+export interface ServiceLanguage {
+  InputSectionText: InputSectionTextType;
+  Explain: Array<ExplainType>;
+  ExplainSection: ExplainSectionType;
+  ShowInfo: ShowInfoType;
+}
+
+export interface CustomToast {
+  createAlertMessaeg: (message: string) => void;
 }

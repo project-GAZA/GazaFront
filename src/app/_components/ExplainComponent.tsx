@@ -2,19 +2,25 @@
 
 import { Accordion, AccordionItem, AccordionIcon } from '@chakra-ui/react';
 import { dataTypes } from '@/types';
-import { ExplainButton, ExplainText, ArcdText } from './component.style';
+import Component from './component.style';
 
-const ExplainComponent = ({ explain }) => {
+const ExplainComponent = ({
+  explain,
+}: {
+  explain: Array<dataTypes.ExplainType>;
+}) => {
   return (
     <Accordion allowMultiple>
       {explain.map((v: dataTypes.ExplainType): JSX.Element => {
         return (
           <AccordionItem key={v.title}>
-            <ExplainButton>
-              <ExplainText>{v.title}</ExplainText>
+            <Component.ExplainButton>
+              <Component.ExplainText>{v.title}</Component.ExplainText>
               <AccordionIcon />
-            </ExplainButton>
-            <ArcdText dangerouslySetInnerHTML={{ __html: v.content }} />
+            </Component.ExplainButton>
+            <Component.ArcdText
+              dangerouslySetInnerHTML={{ __html: v.content }}
+            />
           </AccordionItem>
         );
       })}

@@ -11,15 +11,7 @@ import ShareIcon from '@/assets/svg/ShareIcon.svg';
 import MobileNav from '@/app/_components/common/MobileNav';
 
 import { propsTypes } from '@/types';
-import {
-  MenuLink,
-  HeaderWrapper,
-  MenuList,
-  HamIcon,
-  MenuInner,
-  IconBox,
-  IconInMenu,
-} from './common.style';
+import Common from './common.style';
 
 const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
   const [isMobileNavShow, setIsMobileNavShow] = useState<boolean>(false);
@@ -72,16 +64,16 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
         setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
         activeSection={activeSection}
       />
-      <HeaderWrapper>
-        <IconBox>
-          <IconInMenu onClick={onOpenShare}>
+      <Common.HeaderWrapper>
+        <Common.IconBox>
+          <Common.IconInMenu onClick={onOpenShare}>
             <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
-          </IconInMenu>
-        </IconBox>
-        <MenuInner className="gnb">
-          <MenuList className={activeSection === 'section3' ? 'on' : ''}>
+          </Common.IconInMenu>
+        </Common.IconBox>
+        <Common.MenuInner className="gnb">
+          <Common.MenuList className={activeSection === 'section3' ? 'on' : ''}>
             <ScrollLink
-              style={MenuLink}
+              style={Common.MenuLink}
               to="section3"
               spy
               smooth
@@ -89,13 +81,13 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
             >
               응원 메세지 보기
             </ScrollLink>
-          </MenuList>
-          <MenuList
+          </Common.MenuList>
+          <Common.MenuList
             className={activeSection === 'section4' ? 'on' : ''}
             style={{ marginRight: '50px' }}
           >
             <ScrollLink
-              style={MenuLink}
+              style={Common.MenuLink}
               to="section4"
               spy
               smooth
@@ -103,10 +95,10 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
             >
               응원 메세지 남기기
             </ScrollLink>
-          </MenuList>
-          <MenuList className={activeSection === 'section5' ? 'on' : ''}>
+          </Common.MenuList>
+          <Common.MenuList className={activeSection === 'section5' ? 'on' : ''}>
             <ScrollLink
-              style={MenuLink}
+              style={Common.MenuLink}
               to="section5"
               spy
               smooth
@@ -114,17 +106,17 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
             >
               프로젝트 설명
             </ScrollLink>
-          </MenuList>
-        </MenuInner>
+          </Common.MenuList>
+        </Common.MenuInner>
         {/* <ChangeLanguageButton>한국어/영어</ChangeLanguageButton> */}
         <Box />
-        <HamIcon
+        <Common.HamIcon
           aria-label="Menu"
           size="md"
           icon={<CiMenuBurger color="white" size="md" />}
           onClick={() => setIsMobileNavShow(prev => !prev)}
         />
-      </HeaderWrapper>
+      </Common.HeaderWrapper>
     </>
   );
 };

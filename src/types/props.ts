@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { InputSectionTextType, MessageType } from './data';
+import { ModalTextType, InputSectionTextType, MessageType } from './data';
 
 export interface HeaderPropsType {
   onOpenShare(): void;
@@ -14,7 +14,7 @@ export interface MobileNavPropsType {
 
 export interface CommentPropType {
   onClose: () => void;
-  onSubmitForm: (content: string, username: string) => void;
+  onSubmitForm?: (content: string, username: string) => void;
   mode?: string;
   setSaveInfo?: Dispatch<
     SetStateAction<{
@@ -23,11 +23,23 @@ export interface CommentPropType {
     }>
   >;
   setPage?: Dispatch<SetStateAction<number>>;
+  ModalText: ModalTextType;
 }
 
 export interface DonateModalPropType {
   onClose: () => void;
-  onSubmitMessage: (content: string, username: string) => void;
+  ModalText: ModalTextType;
+  fetchAndSetMessage: (sort: string) => Promise<void>;
+}
+
+export interface RegistModalPropType {
+  onClose: () => void;
+  saveInfo: {
+    content: string;
+    username: string;
+  };
+  ModalText: ModalTextType;
+  fetchAndSetMessage: (sort: string) => Promise<void>;
 }
 
 export interface ShowCommentPropType {

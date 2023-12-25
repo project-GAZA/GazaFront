@@ -3,49 +3,49 @@
 import Icon_Earth from '@/assets/svg/Icon_Earth.png';
 import EarthPin from '@/assets/svg/EarthPin.svg';
 import PinShadowIcon from '@/assets/svg/PinShadow.svg';
-import {
-  EarthTextWrapper,
-  SecondSection,
-  SecondTopText,
-  SecondExplainText,
-  EarthWrapper,
-  Pin,
-  PinShadow,
-  EarthText,
-} from './section.style';
+import { dataTypes } from '@/types';
+import Section from './section.style';
 
-const ShowInfo = ({ ShowInfoText }) => {
+const ShowInfo = ({
+  ShowInfoText,
+}: {
+  ShowInfoText: dataTypes.ShowInfoType;
+}) => {
   return (
-    <SecondSection>
-      <SecondTopText>{ShowInfoText.TopText}</SecondTopText>
-      <SecondExplainText
+    <Section.SecondSection>
+      <Section.SecondTopText>{ShowInfoText.TopText}</Section.SecondTopText>
+      <Section.SecondExplainText
         dangerouslySetInnerHTML={{ __html: ShowInfoText.ExplainText }}
       />
-      <EarthWrapper bgsrc={Icon_Earth.src}>
-        <Pin bgsrc={EarthPin.src} />
-        <PinShadow bgsrc={PinShadowIcon.src} />
-        <EarthTextWrapper left={190} top={-30} backgroundColor="#fff">
-          <EarthText>{ShowInfoText.WordCloud[0]}</EarthText>
-        </EarthTextWrapper>
-        <EarthTextWrapper left={0} top={-5} backgroundColor="#fff">
-          <EarthText>{ShowInfoText.WordCloud[1]}</EarthText>
-        </EarthTextWrapper>
-        <EarthTextWrapper left={110} top={5} backgroundColor="#fff">
-          <EarthText>{ShowInfoText.WordCloud[2]}</EarthText>
-        </EarthTextWrapper>
-        <EarthTextWrapper left="195px" top="-60px" backgroundColor="#FFDE6D">
-          <EarthText>{ShowInfoText.WordCloud[3]}</EarthText>
-        </EarthTextWrapper>
-        <EarthTextWrapper
+      <Section.EarthWrapper bgsrc={Icon_Earth.src}>
+        <Section.Pin bgsrc={EarthPin.src} />
+        <Section.PinShadow bgsrc={PinShadowIcon.src} />
+        <Section.EarthTextWrapper left={190} top={-30} backgroundColor="#fff">
+          <Section.EarthText>{ShowInfoText.WordCloud[0]}</Section.EarthText>
+        </Section.EarthTextWrapper>
+        <Section.EarthTextWrapper left={0} top={-5} backgroundColor="#fff">
+          <Section.EarthText>{ShowInfoText.WordCloud[1]}</Section.EarthText>
+        </Section.EarthTextWrapper>
+        <Section.EarthTextWrapper left={110} top={5} backgroundColor="#fff">
+          <Section.EarthText>{ShowInfoText.WordCloud[2]}</Section.EarthText>
+        </Section.EarthTextWrapper>
+        <Section.EarthTextWrapper
+          left="195px"
+          top="-60px"
+          backgroundColor="#FFDE6D"
+        >
+          <Section.EarthText>{ShowInfoText.WordCloud[3]}</Section.EarthText>
+        </Section.EarthTextWrapper>
+        <Section.EarthTextWrapper
           left="-20px"
           top="-30px"
           backgroundColor="#FFDE6D"
           zIndex={-1}
         >
-          <EarthText>{ShowInfoText.WordCloud[4]}</EarthText>
-        </EarthTextWrapper>
-      </EarthWrapper>
-    </SecondSection>
+          <Section.EarthText>{ShowInfoText.WordCloud[4]}</Section.EarthText>
+        </Section.EarthTextWrapper>
+      </Section.EarthWrapper>
+    </Section.SecondSection>
   );
 };
 

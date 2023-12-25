@@ -5,17 +5,8 @@ import { FaHeart } from 'react-icons/fa';
 
 import { dataTypes } from '@/types';
 import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
-import {
-  NickName,
-  OneCommentWrapper,
-  OneCommentHeaderRight,
-  OneCommentHeaderLeft,
-  Date,
-  OneCommentContent,
-  Report,
-  OneCommentHeader,
-  LikeCountText,
-} from './component.style';
+import GiftIcon from '@/assets/svg/gifticon.svg';
+import Component from './component.style';
 
 const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
   const [like, setLike] = useState(message.likeCount);
@@ -30,20 +21,31 @@ const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
     if (res === 0) alert('이미 신고하기 눌렀습니다!');
   };
   return (
-    <OneCommentWrapper key={message.username}>
-      <OneCommentHeader>
-        <OneCommentHeaderLeft>
-          <NickName>{message.username} 님</NickName>
-          <Date>{message.createDt.slice(0, 10)}</Date>
-        </OneCommentHeaderLeft>
-        <OneCommentHeaderRight>
+    <Component.OneCommentWrapper key={message.username}>
+      <Component.OneCommentHeader>
+        <Component.OneCommentHeaderLeft>
+          <Component.NickName>{message.username} 님</Component.NickName>
+          <Component.Date>{message.createDt.slice(0, 10)}</Component.Date>
+          {message.donateType === 'donate' && (
+            <Component.GiftIcon
+              alt="선물아이콘"
+              src={GiftIcon.src}
+              width={19}
+              height={19}
+            />
+          )}
+        </Component.OneCommentHeaderLeft>
+        <Component.OneCommentHeaderRight>
           <FaHeart onClick={onClickLike} color="red" />
-          <LikeCountText>{like}</LikeCountText>
-          <Report onClick={onClickReport}>신고하기</Report>
-        </OneCommentHeaderRight>
-      </OneCommentHeader>
-      <OneCommentContent>{message.content}</OneCommentContent>
-    </OneCommentWrapper>
+          <Component.LikeCountText>{like}</Component.LikeCountText>
+          <Component.Report onClick={onClickReport}>신고하기</Component.Report>
+        </Component.OneCommentHeaderRight>
+      </Component.OneCommentHeader>
+      <Component.OneCommentContent>
+        {message.content}
+      </Component.OneCommentContent>
+    </Component.OneCommentWrapper>
   );
 };
+
 export default MessageComponent;
