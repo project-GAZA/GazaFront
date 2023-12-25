@@ -16,7 +16,6 @@ import Section from './section.style';
 
 const InputSection = ({
   fetchMessage,
-  sort,
   InputSectionText,
 }: propsTypes.InputSectionPropType) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,7 +25,7 @@ const InputSection = ({
 
   const SubmitAndSetMessage = async (content: string, username: string) => {
     await fetchPostCommnet(content, username);
-    await fetchMessage(sort);
+    await fetchMessage('new');
   };
 
   const onClickSubmit = (content: string, username: string) => {

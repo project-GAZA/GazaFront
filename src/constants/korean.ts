@@ -219,3 +219,25 @@ export const ShowInfo = {
     WordCloud,
   },
 };
+
+/* ShowComment */
+
+const SearchPlaceholder = `작성자 검색`;
+export const ShowComment = {
+  mobile: {
+    HeaderText: `
+          <strong>전세계 각지에서</strong>
+          <br />
+          많은 사람들이 응원글 작성에<br /> 참여하고 있어요
+    `,
+    SearchPlaceholder,
+  },
+  pc: {
+    HeaderText: `
+          <strong>전세계 각지에서</strong>
+          <br />
+          많은 사람들이 응원글 작성에 참여하고 있어요
+    `,
+    SearchPlaceholder,
+  },
+};

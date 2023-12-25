@@ -50,6 +50,11 @@ export interface ShowInfoType {
   ExplainText: string;
 }
 
+export interface ShowCommentTextType {
+  HeaderText: string;
+  SearchPlaceholder: string;
+}
+
 export interface ServiceLanguage {
   InputSectionText: InputSectionTextType;
   Explain: Array<ExplainType>;
@@ -60,3 +65,5 @@ export interface ServiceLanguage {
 export interface CustomToast {
   createAlertMessaeg: (message: string) => void;
 }
+
+export type FetchFunctionType = (...params: any[]) => Promise<any>;

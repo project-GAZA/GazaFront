@@ -6,7 +6,13 @@ import background4 from '@/assets/svg/background/4.png';
 import background5 from '@/assets/svg/background/5.png';
 import background6 from '@/assets/svg/background/6.png';
 
-import { ShowInfo, InputSectionText, ExplainSection, Explain } from './korean';
+import {
+  ShowComment,
+  ShowInfo,
+  InputSectionText,
+  ExplainSection,
+  Explain,
+} from './korean';
 
 export const backgrounds = [
   background1.src,
@@ -27,11 +33,13 @@ export const Korean = {
     ExplainSection,
     Explain,
     ShowInfo: ShowInfo.mobile,
+    ShowComment: ShowComment.mobile,
   },
   pc: {
     InputSectionText: InputSectionText.pc,
     ExplainSection,
     Explain,
     ShowInfo: ShowInfo.pc,
+    ShowComment: ShowComment.pc,
   },
 };

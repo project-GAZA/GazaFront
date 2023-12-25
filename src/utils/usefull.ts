@@ -1,4 +1,27 @@
 import { dataTypes } from '@/types';
+import { Dispatch, SetStateAction } from 'react';
+
+// fetch하고 state를 set하는 함수를 분리
+export const fetchAndSet = <T>(
+  setState: Dispatch<SetStateAction<T>>,
+  fetchFunction: dataTypes.FetchFunctionType,
+  catchFunction: any,
+) => {
+  const fetchDataAndSetState = async (...params: any[]): Promise<void> => {
+    try {
+      const result = await fetchFunction(...params);
+      setState(result);
+    } catch (error) {
+      catchFunction(error);
+    }
+  };
+
+  return fetchDataAndSetState;
+};
+
+export const onClickInsta = (): void => {
+  window.open('https://www.instagram.com/gazaschildreadhope/');
+};
 
 export const errorToString = (err: unknown): string => {
   let message: string;

@@ -1,5 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ModalTextType, InputSectionTextType, MessageType } from './data';
+import {
+  ShowCommentTextType,
+  ModalTextType,
+  InputSectionTextType,
+  MessageType,
+} from './data';
 
 export interface HeaderPropsType {
   onOpenShare(): void;
@@ -44,13 +49,11 @@ export interface RegistModalPropType {
 
 export interface ShowCommentPropType {
   messages?: Array<MessageType>;
-  setSort: Dispatch<SetStateAction<string>>;
-  fetchSearch: (username: string, size: number, page: number) => Promise<void>;
-  fetchMessage?: (sort: string) => Promise<void>;
+  fetchMessage?: any;
+  ShowCommentText: ShowCommentTextType;
 }
 
 export interface InputSectionPropType {
-  fetchMessage: (sort: string) => Promise<void>;
-  sort: string;
+  fetchMessage: any;
   InputSectionText: InputSectionTextType;
 }
