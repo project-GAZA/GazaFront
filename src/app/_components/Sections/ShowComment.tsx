@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-import useWindowSize from '@/hooks/useWindowSize';
 import { dataTypes, propsTypes } from '@/types';
 
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
@@ -23,22 +22,19 @@ const AddClassSortOn = (str: string): void => {
 
 const ShowComment = ({
   messages,
-  setSort,
-  fetchSearch,
   fetchMessage,
+  ShowCommentText,
 }: propsTypes.ShowCommentPropType) => {
   const [searchInput, setSearchInput] = useState('');
-  const nsize = useWindowSize();
 
   const SortClick = (sort: string) => {
     AddClassSortOn(sort);
-    if (fetchMessage) fetchMessage(sort.toLowerCase());
-    setSort(sort.toLowerCase());
+    fetchMessage('', sort.toLowerCase(), 100, 0);
   };
 
-  const onClickSearch = (e: React.FormEvent): void => {
+  const onSubmitSearch = (e: React.FormEvent): void => {
     e.preventDefault();
-    if (fetchSearch) fetchSearch(searchInput, 50, 0);
+    fetchMessage(searchInput, 'new', 100, 0);
   };
 
   const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,19 +44,13 @@ const ShowComment = ({
   return (
     <Section.ThirdSection bgsrc={Main_firefly.src}>
       <Section.TitleBox>
-        <Section.ThirdHeaderText>
-          <Section.ThirdHeaderTextStrong>
-            전세계 각지에서
-          </Section.ThirdHeaderTextStrong>
-          <br />
-          많은 사람들이 응원글 작성에
-          {nsize.width <= 820 && <br />} 참여하고 있어요
-        </Section.ThirdHeaderText>
+        <Section.ThirdHeaderText
+          dangerouslySetInnerHTML={{ __html: ShowCommentText.HeaderText }}
+        />
       </Section.TitleBox>
       <Section.CommentWrapper>
         <Section.CommentHeader>
           <Section.CommentSortButton
-            id="best"
             className="SortOn sort"
             onClick={() => SortClick('Best')}
           >
@@ -68,21 +58,20 @@ const ShowComment = ({
           </Section.CommentSortButton>
           <Section.DividerLine orientation="vertical" />
           <Section.CommentSortButton
-            id="new"
             className="sort"
             onClick={() => SortClick('New')}
           >
             New
           </Section.CommentSortButton>
           <Section.Search>
-            <form onSubmit={onClickSearch}>
+            <form onSubmit={onSubmitSearch}>
               <Section.SearchInput
                 value={searchInput}
                 onChange={onChangeSearchInput}
                 variant="unstyled"
-                placeholder="작성자 검색"
+                placeholder={ShowCommentText.SearchPlaceholder}
               />
-              <Section.SearchIcon onClick={onClickSearch}>
+              <Section.SearchIcon onClick={onSubmitSearch}>
                 <FaSearch color="white" />
               </Section.SearchIcon>
             </form>

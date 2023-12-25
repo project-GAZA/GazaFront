@@ -18,28 +18,19 @@ const RegistModal = ({
   const [phone, setPhone] = useState('');
   const [tossid, setTossid] = useState('');
 
-  const PostDonateAndComment = async (
-    p: string,
-    toss: string,
-    username: string,
-    content: string,
-  ) => {
-    await fetchPostDonate(p, toss, username, content);
-  };
-
   const onClickSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     e.preventDefault();
     if (idValid(toast, tossid) && phoneValid(toast, phone)) {
       toast.promiseToast(async () => {
-        await PostDonateAndComment(
+        await fetchPostDonate(
           phone,
           tossid,
           saveInfo.username,
           saveInfo.content,
         );
-        await fetchAndSetMessage('new');
+        await fetchAndSetMessage('', 'new', 100, 0);
       });
       onClose();
     }

@@ -6,13 +6,32 @@ import * as ChannelService from '@channel.io/channel-web-sdk-loader';
 
 import Header from '@/app/_components/common/Header';
 import Main from '@/app/_components/common/Main';
-
 import ShareModal from '@/app/_components/modal/ShareModal';
+
+import { Korean } from '@/constants';
 
 const Home = () => {
   const [shareModal, setShareModal] = useState<boolean>(false);
+  const [explain, setExplain] = useState(Korean.mobile);
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 890) {
+        setExplain(Korean.pc);
+      } else {
+        setExplain(Korean.mobile);
+      }
+    };
+    handleResize();
+    // Event listener for window resize
+    window.addEventListener('resize', handleResize);
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  useEffect(() => {
+    // window 창 크기 변경될때 실행되는 핸들러
     // 페이지가 로드될 때 스크롤 위치를 복원합니다.
     window.addEventListener('load', () => {
       const savedScrollPosition = localStorage.getItem('scrollPosition');
@@ -34,12 +53,12 @@ const Home = () => {
         pluginKey,
       });
     }
-  });
+  }, []);
 
   return (
     <Box>
       <Header onOpenShare={() => setShareModal(true)} />
-      <Main />
+      <Main explain={explain} />
 
       <Modal
         isCentered

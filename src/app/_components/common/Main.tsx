@@ -11,64 +11,24 @@ import ExplainSectoin from '@/app/_components/Sections/ExplainSectoin';
 
 import { fetchComments } from '@/utils/api';
 import { dataTypes } from '@/types';
-import { Korean } from '@/constants';
 
 import useCustomToast from '@/hooks/useCustomToast';
+import { fetchAndSet } from '@/utils/usefull';
 
 import Common from './common.style';
 
-const Main = () => {
-  const [explain, setExplain] = useState(Korean.mobile);
+const Main = ({ explain }) => {
   const [messages, setMessages] = useState<Array<dataTypes.MessageType>>([]);
-  const [sort, setSort] = useState('best');
   const toast = useCustomToast();
 
-  const fetchAndSetMessage = async (
-    sortstr: string,
-    size: number = 100,
-    page: number = 0,
-  ) => {
-    try {
-      const result = await fetchComments('', sortstr, size, page);
-      setMessages(result);
-    } catch (error) {
-      toast.createErrorMessage(error);
-    }
-  };
-
-  const SearchAndSetMessage = async (
-    username: string,
-    size: number = 100,
-    page: number = 0,
-    sortstr: string = 'new',
-  ) => {
-    try {
-      const result = await fetchComments(username, sortstr, size, page);
-      setMessages(result);
-    } catch (error) {
-      toast.createErrorMessage(error);
-    }
-  };
-
-  // window 창 크기 변경될때 실행되는 핸들러
-  const handleResize = () => {
-    if (window.innerWidth >= 890) {
-      setExplain(Korean.pc);
-    } else {
-      setExplain(Korean.mobile);
-    }
-  };
+  const fetchAndSetMessage = fetchAndSet(
+    setMessages,
+    fetchComments,
+    toast.createErrorMessage,
+  );
 
   useEffect(() => {
-    fetchAndSetMessage(sort);
-    // Initial check
-    handleResize();
-    // Event listener for window resize
-    window.addEventListener('resize', handleResize);
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    fetchAndSetMessage('', 'best', 100, 0);
   }, []);
 
   return (
@@ -86,9 +46,8 @@ const Main = () => {
         data-anchor="section3"
       >
         <ShowComment
-          setSort={setSort}
+          ShowCommentText={explain.ShowComment}
           messages={messages}
-          fetchSearch={SearchAndSetMessage}
           fetchMessage={fetchAndSetMessage}
         />
       </Common.SectionWrapper>
@@ -99,7 +58,6 @@ const Main = () => {
       >
         <InputSection
           fetchMessage={fetchAndSetMessage}
-          sort={sort}
           InputSectionText={explain.InputSectionText}
         />
       </Common.SectionWrapper>

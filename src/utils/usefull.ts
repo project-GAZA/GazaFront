@@ -1,4 +1,27 @@
 import { dataTypes } from '@/types';
+import { Dispatch, SetStateAction } from 'react';
+
+// fetch하고 state를 set하는 함수를 분리
+export const fetchAndSet = <T>(
+  setState: Dispatch<SetStateAction<T>>,
+  fetchFunction: dataTypes.FetchFunctionType,
+  catchFunction: any,
+) => {
+  const fetchDataAndSetState = async (...params: any[]): Promise<void> => {
+    try {
+      const result = await fetchFunction(...params);
+      setState(result);
+    } catch (error) {
+      catchFunction(error);
+    }
+  };
+
+  return fetchDataAndSetState;
+};
+
+export const onClickInsta = (): void => {
+  window.open('https://www.instagram.com/gazaschildreadhope/');
+};
 
 export const errorToString = (err: unknown): string => {
   let message: string;
@@ -22,7 +45,11 @@ export const phoneValid = (
   return true;
 };
 
-export const idValid = (toast: dataTypes.CustomToast, id: string): boolean => {
+export const idValid = (
+  toast: dataTypes.CustomToast,
+  id: string,
+  content?: string,
+): boolean => {
   if (id.length < 2) {
     toast.createAlertMessaeg('닉네임은 2자 이상 입력해주세요');
     return false;
@@ -31,7 +58,7 @@ export const idValid = (toast: dataTypes.CustomToast, id: string): boolean => {
     toast.createAlertMessaeg('닉네임은 8자 이하 입력해주세요');
     return false;
   }
-  if (id.length === 0) {
+  if (content !== undefined && content.length === 0) {
     toast.createAlertMessaeg('내용을 입력해주세요.');
     return false;
   }
