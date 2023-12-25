@@ -45,7 +45,11 @@ export const phoneValid = (
   return true;
 };
 
-export const idValid = (toast: dataTypes.CustomToast, id: string): boolean => {
+export const idValid = (
+  toast: dataTypes.CustomToast,
+  id: string,
+  content?: string,
+): boolean => {
   if (id.length < 2) {
     toast.createAlertMessaeg('닉네임은 2자 이상 입력해주세요');
     return false;
@@ -54,7 +58,7 @@ export const idValid = (toast: dataTypes.CustomToast, id: string): boolean => {
     toast.createAlertMessaeg('닉네임은 8자 이하 입력해주세요');
     return false;
   }
-  if (id.length === 0) {
+  if (content !== undefined && content.length === 0) {
     toast.createAlertMessaeg('내용을 입력해주세요.');
     return false;
   }

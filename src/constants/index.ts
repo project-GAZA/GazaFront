@@ -6,6 +6,10 @@ import background4 from '@/assets/svg/background/4.png';
 import background5 from '@/assets/svg/background/5.png';
 import background6 from '@/assets/svg/background/6.png';
 
+import ExplainSendMoneyImg1 from '@/assets/svg/ExplainSendMoney/ExplainSendMoney1.svg';
+import ExplainSendMoneyImg2 from '@/assets/svg/ExplainSendMoney/ExplainSendMoney2.svg';
+import ExplainSendMoneyImg3 from '@/assets/svg/ExplainSendMoney/ExplainSendMoney3.svg';
+
 import {
   ShowComment,
   ShowInfo,
@@ -13,6 +17,27 @@ import {
   ExplainSection,
   Explain,
 } from './korean';
+
+export const ExplainSendMoney = [
+  {
+    src: ExplainSendMoneyImg1.src,
+    text: `‘익명 송금하기’ 버튼을 클릭`,
+  },
+  {
+    src: ExplainSendMoneyImg2.src,
+    text: `
+이름과 금액을 작성 <br/>
+※ 이름은 010을 제외한 전화번호 뒷자리로 해 주세요!
+`,
+  },
+  {
+    src: ExplainSendMoneyImg3.src,
+    text: `
+‘보내기’ 버튼을 누르면
+후원금 보내기 성공!
+`,
+  },
+];
 
 export const backgrounds = [
   background1.src,

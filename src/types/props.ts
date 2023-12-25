@@ -19,7 +19,6 @@ export interface MobileNavPropsType {
 
 export interface CommentPropType {
   onClose: () => void;
-  onSubmitForm?: (content: string, username: string) => void;
   mode?: string;
   setSaveInfo?: Dispatch<
     SetStateAction<{
@@ -29,6 +28,7 @@ export interface CommentPropType {
   >;
   setPage?: Dispatch<SetStateAction<number>>;
   ModalText: ModalTextType;
+  fetchMessage?: any;
 }
 
 export interface DonateModalPropType {
@@ -44,7 +44,7 @@ export interface RegistModalPropType {
     username: string;
   };
   ModalText: ModalTextType;
-  fetchAndSetMessage: (sort: string) => Promise<void>;
+  fetchAndSetMessage: any;
 }
 
 export interface ShowCommentPropType {

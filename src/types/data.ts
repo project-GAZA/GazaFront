@@ -39,6 +39,9 @@ export interface ModalTextType {
   RegistPhoneLabel: string;
   RegistTossLabel: string;
   RegistTossPlaceHolder: string;
+  TossTopText: string;
+  TossSubText: string;
+  TossDonateButtonText: string;
 }
 export interface ExplainSectionType {
   title: string;
