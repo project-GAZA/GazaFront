@@ -16,34 +16,36 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   const [totalMessages, setTotalMessages] = useState(0);
   const commentWrapperRef = useRef<HTMLDivElement>(null);
 
-  // 메시지 불러오기 함수
   const fetchMessages = useCallback(
     async (sortType = 'new', reset = false) => {
-      if (isLoading || (!reset && currentPage * 20 >= totalMessages)) return;
+      if (isLoading) return;
       setIsLoading(true);
       try {
         const newComments = await fetchComments(
           searchInput,
           sortType,
           20,
-          currentPage,
+          reset ? 0 : currentPage - 1,
         );
-        setComments(reset ? newComments : [...comments, ...newComments]);
-        setCurrentPage(prevPage => prevPage + (reset ? 0 : 1));
+        // 서버에서 더 이상의 댓글이 없다는 정보를 반환하는 경우 처리
+        if (newComments.length === 0) {
+          // 추가 로딩 중지나 표시를 위한 처리
+          return;
+        }
+        setComments(prev => (reset ? newComments : [...prev, ...newComments]));
+        setCurrentPage(prevPage => prevPage + 1);
       } catch (error) {
         console.error(error);
       }
       setIsLoading(false);
     },
-    [searchInput, currentPage, isLoading, totalMessages, comments],
+    [searchInput, currentPage, isLoading],
   );
 
-  // 초기 메시지 로드
   useEffect(() => {
     fetchMessages('new', true);
   }, []);
 
-  // 총 메시지 개수 가져오기
   useEffect(() => {
     const getTotalMessages = async () => {
       try {
@@ -56,17 +58,16 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
     getTotalMessages();
   }, []);
 
-  // 스크롤 이벤트 핸들러
   const handleScroll = useCallback(() => {
     if (!commentWrapperRef.current) return;
 
     const { scrollTop, scrollHeight, clientHeight } = commentWrapperRef.current;
+
     if (scrollHeight - scrollTop - clientHeight < 50 && !isLoading) {
       fetchMessages();
     }
   }, [isLoading, fetchMessages]);
 
-  // 스크롤 이벤트 리스너 등록
   useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
     if (commentWrapper) {
@@ -79,7 +80,6 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
     };
   }, [handleScroll]);
 
-  // 정렬 및 검색 이벤트 핸들러
   const SortClick = useCallback(
     (sort: string) => {
       setCurrentPage(1);
