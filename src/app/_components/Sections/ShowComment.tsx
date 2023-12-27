@@ -5,7 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 import { dataTypes, propsTypes } from '@/types';
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
 import MessageComponent from '@/app/_components/MessageComponent';
-import { fetchComments, fetchGetMessageCount } from '@/utils/api';
+import { fetchComments } from '@/utils/api';
 import Section from './section.style';
 
 const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
@@ -13,13 +13,13 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   const [comments, setComments] = useState<dataTypes.MessageType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const [totalMessages, setTotalMessages] = useState(0);
   const commentWrapperRef = useRef<HTMLDivElement>(null);
 
   const fetchMessages = useCallback(
     async (sortType = 'new', reset = false) => {
-      if (isLoading) return;
+      if (isLoading || (reset && currentPage !== 1)) return;
       setIsLoading(true);
+
       try {
         const newComments = await fetchComments(
           searchInput,
@@ -27,16 +27,19 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
           20,
           reset ? 0 : currentPage - 1,
         );
-        // 서버에서 더 이상의 댓글이 없다는 정보를 반환하는 경우 처리
+
         if (newComments.length === 0) {
-          // 추가 로딩 중지나 표시를 위한 처리
+          console.log('다음 댓글을 로드할 수 없음');
+          setIsLoading(false);
           return;
         }
+
         setComments(prev => (reset ? newComments : [...prev, ...newComments]));
         setCurrentPage(prevPage => prevPage + 1);
       } catch (error) {
         console.error(error);
       }
+
       setIsLoading(false);
     },
     [searchInput, currentPage, isLoading],
@@ -47,38 +50,31 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   }, []);
 
   useEffect(() => {
-    const getTotalMessages = async () => {
-      try {
-        const countData = await fetchGetMessageCount();
-        setTotalMessages(countData.count);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getTotalMessages();
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    if (!commentWrapperRef.current) return;
-
-    const { scrollTop, scrollHeight, clientHeight } = commentWrapperRef.current;
-
-    if (scrollHeight - scrollTop - clientHeight < 50 && !isLoading) {
-      fetchMessages();
-    }
-  }, [isLoading, fetchMessages]);
-
-  useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
-    if (commentWrapper) {
-      commentWrapper.addEventListener('scroll', handleScroll);
+    console.log('commentWrapper:', commentWrapper);
+
+    if (!commentWrapper) {
+      console.error('댓글 목록 컨테이터 불포함');
+      return;
     }
-    return () => {
-      if (commentWrapper) {
-        commentWrapper.removeEventListener('scroll', handleScroll);
+
+    // 스크롤 이벤트 핸들링
+    const handleScrollEvent = () => {
+      console.log('스크롤 이벤트 실행'); 
+
+      const { scrollTop, scrollHeight, clientHeight } = commentWrapper;
+      if (scrollHeight - scrollTop - clientHeight < 200 && !isLoading) {
+        console.log('추가 데이터 요청 중');
+        fetchMessages();
       }
     };
-  }, [handleScroll]);
+
+    commentWrapper.addEventListener('scroll', handleScrollEvent);
+
+    return () => {
+      commentWrapper.removeEventListener('scroll', handleScrollEvent);
+    };
+  }, [isLoading, fetchMessages]);
 
   const SortClick = useCallback(
     (sort: string) => {
