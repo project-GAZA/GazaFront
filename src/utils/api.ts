@@ -104,7 +104,6 @@ export const fetchPostDonate = async (
   });
   if (response.status === 200) {
     const data = await response.json();
-    console.log(data);
     return data;
   }
   throw new Error(response.statusText);

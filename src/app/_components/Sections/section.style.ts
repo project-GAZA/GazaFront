@@ -37,10 +37,9 @@ const Section = {
     font-weight: 900;
     line-height: 165%;
     margin-bottom: 30px;
-  `,
-
-  ThirdHeaderTextStrong: styled.strong`
-    font-size: 16px;
+    & strong {
+      font-size: 16px;
+    }
   `,
 
   CommentWrapper: styled(Box)`

@@ -7,11 +7,8 @@ import Icon_Facebook from '@/assets/svg/Icon_Facebook.png';
 import Icon_insta from '@/assets/svg/Icon_insta.png';
 
 import { dataTypes } from '@/types';
+import { onClickInsta } from '@/utils/usefull';
 import Section from './section.style';
-
-const onClickInsta = (): void => {
-  window.open('https://www.instagram.com/gazaschildreadhope/');
-};
 
 const ExplainSection = ({
   explain,

@@ -6,34 +6,18 @@ import { Modal, ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import Comment from '@/app/_components/modal/Comment';
 import Donate from '@/app/_components/modal/Donate';
 
-import { fetchPostCommnet } from '@/utils/api';
 import { propsTypes } from '@/types';
 import Icon_Cheer from '@/assets/svg/Icon_Cheer.svg';
 import Icon_GiveMoney from '@/assets/svg/Icon_GiveMoney.svg';
 // import Icon_Present from '@/assets/svg/Icon_Present.svg';
-import useCustomToast from '@/hooks/useCustomToast';
 import Section from './section.style';
 
 const InputSection = ({
   fetchMessage,
-  sort,
   InputSectionText,
 }: propsTypes.InputSectionPropType) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useCustomToast();
-
   const [mode, setMode] = useState('');
-
-  const SubmitAndSetMessage = async (content: string, username: string) => {
-    await fetchPostCommnet(content, username);
-    await fetchMessage(sort);
-  };
-
-  const onClickSubmit = (content: string, username: string) => {
-    toast.promiseToast(async () => {
-      await SubmitAndSetMessage(content, username);
-    });
-  };
 
   const ClickOnlyMessage = (): void => {
     setMode('message');
@@ -119,7 +103,7 @@ const InputSection = ({
         {mode === 'message' && (
           <Comment
             ModalText={InputSectionText.ModalText}
-            onSubmitForm={onClickSubmit}
+            fetchMessage={fetchMessage}
             onClose={onClose}
           />
         )}

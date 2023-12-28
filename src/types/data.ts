@@ -39,6 +39,9 @@ export interface ModalTextType {
   RegistPhoneLabel: string;
   RegistTossLabel: string;
   RegistTossPlaceHolder: string;
+  TossTopText: string;
+  TossSubText: string;
+  TossDonateButtonText: string;
 }
 export interface ExplainSectionType {
   title: string;
@@ -48,6 +51,11 @@ export interface ShowInfoType {
   TopText: string;
   WordCloud: Array<string>;
   ExplainText: string;
+}
+
+export interface ShowCommentTextType {
+  HeaderText: string;
+  SearchPlaceholder: string;
 }
 
 export interface ServiceLanguage {
@@ -60,3 +68,5 @@ export interface ServiceLanguage {
 export interface CustomToast {
   createAlertMessaeg: (message: string) => void;
 }
+
+export type FetchFunctionType = (...params: any[]) => Promise<any>;

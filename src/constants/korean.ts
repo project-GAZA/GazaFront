@@ -42,6 +42,17 @@ const RegistPhonePlaceHolder = '전화번호를 입력하세요(-빼고입력하
 const RegistPhoneLabel = '전화번호';
 const RegistTossLabel = '토스 송금 아이디';
 const RegistTossPlaceHolder = '토스 송금 아이디를 입력하세요';
+const TossTopText = `천원도 후원 가능해요!`;
+const TossSubText = `
+            아래 버튼을 클릭하면 ‘토스아이디(PEACEGAZA)’로 넘어가요!
+            <br />
+            <strong>이름은 010을 제외한 전화번호 뒷자리(8자)</strong>로
+            해주세요!
+            <br /> (확인 후, 후원자님의 메시지에 특별한 표시를 남겨드립니다.)
+`;
+const TossDonateButtonText = `
+            클릭해서 토스로 후원하기
+`;
 
 const InputSectionTexts = {
   topMessage: inputtopMessage,
@@ -72,6 +83,9 @@ export const InputSectionText = {
       RegistPhoneLabel,
       RegistTossLabel,
       RegistTossPlaceHolder,
+      TossTopText,
+      TossSubText,
+      TossDonateButtonText,
     },
   },
   pc: {
@@ -90,6 +104,9 @@ export const InputSectionText = {
       RegistPhoneLabel,
       RegistTossLabel,
       RegistTossPlaceHolder,
+      TossTopText,
+      TossSubText,
+      TossDonateButtonText,
     },
   },
 };
@@ -217,5 +234,27 @@ export const ShowInfo = {
     <br /> 우리의 관심과 사랑이 이 아이들에게<strong>긍정적인 변화</strong>를 가져오고,
     <br /> <strong>전 세계에 평화의 메시지</strong>를 전파할 것입니다.`,
     WordCloud,
+  },
+};
+
+/* ShowComment */
+
+const SearchPlaceholder = `작성자 검색`;
+export const ShowComment = {
+  mobile: {
+    HeaderText: `
+          <strong>전세계 각지에서</strong>
+          <br />
+          많은 사람들이 응원글 작성에<br /> 참여하고 있어요
+    `,
+    SearchPlaceholder,
+  },
+  pc: {
+    HeaderText: `
+          <strong>전세계 각지에서</strong>
+          <br />
+          많은 사람들이 응원글 작성에 참여하고 있어요
+    `,
+    SearchPlaceholder,
   },
 };

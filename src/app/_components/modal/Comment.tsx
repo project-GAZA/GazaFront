@@ -1,17 +1,17 @@
 'use clients';
 
-// test_section_3 : 응원 메시지 입력창
-
 import { FormEvent, useState } from 'react';
 import { FormControl } from '@chakra-ui/react';
 
-import { propsTypes } from '@/types';
+import { fetchPostCommnet } from '@/utils/api';
+import { idValid } from '@/utils/usefull';
 import useCustomToast from '@/hooks/useCustomToast';
+import { propsTypes } from '@/types';
 import Modal from './modal.style';
 
 const CommentModal = ({
   onClose,
-  onSubmitForm,
+  fetchMessage,
   mode = 'Comment',
   setSaveInfo,
   setPage,
@@ -21,35 +21,31 @@ const CommentModal = ({
   const [username, setUsername] = useState<string>('');
   const toast = useCustomToast();
 
-  const CheckValid = (user: string, text: string): boolean => {
-    if (user.length < 2) {
-      toast.createAlertMessaeg('닉네임은 2자 이상 입력해주세요');
-      return false;
-    }
-    if (user.length > 8) {
-      toast.createAlertMessaeg('닉네임은 8자 이하 입력해주세요');
-      return false;
-    }
-    if (text.length === 0) {
-      toast.createAlertMessaeg('내용을 입력해주세요.');
-      return false;
-    }
-    return true;
+  const SubmitAndSetMessage = async (detail: string, user: string) => {
+    await fetchPostCommnet(detail, user); // Comment를 입력한다.
+    await fetchMessage('', 'new', 100, 0); // Comment 목록을 불러온다.
+  };
+
+  const onSubmit = (detail: string, user: string) => {
+    toast.promiseToast(async () => {
+      await SubmitAndSetMessage(detail, user);
+    });
   };
 
   const onSubmitComment = (e: FormEvent): void => {
     e.preventDefault();
-    if (!CheckValid(username, content)) return;
-    if (mode === 'Comment') {
-      if (onSubmitForm) onSubmitForm(content, username);
-      onClose();
-    } else {
-      if (setSaveInfo)
-        setSaveInfo({
-          content,
-          username,
-        });
-      if (setPage) setPage(1);
+    if (idValid(toast, username, content)) {
+      if (mode === 'Comment') {
+        onSubmit(content, username);
+        onClose();
+      } else {
+        if (setSaveInfo)
+          setSaveInfo({
+            content,
+            username,
+          });
+        if (setPage) setPage(1);
+      }
     }
   };
 
