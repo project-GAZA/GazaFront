@@ -19,15 +19,10 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   // 메시지 불러오기 함수
   const fetchMessages = useCallback(
     async (sortType = 'new', reset = false) => {
-      if (isLoading || (!reset && currentPage * 20 >= totalMessages)) return;
+      if (isLoading || (!reset && totalMessages <= 1000)) return;
       setIsLoading(true);
       try {
-        const newComments = await fetchComments(
-          searchInput,
-          sortType,
-          20,
-          currentPage,
-        );
+        const newComments = await fetchComments(searchInput, sortType, 100, 0);
         setComments(reset ? newComments : [...comments, ...newComments]);
         setCurrentPage(prevPage => prevPage + (reset ? 0 : 1));
       } catch (error) {
@@ -40,10 +35,11 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 
   // 초기 메시지 로드
   useEffect(() => {
-    fetchMessages('new', true);
+    fetchMessages('best', true);
   }, []);
 
   // 총 메시지 개수 가져오기
+  /*
   useEffect(() => {
     const getTotalMessages = async () => {
       try {
@@ -78,6 +74,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
       }
     };
   }, [handleScroll]);
+  */
 
   // 정렬 및 검색 이벤트 핸들러
   const SortClick = useCallback(

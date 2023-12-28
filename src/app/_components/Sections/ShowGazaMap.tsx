@@ -94,7 +94,7 @@ const ShowGazaMap = () => {
               <Box>
                 <Section.RealGoalText>총 모금액</Section.RealGoalText>
                 <Section.RealGoalMoney>
-                  {currentMoney.toLocaleString()}
+                  {`3,001` /* currentMoney.toLocaleString() */}
                 </Section.RealGoalMoney>
               </Box>
 
