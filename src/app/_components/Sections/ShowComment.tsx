@@ -63,7 +63,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
       console.log('스크롤 이벤트 실행'); 
 
       const { scrollTop, scrollHeight, clientHeight } = commentWrapper;
-      if (scrollHeight - scrollTop - clientHeight < 200 && !isLoading) {
+      if (scrollHeight - scrollTop - clientHeight < 1 && !isLoading) {
         console.log('추가 데이터 요청 중');
         fetchMessages();
       }
@@ -135,8 +135,8 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
             </form>
           </Section.Search>
         </Section.CommentHeader>
-        <Section.ShowCommentWrapper ref={commentWrapperRef} id="CommentStack">
-          <Section.StyledScrollbar>
+        <Section.ShowCommentWrapper id="CommentStack">
+          <Section.StyledScrollbar ref={commentWrapperRef}>
             {comments.map((message: dataTypes.MessageType) => (
               <MessageComponent key={message.messageId} message={message} />
             ))}
