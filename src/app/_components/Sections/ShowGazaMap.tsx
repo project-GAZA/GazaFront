@@ -86,7 +86,7 @@ const ShowGazaMap = () => {
                 </Section.GoalFixedText>
               </Section.GoalText>
               <Section.GoalText>
-                {percentage}%{' '}
+                {0.4 /* percentage */}%{' '}
                 <Section.GoalFixedText>달성</Section.GoalFixedText>
               </Section.GoalText>
             </Section.GoalTextBox>
