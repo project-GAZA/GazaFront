@@ -87,7 +87,7 @@ const Section = {
   `,
 
   ShowCommentWrapper: styled(Stack)`
-    max-height: calc(102.35vh - 275px);
+    max-height: calc(102.35vh - 300px);
     overflow-y: auto;
     margin-top: 30px;
     padding: 16px;
@@ -150,6 +150,9 @@ const Section = {
     line-height: 160%;
     & .redstrong {
       color: #dc0000;
+    }
+    @media (max-width: 768px) {
+      margin-top: 38px;
     }
   `,
 
@@ -476,6 +479,7 @@ const Section = {
     left: 70px;
     top: -50px;
     @media (max-width: 890px) {
+      margin-top: 15px;
       bottom: 20%;
     }
   `,
@@ -498,7 +502,7 @@ const Section = {
   StyledScrollbar: styled.div`
     overflow-x: auto;
     overflow-y: auto;
-    padding-right: 10px; // 여기에 추가
+    padding-right: 10px;
 
     ::-webkit-scrollbar {
       width: 13px;
