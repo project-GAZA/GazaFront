@@ -1,6 +1,6 @@
 'use clients';
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { dataTypes, propsTypes } from '@/types';
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
@@ -13,58 +13,54 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   const [comments, setComments] = useState<dataTypes.MessageType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [totalMessages, setTotalMessages] = useState(0);
   const commentWrapperRef = useRef<HTMLDivElement>(null);
 
   const fetchMessages = useCallback(
-    async (sortType = 'new', reset = false) => {
-      if (isLoading || (reset && currentPage !== 1)) return;
+    async (sortType = 'new', reset = false, page = currentPage) => {
+      if (isLoading || (reset && page !== 1)) return;
       setIsLoading(true);
 
-      try {
-        const newComments = await fetchComments(
-          searchInput,
-          sortType,
-          20,
-          reset ? 0 : currentPage - 1,
-        );
+    try {
+      const newComments = await fetchComments(
+        searchInput,
+        sortType,
+        20,
+        reset ? 0 : page - 1,
+      );
 
-        if (newComments.length === 0) {
-          console.log('다음 댓글을 로드할 수 없음');
-          setIsLoading(false);
-          return;
-        }
-
-        setComments(prev => (reset ? newComments : [...prev, ...newComments]));
-        setCurrentPage(prevPage => prevPage + 1);
-      } catch (error) {
-        console.error(error);
+      if (newComments.length === 0) {
+        console.log('다음 댓글을 로드할 수 없음');
+        setIsLoading(false);
+        return;
       }
 
-      setIsLoading(false);
-    },
-    [searchInput, currentPage, isLoading],
-  );
+      setComments(prev => (reset ? newComments : [...prev, ...newComments]));
+      setCurrentPage(prevPage => prevPage + 1);
+      setTotalMessages(prev => prev + newComments.length);
+    } catch (error) {
+      console.error(error);
+    }
+
+    setIsLoading(false);
+  }
 
   useEffect(() => {
     fetchMessages('new', true);
-  }, []);
+  }, [fetchMessages]);
 
   useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
-    console.log('commentWrapper:', commentWrapper);
 
-    if (!commentWrapper) {
-      console.error('댓글 목록 컨테이터 불포함');
-      return;
-    }
+    if (!commentWrapper) return;
 
-    // 스크롤 이벤트 핸들링
     const handleScrollEvent = () => {
-      console.log('스크롤 이벤트 실행'); 
-
       const { scrollTop, scrollHeight, clientHeight } = commentWrapper;
-      if (scrollHeight - scrollTop - clientHeight < 1 && !isLoading) {
-        console.log('추가 데이터 요청 중');
+      if (
+        scrollHeight - scrollTop - clientHeight < 1 &&
+        !isLoading &&
+        comments.length < totalMessages
+      ) {
         fetchMessages();
       }
     };
@@ -74,7 +70,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
     return () => {
       commentWrapper.removeEventListener('scroll', handleScrollEvent);
     };
-  }, [isLoading, fetchMessages]);
+  }, [isLoading, comments.length, totalMessages, fetchMessages]);
 
   const SortClick = useCallback(
     (sort: string) => {
@@ -85,15 +81,12 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
     [fetchMessages],
   );
 
-  const onSubmitSearch = useCallback(
-    (e: React.FormEvent): void => {
-      e.preventDefault();
-      setCurrentPage(1);
-      setComments([]);
-      fetchMessages('new', true);
-    },
-    [fetchMessages],
-  );
+  const onSubmitSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    setCurrentPage(1);
+    setComments([]);
+    fetchMessages('new', true);
+  };
 
   const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
