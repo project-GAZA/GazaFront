@@ -140,4 +140,3 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 };
 
 export default ShowComment;
-
