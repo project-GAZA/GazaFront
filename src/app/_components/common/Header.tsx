@@ -96,17 +96,38 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
               응원 메세지 남기기
             </ScrollLink>
           </Common.MenuList>
-          <Common.MenuList className={activeSection === 'section5' ? 'on' : ''}>
-            <ScrollLink
-              style={Common.MenuLink}
-              to="section5"
-              spy
-              smooth
-              duration={800}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Common.MenuList>
+              <ScrollLink
+                style={{ ...Common.MenuLink, color: '#8f8f8f' }}
+                to="section4"
+                spy
+                smooth
+                duration={800}
+              >
+                메시지 하나로 가자지구의 평화 만드는 방법
+              </ScrollLink>
+            </Common.MenuList>
+            <Common.MenuList
+              className={activeSection === 'section5' ? 'on' : ''}
             >
-              프로젝트 설명
-            </ScrollLink>
-          </Common.MenuList>
+              <ScrollLink
+                style={Common.MenuLink}
+                to="section5"
+                spy
+                smooth
+                duration={800}
+              >
+                더 알아보기
+              </ScrollLink>
+            </Common.MenuList>
+          </div>
         </Common.MenuInner>
         {/* <ChangeLanguageButton>한국어/영어</ChangeLanguageButton> */}
         <Box />
