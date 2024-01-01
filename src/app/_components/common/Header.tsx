@@ -103,17 +103,20 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
               alignItems: 'center',
             }}
           >
-            <Common.MenuList>
-              <ScrollLink
-                style={{ ...Common.MenuLink, color: '#8f8f8f' }}
-                to="section4"
-                spy
-                smooth
-                duration={800}
-              >
-                메시지 하나로 가자지구의 평화 만드는 방법
-              </ScrollLink>
-            </Common.MenuList>
+            <ScrollLink
+              style={{
+                ...Common.MenuLink,
+                cursor: 'pointer',
+                color: '#8f8f8f',
+                fontSize: '14px',
+              }}
+              to="section5"
+              spy
+              smooth
+              duration={800}
+            >
+              메시지 하나로 가자지구의 평화 만드는 방법
+            </ScrollLink>
             <Common.MenuList
               className={activeSection === 'section5' ? 'on' : ''}
             >
