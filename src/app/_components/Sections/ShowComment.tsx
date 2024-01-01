@@ -64,7 +64,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
     };
     commentWrapper.addEventListener('scroll', handleScrollEvent);
     return () => {
-      commentWrapper.removeEventListener('scroll', handleScrollEvent);
+      return commentWrapper.removeEventListener('scroll', handleScrollEvent);
     };
   }, [isLoading, fetchMessages]);
 

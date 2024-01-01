@@ -38,7 +38,8 @@ const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
   };
 
   return (
-    <Component.OneCommentWrapper key={message.username}>s
+    <Component.OneCommentWrapper key={message.username}>
+      s
       <Component.OneCommentHeader>
         <Component.OneCommentHeaderLeft>
           <Component.NickName>{message.username} 님</Component.NickName>
