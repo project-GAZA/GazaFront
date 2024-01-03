@@ -13,6 +13,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   const [comments, setComments] = useState<dataTypes.MessageType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+
   const commentWrapperRef = useRef<HTMLDivElement>(null);
   const fetchMessages = useCallback(
     async (sortType = 'new', reset = false) => {
@@ -25,8 +26,8 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
           20,
           reset ? 0 : currentPage - 1,
         );
+        // 모든 댓글 불러옴
         if (newComments.length === 0) {
-          console.log('다음 댓글을 로드할 수 없음');
           setIsLoading(false);
           return;
         }
@@ -42,26 +43,22 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 
   useEffect(() => {
     fetchMessages('new', true);
+    console.log(comments);
   }, []);
 
   useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
-    console.log('commentWrapper:', commentWrapper);
-    if (!commentWrapper) {
-      console.error('댓글 목록 컨테이터 불포함');
-      return;
-    }
 
     // 스크롤 이벤트 핸들링
     const handleScrollEvent = () => {
-      console.log('스크롤 이벤트 실행');
-
       const { scrollTop, scrollHeight, clientHeight } = commentWrapper;
+
+      // 스크롤 끝에 도달하면 추가 데이터 요청
       if (scrollHeight - scrollTop - clientHeight < 1 && !isLoading) {
-        console.log('추가 데이터 요청 중');
         fetchMessages();
       }
     };
+
     commentWrapper.addEventListener('scroll', handleScrollEvent);
     return () => {
       return commentWrapper.removeEventListener('scroll', handleScrollEvent);
@@ -129,9 +126,10 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
         </Section.CommentHeader>
         <Section.ShowCommentWrapper id="CommentStack">
           <Section.StyledScrollbar ref={commentWrapperRef}>
-            {comments.map((message: dataTypes.MessageType) => (
-              <MessageComponent key={message.messageId} message={message} />
-            ))}
+            {comments &&
+              comments.map((message: dataTypes.MessageType) => (
+                <MessageComponent key={message.messageId} message={message} />
+              ))}
           </Section.StyledScrollbar>
         </Section.ShowCommentWrapper>
       </Section.CommentWrapper>

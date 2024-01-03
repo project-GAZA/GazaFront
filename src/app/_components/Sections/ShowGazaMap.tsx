@@ -86,7 +86,7 @@ const ShowGazaMap = () => {
                 </Section.GoalFixedText>
               </Section.GoalText>
               <Section.GoalText>
-                {0.4 /* percentage */}%{' '}
+                {0.6 /* percentage */}%{' '}
                 <Section.GoalFixedText>달성</Section.GoalFixedText>
               </Section.GoalText>
             </Section.GoalTextBox>
@@ -94,7 +94,7 @@ const ShowGazaMap = () => {
               <Box>
                 <Section.RealGoalText>총 모금액</Section.RealGoalText>
                 <Section.RealGoalMoney>
-                  {`3,001` /* currentMoney.toLocaleString() */}
+                  {`6,001` /* currentMoney.toLocaleString() */}
                 </Section.RealGoalMoney>
               </Box>
 
