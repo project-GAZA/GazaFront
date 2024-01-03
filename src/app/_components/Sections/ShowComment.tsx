@@ -5,7 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 import { dataTypes, propsTypes } from '@/types';
 import Main_firefly from '@/assets/svg/Main_firefly.jpg';
 import MessageComponent from '@/app/_components/MessageComponent';
-import { fetchComments, fetchGetMessageCount } from '@/utils/api';
+import { fetchComments } from '@/utils/api';
 import Section from './section.style';
 
 const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
@@ -13,70 +13,58 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   const [comments, setComments] = useState<dataTypes.MessageType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const [totalMessages, setTotalMessages] = useState(0);
-  const commentWrapperRef = useRef<HTMLDivElement>(null);
 
-  // 메시지 불러오기 함수
+  const commentWrapperRef = useRef<HTMLDivElement>(null);
   const fetchMessages = useCallback(
     async (sortType = 'new', reset = false) => {
-      if (isLoading || (!reset && totalMessages <= 1000)) return;
+      if (isLoading || (reset && currentPage !== 1)) return;
       setIsLoading(true);
       try {
-        const newComments = await fetchComments(searchInput, sortType, 100, 0);
-        setComments(reset ? newComments : [...comments, ...newComments]);
-        setCurrentPage(prevPage => prevPage + (reset ? 0 : 1));
+        const newComments = await fetchComments(
+          searchInput,
+          sortType,
+          20,
+          reset ? 0 : currentPage - 1,
+        );
+        // 모든 댓글 불러옴
+        if (newComments.length === 0) {
+          setIsLoading(false);
+          return;
+        }
+        setComments(prev => (reset ? newComments : [...prev, ...newComments]));
+        setCurrentPage(prevPage => prevPage + 1);
       } catch (error) {
         console.error(error);
       }
       setIsLoading(false);
     },
-    [searchInput, currentPage, isLoading, totalMessages, comments],
+    [searchInput, currentPage, isLoading],
   );
 
-  // 초기 메시지 로드
   useEffect(() => {
-    fetchMessages('best', true);
+    fetchMessages('new', true);
+    console.log(comments);
   }, []);
 
-  // 총 메시지 개수 가져오기
-  /*
-  useEffect(() => {
-    const getTotalMessages = async () => {
-      try {
-        const countData = await fetchGetMessageCount();
-        setTotalMessages(countData.count);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getTotalMessages();
-  }, []);
-
-  // 스크롤 이벤트 핸들러
-  const handleScroll = useCallback(() => {
-    if (!commentWrapperRef.current) return;
-
-    const { scrollTop, scrollHeight, clientHeight } = commentWrapperRef.current;
-    if (scrollHeight - scrollTop - clientHeight < 50 && !isLoading) {
-      fetchMessages();
-    }
-  }, [isLoading, fetchMessages]);
-
-  // 스크롤 이벤트 리스너 등록
   useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
-    if (commentWrapper) {
-      commentWrapper.addEventListener('scroll', handleScroll);
-    }
-    return () => {
-      if (commentWrapper) {
-        commentWrapper.removeEventListener('scroll', handleScroll);
+
+    // 스크롤 이벤트 핸들링
+    const handleScrollEvent = () => {
+      const { scrollTop, scrollHeight, clientHeight } = commentWrapper;
+
+      // 스크롤 끝에 도달하면 추가 데이터 요청
+      if (scrollHeight - scrollTop - clientHeight < 1 && !isLoading) {
+        fetchMessages();
       }
     };
-  }, [handleScroll]);
-  */
 
-  // 정렬 및 검색 이벤트 핸들러
+    commentWrapper.addEventListener('scroll', handleScrollEvent);
+    return () => {
+      return commentWrapper.removeEventListener('scroll', handleScrollEvent);
+    };
+  }, [isLoading, fetchMessages]);
+
   const SortClick = useCallback(
     (sort: string) => {
       setCurrentPage(1);
@@ -136,11 +124,12 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
             </form>
           </Section.Search>
         </Section.CommentHeader>
-        <Section.ShowCommentWrapper ref={commentWrapperRef} id="CommentStack">
-          <Section.StyledScrollbar>
-            {comments.map((message: dataTypes.MessageType) => (
-              <MessageComponent key={message.messageId} message={message} />
-            ))}
+        <Section.ShowCommentWrapper id="CommentStack">
+          <Section.StyledScrollbar ref={commentWrapperRef}>
+            {comments &&
+              comments.map((message: dataTypes.MessageType) => (
+                <MessageComponent key={message.messageId} message={message} />
+              ))}
           </Section.StyledScrollbar>
         </Section.ShowCommentWrapper>
       </Section.CommentWrapper>

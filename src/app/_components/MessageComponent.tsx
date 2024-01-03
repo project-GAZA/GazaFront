@@ -5,23 +5,41 @@ import { FaHeart } from 'react-icons/fa';
 
 import { dataTypes } from '@/types';
 import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
+import useCustomToast from '@/hooks/useCustomToast';
+
 import GiftIcon from '@/assets/svg/gifticon.svg';
 import Component from './component.style';
 
 const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
   const [like, setLike] = useState(message.likeCount);
+  const [likeClicked, setLikeClicked] = useState(false);
+  const [reportClicked, setReportClicked] = useState(false);
+  const toast = useCustomToast();
 
   const onClickLike = async () => {
+    if (likeClicked) {
+      toast.createAlertMessaeg('이미 좋아요를 눌렀습니다!');
+      return;
+    }
+    setLikeClicked(true);
     const res = await fetchLikeCountUp(message.messageId);
-    if (res === 0) alert('이미 좋아요 눌렀습니다!');
-    else setLike(prev => prev + 1);
+    if (res !== 0) {
+      setLike(prev => prev + 1);
+    }
   };
+
   const onClickReport = async () => {
-    const res = await fetchReportCountUp(message.messageId);
-    if (res === 0) alert('이미 신고하기 눌렀습니다!');
+    if (reportClicked) {
+      toast.createAlertMessaeg('이미 신고하기를 눌렀습니다!');
+      return;
+    }
+    setReportClicked(true);
+    await fetchReportCountUp(message.messageId);
   };
+
   return (
     <Component.OneCommentWrapper key={message.username}>
+      s
       <Component.OneCommentHeader>
         <Component.OneCommentHeaderLeft>
           <Component.NickName>{message.username} 님</Component.NickName>
