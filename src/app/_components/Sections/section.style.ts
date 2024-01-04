@@ -114,6 +114,18 @@ const Section = {
       height: 388.717px;
     }
   `,
+  GazaEmpty: styled(Box)<{ bgsrc: string }>`
+    background-image: url('${props => props.bgsrc}');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 241.73px;
+    height: 348.717px;
+    flex-shrink: 0;
+    @media (min-width: 890px) {
+      width: 281.73px;
+      height: 388.717px;
+    }
+  `,
 
   EarthTextWrapper: styled(Box)`
     border-radius: 37px;
@@ -246,19 +258,6 @@ const Section = {
     }
   `,
 
-  GazaEmpty: styled(Box)<{ bgsrc: string }>`
-    background-image: url('${props => props.bgsrc}');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 221.73px;
-    height: 328.717px;
-    flex-shrink: 0;
-    @media (min-width: 890px) {
-      width: 281.73px;
-      height: 388.717px;
-    }
-  `,
-
   GoalTextBox: styled(Box)``,
   GoalText: styled(Text)`
     color: #ffc500;
@@ -306,8 +305,12 @@ const Section = {
   MessageIconInTitle: styled(Image)`
     z-index: 1;
     position: relative;
-    top: -108px;
-    left: 290px;
+    top: -156px;
+    left: 478px;
+    @media (max-width: 890px) {
+      top: -110px;
+      left: 295px;
+    }
   `,
 
   ExplainFooterText: styled(Text)`
