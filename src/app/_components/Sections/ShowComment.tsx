@@ -126,7 +126,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
         </Section.CommentHeader>
         <Section.ShowCommentWrapper id="CommentStack">
           <Section.StyledScrollbar ref={commentWrapperRef}>
-            {comments &&
+            {Array.isArray(comments) &&
               comments.map((message: dataTypes.MessageType) => (
                 <MessageComponent key={message.messageId} message={message} />
               ))}
