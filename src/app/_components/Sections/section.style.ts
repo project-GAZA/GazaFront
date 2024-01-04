@@ -307,6 +307,10 @@ const Section = {
     position: relative;
     top: -156px;
     left: 478px;
+    @media (max-width: 890px) {
+      top: -110px;
+      left: 295px;
+    }
   `,
 
   ExplainFooterText: styled(Text)`
