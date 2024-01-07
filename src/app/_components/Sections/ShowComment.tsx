@@ -13,6 +13,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   const [comments, setComments] = useState<dataTypes.MessageType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [sortType, setSortType] = useState('best');
 
   const commentWrapperRef = useRef<HTMLDivElement>(null);
   const fetchMessages = useCallback(
@@ -67,6 +68,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 
   const SortClick = useCallback(
     (sort: string) => {
+      setSortType(sort.toLowerCase());
       setCurrentPage(1);
       setComments([]);
       fetchMessages(sort.toLowerCase(), true);
@@ -98,14 +100,14 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
       <Section.CommentWrapper>
         <Section.CommentHeader>
           <Section.CommentSortButton
-            className="SortOn sort"
+            className={sortType === 'best' ? 'SortOn sort' : 'sort'} // 조건부 클래스 할당
             onClick={() => SortClick('Best')}
           >
             Best
           </Section.CommentSortButton>
           <Section.DividerLine orientation="vertical" />
           <Section.CommentSortButton
-            className="sort"
+            className={sortType === 'new' ? 'SortOn sort' : 'sort'} // 조건부 클래스 할당
             onClick={() => SortClick('New')}
           >
             New
