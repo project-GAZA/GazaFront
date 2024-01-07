@@ -82,7 +82,11 @@ const Common = {
       border: 1px solid #000;
       background: #000;
     }
+    &:first-child {
+      pointer-events: none; // Disable pointer events for the first li
+    }
   `,
+
   LangChanBox: styled(Box)`
     cursor: pointer;
     position: absolute;
