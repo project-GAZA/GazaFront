@@ -17,17 +17,16 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 
   const commentWrapperRef = useRef<HTMLDivElement>(null);
   const fetchMessages = useCallback(
-    async (sortType = 'new', reset = false) => {
+    async (selectedSortType = 'new', reset = false) => {
       if (isLoading || (reset && currentPage !== 1)) return;
       setIsLoading(true);
       try {
         const newComments = await fetchComments(
           searchInput,
-          sortType,
+          selectedSortType, // 변경된 매개변수 이름
           20,
           reset ? 0 : currentPage - 1,
         );
-        // 모든 댓글 불러옴
         if (newComments.length === 0) {
           setIsLoading(false);
           return;
