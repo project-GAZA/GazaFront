@@ -79,7 +79,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
       e.preventDefault();
       setCurrentPage(1);
       setComments([]);
-      fetchMessages('new', true);
+      fetchMessages('best', true);
     },
     [fetchMessages],
   );
