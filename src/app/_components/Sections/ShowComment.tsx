@@ -100,14 +100,14 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
       <Section.CommentWrapper>
         <Section.CommentHeader>
           <Section.CommentSortButton
-            className={sortType === 'best' ? 'SortOn sort' : 'sort'} // 조건부 클래스 할당
+            className={sortType === 'best' ? 'SortOn sort' : 'sort'}
             onClick={() => SortClick('Best')}
           >
             Best
           </Section.CommentSortButton>
           <Section.DividerLine orientation="vertical" />
           <Section.CommentSortButton
-            className={sortType === 'new' ? 'SortOn sort' : 'sort'} // 조건부 클래스 할당
+            className={sortType === 'new' ? 'SortOn sort' : 'sort'}
             onClick={() => SortClick('New')}
           >
             New
