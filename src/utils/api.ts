@@ -63,7 +63,11 @@ export const fetchPostCommnet = async (content: string, username: string) => {
       username,
     }),
   });
-  return response.status;
+  const data = await response.json();
+  if (response.status === 200) {
+    return data;
+  }
+  throw Error(data.error);
 };
 
 /* CALL Donate Money */

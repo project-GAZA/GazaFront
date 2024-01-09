@@ -28,7 +28,6 @@ export async function GET(req) {
 
 export async function POST(req) {
   const { username, content } = await req.json();
-
   try {
     const response = await axiosInstance.post(`/api/message`, {
       content,
@@ -40,8 +39,8 @@ export async function POST(req) {
     }
   } catch (err) {
     return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 },
+      { error: err.response.data.message },
+      { status: 451 },
     );
   }
 }
