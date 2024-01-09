@@ -13,20 +13,20 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   const [comments, setComments] = useState<dataTypes.MessageType[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [sortType, setSortType] = useState('best');
 
   const commentWrapperRef = useRef<HTMLDivElement>(null);
   const fetchMessages = useCallback(
-    async (sortType = 'new', reset = false) => {
+    async (selectedSortType = 'new', reset = false) => {
       if (isLoading || (reset && currentPage !== 1)) return;
       setIsLoading(true);
       try {
         const newComments = await fetchComments(
           searchInput,
-          sortType,
+          selectedSortType, // 변경된 매개변수 이름
           20,
           reset ? 0 : currentPage - 1,
         );
-        // 모든 댓글 불러옴
         if (newComments.length === 0) {
           setIsLoading(false);
           return;
@@ -67,6 +67,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 
   const SortClick = useCallback(
     (sort: string) => {
+      setSortType(sort.toLowerCase());
       setCurrentPage(1);
       setComments([]);
       fetchMessages(sort.toLowerCase(), true);
@@ -79,7 +80,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
       e.preventDefault();
       setCurrentPage(1);
       setComments([]);
-      fetchMessages('new', true);
+      fetchMessages('best', true);
     },
     [fetchMessages],
   );
@@ -98,14 +99,14 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
       <Section.CommentWrapper>
         <Section.CommentHeader>
           <Section.CommentSortButton
-            className="SortOn sort"
+            className={sortType === 'best' ? 'SortOn sort' : 'sort'}
             onClick={() => SortClick('Best')}
           >
             Best
           </Section.CommentSortButton>
           <Section.DividerLine orientation="vertical" />
           <Section.CommentSortButton
-            className="sort"
+            className={sortType === 'new' ? 'SortOn sort' : 'sort'}
             onClick={() => SortClick('New')}
           >
             New
@@ -126,7 +127,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
         </Section.CommentHeader>
         <Section.ShowCommentWrapper id="CommentStack">
           <Section.StyledScrollbar ref={commentWrapperRef}>
-            {comments &&
+            {Array.isArray(comments) &&
               comments.map((message: dataTypes.MessageType) => (
                 <MessageComponent key={message.messageId} message={message} />
               ))}

@@ -58,6 +58,20 @@ const InputSection = ({
                 }}
               />
             </Section.ComeCheerBox>
+            <svg
+              style={{
+                position: 'relative',
+                top: '-1px',
+                left: '165px',
+              }}
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="18"
+              viewBox="0 0 16 18"
+              fill="none"
+            >
+              <path d="M8 18L15.7942 0.75H0.205771L8 18Z" fill="#FF430E" />
+            </svg>
             <Section.CommentInputButton onClick={ClickOnlyMessage}>
               <Section.CommentInputText>
                 {InputSectionText.CheerMessageGo}
@@ -84,6 +98,20 @@ const InputSection = ({
                 }}
               />
             </Section.ComeCheerBox>
+            <svg
+              style={{
+                position: 'relative',
+                top: '-1px',
+                left: '165px',
+              }}
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="18"
+              viewBox="0 0 16 18"
+              fill="none"
+            >
+              <path d="M8 18L15.7942 0.75H0.205771L8 18Z" fill="#EBB600" />
+            </svg>
             <Section.CommentInputButton onClick={ClickDonate}>
               <Section.CommentInputText>
                 {InputSectionText.DonateMessageGo}

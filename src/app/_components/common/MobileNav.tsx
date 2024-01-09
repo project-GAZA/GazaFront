@@ -65,6 +65,25 @@ const MobileNav = ({
           data-menuanchor="section5"
         >
           <ScrollLink
+            style={{
+              ...Common.MenuLink,
+              cursor: 'pointer',
+              color: '#8f8f8f',
+              fontSize: '13px',
+            }}
+            to="section5"
+            spy
+            smooth
+            duration={800}
+          >
+            메시지 하나로 가자지구의 평화 만드는 방법
+          </ScrollLink>
+        </Common.MobilLi>
+        <Common.MobilLi
+          className={activeSection === 'section5' ? 'on' : ''}
+          data-menuanchor="section5"
+        >
+          <ScrollLink
             style={Common.AWrapperMobile}
             to="section5"
             spy
@@ -74,7 +93,7 @@ const MobileNav = ({
               setIsMobileNavShow();
             }}
           >
-            프로젝트 소개
+            더 알아보기
           </ScrollLink>
         </Common.MobilLi>
         {/* 
