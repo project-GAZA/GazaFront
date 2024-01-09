@@ -53,24 +53,25 @@ const DonateTable = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {data.map((v: DonateData) => {
-              const onClickModify = () => {
-                setSubmit(v);
-                onOpen();
-              };
-              return (
-                <Tr key={v.donateId}>
-                  <Td>{v.createDt}</Td>
-                  <Td isNumeric>{v.amount}</Td>
-                  <Td>{v.tossId}</Td>
-                  <Td>{v.telNumber}</Td>
-                  <Td isNumeric>{v.messageId}</Td>
-                  <Td>
-                    <Button onClick={onClickModify}>금액 수정</Button>
-                  </Td>
-                </Tr>
-              );
-            })}
+            {Array.isArray(data) &&
+              data.map((v: DonateData) => {
+                const onClickModify = () => {
+                  setSubmit(v);
+                  onOpen();
+                };
+                return (
+                  <Tr key={v.donateId}>
+                    <Td>{v.createDt}</Td>
+                    <Td isNumeric>{v.amount}</Td>
+                    <Td>{v.tossId}</Td>
+                    <Td>{v.telNumber}</Td>
+                    <Td isNumeric>{v.messageId}</Td>
+                    <Td>
+                      <Button onClick={onClickModify}>금액 수정</Button>
+                    </Td>
+                  </Tr>
+                );
+              })}
           </Tbody>
         </Table>
       </TableContainer>
