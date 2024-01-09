@@ -67,6 +67,7 @@ const Home = () => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay />
+
         <ShareModal />
       </Modal>
     </Box>
