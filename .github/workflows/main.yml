@@ -19,11 +19,11 @@ jobs:
             whoami
             cd GazaFront
             pwd
+            git reset --hard HEAD
             git pull origin dev
             source ~/.nvm/nvm.sh
             nvm -v
             nvm use 21
-            rm -rf yarn.lock
             yarn install
             rm -rf .next/
             yarn devbuild
