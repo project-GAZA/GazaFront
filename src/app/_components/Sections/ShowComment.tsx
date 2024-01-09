@@ -43,11 +43,11 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 
   useEffect(() => {
     fetchMessages('new', true);
-    console.log(comments);
   }, []);
 
   useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
+    if (!commentWrapper) return;
 
     // 스크롤 이벤트 핸들링
     const handleScrollEvent = () => {

@@ -24,14 +24,12 @@ const ShowGazaMap = () => {
   const [percentage, setPercentage] = useState<number>(0); // 80이 안보이는 거임!
   const [background, setBackground] = useState<string>('');
   const [goalMessage, setGoalMessage] = useState<number>(1000);
-  const [currentMessage, setCurrentMessage] = useState<number>(0);
   const [currentMoney, setCurrentMoneny] = useState<number>(0); // 현재 금액 배열
 
   const FetchAndSetData = async (): Promise<void> => {
     try {
       const mCount = await fetchGetMessageCount();
       setPercentage(calculatePercent(goalMessage, mCount));
-      setCurrentMessage(mCount);
       const curMoney = await fetchGetDonateMoney();
       setCurrentMoneny(curMoney || 0);
     } catch (error) {
@@ -86,15 +84,14 @@ const ShowGazaMap = () => {
                 </Section.GoalFixedText>
               </Section.GoalText>
               <Section.GoalText>
-                {0.6 /* percentage */}%{' '}
-                <Section.GoalFixedText>달성</Section.GoalFixedText>
+                {percentage}%<Section.GoalFixedText>달성</Section.GoalFixedText>
               </Section.GoalText>
             </Section.GoalTextBox>
             <Section.SectionOneFooter>
               <Box>
                 <Section.RealGoalText>총 모금액</Section.RealGoalText>
                 <Section.RealGoalMoney>
-                  {`6,001` /* currentMoney.toLocaleString() */}
+                  {currentMoney.toLocaleString()}
                 </Section.RealGoalMoney>
               </Box>
 
