@@ -69,4 +69,13 @@ export interface CustomToast {
   createAlertMessaeg: (message: string) => void;
 }
 
+export interface DonateData {
+  donateId: number;
+  createDt: string;
+  amount: number;
+  tossId: string;
+  telNumber: string;
+  messageId: number;
+}
+
 export type FetchFunctionType = (...params: any[]) => Promise<any>;
