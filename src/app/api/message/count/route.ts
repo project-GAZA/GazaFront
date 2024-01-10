@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import axiosInstance from '@/app/api/axiosInstance';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req) {
   try {
     const response = await axiosInstance.get(`api/message`);
