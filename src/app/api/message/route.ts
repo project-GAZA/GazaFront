@@ -3,6 +3,7 @@ import axiosInstance from '../axiosInstance';
 
 export async function GET(req) {
   try {
+    console.log(req);
     const { searchParams } = req.nextUrl;
     const size = searchParams.get('size');
     const username: string = searchParams.get('username');
@@ -35,7 +36,7 @@ export async function POST(req) {
     });
 
     if (response.status === 200) {
-      return NextResponse.json(response.data());
+      return NextResponse.json(response.data);
     }
   } catch (err: any) {
     return NextResponse.json(
