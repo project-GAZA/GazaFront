@@ -19,6 +19,7 @@ jobs:
             whoami
             cd GazaFront
             pwd
+            git reset --hard HEAD
             git pull origin dev
             source ~/.nvm/nvm.sh
             nvm -v

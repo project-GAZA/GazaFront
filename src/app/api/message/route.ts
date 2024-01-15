@@ -3,6 +3,7 @@ import axiosInstance from '../axiosInstance';
 
 export async function GET(req) {
   try {
+    console.log(req);
     const { searchParams } = req.nextUrl;
     const size = searchParams.get('size');
     const username: string = searchParams.get('username');
@@ -28,7 +29,6 @@ export async function GET(req) {
 
 export async function POST(req) {
   const { username, content } = await req.json();
-
   try {
     const response = await axiosInstance.post(`/api/message`, {
       content,
@@ -36,12 +36,12 @@ export async function POST(req) {
     });
 
     if (response.status === 200) {
-      return NextResponse.json(response.data());
+      return NextResponse.json(response.data);
     }
-  } catch (err) {
+  } catch (err: any) {
     return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 },
+      { error: err.response.data.message },
+      { status: 451 },
     );
   }
 }

@@ -54,6 +54,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 
   useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
+    if (!commentWrapper) return;
 
     const handleScrollEvent = () => {
       const { scrollTop, scrollHeight, clientHeight } = commentWrapper;
