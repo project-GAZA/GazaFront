@@ -17,22 +17,29 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
 
   const commentWrapperRef = useRef<HTMLDivElement>(null);
   const fetchMessages = useCallback(
-    async (selectedSortType = 'new', reset = false) => {
+    async (selectedSortType = 'best', reset = false) => {
       if (isLoading || (reset && currentPage !== 1)) return;
       setIsLoading(true);
+
       try {
         const newComments = await fetchComments(
           searchInput,
-          selectedSortType, // 변경된 매개변수 이름
+          selectedSortType,
           20,
-          reset ? 0 : currentPage - 1,
+          currentPage - 1,
         );
+
         if (newComments.length === 0) {
           setIsLoading(false);
           return;
         }
+
         setComments(prev => (reset ? newComments : [...prev, ...newComments]));
-        setCurrentPage(prevPage => prevPage + 1);
+        if (reset) {
+          setCurrentPage(2);
+        } else {
+          setCurrentPage(prevPage => prevPage + 1);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -42,38 +49,38 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
   );
 
   useEffect(() => {
-    fetchMessages('new', true);
-    console.log(comments);
+    fetchMessages('best', true);
   }, []);
 
   useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
 
-    // 스크롤 이벤트 핸들링
     const handleScrollEvent = () => {
       const { scrollTop, scrollHeight, clientHeight } = commentWrapper;
 
-      // 스크롤 끝에 도달하면 추가 데이터 요청
-      if (scrollHeight - scrollTop - clientHeight < 1 && !isLoading) {
-        fetchMessages();
+      if (scrollHeight - scrollTop - clientHeight < 100 && !isLoading) {
+        fetchMessages(sortType);
       }
     };
 
     commentWrapper.addEventListener('scroll', handleScrollEvent);
-    return () => {
-      return commentWrapper.removeEventListener('scroll', handleScrollEvent);
-    };
-  }, [isLoading, fetchMessages]);
+    return () =>
+      commentWrapper.removeEventListener('scroll', handleScrollEvent);
+  }, [isLoading, fetchMessages, sortType]);
 
-  const SortClick = useCallback(
-    (sort: string) => {
-      setSortType(sort.toLowerCase());
-      setCurrentPage(1);
-      setComments([]);
-      fetchMessages(sort.toLowerCase(), true);
-    },
-    [fetchMessages],
-  );
+  function SortClick(sort) {
+    const lowerCaseSort = sort.toLowerCase();
+    setSortType(lowerCaseSort);
+    setCurrentPage(1);
+    setComments([]);
+    fetchMessages(lowerCaseSort, true);
+  }
+
+  useEffect(() => {
+    if (sortType) {
+      fetchMessages(sortType, true);
+    }
+  }, [sortType, fetchMessages]);
 
   const onSubmitSearch = useCallback(
     (e: React.FormEvent): void => {
