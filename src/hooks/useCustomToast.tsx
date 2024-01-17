@@ -49,9 +49,11 @@ const useCustomToast = () => {
   const promiseToast = (asyncfunc: () => Promise<void>) => {
     toast.promise(asyncfunc(), {
       success: { title: '처리완료되었습니다.', description: 'Looks great' },
-      error: {
-        title: '서버 에러가 났습니다.',
-        description: 'Something wrong',
+      error: (e: Error): { title: string; description: string } => {
+        return {
+          title: '경고',
+          description: e.message,
+        };
       },
       loading: { title: '서버에서 처리중입니다.', description: 'Please wait' },
     });
