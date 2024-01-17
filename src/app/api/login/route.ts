@@ -1,19 +1,20 @@
-import { NextResponse } from 'next/server';
-import bcrypt from 'bcrypt';
+import axiosInstance from '../axiosInstance';
 
-export async function POST(req) {
-  const { pwd } = await req.json();
+export async function POST(req: Request) {
   try {
-    const hashedPWD = await bcrypt.hashSync(
-      process.env.NEXT_PUBLIC_ADMIN_PASSWORD,
-      10,
-    );
-    const same = bcrypt.compareSync(pwd, hashedPWD);
-    return NextResponse.json(same);
-  } catch (err) {
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 },
-    );
+    const body = await req.json();
+    const response = await axiosInstance.post(`api/login`, body);
+    if (response.status === 200) {
+      return Response.json(response.data);
+    }
+  } catch (err: any) {
+    if (err.response.status === 400) {
+      return Response.json(
+        { message: err.response.data.message },
+        {
+          status: 401,
+        },
+      );
+    }
   }
 }

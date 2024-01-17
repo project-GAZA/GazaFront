@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import axiosInstance from '../../axiosInstance';
+import axiosInstance from '../../../axiosInstance';
 
 export async function PATCH(
   req: Request,
@@ -7,11 +7,9 @@ export async function PATCH(
 ) {
   try {
     const { id } = params; // 'a', 'b', or 'c'
-    const { amount } = await req.json();
-    const response = await axiosInstance.patch(`api/donate/${id}`, amount, {
-      headers: {
-        Authorization: `Bearer ${req.headers.get('Authorization')}`,
-      },
+    const { type } = await req.json();
+    const response = await axiosInstance.patch(`api/message/type/${id}`, {
+      donateType: type,
     });
     if (response.status === 200) return NextResponse.json(response.data);
   } catch (err) {
