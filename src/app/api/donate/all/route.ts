@@ -13,6 +13,11 @@ export async function GET(req: NextRequest) {
 
     const response = await axiosInstance.get(
       `api/donate/all?page=${page}&size=${size}&sort=${sort}`,
+      {
+        headers: {
+          Authorization: `Bearer ${req.headers.get('Authorization')}`,
+        },
+      },
     );
     /*
     const response = await axiosInstance.get(
@@ -23,6 +28,6 @@ export async function GET(req: NextRequest) {
       return NextResponse.json(response.data);
     }
   } catch (err) {
-    return NextResponse.json(err);
+    return NextResponse.json(err, { status: 400 });
   }
 }

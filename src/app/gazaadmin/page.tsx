@@ -1,31 +1,54 @@
 'use client';
 
-import { useState } from 'react';
-import { Input, Button } from '@chakra-ui/react';
+import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Input, Button, Text } from '@chakra-ui/react';
 
 import { fetchAdminLogin } from '@/utils/api';
-import DonateTable from './_components/DonateTable';
+import useCustomToast from '@/hooks/useCustomToast';
 
 const Gazaadmin = () => {
-  const [pwd, setPwd] = useState('');
-  const [isLogin, setIsLogin] = useState(false);
-  const onClickLogin = async () => {
-    const login = await fetchAdminLogin(pwd);
-    setIsLogin(login);
+  const navigator = useRouter();
+  const [password, setPassword] = useState('');
+  const [adminName, setAdminName] = useState('');
+  const toast = useCustomToast();
+  const onClickLogin = async (e: FormEvent, user: string, pwd: string) => {
+    e.preventDefault();
+    try {
+      await fetchAdminLogin(user, pwd);
+      if (localStorage.getItem('token')) {
+        navigator.push('/gazaadmin/donate');
+      }
+    } catch (err) {
+      toast.createErrorMessage(err);
+    }
   };
 
-  return isLogin ? (
-    <DonateTable />
-  ) : (
-    <>
+  return (
+    <form
+      style={{
+        margin: 'auto',
+        maxWidth: '800px',
+      }}
+      onSubmit={e => {
+        onClickLogin(e, adminName, password);
+      }}
+    >
+      <Text>어드민페이지로그인</Text>
+      <Input
+        placeholder="아이디 입력하세요"
+        type="text"
+        value={adminName}
+        onChange={e => setAdminName(e.target.value)}
+      />
       <Input
         placeholder="패스워드 입력하세요"
         type="password"
-        value={pwd}
-        onChange={e => setPwd(e.target.value)}
+        value={password}
+        onChange={e => setPassword(e.target.value)}
       />
-      <Button onClick={onClickLogin} />
-    </>
+      <Button type="submit">입력하기</Button>
+    </form>
   );
 };
 
