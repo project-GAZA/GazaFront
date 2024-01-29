@@ -3,7 +3,6 @@ import axiosInstance from '../axiosInstance';
 
 export async function GET(req) {
   try {
-    console.log(req);
     const { searchParams } = req.nextUrl;
     const size = searchParams.get('size');
     const username: string = searchParams.get('username');
@@ -20,6 +19,8 @@ export async function GET(req) {
       return NextResponse.json(response.data);
     }
   } catch (err) {
+    // console.log(Object.keys(err));
+    // console.log(err.message);
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 },
