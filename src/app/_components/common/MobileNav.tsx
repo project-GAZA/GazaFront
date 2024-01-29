@@ -14,9 +14,8 @@ const MobileNav = ({
   setIsMobileNavShow,
   activeSection,
 }: propsTypes.MobileNavPropsType) => {
-  // `toggleMobileNav` 함수 정의
   const toggleMobileNav = () => {
-    setIsMobileNavShow(); // `setIsMobileNavShow`를 인자 없이 호출
+    setIsMobileNavShow();
   };
 
   return (
@@ -26,10 +25,10 @@ const MobileNav = ({
       <div
         aria-label="Menu"
         className={styles.hamIcon}
-        onClick={toggleMobileNav} // `toggleMobileNav`를 onClick 이벤트 핸들러로 사용
+        onClick={toggleMobileNav}
         onKeyDown={e => {
           if (e.key === 'Enter' || e.key === ' ') {
-            toggleMobileNav(); // `toggleMobileNav`를 onKeyDown 이벤트 핸들러로 사용
+            toggleMobileNav();
           }
         }}
         role="button"
@@ -40,7 +39,6 @@ const MobileNav = ({
 
       <ul className={styles.mobileUlWrapper}>
         <li className={styles.mobileMenuTitle}>Gaza’s Child Read HOPE</li>
-        {/* ScrollLink onClick 이벤트에 toggleMobileNav 사용 */}
         <li
           className={`${styles.mobileLi} ${
             activeSection === 'section3' ? 'on' : ''
