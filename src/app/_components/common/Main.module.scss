@@ -1,0 +1,19 @@
+// Main.module.scss
+.sectionWrapper {
+  height: 102vh;
+  @media (max-width: 890px) {
+    height: inherit;
+  }
+}
+
+.lastSectionWrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  @media (max-width: 890px) {
+    height: inherit;
+  }
+}
+
+.lastSectionBackgroundWrapper {
+  background: #f5f5f5;
+}
