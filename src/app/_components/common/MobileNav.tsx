@@ -14,6 +14,11 @@ const MobileNav = ({
   setIsMobileNavShow,
   activeSection,
 }: propsTypes.MobileNavPropsType) => {
+  // `toggleMobileNav` 함수 정의
+  const toggleMobileNav = () => {
+    setIsMobileNavShow(); // `setIsMobileNavShow`를 인자 없이 호출
+  };
+
   return (
     <div
       className={`${styles.menuWrapper} ${isMobileNavShow ? styles.open : ''}`}
@@ -21,10 +26,10 @@ const MobileNav = ({
       <div
         aria-label="Menu"
         className={styles.hamIcon}
-        onClick={() => setIsMobileNavShow(!isMobileNavShow)}
+        onClick={toggleMobileNav} // `toggleMobileNav`를 onClick 이벤트 핸들러로 사용
         onKeyDown={e => {
           if (e.key === 'Enter' || e.key === ' ') {
-            setIsMobileNavShow(!isMobileNavShow);
+            toggleMobileNav(); // `toggleMobileNav`를 onKeyDown 이벤트 핸들러로 사용
           }
         }}
         role="button"
@@ -35,6 +40,7 @@ const MobileNav = ({
 
       <ul className={styles.mobileUlWrapper}>
         <li className={styles.mobileMenuTitle}>Gaza’s Child Read HOPE</li>
+        {/* ScrollLink onClick 이벤트에 toggleMobileNav 사용 */}
         <li
           className={`${styles.mobileLi} ${
             activeSection === 'section3' ? 'on' : ''
@@ -46,7 +52,7 @@ const MobileNav = ({
             spy
             smooth
             duration={800}
-            onClick={() => setIsMobileNavShow(false)}
+            onClick={toggleMobileNav}
           >
             응원메세지 보기
           </ScrollLink>
@@ -62,7 +68,7 @@ const MobileNav = ({
             spy
             smooth
             duration={800}
-            onClick={() => setIsMobileNavShow(false)}
+            onClick={toggleMobileNav}
           >
             응원메세지 남기기
           </ScrollLink>
@@ -78,7 +84,7 @@ const MobileNav = ({
             spy
             smooth
             duration={800}
-            onClick={() => setIsMobileNavShow(false)}
+            onClick={toggleMobileNav}
           >
             메시지 하나로 가자지구의 평화 만드는 방법
           </ScrollLink>
@@ -94,7 +100,7 @@ const MobileNav = ({
             spy
             smooth
             duration={800}
-            onClick={() => setIsMobileNavShow(false)}
+            onClick={toggleMobileNav}
           >
             더 알아보기
           </ScrollLink>
