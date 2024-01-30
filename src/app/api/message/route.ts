@@ -3,7 +3,6 @@ import axiosInstance from '../axiosInstance';
 
 export async function GET(req) {
   try {
-    console.log(req);
     const { searchParams } = req.nextUrl;
     const size = searchParams.get('size');
     const username: string = searchParams.get('username');
