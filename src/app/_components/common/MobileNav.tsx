@@ -1,11 +1,12 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React from 'react';
 import Image from 'next/image';
 import { CiMenuBurger } from 'react-icons/ci';
 import { Link as ScrollLink } from 'react-scroll';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
-
 import { propsTypes } from '@/types';
-import Common from './common.style';
+import styles from './MobileNav.module.scss';
 
 const MobileNav = ({
   onOpenShare,
@@ -13,101 +14,117 @@ const MobileNav = ({
   setIsMobileNavShow,
   activeSection,
 }: propsTypes.MobileNavPropsType) => {
+  const toggleMobileNav = () => {
+    setIsMobileNavShow();
+  };
+
   return (
-    <Common.MenuWrapper isOpen={isMobileNavShow}>
-      <Common.HamIcon
+    <div
+      className={`${styles.menuWrapper} ${isMobileNavShow ? styles.open : ''}`}
+    >
+      <div
         aria-label="Menu"
-        size="md"
-        icon={
-          <CiMenuBurger color={isMobileNavShow ? 'black' : 'white'} size="md" />
-        }
-        onClick={setIsMobileNavShow}
-      />
-      <Common.EmptyBox />
-      <Common.MobileUlWrapper className="gnb">
-        <Common.MobileMenuTitle>Gaza’s Child Read HOPE</Common.MobileMenuTitle>
-        <Common.MobilLi
-          className={activeSection === 'section3' ? 'on' : ''}
+        className={styles.hamIcon}
+        onClick={toggleMobileNav}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            toggleMobileNav();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        <CiMenuBurger color={isMobileNavShow ? 'black' : 'white'} size="24" />
+      </div>
+
+      <ul className={styles.mobileUlWrapper}>
+        <li className={styles.mobileMenuTitle}>Gaza’s Child Read HOPE</li>
+        <li
+          className={`${styles.mobileLi} ${
+            activeSection === 'section3' ? 'on' : ''
+          }`}
           data-menuanchor="section3"
         >
           <ScrollLink
-            style={Common.AWrapperMobile}
             to="section3"
             spy
             smooth
             duration={800}
-            onClick={() => {
-              setIsMobileNavShow();
-            }}
+            onClick={toggleMobileNav}
           >
             응원메세지 보기
           </ScrollLink>
-        </Common.MobilLi>
-        <Common.MobilLi
-          className={activeSection === 'section4' ? 'on' : ''}
+        </li>
+        <li
+          className={`${styles.mobileLi} ${
+            activeSection === 'section4' ? 'on' : ''
+          }`}
           data-menuanchor="section4"
         >
           <ScrollLink
-            style={Common.AWrapperMobile}
             to="section4"
             spy
             smooth
             duration={800}
-            onClick={() => {
-              setIsMobileNavShow();
-            }}
+            onClick={toggleMobileNav}
           >
             응원메세지 남기기
           </ScrollLink>
-        </Common.MobilLi>
-        <Common.MobilLi
-          className={activeSection === 'section5' ? 'on' : ''}
+        </li>
+        <li
+          className={`${styles.mobileLi} ${
+            activeSection === 'section5' ? 'on' : ''
+          }`}
           data-menuanchor="section5"
         >
           <ScrollLink
-            style={{
-              ...Common.MenuLink,
-              cursor: 'pointer',
-              color: '#8f8f8f',
-              fontSize: '13px',
-            }}
             to="section5"
             spy
             smooth
             duration={800}
+            onClick={toggleMobileNav}
           >
             메시지 하나로 가자지구의 평화 만드는 방법
           </ScrollLink>
-        </Common.MobilLi>
-        <Common.MobilLi
-          className={activeSection === 'section5' ? 'on' : ''}
+        </li>
+        <li
+          className={`${styles.mobileLi} ${
+            activeSection === 'section5' ? 'on' : ''
+          }`}
           data-menuanchor="section5"
         >
           <ScrollLink
-            style={Common.AWrapperMobile}
             to="section5"
             spy
             smooth
             duration={800}
-            onClick={() => {
-              setIsMobileNavShow();
-            }}
+            onClick={toggleMobileNav}
           >
             더 알아보기
           </ScrollLink>
-        </Common.MobilLi>
-        {/* 
-        <LangChanBox>
-          <LangChanText>한국어/영어</LangChanText>
-        </LangChanBox>
-        */}
-        <Common.IconBoxMenu>
-          <Common.IconInMenu onClick={onOpenShare}>
-            <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
-          </Common.IconInMenu>
-        </Common.IconBoxMenu>
-      </Common.MobileUlWrapper>
-    </Common.MenuWrapper>
+        </li>
+        <div className={styles.iconBoxMenu}>
+          <div
+            className={styles.iconInMenu}
+            onClick={onOpenShare}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                onOpenShare();
+              }
+            }}
+            role="button"
+            tabIndex={0}
+          >
+            <Image
+              width={22}
+              height={22}
+              src={ShareIcon.src}
+              alt="Share Icon"
+            />
+          </div>
+        </div>
+      </ul>
+    </div>
   );
 };
 

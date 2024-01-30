@@ -7,11 +7,9 @@ import { Box } from '@chakra-ui/react';
 import { Link as ScrollLink } from 'react-scroll';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
-
 import MobileNav from '@/app/_components/common/MobileNav';
-
 import { propsTypes } from '@/types';
-import Common from './common.style';
+import styles from './Header.module.scss';
 
 const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
   const [isMobileNavShow, setIsMobileNavShow] = useState<boolean>(false);
@@ -64,38 +62,46 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
         setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
         activeSection={activeSection}
       />
-      <Common.HeaderWrapper>
-        <Common.IconBox>
-          <Common.IconInMenu onClick={onOpenShare}>
-            <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
-          </Common.IconInMenu>
-        </Common.IconBox>
-        <Common.MenuInner className="gnb">
-          <Common.MenuList className={activeSection === 'section3' ? 'on' : ''}>
-            <ScrollLink
-              style={Common.MenuLink}
-              to="section3"
-              spy
-              smooth
-              duration={800}
-            >
+      <div className={styles.headerWrapper}>
+        <div className={styles.iconBox}>
+          <div
+            className={styles.iconInMenu}
+            onClick={onOpenShare}
+            onKeyDown={e => {
+              if (e.key === 'Enter' || e.key === ' ') onOpenShare();
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label="Share"
+          >
+            <Image
+              width={22}
+              height={22}
+              src={ShareIcon.src}
+              alt="Share Icon"
+            />
+          </div>
+        </div>
+        <ul className={styles.menuInner}>
+          <li
+            className={`${styles.menuList} ${
+              activeSection === 'section3' ? styles.on : ''
+            }`}
+          >
+            <ScrollLink to="section3" spy smooth duration={800}>
               응원 메세지 보기
             </ScrollLink>
-          </Common.MenuList>
-          <Common.MenuList
-            className={activeSection === 'section4' ? 'on' : ''}
+          </li>
+          <li
+            className={`${styles.menuList} ${
+              activeSection === 'section4' ? styles.on : ''
+            }`}
             style={{ marginRight: '50px' }}
           >
-            <ScrollLink
-              style={Common.MenuLink}
-              to="section4"
-              spy
-              smooth
-              duration={800}
-            >
+            <ScrollLink to="section4" spy smooth duration={800}>
               응원 메세지 남기기
             </ScrollLink>
-          </Common.MenuList>
+          </li>
           <div
             style={{
               display: 'flex',
@@ -104,43 +110,40 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
             }}
           >
             <ScrollLink
-              style={{
-                ...Common.MenuLink,
-                cursor: 'pointer',
-                color: '#8f8f8f',
-                fontSize: '14px',
-              }}
               to="section5"
               spy
               smooth
               duration={800}
+              style={{ cursor: 'pointer', color: '#8f8f8f', fontSize: '14px' }}
             >
               메시지 하나로 가자지구의 평화 만드는 방법
             </ScrollLink>
-            <Common.MenuList
-              className={activeSection === 'section5' ? 'on' : ''}
+            <li
+              className={`${styles.menuList} ${
+                activeSection === 'section5' ? styles.on : ''
+              }`}
             >
-              <ScrollLink
-                style={Common.MenuLink}
-                to="section5"
-                spy
-                smooth
-                duration={800}
-              >
+              <ScrollLink to="section5" spy smooth duration={800}>
                 더 알아보기
               </ScrollLink>
-            </Common.MenuList>
+            </li>
           </div>
-        </Common.MenuInner>
-        {/* <ChangeLanguageButton>한국어/영어</ChangeLanguageButton> */}
+        </ul>
         <Box />
-        <Common.HamIcon
+        <div
           aria-label="Menu"
-          size="md"
-          icon={<CiMenuBurger color="white" size="md" />}
+          className={styles.hamIcon}
           onClick={() => setIsMobileNavShow(prev => !prev)}
-        />
-      </Common.HeaderWrapper>
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ')
+              setIsMobileNavShow(prev => !prev);
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          <CiMenuBurger color="white" size="24" />
+        </div>
+      </div>
     </>
   );
 };
