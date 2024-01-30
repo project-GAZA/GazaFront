@@ -1,8 +1,15 @@
 'use clients';
 
-import { Accordion, AccordionItem, AccordionIcon } from '@chakra-ui/react';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionIcon,
+  AccordionButton,
+  AccordionPanel,
+  Box,
+} from '@chakra-ui/react';
 import { dataTypes } from '@/types';
-import Component from './component.style';
+import styles from './ExplainComponent.module.scss';
 
 const ExplainComponent = ({
   explain,
@@ -11,20 +18,22 @@ const ExplainComponent = ({
 }) => {
   return (
     <Accordion allowMultiple>
-      {explain.map((v: dataTypes.ExplainType): JSX.Element => {
-        return (
-          <AccordionItem key={v.title}>
-            <Component.ExplainButton>
-              <Component.ExplainText>{v.title}</Component.ExplainText>
+      {explain.map((v: dataTypes.ExplainType) => (
+        <AccordionItem key={v.title}>
+          <h2>
+            <AccordionButton className={styles.explainButton}>
+              <Box className={styles.explainText}>{v.title}</Box>
               <AccordionIcon />
-            </Component.ExplainButton>
-            <Component.ArcdText
-              dangerouslySetInnerHTML={{ __html: v.content }}
-            />
-          </AccordionItem>
-        );
-      })}
+            </AccordionButton>
+          </h2>
+          <AccordionPanel
+            className={styles.arcdText}
+            dangerouslySetInnerHTML={{ __html: v.content }}
+          />
+        </AccordionItem>
+      ))}
     </Accordion>
   );
 };
+
 export default ExplainComponent;

@@ -8,7 +8,9 @@ import { fetchLikeCountUp, fetchReportCountUp } from '@/utils/api';
 import useCustomToast from '@/hooks/useCustomToast';
 
 import GiftIcon from '@/assets/svg/gifticon.svg';
-import Component from './component.style';
+import styles from './MessageComponent.module.scss';
+// eslint-disable-next-line import/order
+import { Box, Text } from '@chakra-ui/react';
 
 const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
   const [like, setLike] = useState(message.likeCount);
@@ -38,30 +40,32 @@ const MessageComponent = ({ message }: { message: dataTypes.MessageType }) => {
   };
 
   return (
-    <Component.OneCommentWrapper key={message.username}>
-      <Component.OneCommentHeader>
-        <Component.OneCommentHeaderLeft>
-          <Component.NickName>{message.username} 님</Component.NickName>
-          <Component.Date>{message.createDt.slice(0, 10)}</Component.Date>
+    <Box className={styles.oneCommentWrapper}>
+      <Box className={styles.oneCommentHeader}>
+        <Box className={styles.oneCommentHeaderLeft}>
+          <Text className={styles.nickName}>{message.username} 님</Text>
+          <Text className={styles.date}>{message.createDt.slice(0, 10)}</Text>
           {message.donateType === 'donate' && (
-            <Component.GiftIcon
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               alt="선물아이콘"
               src={GiftIcon.src}
+              className={styles.giftIcon}
               width={19}
               height={19}
             />
           )}
-        </Component.OneCommentHeaderLeft>
-        <Component.OneCommentHeaderRight>
+        </Box>
+        <Box className={styles.oneCommentHeaderRight}>
           <FaHeart onClick={onClickLike} color="red" />
-          <Component.LikeCountText>{like}</Component.LikeCountText>
-          <Component.Report onClick={onClickReport}>신고하기</Component.Report>
-        </Component.OneCommentHeaderRight>
-      </Component.OneCommentHeader>
-      <Component.OneCommentContent>
-        {message.content}
-      </Component.OneCommentContent>
-    </Component.OneCommentWrapper>
+          <Text className={styles.likeCountText}>{like}</Text>
+          <Text className={styles.report} onClick={onClickReport}>
+            신고하기
+          </Text>
+        </Box>
+      </Box>
+      <Box className={styles.oneCommentContent}>{message.content}</Box>
+    </Box>
   );
 };
 
