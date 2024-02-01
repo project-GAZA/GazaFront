@@ -1,16 +1,15 @@
 import React from 'react';
+import styles from './Button.module.scss';
 
 interface ButtonProps {
-  content: string;
+  label: string;
   onClick?: () => void;
 }
 
-const Button = ({ content, onClick }: ButtonProps) => {
+const Button = ({ label, onClick }: ButtonProps) => {
   return (
-    <button onClick={onClick} type="button">
-      <div className="button" role="button">
-        {content}
-      </div>
+    <button className={styles.button} onClick={onClick} type="button">
+      {label}
     </button>
   );
 };

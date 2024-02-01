@@ -1,5 +1,7 @@
 'use client';
 
+import '@/style/globals.scss';
+
 import { Global, css } from '@emotion/react';
 
 import HelloSection from './_sections/HelloSection';

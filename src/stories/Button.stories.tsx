@@ -1,3 +1,4 @@
+import '../style/globals.scss';
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
@@ -14,12 +15,32 @@ const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 
 // 각각이 새로운 스토리들
 // export const Small = () => <Button size="small" label="button" />; 얘와 같음
-export const Small = Template.bind({});
-Small.args = {
-  label: 'Button',
+export const Desktop: ComponentStory<typeof Button> = Template.bind({});
+Desktop.args = {
+  label: '후원하기',
+};
+Desktop.parameters = {
+  viewport: {
+    defaultViewport: 'desktop',
+  },
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  label: 'Button',
+export const Tablet: ComponentStory<typeof Button> = Template.bind({});
+Tablet.args = {
+  label: '후원하기',
+};
+Tablet.parameters = {
+  viewport: {
+    defaultViewport: 'tablet',
+  },
+};
+
+export const Mobile: ComponentStory<typeof Button> = Template.bind({});
+Mobile.args = {
+  label: '후원하기',
+};
+Mobile.parameters = {
+  viewport: {
+    defaultViewport: 'iphone12promax',
+  },
 };
