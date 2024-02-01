@@ -1,0 +1,30 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.text {
+  font-weight: 600;
+  font-family: Inter;
+  font-size: 13px;
+  line-height: 1.6em;
+  text-align: left;
+  width: fit-content;
+
+  @include respond-to('md') {
+    font-size: 16px;
+  }
+}
+.headbox {
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  object-fit: scale-down;
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+  @include respond-to('md') {
+    width: 44px;
+    height: 44px;
+  }
+}
