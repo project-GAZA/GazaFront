@@ -1,12 +1,11 @@
-import '../style/globals.scss';
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Button from '../component/HelloSection/Button';
+import Button from '../../component/HelloSection/Button';
 
 // 어떤 컴포넌트의 story인지, 어떤 설정으로 렌더링할지 정의
 export default {
-  title: 'stories/Button',
+  title: 'stories/Attoms/JooButton',
   component: Button,
 } as ComponentMeta<typeof Button>;
 
