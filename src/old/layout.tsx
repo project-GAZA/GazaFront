@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-sync-scripts */
 /* index.js */
-import '@/style/globals.css';
+import '@/style/globals.scss';
 import { ChakraProvider } from '@chakra-ui/react';
 
 import GoogleAnalytics from '@/app/_components/lib/GoogleAnalytics';

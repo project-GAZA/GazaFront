@@ -1,0 +1,38 @@
+@import '../../style/_mixin.scss';
+@import '../../style/_variables.scss';
+
+.button {
+  cursor: pointer;
+  border-radius: 32px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Inter;
+  height: 64px;
+  width: 100%;
+
+  &.fill {
+    border: none;
+    background: $primary;
+    &:hover {
+      background: $secondary;
+    }
+    &:active {
+      background: $secondary_dark;
+    }
+  }
+
+  &.unfill {
+    border: 1.5px solid $primary;
+    background: $empty;
+    &:hover {
+      background: $light_empty;
+    }
+    &:active {
+      background: $light_empty;
+    }
+  }
+
+  @include respond-to('lg') {
+    width: 222px;
+  }
+}
