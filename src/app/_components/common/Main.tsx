@@ -35,7 +35,7 @@ const Main = ({ explain }) => {
     // FullPage 컴포넌트로 변경
     <Box>
       <Box id="section1" data-anchor="section1">
-        <ShowGazaMap />
+        <ShowGazaMap GazaMapText={explain.GazaMapText} />
       </Box>
       <Box id="section2" data-anchor="section2">
         <ShowInfo1 ShowInfoText={explain.ShowInfo} />

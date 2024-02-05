@@ -10,10 +10,9 @@ import ShareIcon from '@/assets/svg/ShareIcon.svg';
 
 import MobileNav from '@/app/_components/common/MobileNav';
 
-import { propsTypes } from '@/types';
 import Common from './common.style';
 
-const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
+const Header = ({ onClickLange, MenuText, onOpenShare }) => {
   const [isMobileNavShow, setIsMobileNavShow] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string | undefined>('');
 
@@ -59,10 +58,12 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
   return (
     <>
       <MobileNav
+        MenuText={MenuText}
         onOpenShare={onOpenShare}
         isMobileNavShow={isMobileNavShow}
         setIsMobileNavShow={() => setIsMobileNavShow(prev => !prev)}
         activeSection={activeSection}
+        onClickLange={onClickLange}
       />
       <Common.HeaderWrapper>
         <Common.IconBox>
@@ -79,7 +80,7 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
               smooth
               duration={800}
             >
-              응원 메세지 보기
+              {MenuText.menu1}
             </ScrollLink>
           </Common.MenuList>
           <Common.MenuList
@@ -93,7 +94,7 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
               smooth
               duration={800}
             >
-              응원 메세지 남기기
+              {MenuText.menu2}
             </ScrollLink>
           </Common.MenuList>
           <div
@@ -115,7 +116,7 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
               smooth
               duration={800}
             >
-              메시지 하나로 가자지구의 평화 만드는 방법
+              {MenuText.descript}
             </ScrollLink>
             <Common.MenuList
               className={activeSection === 'section5' ? 'on' : ''}
@@ -127,12 +128,14 @@ const Header = ({ onOpenShare }: propsTypes.HeaderPropsType) => {
                 smooth
                 duration={800}
               >
-                더 알아보기
+                {MenuText.menu3}
               </ScrollLink>
             </Common.MenuList>
           </div>
         </Common.MenuInner>
-        {/* <ChangeLanguageButton>한국어/영어</ChangeLanguageButton> */}
+        <Common.ChangeLanguageButton onClick={onClickLange}>
+          한국어/English
+        </Common.ChangeLanguageButton>
         <Box />
         <Common.HamIcon
           aria-label="Menu"

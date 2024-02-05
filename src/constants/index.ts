@@ -16,7 +16,19 @@ import {
   InputSectionText,
   ExplainSection,
   Explain,
+  MenuText,
+  GazaMapText,
 } from './korean';
+
+import {
+  ShowComment as eShowComment,
+  ShowInfo as eShowInfo,
+  InputSectionText as eInputSectionText,
+  ExplainSection as eExplainSection,
+  Explain as eExplain,
+  MenuText as eMenuText,
+  GazaMapText as eGazaMapText,
+} from './English';
 
 export const ExplainSendMoney = [
   {
@@ -54,17 +66,41 @@ export const urlToCopy = 'https://www.gazas-child-read-hope.kr';
 
 export const Korean = {
   mobile: {
+    GazaMapText,
     InputSectionText: InputSectionText.mobile,
     ExplainSection,
     Explain,
     ShowInfo: ShowInfo.mobile,
     ShowComment: ShowComment.mobile,
+    MenuText,
   },
   pc: {
+    GazaMapText,
     InputSectionText: InputSectionText.pc,
     ExplainSection,
     Explain,
     ShowInfo: ShowInfo.pc,
     ShowComment: ShowComment.pc,
+    MenuText,
+  },
+};
+export const English = {
+  mobile: {
+    GazaMapText: eGazaMapText,
+    InputSectionText: eInputSectionText.mobile,
+    ExplainSection: eExplainSection,
+    Explain: eExplain,
+    ShowInfo: eShowInfo.mobile,
+    ShowComment: eShowComment.mobile,
+    MenuText: eMenuText,
+  },
+  pc: {
+    GazaMapText: eGazaMapText,
+    InputSectionText: eInputSectionText.pc,
+    ExplainSection: eExplainSection,
+    Explain: eExplain,
+    ShowInfo: eShowInfo.pc,
+    ShowComment: eShowComment.pc,
+    MenuText: eMenuText,
   },
 };

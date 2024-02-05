@@ -18,7 +18,7 @@ const calculatePercent = (goal: number, cur: number) => {
   return +ratio.toFixed(2);
 };
 
-const ShowGazaMap = () => {
+const ShowGazaMap = ({ GazaMapText }) => {
   const toast = useCustomToast();
   const goals: Array<number> = [1000000]; // 목표금액 배열
   const [percentage, setPercentage] = useState<number>(0); // 80이 안보이는 거임!
@@ -64,9 +64,11 @@ const ShowGazaMap = () => {
           />
         </Section.Section1Header>
         <Box>
-          <Section.SubTitle>가자지구 아이들을 위한</Section.SubTitle>
+          <Section.SubTitle>{GazaMapText.text1}</Section.SubTitle>
           <Section.SubTitle>
-            <Section.Two>희망 메세지 책자</Section.Two> 전달 프로젝트
+            <Section.Two>{GazaMapText.text2}</Section.Two>
+            <br />
+            {GazaMapText.text3}
           </Section.SubTitle>
         </Box>
       </Box>
@@ -80,31 +82,37 @@ const ShowGazaMap = () => {
             <Section.GoalTextBox>
               <Section.GoalText>
                 <Section.GoalFixedText>
-                  {goalMessage}개의 메세지
+                  {goalMessage}
+                  {GazaMapText.text4}
                 </Section.GoalFixedText>
               </Section.GoalText>
               <Section.GoalText>
-                {percentage}%<Section.GoalFixedText>달성</Section.GoalFixedText>
+                {percentage}%
+                <Section.GoalFixedText>
+                  {GazaMapText.text5}
+                </Section.GoalFixedText>
               </Section.GoalText>
             </Section.GoalTextBox>
             <Section.SectionOneFooter>
               <Box>
-                <Section.RealGoalText>총 모금액</Section.RealGoalText>
+                <Section.RealGoalText>{GazaMapText.text6}</Section.RealGoalText>
                 <Section.RealGoalMoney>
                   {currentMoney.toLocaleString()}
                 </Section.RealGoalMoney>
               </Box>
 
               <Box>
-                <Section.RealGoalText>목표 모금액</Section.RealGoalText>
+                <Section.RealGoalText>{GazaMapText.text7}</Section.RealGoalText>
               </Box>
             </Section.SectionOneFooter>
           </Section.ValuableBox>
         </Section.GazaEmpty>
         <Section.MoneyUpdateTextTemp>
-          ※ 후원금 모금 현황은
-          <br /> 9~21시 동안 3시간마다 업데이트 됩니다!
-          <br /> (결제 PG 연동 이후, 자동 반영 예정)
+          {GazaMapText.text8}
+          <br />
+          {GazaMapText.text9}
+          <br />
+          {GazaMapText.text10}
         </Section.MoneyUpdateTextTemp>
       </Section.MapWrapper>
     </Section.FirstSction>

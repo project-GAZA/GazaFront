@@ -87,7 +87,7 @@ const Common = {
     }
   `,
 
-  LangChanBox: styled(Box)`
+  LangChanBox: styled.button`
     cursor: pointer;
     position: absolute;
     left: 150px;

@@ -8,18 +8,39 @@ import Header from '@/app/_components/common/Header';
 import Main from '@/app/_components/common/Main';
 import ShareModal from '@/app/_components/modal/ShareModal';
 
-import { Korean } from '@/constants';
+import { Korean, English } from '@/constants';
 
 const Home = () => {
+  const [lang, setLang] = useState(English);
   const [shareModal, setShareModal] = useState<boolean>(false);
-  const [explain, setExplain] = useState(Korean.mobile);
+  const [explain, setExplain] = useState<any>(English.mobile);
+  const [menu, setMenu] = useState<any>(English.mobile);
+
+  const onClickLange = () => {
+    let changeLang;
+    if (lang === Korean) {
+      changeLang = English;
+    } else if (lang === English) {
+      changeLang = Korean;
+    }
+    setLang(changeLang);
+    if (window.innerWidth >= 890) {
+      setExplain(changeLang.pc);
+      setMenu(changeLang.pc.MenuText);
+    } else {
+      setExplain(changeLang.mobile);
+      setMenu(changeLang.mobile.MenuText);
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 890) {
-        setExplain(Korean.pc);
+        setExplain(lang.pc);
+        setMenu(lang.pc.MenuText);
       } else {
-        setExplain(Korean.mobile);
+        setExplain(lang.mobile);
+        setMenu(lang.mobile.MenuText);
       }
     };
     handleResize();
@@ -57,7 +78,11 @@ const Home = () => {
 
   return (
     <Box>
-      <Header onOpenShare={() => setShareModal(true)} />
+      <Header
+        onClickLange={onClickLange}
+        MenuText={menu}
+        onOpenShare={() => setShareModal(true)}
+      />
       <Main explain={explain} />
 
       <Modal
