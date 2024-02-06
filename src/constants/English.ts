@@ -1,5 +1,5 @@
-const inputtopMessage = 'Let everyone know how you feel with a message.';
-const inputtopMessage2 = `Leave a message of support <br /> for the children of Gaza!`;
+const inputtopMessage = 'Send warmth with your message.';
+const inputtopMessage2 = `Write a message of support <br /> for the children of Gaza!`;
 const inputtopMessageInBox = 'Spread the love!';
 const inputcheerMessage = 'Write a message ';
 const inputcheerMessageInfo = `
@@ -13,7 +13,7 @@ Your message <br /> will be in the actual <strong>booklet</strong>!
 const inputDonateMessageGo = 'Go to compose';
 const modalCommentHeader = 'Send  encouragement';
 const modalCommentInputPlaceholder = 'Please enter a supportive message';
-const modalCommentInputNickPlaceholder = 'Please enter an author';
+const modalCommentInputNickPlaceholder = 'Please enter an username';
 const modalCommentInfoTextMobile = `
   ”Leave kind words of encouragement for children! 
   <br />
@@ -63,10 +63,10 @@ export const Explain = [
   {
     title: 'About the project',
     content: `
-      This project started with the idea of "I want to make a small contribution to the pain and suffering of the children of Gaza."
+      This project started with "the hope to make a small contribution to the pain and suffering of the children of Gaza."
       <br />
       <br />
-      While planning the project, we put a lot of thought and effort into focusing on the children of Gaza without any religious or political bias. Our ancestors built Korea with the help of the entire world, even in the midst of war, and now we want to be a part of that help and bring hope to the children of Gaza.
+      While planning the project, we put a lot of thought and effort into focusing on the children of Gaza without any religious or political bias. 
       <br />
       <br />
       We want to help them grow up to be the shapers of a better world, not the shadows of terror. This is not just a helping hand, but a firm step towards a future of peace and prosperity. We are starting a project to make a small but tangible difference to the children of Gaza, so that they can have a bright future and grow up to be great members of the next generation.
@@ -91,7 +91,6 @@ export const Explain = [
       <strong>Regarding donations</strong>
   <br/><br/>
   ● All donations, except for server costs, will be used to produce the booklet, with any remaining funds going to Gaza relief efforts. <br/>
-  ● The fundraising status is transparently disclosed in the TOS ID (PEACEGAZA) history, and the accumulated donations are updated on this website every hour.<br/>
    ● We are also looking for designated donor organizations for payment PG integration and donation tax deduction cooperation. Please contact us at peace.in.gaza.kr@gmail.com.<br/>
       <br/>
       <strong>About the booklet</strong>
@@ -164,7 +163,7 @@ will remain
 
 /* ShowComment */
 
-const SearchPlaceholder = `Search for authors`;
+const SearchPlaceholder = `Search for username`;
 export const ShowComment = {
   mobile: {
     HeaderText: `
@@ -248,13 +247,13 @@ export const MenuText = {
   descript: 'How one message can create peace',
 };
 export const GazaMapText = {
-  text1: 'Hope booklets',
-  text2: 'Delivering Messages',
-  text3: 'For Children in Gaza',
+  text1: 'A project to deliver booklets',
+  text2: 'with messages of hope',
+  text3: 'to children in Gaza',
   text4: ' Messages',
-  text5: ' Goals',
-  text6: 'Total raised',
-  text7: 'Goal raised',
+  text5: ' Achieved',
+  text6: 'Current(donations)',
+  text7: 'Goal',
   text8: ' ※ Fundraising status will be updated ',
   text9: 'every 3 hours from 9-21!',
   text10: '(After PG integration, automatic reflection)',

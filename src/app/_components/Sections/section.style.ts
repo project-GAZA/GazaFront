@@ -280,6 +280,9 @@ const Section = {
     display: flex;
     justify-content: center;
     gap: 30px;
+    @media (max-width: 890px) {
+      left: 12px;
+    }
   `,
 
   RealGoalText: styled(Text)`
