@@ -1,0 +1,15 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.Title {
+  font-family: 'PaytoneOne';
+  display: flex;
+  gap: 5px;
+  font-size: 20px;
+  @include respond-to('sm') {
+    font-size: 15px;
+  }
+}
+.Yellow {
+  color: $primary;
+}

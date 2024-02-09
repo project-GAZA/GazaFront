@@ -1,0 +1,16 @@
+@import '@style/_variables.scss';
+@import '@style/_mixin.scss';
+.Title {
+  font-family: Inter;
+  font-size: 40px;
+  @include respond-to('sm') {
+    font-size: 24px;
+  }
+  .BlackBold {
+    font-weight: 600;
+  }
+  .YellowBold {
+    font-weight: 600;
+    color: $primary;
+  }
+}

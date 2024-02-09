@@ -1,21 +1,15 @@
 import React from 'react';
-import GoDonateButton from '../../component/HelloSection/molecule/GoDonateButton';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import GoDonateButton from './index';
 
 export default {
-  title: 'stories/Molecule/GoDonateButton',
+  title: 'stories/Section_Hero/Molecule/GoDonateButton',
   component: GoDonateButton,
 } as ComponentMeta<typeof GoDonateButton>;
 
 const Template: ComponentStory<typeof GoDonateButton> = args => (
   <GoDonateButton {...args} />
 );
-export const Desktop: ComponentStory<typeof GoDonateButton> = Template.bind({});
-Desktop.parameters = {
-  viewport: {
-    defaultViewport: 'desktop',
-  },
-};
 
 export const Mobile: ComponentStory<typeof GoDonateButton> = Template.bind({});
 Mobile.parameters = {

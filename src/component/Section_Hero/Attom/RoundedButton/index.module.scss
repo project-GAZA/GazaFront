@@ -18,9 +18,9 @@
   }
   background: $secondary;
   &:hover {
-    background: $primary;
+    background: $secondary_lightdark;
   }
   &:active {
-    background: $primary_dark;
+    background: $secondary_dark;
   }
 }

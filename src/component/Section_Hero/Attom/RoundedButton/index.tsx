@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './RoundedButton.module.scss';
+import styles from './index.module.scss';
 
-interface RoundedButtonProps {
+interface RoundedButtonType {
   children: React.ReactNode;
   onClick?: () => void;
 }
 
-const RoundedButton = ({ children, onClick }: RoundedButtonProps) => {
+const RoundedButton = ({ children, onClick }: RoundedButtonType) => {
   return (
     <button className={styles.roundedButton} onClick={onClick} type="button">
       {children}

@@ -1,5 +1,5 @@
 $grid-breakpoints: (
-  sm: 375px,
+  sm: 767px,
   md: 768px,
   lg: 1440px,
 );
@@ -7,9 +7,14 @@ $grid-breakpoints: (
 //colors
 $empty: #ffffff;
 $light_empty: #fff9e2;
+$dark_empty: #ffedb5;
 
 $primary: #ffb611;
+$primary_lightdark: #ffa50d;
 $primary_dark: #ff940a;
 
 $secondary: #cfff8d;
-$secondary_dark: #bbf95b;
+$secondary_dark: #b2e853;
+$secondary_lightdark: #bbf95b;
+
+$background_light: #f6f6f4;
