@@ -1,7 +1,7 @@
 @import './_variables.scss';
 @mixin respond-to($breakpoint) {
   @if $breakpoint == 'sm' {
-    @media (min-width: map-get($grid-breakpoints, 'sm')) {
+    @media (max-width: map-get($grid-breakpoints, 'sm')) {
       @content;
     }
   } @else if $breakpoint == 'md' {

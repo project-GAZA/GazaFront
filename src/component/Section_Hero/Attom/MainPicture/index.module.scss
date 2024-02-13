@@ -1,0 +1,49 @@
+@import '@style/_mixin.scss';
+
+.wrapper_outer {
+  overflow: hidden;
+  @include respond-to('sm') {
+    height: 326px;
+  }
+  @include respond-to('md') {
+    height: 676px;
+  }
+  @include respond-to('md') {
+    height: 763px;
+  }
+}
+.wrapper {
+  overflow-x: hidden;
+  perspective: 1px;
+}
+.parallax_section {
+  @include respond-to('sm') {
+    height: 326px;
+  }
+  @include respond-to('md') {
+    height: 676px;
+  }
+  @include respond-to('md') {
+    height: 763px;
+  }
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.parallax_bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+  min-height: 100%;
+  transform: scale(1);
+}

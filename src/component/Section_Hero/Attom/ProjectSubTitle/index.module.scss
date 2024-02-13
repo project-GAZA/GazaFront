@@ -1,0 +1,18 @@
+@import '@style/_variables.scss';
+@import '@style/_mixin.scss';
+
+.content {
+  font-family: Inter;
+  font-weight: 300;
+  font-size: 20px;
+  &.primary {
+    color: $primary;
+  }
+  &.secondary_dark {
+    color: $secondary_dark;
+  }
+
+  @include respond-to('sm') {
+    font-size: 18px;
+  }
+}

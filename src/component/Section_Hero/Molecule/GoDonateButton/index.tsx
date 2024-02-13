@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 
-import RoundedButton from '@/component/HelloSection/RoundedButton';
+import RoundedButton from '@/component/Section_Hero/Attom/RoundedButton';
 import GoArrowRight from '@/assets/icon/GoArrowRight.svg';
-import styles from './GoDonateButton.module.scss';
+import styles from './index.module.scss';
 
-interface GoDonateButtonType {
+export interface GoDonateButtonType {
   onClick?: () => void;
 }
 

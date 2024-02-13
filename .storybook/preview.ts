@@ -3,7 +3,7 @@ import {
   INITIAL_VIEWPORTS,
   MINIMAL_VIEWPORTS,
 } from '@storybook/addon-viewport';
-/** @type { import('@storybook/react').Preview } */
+import { Preview } from '@storybook/react';
 
 const customViewports = {
   desktop: {
@@ -15,7 +15,7 @@ const customViewports = {
   },
 };
 
-const preview = {
+const preview: Preview = {
   parameters: {
     viewport: {
       viewports: {
