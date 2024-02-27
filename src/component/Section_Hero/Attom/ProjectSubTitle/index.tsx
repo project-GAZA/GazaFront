@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './index.module.scss';
 
-export interface ProjectSubTitleType {
+export interface ProjectSubTitleProps {
   marginBottom?: number;
   marginRight?: number;
   marginLeft?: number;
@@ -24,7 +24,7 @@ const ProjectSubTitle = ({
   marginTop = 0,
   color,
   content,
-}: ProjectSubTitleType) => {
+}: ProjectSubTitleProps) => {
   const classes = classNames(styles.content, {
     [styles.primary]: color === 'primary',
     [styles.secondary_dark]: color === 'secondary_dark',

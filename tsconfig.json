@@ -5,6 +5,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
@@ -24,6 +25,11 @@
       "@style*": ["./src/style/*"]
     }
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "./src/types/**/*.d.ts"
+  ],
   "exclude": ["node_modules", "./src/old", "./src/stories"]
 }
