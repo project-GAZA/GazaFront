@@ -1,8 +1,10 @@
 @import '@style/_mixin.scss';
 @import '@style/_variables.scss';
 .wrapper {
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
+  background: $background_light;
   @include respond-to('sm') {
     padding: 33px 16px 33px 16px;
   }
@@ -15,9 +17,6 @@
     height: 763px;
     align-items: center;
     justify-content: center;
-  }
-  &.background_light {
-    background: $background_light;
   }
 }
 
@@ -38,5 +37,22 @@
     align-items: center;
     justify-content: center;
     gap: 56px;
+  }
+}
+
+.gobutton {
+  display: flex;
+  width: 100%;
+  @include respond-to('sm') {
+    flex-direction: column;
+    gap: 12px;
+  }
+  @include respond-to('md') {
+    flex-direction: row;
+    justify-content: center;
+    gap: 18px;
+  }
+  @include respond-to('lg') {
+    gap: 12px;
   }
 }

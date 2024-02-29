@@ -5,13 +5,10 @@ import RoundedButton from '@/component/Section_Hero/Attom/RoundedButton';
 import GoArrowRight from '@/assets/icon/GoArrowRight.svg';
 import styles from './index.module.scss';
 
-export interface GoDonateButtonType {
-  onClick?: () => void;
-}
-
-const GoDonateButton = ({ onClick }: GoDonateButtonType) => {
+const GoDonateButton = () => {
+  const onGoDonateClick = () => {};
   return (
-    <RoundedButton onClick={onClick}>
+    <RoundedButton onClick={onGoDonateClick}>
       <div className={styles.text}>
         <p className={styles.headbox}>
           지금
