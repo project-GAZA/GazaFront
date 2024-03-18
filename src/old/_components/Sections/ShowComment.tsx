@@ -25,7 +25,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
         const newComments = await fetchComments(
           searchInput,
           selectedSortType,
-          20,
+          1000,
           currentPage - 1,
         );
 
@@ -52,6 +52,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
     fetchMessages('best', true);
   }, []);
 
+  /*
   useEffect(() => {
     const commentWrapper = commentWrapperRef.current;
     if (!commentWrapper) return;
@@ -68,6 +69,7 @@ const ShowComment = ({ ShowCommentText }: propsTypes.ShowCommentPropType) => {
     return () =>
       commentWrapper.removeEventListener('scroll', handleScrollEvent);
   }, [isLoading, fetchMessages, sortType]);
+  */
 
   function SortClick(sort) {
     const lowerCaseSort = sort.toLowerCase();

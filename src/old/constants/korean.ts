@@ -53,64 +53,6 @@ const TossSubText = `
 const TossDonateButtonText = `
             클릭해서 토스로 후원하기
 `;
-
-const InputSectionTexts = {
-  topMessage: inputtopMessage,
-  topeMessage2: inputtopMessage2,
-  topMessageInBox: inputtopMessageInBox,
-  CheerMessage: inputcheerMessage,
-  CheerMessageInfo: inputcheerMessageInfo,
-  CheerMessageGo: inputcheerGo,
-  DonateMessage: inputDonateMessage,
-  DonateMessageInfo: inputDonateMessageInfo,
-  DonateMessageGo: inputDonateMessageGo,
-};
-
-export const InputSectionText = {
-  mobile: {
-    ...InputSectionTexts,
-    ModalText: {
-      CommentHeader: modalCommentHeader,
-      CommentInfoText: modalCommentInfoTextMobile,
-      CommentInputPlaceholder: modalCommentInputPlaceholder,
-      CommentInputNickPlaceholder: modalCommentInputNickPlaceholder,
-      CommentButtonText: modalCommentButtonText,
-      DonateCommentButtonText: modalDonateCommentButtonText,
-      RegistHeaderText,
-      RegistInfoText,
-      RegistButtonText,
-      RegistPhonePlaceHolder,
-      RegistPhoneLabel,
-      RegistTossLabel,
-      RegistTossPlaceHolder,
-      TossTopText,
-      TossSubText,
-      TossDonateButtonText,
-    },
-  },
-  pc: {
-    ...InputSectionTexts,
-    ModalText: {
-      CommentHeader: modalCommentHeader,
-      CommentInfoText: modalCommentInfoTextPC,
-      CommentInputPlaceholder: modalCommentInputPlaceholder,
-      CommentInputNickPlaceholder: modalCommentInputNickPlaceholder,
-      CommentButtonText: modalCommentButtonText,
-      DonateCommentButtonText: modalDonateCommentButtonText,
-      RegistHeaderText,
-      RegistInfoText,
-      RegistButtonText,
-      RegistPhonePlaceHolder,
-      RegistPhoneLabel,
-      RegistTossLabel,
-      RegistTossPlaceHolder,
-      TossTopText,
-      TossSubText,
-      TossDonateButtonText,
-    },
-  },
-};
-
 /* Explain Section */
 export const ExplainSection = {
   title: "Gaza's Child Read HOPE 프로젝트",
@@ -257,4 +199,80 @@ export const ShowComment = {
     `,
     SearchPlaceholder,
   },
+};
+
+const InputSectionTexts = {
+  topMessage: inputtopMessage,
+  topeMessage2: inputtopMessage2,
+  topMessageInBox: inputtopMessageInBox,
+  CheerMessage: inputcheerMessage,
+  CheerMessageInfo: inputcheerMessageInfo,
+  CheerMessageGo: inputcheerGo,
+  DonateMessage: inputDonateMessage,
+  DonateMessageInfo: inputDonateMessageInfo,
+  DonateMessageGo: inputDonateMessageGo,
+};
+
+export const InputSectionText = {
+  mobile: {
+    ...InputSectionTexts,
+    ModalText: {
+      CommentHeader: modalCommentHeader,
+      CommentInfoText: modalCommentInfoTextMobile,
+      CommentInputPlaceholder: modalCommentInputPlaceholder,
+      CommentInputNickPlaceholder: modalCommentInputNickPlaceholder,
+      CommentButtonText: modalCommentButtonText,
+      DonateCommentButtonText: modalDonateCommentButtonText,
+      RegistHeaderText,
+      RegistInfoText,
+      RegistButtonText,
+      RegistPhonePlaceHolder,
+      RegistPhoneLabel,
+      RegistTossLabel,
+      RegistTossPlaceHolder,
+      TossTopText,
+      TossSubText,
+      TossDonateButtonText,
+    },
+  },
+  pc: {
+    ...InputSectionTexts,
+    ModalText: {
+      CommentHeader: modalCommentHeader,
+      CommentInfoText: modalCommentInfoTextPC,
+      CommentInputPlaceholder: modalCommentInputPlaceholder,
+      CommentInputNickPlaceholder: modalCommentInputNickPlaceholder,
+      CommentButtonText: modalCommentButtonText,
+      DonateCommentButtonText: modalDonateCommentButtonText,
+      RegistHeaderText,
+      RegistInfoText,
+      RegistButtonText,
+      RegistPhonePlaceHolder,
+      RegistPhoneLabel,
+      RegistTossLabel,
+      RegistTossPlaceHolder,
+      TossTopText,
+      TossSubText,
+      TossDonateButtonText,
+    },
+  },
+};
+export const MenuText = {
+  menu1: '응원 메세지 보기',
+  menu2: '응원 메세지 남기기',
+  menu3: '더 알아보기',
+  descript: '메시지 하나로 가자지구의 평화 만드는 방법',
+};
+
+export const GazaMapText = {
+  text1: '가자지구 아이들을 위한',
+  text2: '희망 메세지 책자',
+  text3: '전달 프로젝트',
+  text4: '개의 메세지',
+  text5: '달성',
+  text6: '총 모금액',
+  text7: '목표 모금액',
+  text8: ' ※ 후원금 모금 현황은',
+  text9: ' 9~21시 동안 3시간마다 업데이트 됩니다!',
+  text10: '(결제 PG 연동 이후, 자동 반영 예정)',
 };

@@ -5,9 +5,9 @@ import { Box } from '@chakra-ui/react';
 
 import ShowComment from '@/app/_components/Sections/ShowComment';
 import InputSection from '@/app/_components/Sections/InputSection';
-import ShowInfo1 from '@/app/_components/Sections/ShowInfo';
+import ShowInfo1 from '@/app/_components/Sections/ShowInfo1';
 import ShowGazaMap from '@/app/_components/Sections/ShowGazaMap';
-import ExplainSection from '@/app/_components/Sections/ExplainSectoin';
+import ExplainSectoin from '@/app/_components/Sections/ExplainSectoin';
 
 import { fetchComments } from '@/utils/api';
 import { dataTypes } from '@/types';
@@ -15,7 +15,7 @@ import { dataTypes } from '@/types';
 import useCustomToast from '@/hooks/useCustomToast';
 import { fetchAndSet } from '@/utils/usefull';
 
-import styles from './Main.module.scss';
+import Common from './common.style';
 
 const Main = ({ explain }) => {
   const [messages, setMessages] = useState<Array<dataTypes.MessageType>>([]);
@@ -32,15 +32,16 @@ const Main = ({ explain }) => {
   }, []);
 
   return (
+    // FullPage 컴포넌트로 변경
     <Box>
       <Box id="section1" data-anchor="section1">
-        <ShowGazaMap />
+        <ShowGazaMap GazaMapText={explain.GazaMapText} />
       </Box>
       <Box id="section2" data-anchor="section2">
         <ShowInfo1 ShowInfoText={explain.ShowInfo} />
       </Box>
-      <Box
-        className={styles.sectionWrapper}
+      <Common.SectionWrapper
+        className="section"
         id="section3"
         data-anchor="section3"
       >
@@ -49,10 +50,9 @@ const Main = ({ explain }) => {
           messages={messages}
           fetchMessage={fetchAndSetMessage}
         />
-      </Box>
-
-      <Box
-        className={styles.sectionWrapper}
+      </Common.SectionWrapper>
+      <Common.SectionWrapper
+        className="section"
         data-anchor="section4"
         id="section4"
       >
@@ -60,17 +60,12 @@ const Main = ({ explain }) => {
           fetchMessage={fetchAndSetMessage}
           InputSectionText={explain.InputSectionText}
         />
-      </Box>
-
-      <Box className={styles.lastSectionBackgroundWrapper}>
-        <Box
-          className={styles.lastSectionWrapper}
-          data-anchor="section5"
-          id="section5"
-        >
-          <ExplainSection explain={explain} />
-        </Box>
-      </Box>
+      </Common.SectionWrapper>
+      <Common.LastSectionBackgroundWrapper>
+        <Common.LastSectionWrapper data-anchor="section5" id="section5">
+          <ExplainSectoin explain={explain} />
+        </Common.LastSectionWrapper>
+      </Common.LastSectionBackgroundWrapper>
     </Box>
   );
 };
