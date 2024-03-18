@@ -1,0 +1,26 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.roundedButton {
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include respond-to('sm') {
+    width: 76px;
+    height: 76px;
+  }
+  @include respond-to('md') {
+    width: 124px;
+    height: 124px;
+  }
+  background: $secondary;
+  &:hover {
+    background: $secondary_lightdark;
+  }
+  &:active {
+    background: $secondary_dark;
+  }
+}

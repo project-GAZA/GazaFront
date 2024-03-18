@@ -11,7 +11,7 @@
     "node": true,
     "es6": true
   },
-  "ignorePatterns": ["node_modules/"],
+  "ignorePatterns": ["node_modules/", "src/old/", "src/stories"],
   "extends": [
     "airbnb",
     "airbnb-typescript",
@@ -19,23 +19,32 @@
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "react/react-in-jsx-scope": "off",
     "import/no-named-as-default": "off",
-    "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".ts", ".tsx"]
+      }
+    ],
     "@typescript-eslint/no-unused-vars": "warn",
     "react/function-component-definition": [
       2,
-      { "namedComponents": "arrow-function" }
+      {
+        "namedComponents": "arrow-function"
+      }
     ],
     "import/prefer-default-export": "off",
     "import/extensions": "off",
     "react/require-default-props": "off",
     "react/no-unescaped-entities": "warn",
     "@typescript-eslint/no-use-before-define": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

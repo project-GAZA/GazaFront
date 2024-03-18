@@ -1,0 +1,16 @@
+@import '@style/_mixin.scss';
+.gobutton {
+  display: flex;
+  width: 100%;
+  @include respond-to('sm') {
+    flex-direction: column;
+  }
+  @include respond-to('md') {
+    flex-direction: row;
+    justify-content: center;
+    gap: 18px;
+  }
+  @include respond-to('lg') {
+    gap: 12px;
+  }
+}

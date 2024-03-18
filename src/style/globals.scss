@@ -1,0 +1,53 @@
+/* About Font Import */
+@import './fonts.scss';
+@import './_variables.scss';
+
+:root {
+  --empty: : #ffffff;
+  --light-empty: #fff9e2;
+  --dark-empty: #ffedb5;
+
+  --primary: #ffb611;
+  --primary-lightdark: #ffa50d;
+  --primary-dark: #ff940a;
+
+  --secondary: #cfff8d;
+  --secondary-dark: #b2e853;
+  --secondary-lightdark: #bbf95b;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInUpAnimation {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+body {
+  font-family: -apple-system, Inter, sans-serif;
+}
+h1 {
+  font-size: 1em;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+form,
+blockquote {
+  padding: 0;
+  margin: 0;
+}
