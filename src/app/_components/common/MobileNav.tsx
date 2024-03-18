@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
 import Image from 'next/image';
 import { CiMenuBurger } from 'react-icons/ci';
 import { Link as ScrollLink } from 'react-scroll';
@@ -21,10 +19,8 @@ const MobileNav = ({
   };
 
   return (
-    <div
-      className={`${styles.menuWrapper} ${isMobileNavShow ? styles.open : ''}`}
-    >
-      <div
+    <Common.MenuWrapper isOpen={isMobileNavShow}>
+      <Common.HamIcon
         aria-label="Menu"
         className={styles.hamIcon}
         onClick={toggleMobileNav} // `toggleMobileNav`를 onClick 이벤트 핸들러로 사용
@@ -49,27 +45,31 @@ const MobileNav = ({
           data-menuanchor="section3"
         >
           <ScrollLink
+            style={Common.AWrapperMobile}
             to="section3"
             spy
             smooth
             duration={800}
-            onClick={toggleMobileNav}
+            onClick={() => {
+              setIsMobileNavShow();
+            }}
           >
             {MenuText.menu1}
           </ScrollLink>
-        </li>
-        <li
-          className={`${styles.mobileLi} ${
-            activeSection === 'section4' ? 'on' : ''
-          }`}
+        </Common.MobilLi>
+        <Common.MobilLi
+          className={activeSection === 'section4' ? 'on' : ''}
           data-menuanchor="section4"
         >
           <ScrollLink
+            style={Common.AWrapperMobile}
             to="section4"
             spy
             smooth
             duration={800}
-            onClick={toggleMobileNav}
+            onClick={() => {
+              setIsMobileNavShow();
+            }}
           >
             {MenuText.menu2}
           </ScrollLink>

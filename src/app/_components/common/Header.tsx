@@ -7,6 +7,7 @@ import { Box } from '@chakra-ui/react';
 import { Link as ScrollLink } from 'react-scroll';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
+
 import MobileNav from '@/app/_components/common/MobileNav';
 
 import Common from './common.style';
@@ -81,11 +82,9 @@ const Header = ({ onClickLange, MenuText, onOpenShare }) => {
             >
               {MenuText.menu1}
             </ScrollLink>
-          </li>
-          <li
-            className={`${styles.menuList} ${
-              activeSection === 'section4' ? styles.on : ''
-            }`}
+          </Common.MenuList>
+          <Common.MenuList
+            className={activeSection === 'section4' ? 'on' : ''}
             style={{ marginRight: '50px' }}
           >
             <ScrollLink
@@ -97,7 +96,7 @@ const Header = ({ onClickLange, MenuText, onOpenShare }) => {
             >
               {MenuText.menu2}
             </ScrollLink>
-          </li>
+          </Common.MenuList>
           <div
             style={{
               display: 'flex',
@@ -106,18 +105,21 @@ const Header = ({ onClickLange, MenuText, onOpenShare }) => {
             }}
           >
             <ScrollLink
+              style={{
+                ...Common.MenuLink,
+                cursor: 'pointer',
+                color: '#8f8f8f',
+                fontSize: '14px',
+              }}
               to="section5"
               spy
               smooth
               duration={800}
-              style={{ cursor: 'pointer', color: '#8f8f8f', fontSize: '14px' }}
             >
               {MenuText.descript}
             </ScrollLink>
-            <li
-              className={`${styles.menuList} ${
-                activeSection === 'section5' ? styles.on : ''
-              }`}
+            <Common.MenuList
+              className={activeSection === 'section5' ? 'on' : ''}
             >
               <ScrollLink
                 style={Common.MenuLink}
@@ -128,27 +130,20 @@ const Header = ({ onClickLange, MenuText, onOpenShare }) => {
               >
                 {MenuText.menu3}
               </ScrollLink>
-            </li>
+            </Common.MenuList>
           </div>
         </Common.MenuInner>
         <Common.ChangeLanguageButton onClick={onClickLange}>
           한국어/English
         </Common.ChangeLanguageButton>
         <Box />
-        <div
+        <Common.HamIcon
           aria-label="Menu"
-          className={styles.hamIcon}
+          size="md"
+          icon={<CiMenuBurger color="white" size="md" />}
           onClick={() => setIsMobileNavShow(prev => !prev)}
-          onKeyDown={e => {
-            if (e.key === 'Enter' || e.key === ' ')
-              setIsMobileNavShow(prev => !prev);
-          }}
-          role="button"
-          tabIndex={0}
-        >
-          <CiMenuBurger color="white" size="24" />
-        </div>
-      </div>
+        />
+      </Common.HeaderWrapper>
     </>
   );
 };
