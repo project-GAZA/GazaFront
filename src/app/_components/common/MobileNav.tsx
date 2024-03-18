@@ -5,19 +5,17 @@ import { CiMenuBurger } from 'react-icons/ci';
 import { Link as ScrollLink } from 'react-scroll';
 
 import ShareIcon from '@/assets/svg/ShareIcon.svg';
-import { propsTypes } from '@/types';
-import styles from './MobileNav.module.scss';
+
+import Common from './common.style';
 
 const MobileNav = ({
+  MenuText,
   onOpenShare,
   isMobileNavShow,
   setIsMobileNavShow,
   activeSection,
-}: propsTypes.MobileNavPropsType) => {
-  const toggleMobileNav = () => {
-    setIsMobileNavShow();
-  };
-
+  onClickLange,
+}) => {
   return (
     <div
       className={`${styles.menuWrapper} ${isMobileNavShow ? styles.open : ''}`}
@@ -52,7 +50,7 @@ const MobileNav = ({
             duration={800}
             onClick={toggleMobileNav}
           >
-            응원메세지 보기
+            {MenuText.menu1}
           </ScrollLink>
         </li>
         <li
@@ -68,63 +66,53 @@ const MobileNav = ({
             duration={800}
             onClick={toggleMobileNav}
           >
-            응원메세지 남기기
+            {MenuText.menu2}
           </ScrollLink>
-        </li>
-        <li
-          className={`${styles.mobileLi} ${
-            activeSection === 'section5' ? 'on' : ''
-          }`}
-          data-menuanchor="section5"
-        >
+        </Common.MobilLi>
+        <Common.MobilLi>
           <ScrollLink
-            to="section5"
-            spy
-            smooth
-            duration={800}
-            onClick={toggleMobileNav}
-          >
-            메시지 하나로 가자지구의 평화 만드는 방법
-          </ScrollLink>
-        </li>
-        <li
-          className={`${styles.mobileLi} ${
-            activeSection === 'section5' ? 'on' : ''
-          }`}
-          data-menuanchor="section5"
-        >
-          <ScrollLink
-            to="section5"
-            spy
-            smooth
-            duration={800}
-            onClick={toggleMobileNav}
-          >
-            더 알아보기
-          </ScrollLink>
-        </li>
-        <div className={styles.iconBoxMenu}>
-          <div
-            className={styles.iconInMenu}
-            onClick={onOpenShare}
-            onKeyDown={e => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                onOpenShare();
-              }
+            style={{
+              ...Common.MenuLink,
+              cursor: 'pointer',
+              color: '#8f8f8f',
+              fontSize: '13px',
+              padding: '0px',
             }}
-            role="button"
-            tabIndex={0}
+            to="section5"
+            spy
+            smooth
+            duration={800}
+            onClick={toggleMobileNav}
           >
-            <Image
-              width={22}
-              height={22}
-              src={ShareIcon.src}
-              alt="Share Icon"
-            />
-          </div>
-        </div>
-      </ul>
-    </div>
+            {MenuText.descript}
+          </ScrollLink>
+        </li>
+        <li
+          className={`${styles.mobileLi} ${
+            activeSection === 'section5' ? 'on' : ''
+          }`}
+          data-menuanchor="section5"
+        >
+          <ScrollLink
+            to="section5"
+            spy
+            smooth
+            duration={800}
+            onClick={toggleMobileNav}
+          >
+            {MenuText.menu3}
+          </ScrollLink>
+        </Common.MobilLi>
+        <Common.LangChanBox onClick={onClickLange}>
+          <Common.LangChanText>한국어/English</Common.LangChanText>
+        </Common.LangChanBox>
+        <Common.IconBoxMenu>
+          <Common.IconInMenu onClick={onOpenShare}>
+            <Image width={22} height={22} src={ShareIcon.src} alt="sharIcon" />
+          </Common.IconInMenu>
+        </Common.IconBoxMenu>
+      </Common.MobileUlWrapper>
+    </Common.MenuWrapper>
   );
 };
 

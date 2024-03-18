@@ -87,12 +87,12 @@ const Section = {
   `,
 
   ShowCommentWrapper: styled(Stack)`
-    max-height: calc(102.35vh - 300px);
+    max-height: calc(102.35vh - 260px);
     overflow-y: auto;
     margin-top: 30px;
     padding: 16px;
     @media (max-width: 890px) {
-      max-height: calc(99.85vh - 275px);
+      max-height: calc(99.85vh - 290px);
     }
   `,
 
@@ -280,6 +280,9 @@ const Section = {
     display: flex;
     justify-content: center;
     gap: 30px;
+    @media (max-width: 890px) {
+      left: 12px;
+    }
   `,
 
   RealGoalText: styled(Text)`
