@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import SectionHero from './index';
 
 export default {
-  title: 'stories/Section_Hero/Section/SectionHero',
+  title: 'stories/Section_Hero/Section',
   component: SectionHero,
   args: {
     mainPictureData: {
@@ -16,9 +16,7 @@ export default {
   },
 } as ComponentMeta<typeof SectionHero>;
 
-const Template: ComponentStory<typeof SectionHero> = args => (
-  <SectionHero {...args} />
-);
+const Template: ComponentStory<typeof SectionHero> = args => <SectionHero />;
 export const Mobile: ComponentStory<typeof SectionHero> = Template.bind({});
 Mobile.parameters = {
   viewport: {
