@@ -1,8 +1,6 @@
 @import '@style/_mixin.scss';
 @import '@style/_variables.scss';
 .commentLayout {
-  position: relative;
-  top: -24px;
   z-index: -1;
   display: flex;
   padding: 20px;
@@ -121,14 +119,15 @@
 
 .donateContainer {
   display: flex;
+  height: 35px;
   .donateText {
     position: relative;
     color: white;
     font-family: Inter;
     font-size: 15px;
     font-weight: 500;
-    top: 3px;
     left: -14px;
+    top: 10px;
     @include respond-to('sm') {
       top: -3px;
     }

@@ -21,7 +21,7 @@ const Comment = ({
   isDonate,
 }: CommentType) => {
   return (
-    <>
+    <div>
       {isDonate && (
         <div className={styles.donateContainer}>
           <div className={styles.gift}>
@@ -49,7 +49,7 @@ const Comment = ({
         </div>
         <p className={styles.content}>{content}</p>
       </div>
-    </>
+    </div>
   );
 };
 
