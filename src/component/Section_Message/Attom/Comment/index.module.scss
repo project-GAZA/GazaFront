@@ -1,0 +1,136 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+.commentLayout {
+  position: relative;
+  top: -24px;
+  z-index: -1;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  border-radius: 12px;
+  border: 1px solid #f5f5f5;
+  background: white;
+
+  /* 그림자 */
+  box-shadow: 0px 2px 20.5px 0px rgba(160, 160, 160, 0.25);
+  @include respond-to('sm') {
+    padding: 16px;
+  }
+}
+
+.topWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.leftContainer {
+  display: flex;
+  gap: 8px;
+  font-family: Inter;
+  font-size: 14px;
+  .nick {
+    font-weight: 500;
+  }
+  .date {
+    color: #4f4f4f;
+    font-weight: 400;
+  }
+}
+.rightContainer {
+  display: flex;
+  gap: 7px;
+  .call {
+    color: #4f4f4f;
+    font-family: Inter;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 180%; /* 19.8px */
+    text-decoration-line: underline;
+  }
+}
+
+.content {
+  color: #4f4f4f;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%; /* 20.8px */
+}
+
+.heart_active {
+  width: 24px;
+  height: 24px;
+  background-image: url('/assets/svg/heart_active.svg');
+  background-size: cover; // 배경 이미지가 요소 내부에 맞게 조정되도록 설정
+  background-repeat: no-repeat; // 배경 이미지가 반복되지 않도록 설정
+  @include respond-to('sm') {
+    width: 20px;
+    height: 20px;
+    background-image: url('/assets/svg/mobile_heart_active.svg');
+  }
+}
+
+.heart_unactive {
+  width: 24px;
+  height: 24px;
+  background-image: url('/assets/svg/heart.svg');
+  background-size: cover; // 배경 이미지가 요소 내부에 맞게 조정되도록 설정
+  background-repeat: no-repeat; // 배경 이미지가 반복되지 않도록 설정
+  @include respond-to('sm') {
+    width: 20px;
+    height: 20px;
+    background-image: url('/assets/svg/mobile_heart.svg');
+  }
+}
+.gift {
+  position: relative;
+  left: -16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #8bd180;
+  border: 4px solid var(--background_dark, #241c15);
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  @include respond-to('sm') {
+    border: 3px solid var(--background_dark, #241c15);
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.gift_icon {
+  width: 24px;
+  height: 28px;
+  background-image: url('/assets/svg/gifticon.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include respond-to('sm') {
+    background-image: url('/assets/svg/gifticon_mobile.svg');
+    width: 16px;
+    height: 19px;
+  }
+}
+
+.donateContainer {
+  display: flex;
+  .donateText {
+    position: relative;
+    color: white;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 500;
+    top: 3px;
+    left: -14px;
+    @include respond-to('sm') {
+      top: -3px;
+    }
+  }
+}
