@@ -4,9 +4,9 @@ import '@/style/globals.scss';
 
 import SectionContainer from '@/app/_sections/SectionContainer';
 
-import SectionHero from '@/app/_sections/SectionHero';
 import Children_1 from '@/assets/svg/background/children1.png';
 import Children_2 from '@/assets/svg/background/children2.png';
+import SectionHero from '@/component/Section_Hero/Section';
 import CommentSection from './_sections/CommentSection';
 import DeadInfoSection from './_sections/DeadInfoSection';
 import DonateSection from './_sections/DonateSection';
