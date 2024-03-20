@@ -18,10 +18,12 @@ const config: StorybookConfig = {
         // 'styles' 별칭 설정
         '@': path.resolve(__dirname, '../src'),
         '@style': path.resolve(__dirname, '../src/style'),
+        '@public': path.resolve(__dirname, '../public'),
       };
     }
     return config;
   },
+  staticDirs: ['../public'],
   framework: {
     name: '@storybook/nextjs',
     options: {},

@@ -1,0 +1,31 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.topText {
+  font-size: 28px;
+  @include respond-to('sm') {
+    font-size: 20px;
+  }
+}
+
+.bottomText {
+  font-size: 32px;
+  @include respond-to('sm') {
+    font-size: 24px;
+  }
+}
+
+.messageTitleLayout {
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  font-family: Inter;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  @include respond-to('sm') {
+    max-width: 341px;
+  }
+}
