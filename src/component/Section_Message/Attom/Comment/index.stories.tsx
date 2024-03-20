@@ -16,11 +16,9 @@ export default {
     nick: 'JooKyungJin',
     date: '2023.03.04',
     isLike: true,
-    onClick: [
-      () => {
-        console.log('신고누름');
-      },
-    ],
+    onClick: () => {
+      console.log('신고누름');
+    },
     content: '뉴스를 봤는데 마음이 너무 아팠습니다.',
     isdonate: true,
   },
