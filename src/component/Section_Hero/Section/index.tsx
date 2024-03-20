@@ -16,17 +16,17 @@ const SectionHero = () => {
   };
   return (
     <div className={styles.outer}>
-      <SectionContainer>
-        <div className={styles.goDonate}>
+      <div className={styles.goDonate}>
+        <SectionContainer>
           <GoDonateButton />
-        </div>
-        <div className={styles.picture}>
-          <MainPicture
-            borderRadius={HeroSectionMook.borderRadius}
-            urls={HeroSectionMook.urls}
-          />
-        </div>
-      </SectionContainer>
+        </SectionContainer>
+      </div>
+      <div className={styles.picture}>
+        <MainPicture
+          borderRadius={HeroSectionMook.borderRadius}
+          urls={HeroSectionMook.urls}
+        />
+      </div>
       <HeroInfo />
     </div>
   );
