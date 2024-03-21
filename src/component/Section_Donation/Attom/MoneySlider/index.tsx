@@ -26,7 +26,9 @@ const MoneySilder = ({ current, goal }: MoneySilderProp) => {
           <h2>{goal.toLocaleString()} 원</h2>
         </div>
       </div>
-      <p>※ 모금 현황은 9~21시 동안 3시간마다 업데이트 됩니다!</p>
+      <p className={styles.p}>
+        ※ 모금 현황은 9~21시 동안 3시간마다 업데이트 됩니다!
+      </p>
     </div>
   );
 };

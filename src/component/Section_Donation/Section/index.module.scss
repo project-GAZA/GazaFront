@@ -1,0 +1,19 @@
+@import '@style/_mixin.scss';
+.layout {
+  padding: 48px 0 48px 0;
+  border: 1px solid black;
+}
+.mainSect {
+  margin-top: 40px;
+}
+.buttonSect {
+  margin: 36px auto 0 auto;
+  max-width: 385px;
+}
+.botSect {
+  margin-top: 36px;
+}
+.botCont {
+  max-width: 480px;
+  margin: 0 auto;
+}

@@ -9,7 +9,9 @@ export default {
   component: Button,
   parameters: {
     docs: {
-      description: { component: '기본 버튼' },
+      description: {
+        component: '기본 버튼 - 히어로, 기부섹션에 사용되었습니다.',
+      },
     },
   },
   args: {
