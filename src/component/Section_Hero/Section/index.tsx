@@ -1,6 +1,7 @@
-import HeroInfo from '@/component/Section_Hero/Modules/HeroInfo';
 import GoDonateButton from '@/component/Section_Hero/Modules/GoDonateButton';
 import MainPicture from '@/component/Section_Hero/Attom/MainPicture';
+import GoButtons from '@/component/Section_Hero/Modules/GoButtons';
+import HeroMainTitle from '@/component/Section_Hero/Modules/HeroMainTitle';
 
 import SectionContainer from '@/component/SectionContainer';
 
@@ -27,7 +28,14 @@ const SectionHero = () => {
           urls={HeroSectionMook.urls}
         />
       </div>
-      <HeroInfo />
+      <div className={styles.wrapper}>
+        <SectionContainer>
+          <div className={styles.inner}>
+            <HeroMainTitle />
+            <GoButtons />
+          </div>
+        </SectionContainer>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@/component/Section_Hero/Attom/Button';
+import Button from '@/component/Common/Attom/Button';
 import styles from './index.module.scss';
 
 const GoButtons = () => {

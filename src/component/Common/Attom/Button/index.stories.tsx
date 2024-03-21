@@ -5,7 +5,7 @@ import Button from './index';
 
 // 어떤 컴포넌트의 story인지, 어떤 설정으로 렌더링할지 정의
 export default {
-  title: 'stories/Section_Hero/Attoms/Button',
+  title: 'stories/Common/Attoms/Button',
   component: Button,
   parameters: {
     docs: {
