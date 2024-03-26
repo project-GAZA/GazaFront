@@ -1,0 +1,18 @@
+@import '@style/_mixin.scss';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  @include respond-to('md') {
+    align-items: baseline;
+    padding: 0;
+  }
+}
+.width {
+  padding: 0 22px;
+  @include respond-to('md') {
+    padding: 0px;
+  }
+}

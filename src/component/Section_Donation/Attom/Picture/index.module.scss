@@ -1,0 +1,38 @@
+@import '@style/_variables.scss';
+@import '@style/_mixin.scss';
+
+.picture {
+  background-size: cover;
+  background-repeat: no-repeat;
+  @include respond-to('sm') {
+    width: 335px;
+    height: 335px;
+  }
+  @include respond-to('md') {
+    width: 376px;
+    height: 376px;
+  }
+  @include respond-to('lg') {
+    width: 436px;
+    height: 436px;
+  }
+}
+.inner {
+  border-radius: 20px;
+  z-index: -1;
+  position: absolute;
+  transform: rotate(-84.163deg);
+  border: 6px solid var(--secendary, #cfff8d);
+  @include respond-to('sm') {
+    width: 333.08px;
+    height: 333.08px;
+  }
+  @include respond-to('md') {
+    width: 390.1px;
+    height: 390.1px;
+  }
+  @include respond-to('lg') {
+    width: 443.414px;
+    height: 443.414px;
+  }
+}

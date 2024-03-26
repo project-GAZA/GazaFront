@@ -5,11 +5,13 @@ import Button from './index';
 
 // 어떤 컴포넌트의 story인지, 어떤 설정으로 렌더링할지 정의
 export default {
-  title: 'stories/Section_Hero/Attoms/Button',
+  title: 'stories/Common/Attoms/Button',
   component: Button,
   parameters: {
     docs: {
-      description: { component: '기본 버튼' },
+      description: {
+        component: '기본 버튼 - 히어로, 기부섹션에 사용되었습니다.',
+      },
     },
   },
   args: {
