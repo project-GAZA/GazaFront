@@ -1,0 +1,29 @@
+@import '@style/_variables.scss';
+.layout {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.dark {
+  background: $red;
+  &:hover {
+    background: $light_red;
+  }
+  &:active {
+    background: $dark_red;
+  }
+}
+.light {
+  background: $light_gray;
+  &:hover {
+    background: $hover_gray;
+  }
+  &:active {
+    background: $dark_gray;
+  }
+}

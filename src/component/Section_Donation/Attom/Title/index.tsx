@@ -13,4 +13,3 @@ const Title = ({ title, size = 'lg' }: TitleProp) => {
 };
 
 export default Title;
-//      <p className={styles.p} dangerouslySetInnerHTML={{ __html: content }} />
