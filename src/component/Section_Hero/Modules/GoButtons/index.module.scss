@@ -4,6 +4,7 @@
   width: 100%;
   @include respond-to('sm') {
     flex-direction: column;
+    gap: 12px;
   }
   @include respond-to('md') {
     flex-direction: row;

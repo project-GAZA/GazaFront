@@ -1,0 +1,40 @@
+@import '@style/_mixin.scss';
+.layout {
+  padding: 48px 0 48px 0;
+  border: 1px solid black;
+  @include respond-to('lg') {
+    padding: 80px 0 80px 0;
+  }
+}
+.mainSect {
+  margin-top: 40px;
+}
+.buttonSect {
+  margin: 36px auto 0 auto;
+  max-width: 385px;
+  @include respond-to('lg') {
+    order: 1;
+    width: 300px;
+    margin: 36px 44px 0 0;
+  }
+}
+.botSect {
+  margin-top: 36px;
+}
+.botCont {
+  max-width: 480px;
+  margin: 0 auto;
+  @include respond-to('lg') {
+    position: relative;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+.mainContent {
+  @include respond-to('lg') {
+    display: flex;
+    max-width: 1040px;
+    margin: 42px auto 0 auto;
+  }
+}

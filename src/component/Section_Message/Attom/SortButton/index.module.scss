@@ -1,0 +1,29 @@
+@import '@style/_variables.scss';
+@import '@style/_mixin.scss';
+
+.base {
+  display: flex;
+  width: 80px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  color: white;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 165%; /* 23.1px */
+  font-weight: 400;
+
+  &.active {
+    font-weight: 600;
+    text-decoration-line: underline;
+    &.secondary {
+      color: $secondary;
+    }
+    &.primary {
+      color: $primary;
+    }
+  }
+}

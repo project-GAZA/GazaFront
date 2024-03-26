@@ -2,35 +2,26 @@
 
 import '@/style/globals.scss';
 
-import SectionContainer from '@/app/_sections/SectionContainer';
-
-import SectionHero from '@/app/_sections/SectionHero';
-import Children_1 from '@/assets/svg/background/children1.png';
-import Children_2 from '@/assets/svg/background/children2.png';
-import CommentSection from './_sections/CommentSection';
+import SectionHero from '@/component/Section_Hero/Section';
+import SectionMessage from '@/component/Section_Message/Section';
+import DonateSection from '@/component/Section_Donation/Section';
 import DeadInfoSection from './_sections/DeadInfoSection';
-import DonateSection from './_sections/DonateSection';
 import WhoAmISection from './_sections/WhoAmISection';
 import WhyDonateSection from './_sections/WhyDonateSection';
 
-const HeroSectionMook = {
-  mainPictureData: {
-    borderRadius: 20,
-    urls: [Children_1.src, Children_2.src],
-  },
-};
-
 const Home = () => {
   return (
-    <div>
-      <SectionContainer>
-        <SectionHero mainPictureData={HeroSectionMook.mainPictureData} />
-      </SectionContainer>
+    <div
+      style={{
+        minWidth: '360px',
+      }}
+    >
+      <SectionHero />
       <DeadInfoSection />
-      <CommentSection />
+      <WhoAmISection />
+      <SectionMessage />
       <DonateSection />
       <WhyDonateSection />
-      <WhoAmISection />
     </div>
   );
 };
