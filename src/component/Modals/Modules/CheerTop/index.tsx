@@ -8,6 +8,7 @@ const CheerTop = () => {
     <div className={styles.layout}>
       <Title title="응원 댓글이 등록되었습니다." />
       <Content
+        align="center"
         lineheight="normal"
         color="white"
         content="

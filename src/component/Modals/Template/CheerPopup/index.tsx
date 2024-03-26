@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import CheerTop from '@/component/Modals/Modules/CheerTop';
 import Content from '@/component/Modals/Attom/Content';
@@ -9,8 +9,12 @@ import HandHeart from '@public/assets/svg/HandHeart.svg';
 import styles from './index.module.scss';
 
 const CheerPopup = () => {
+  const [animation, setAnimation] = useState<string>(styles.layout);
+  useEffect(() => {
+    setAnimation(`${styles.layout} ${styles.active}`);
+  }, []);
   return (
-    <div className={styles.layout}>
+    <div className={animation}>
       <div className={styles.closeCont}>
         <CloseButton theme="dark" />
       </div>

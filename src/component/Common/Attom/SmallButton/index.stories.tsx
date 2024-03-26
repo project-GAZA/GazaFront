@@ -16,7 +16,7 @@ export default {
   },
   args: {
     children: '후원하기',
-    theme: 'primary',
+    theme: 'black',
     background: 'red',
   },
 } as ComponentMeta<typeof SmallButton>;

@@ -21,7 +21,7 @@ export interface ButtonType {
 }
 
 const SmallButton = ({
-  theme = 'primary',
+  theme = 'black',
   children,
   background = 'primary',
   onClick,

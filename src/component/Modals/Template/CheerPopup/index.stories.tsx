@@ -13,9 +13,7 @@ export default {
   },
 } as ComponentMeta<typeof CheerPopup>;
 
-const Template: ComponentStory<typeof CheerPopup> = args => (
-  <CheerPopup {...args} />
-);
+const Template: ComponentStory<typeof CheerPopup> = args => <CheerPopup />;
 
 export const Mobile: ComponentStory<typeof CheerPopup> = Template.bind({});
 Mobile.parameters = {

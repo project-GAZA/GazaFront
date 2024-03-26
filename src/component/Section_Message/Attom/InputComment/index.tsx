@@ -14,6 +14,7 @@ const InputComment = ({ placeholder, onSubmit }: InputCommentType) => {
       <input placeholder={placeholder} />
       <button type="submit">
         <Image
+          priority
           style={{ verticalAlign: 'middle' }}
           width={32}
           height={32}
