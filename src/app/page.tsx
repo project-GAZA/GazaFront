@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { modalState } from '@/store/modalState';
 
 import '@/style/globals.scss';
 
@@ -16,8 +18,7 @@ import WhoAmISection from './_sections/WhoAmISection';
 import WhyDonateSection from './_sections/WhyDonateSection';
 
 const Home = () => {
-  const [modal, setModal] = useState<string>('cheer');
-
+  const [modal, setModal] = useRecoilState<string>(modalState);
   return (
     <div
       style={{
@@ -33,12 +34,7 @@ const Home = () => {
 
       {modal !== '' && (
         <ModalWrapper isOpen={modal === 'cheer'}>
-          <CheerPopup
-            onClose={() => {
-              setModal('');
-              console.log('ho');
-            }}
-          />
+          <CheerPopup />
         </ModalWrapper>
       )}
     </div>
