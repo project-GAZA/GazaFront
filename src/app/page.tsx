@@ -18,10 +18,10 @@ const Home = () => {
     >
       <SectionHero />
       <DeadInfoSection />
+      <WhoAmISection />
       <SectionMessage />
       <DonateSection />
       <WhyDonateSection />
-      <WhoAmISection />
     </div>
   );
 };
