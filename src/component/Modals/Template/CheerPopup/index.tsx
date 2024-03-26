@@ -8,16 +8,15 @@ import Image from 'next/image';
 import HandHeart from '@public/assets/svg/HandHeart.svg';
 import styles from './index.module.scss';
 
-const CheerPopup = () => {
+interface CheerPopupProps {
+  onClose: () => void;
+}
+
+const CheerPopup = ({ onClose }: CheerPopupProps) => {
   return (
     <div className={styles.layout}>
       <div className={styles.closeCont}>
-        <CloseButton
-          theme="dark"
-          onClick={() => {
-            console.log('hi');
-          }}
-        />
+        <CloseButton theme="dark" onClick={onClose} />
       </div>
       <div className={styles.topCont}>
         <CheerTop />

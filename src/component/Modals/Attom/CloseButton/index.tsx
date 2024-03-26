@@ -23,7 +23,7 @@ const CloseButton = ({ onClick, theme = 'light' }: TitleProp) => {
   cls += ` ${styles.layout}`;
 
   return (
-    <button type="button" className={cls}>
+    <button type="button" onClick={onClick} className={cls}>
       <Image src={imgsrc} alt="닫기버튼" width={20} height={20} />
     </button>
   );
