@@ -7,7 +7,8 @@ interface TitleProp {
 }
 
 const Title = ({ title, size = 'lg' }: TitleProp) => {
-  const cls = size === 'lg' ? styles.lg : styles.md;
+  let cls = size === 'lg' ? styles.lg : styles.md;
+  cls += ` ${styles.h1}`;
   return <h1 className={cls}>{title}</h1>;
 };
 
