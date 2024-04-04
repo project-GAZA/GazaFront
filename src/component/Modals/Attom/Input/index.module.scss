@@ -2,7 +2,7 @@
   border-radius: 8px;
   border: 1px solid var(--medium-grey, #e4e4e4);
   height: 44px;
-  width: 100%;
+  width: calc(100% - 24px);
   padding: 8px 12px;
 
   font-family: Inter;
