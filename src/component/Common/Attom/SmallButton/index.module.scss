@@ -1,0 +1,62 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.button {
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Inter;
+  height: 64px;
+  width: 100%;
+}
+
+.white {
+  color: $empty;
+}
+
+.bgwhite {
+  background-color: $white;
+  &:hover {
+    background-color: $light_white;
+  }
+  &:active {
+    background-color: $dark_white;
+  }
+}
+
+.bgsecondary {
+  background-color: $secondary;
+}
+
+.bgprimary {
+  background-color: $primary;
+  &:hover {
+    background-color: $primary_lightdark;
+  }
+  &:active {
+    background-color: $primary_dark;
+  }
+  &:disabled {
+    background-color: $light_gray;
+  }
+}
+.bgred {
+  background-color: $red;
+  &:hover {
+    background-color: $light_red;
+  }
+  &:active {
+    background-color: $dark_red;
+  }
+}
+.bglightgray {
+  background-color: $light_gray;
+  &:hover {
+    background-color: $hover_gray;
+  }
+  &:active {
+    background-color: $dark_gray;
+  }
+}

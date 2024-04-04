@@ -45,9 +45,9 @@ const Button = ({
 
   return (
     <button
+      onClick={onClick}
       style={{ marginBottom, marginRight, marginTop, marginLeft }}
       className={buttonClasses}
-      onClick={onClick}
       type="button"
     >
       {children}
@@ -56,3 +56,7 @@ const Button = ({
 };
 
 export default Button;
+
+// 클릭했을 때 => 동작을 하게 하는건. 상위컴포넌트에서
+// 핸들링이 크게 벗어나지 않는 단게 까지 구현하고
+// button => onClick
