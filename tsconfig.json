@@ -33,5 +33,10 @@
     "./src/types/**/*.d.ts",
     "next.config.js"
   ],
-  "exclude": ["node_modules", "./src/old"]
+  "exclude": [
+    "node_modules",
+    "./src/old",
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ]
 }
