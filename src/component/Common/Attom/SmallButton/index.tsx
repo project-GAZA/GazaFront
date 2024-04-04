@@ -18,7 +18,7 @@ export interface ButtonType {
    * onClick은 클릭시 실행할 함수입니다.
    */
   onClick?: () => void;
-  disabled: boolean;
+  disabled?: boolean;
   type: 'button' | 'submit' | 'reset';
 }
 

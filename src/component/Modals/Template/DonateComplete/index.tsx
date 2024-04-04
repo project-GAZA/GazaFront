@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { modalState } from '@/store/modalState';
 import Image from 'next/image';
 
 import SmallButton from '@/component/Common/Attom/SmallButton';
@@ -14,9 +16,22 @@ import styles from './index.module.scss';
 
 const DonateComplete = () => {
   const [animation, setAnimation] = useState<string>(styles.layout);
+  const setModal = useSetRecoilState<string>(modalState);
   useEffect(() => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
+
+  const onClickCopy = async () => {
+    try {
+      await navigator.clipboard.writeText('https://gazas-child-read-hope.kr/');
+      console.info('클리보드 복사성공');
+    } catch (e) {
+      console.error('클리보드 복사실패', e);
+      // toast 메세지 띄어주기
+    } finally {
+      setModal('');
+    }
+  };
 
   return (
     <div className={animation}>
@@ -37,7 +52,12 @@ const DonateComplete = () => {
         <IconBox name="카카오톡" iconsrc={KakaoIcon.src} />
       </div>
       <div className={styles.buttonCont}>
-        <SmallButton disabled theme="black">
+        <SmallButton
+          background="gray"
+          type="button"
+          theme="black"
+          onClick={onClickCopy}
+        >
           <div className={styles.buttonInner}>
             URL 복사하기
             <Image src={CopyIcon.src} width={24} height={24} alt="복사아이콘" />
