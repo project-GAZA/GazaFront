@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { modalState } from '@/store/modalState';
+
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import CheerTop from '@/component/Modals/Modules/CheerTop';
 import Content from '@/component/Modals/Attom/Content';
@@ -9,13 +12,15 @@ import HandHeart from '@public/assets/svg/HandHeart.svg';
 import styles from './index.module.scss';
 
 const CheerPopup = () => {
+  const setModal = useSetRecoilState<string>(modalState);
   const [animation, setAnimation] = useState<string>(styles.layout);
   useEffect(() => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
 
   const onClickTossLick = (): void => {
-    window.open('https://toss.me/peacegaza');
+    // window.open('https://toss.me/peacegaza');
+    setModal('who');
   };
 
   return (

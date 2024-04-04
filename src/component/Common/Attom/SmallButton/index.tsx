@@ -19,6 +19,7 @@ export interface ButtonType {
    */
   onClick?: () => void;
   disabled: boolean;
+  type: 'button' | 'submit' | 'reset';
 }
 
 const SmallButton = ({
@@ -27,6 +28,7 @@ const SmallButton = ({
   background = 'primary',
   onClick,
   disabled = false,
+  type = 'button',
 }: ButtonType) => {
   let cls = styles.button;
 
@@ -47,7 +49,7 @@ const SmallButton = ({
   }
 
   return (
-    <button disabled={disabled} className={cls} onClick={onClick} type="button">
+    <button type={type} disabled={disabled} className={cls} onClick={onClick}>
       {children}
     </button>
   );

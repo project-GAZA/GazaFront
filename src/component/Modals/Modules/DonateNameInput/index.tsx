@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { Dispatch } from 'react';
 import Input from '@/component/Modals/Attom/Input';
 import Title from '@/component/Modals/Attom/Title';
 import styles from './index.module.scss';
 
-const DonateNameInput = () => {
-  const [nick, setNick] = useState('');
+interface DonateNameInputProp {
+  nick: string;
+  setNick: Dispatch<string>;
+}
+
+const DonateNameInput = ({ nick, setNick }: DonateNameInputProp) => {
   return (
     <div className={styles.layout}>
       <Title
