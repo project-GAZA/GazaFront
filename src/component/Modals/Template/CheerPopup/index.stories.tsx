@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { RecoilRoot } from 'recoil';
 import CheerPopup from './index';
 
 export default {
@@ -13,7 +14,11 @@ export default {
   },
 } as ComponentMeta<typeof CheerPopup>;
 
-const Template: ComponentStory<typeof CheerPopup> = args => <CheerPopup />;
+const Template: ComponentStory<typeof CheerPopup> = args => (
+  <RecoilRoot>
+    <CheerPopup />
+  </RecoilRoot>
+);
 
 export const Mobile: ComponentStory<typeof CheerPopup> = Template.bind({});
 Mobile.parameters = {

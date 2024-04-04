@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { RecoilRoot } from 'recoil';
 
 import CloseButton from './index';
 
@@ -17,7 +18,9 @@ export default {
 } as ComponentMeta<typeof CloseButton>;
 
 const Template: ComponentStory<typeof CloseButton> = args => (
-  <CloseButton {...args} />
+  <RecoilRoot>
+    <CloseButton {...args} />
+  </RecoilRoot>
 );
 
 export const Mobile: ComponentStory<typeof CloseButton> = Template.bind({});

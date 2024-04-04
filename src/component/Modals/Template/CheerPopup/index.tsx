@@ -13,6 +13,11 @@ const CheerPopup = () => {
   useEffect(() => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
+
+  const onClickTossLick = (): void => {
+    window.open('https://toss.me/peacegaza');
+  };
+
   return (
     <div className={animation}>
       <div className={styles.closeCont}>
@@ -26,6 +31,7 @@ const CheerPopup = () => {
       </div>
       <div className={styles.botCont}>
         <Content
+          fontSize={16}
           align="left"
           color="white"
           lineheight="200%"
@@ -37,7 +43,12 @@ const CheerPopup = () => {
         />
       </div>
       <div className={styles.buttonsCont}>
-        <Buttons />
+        <Buttons
+          onClickDonate={onClickTossLick}
+          onClickHeart={() => {
+            console.log('test');
+          }}
+        />
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+'use client';
+
 import { RefObject } from 'react';
 import GoDonateButton from '@/component/Section_Hero/Modules/GoDonateButton';
 import MainPicture from '@/component/Section_Hero/Attom/MainPicture';

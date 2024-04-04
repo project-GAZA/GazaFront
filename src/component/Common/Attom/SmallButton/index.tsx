@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styles from './index.module.scss';
 
 export interface ButtonType {
@@ -9,7 +9,7 @@ export interface ButtonType {
   /**
    * 버튼안에 텍스트입니다.
    */
-  children: string;
+  children: string | ReactNode;
   /**
    *  버튼안에 색상을 채울지 여부입니다. false면 투명한 배경색의 버튼이됩니다.
    */
@@ -18,6 +18,7 @@ export interface ButtonType {
    * onClick은 클릭시 실행할 함수입니다.
    */
   onClick?: () => void;
+  disabled: boolean;
 }
 
 const SmallButton = ({
@@ -25,6 +26,7 @@ const SmallButton = ({
   children,
   background = 'primary',
   onClick,
+  disabled = false,
 }: ButtonType) => {
   let cls = styles.button;
 
@@ -45,7 +47,7 @@ const SmallButton = ({
   }
 
   return (
-    <button className={cls} onClick={onClick} type="button">
+    <button disabled={disabled} className={cls} onClick={onClick} type="button">
       {children}
     </button>
   );

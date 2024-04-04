@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
 import { useRecoilState } from 'recoil';
+
+import { useRef } from 'react';
 import { modalState } from '@/store/modalState';
 
 import '@/style/globals.scss';

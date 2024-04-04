@@ -1,8 +1,8 @@
 @import '@style/_variables.scss';
 @import '@style/_mixin.scss';
 .layout {
-  height: 528px;
-  background: $red_light_1;
+  height: 398px;
+  background: $white;
   border-radius: 20px;
   min-width: 330px;
   max-width: 532px;
@@ -29,23 +29,16 @@
   display: flex;
   justify-content: flex-end;
 }
-.topCont {
-  width: 244px;
-  margin: 12px auto 0 auto;
-  @include respond-to('lg') {
-    width: 279px;
-  }
+.donateCont {
+  margin: 20px auto 0px;
+  min-width: 244px;
+  max-width: 257px;
 }
-
-.icon {
-  margin: 28px 0 0 0;
-  display: flex;
-  justify-content: center;
+.inputCont {
+  margin: 44px 0 0 0;
+  min-width: 311px;
+  max-width: 257px;
 }
-.botCont {
-  margin: 32px auto 0 auto;
-  width: 235px;
-}
-.buttonsCont {
-  margin: 48px 0 0 0;
+.buttonCont {
+  margin: 30px 0 0 0;
 }

@@ -13,6 +13,8 @@ export default {
   },
   args: {
     title: '응원 댓글이 등록되었습니다. ',
+    fontSize: 18,
+    color: 'black',
   },
 } as ComponentMeta<typeof Title>;
 

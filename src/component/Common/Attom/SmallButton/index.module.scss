@@ -32,6 +32,15 @@
 
 .bgprimary {
   background-color: $primary;
+  &:hover {
+    background-color: $primary_lightdark;
+  }
+  &:active {
+    background-color: $primary_dark;
+  }
+  &:disabled {
+    background-color: $light_gray;
+  }
 }
 .bgred {
   background-color: $red;

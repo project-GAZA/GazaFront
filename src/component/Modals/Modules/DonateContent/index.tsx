@@ -3,21 +3,24 @@ import Title from '@/component/Modals/Attom/Title';
 import Content from '@/component/Modals/Attom/Content';
 import styles from './index.module.scss';
 
-const CheerTop = () => {
+interface DonateContentProp {
+  title: string;
+  content: string;
+}
+
+const DonateContent = ({ title, content }: DonateContentProp) => {
   return (
     <div className={styles.layout}>
-      <Title color="white" title="응원 댓글이 등록되었습니다." />
+      <Title textAlign="center" color="black" title={title} fontSize={18} />
       <Content
+        fontSize={17}
         align="center"
         lineheight="normal"
-        color="white"
-        content="
-        마지막으로 가자지구 아이들에게
-        따듯함을 선물해 보시겠어요?
-        "
+        color="black"
+        content={content}
       />
     </div>
   );
 };
 
-export default CheerTop;
+export default DonateContent;
