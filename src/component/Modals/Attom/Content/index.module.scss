@@ -1,0 +1,27 @@
+@import '@style/_mixin.scss';
+.p {
+  text-align: center;
+  font-family: Inter;
+  font-weight: 400;
+
+  @include respond-to('sm') {
+    line-height: 180%;
+    font-size: 17px;
+  }
+  strong {
+    color: var(--black, var(--black, #000));
+    font-weight: 600;
+  }
+}
+
+.white {
+  color: var(--white, var(--white, #fff));
+  strong {
+    color: var(--white, var(--white, #fff));
+    font-weight: 600;
+  }
+}
+
+.left {
+  text-align: left;
+}

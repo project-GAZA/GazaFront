@@ -13,7 +13,7 @@
 }
 .goDonate {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   @include respond-to('sm') {
     top: 160px;
     left: 12%;
