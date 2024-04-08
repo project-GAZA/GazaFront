@@ -1,6 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { deviceState } from '@/store/deviceState';
 
 import '@/style/globals.scss';
 
@@ -18,6 +20,17 @@ import WhyDonateSection from './_sections/WhyDonateSection';
 const Home = () => {
   const messageRef = useRef<HTMLDivElement>(null);
   // const moreInfoRef = useRef<HTMLDivElement>(null);
+  //
+  const setDevice = useSetRecoilState(deviceState); // Device가 모바일인지 PC인지
+
+  useEffect(() => {
+    const { userAgent } = navigator;
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        userAgent,
+      );
+    setDevice(isMobile ? 'mobile' : 'desktop');
+  }, [setDevice]);
 
   return (
     <div

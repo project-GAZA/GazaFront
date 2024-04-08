@@ -24,7 +24,7 @@ export interface ButtonType {
 }
 
 const SmallButton = ({
-  fontSize = 20,
+  fontSize = 15,
   theme = 'black',
   children,
   background = 'primary',

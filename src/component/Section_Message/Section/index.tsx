@@ -5,8 +5,9 @@ import SortButtons from '@/component/Section_Message/Modules/SortButtons';
 import InputComment from '@/component/Section_Message/Attom/InputComment';
 import MessageTitle from '@/component/Section_Message/Attom/MessageTitle';
 
-import { useRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { modalState } from '@/store/modalState';
+import { deviceState } from '@/store/deviceState';
 import styles from './index.module.scss';
 
 interface SectionMessageProps {
@@ -14,7 +15,8 @@ interface SectionMessageProps {
 }
 
 const SectionMessage = ({ msgRef }: SectionMessageProps) => {
-  const [modal, setModal] = useRecoilState(modalState);
+  const [_modal, setModal] = useRecoilState(modalState);
+  const device = useRecoilValue(deviceState);
   return (
     <div className={styles.container} ref={msgRef}>
       <MessageTitle
@@ -24,9 +26,11 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
       <div className={styles.sortContainer}>
         <SortButtons theme="secondary" />
       </div>
-      <div className={styles.commentsContainer}>
-        <Comments />
-      </div>
+      {device === 'pc' && (
+        <div className={styles.commentsContainer}>
+          <Comments />
+        </div>
+      )}
       <div className={styles.inputContainer}>
         <InputComment
           placeholder="가자지구 아이들에게 응원의 메세지를 남겨보세요."
