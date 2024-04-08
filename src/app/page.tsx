@@ -8,7 +8,7 @@ import SectionHero from '@/component/Section_Hero/Section';
 import SectionMessage from '@/component/Section_Message/Section';
 import SectionDonate from '@/component/Section_Donation/Section';
 
-import CheerPopup from '@/component/Modals/Template/CheerPopup';
+import HeadMenu from '@/component/Common/Modules/HeadMenu';
 import ModalController from './_components/ModalController';
 
 import DeadInfoSection from './_sections/DeadInfoSection';
@@ -24,6 +24,7 @@ const Home = () => {
         minWidth: '350px',
       }}
     >
+      <HeadMenu />
       <SectionHero msgRef={messageRef} />
       <DeadInfoSection />
       <WhoAmISection />

@@ -1,0 +1,24 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.menuWrapper {
+  display: flex;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 160%; /* 25.6px */
+}
+
+.layout {
+  display: flex;
+  @include respond-to('sm') {
+    display: none;
+  }
+}

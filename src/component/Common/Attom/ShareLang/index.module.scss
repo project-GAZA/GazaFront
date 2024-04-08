@@ -1,0 +1,62 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.shareButton {
+  border-radius: 40px;
+  border: 1px solid var(--white, #fff);
+  display: flex;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 160%; /* 24px */
+  margin-left: 8px;
+}
+.shareText {
+  @include respond-to('sm') {
+    display: none;
+  }
+  @include respond-to('md') {
+    display: none;
+  }
+  @include respond-to('lg') {
+    display: block;
+  }
+}
+
+.langbutton {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: white;
+}
+
+.layout {
+  display: flex;
+  @include respond-to('sm') {
+    gap: 28px;
+  }
+  @include respond-to('md') {
+    gap: 20px;
+  }
+  @include respond-to('lg') {
+    gap: 30px;
+  }
+}
+
+.buttonWrapper {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  @include respond-to('sm') {
+    button {
+      font-size: 16px !important;
+    }
+  }
+}
