@@ -11,6 +11,7 @@
 }
 .buttonSect {
   margin: 36px auto 0 auto;
+  padding: 0 20px;
   max-width: 385px;
   @include respond-to('lg') {
     order: 1;

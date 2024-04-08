@@ -40,7 +40,7 @@ const DonateComplete = () => {
       </div>
       <div className={styles.donateCont}>
         <DonateContent
-          title="후원자로 등록되었습니다"
+          title="Gaza's Child Read Hope"
           content="
           주변에 가자지구의 상황을 널리 알려주세요
         "

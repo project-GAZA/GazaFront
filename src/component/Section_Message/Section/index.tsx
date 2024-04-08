@@ -1,6 +1,7 @@
 import { RefObject } from 'react';
 
 import Comments from '@/component/Section_Message/Modules/Comments';
+import MobileComments from '@/component/Section_Message/Modules/MobileComments';
 import SortButtons from '@/component/Section_Message/Modules/SortButtons';
 import InputComment from '@/component/Section_Message/Attom/InputComment';
 import MessageTitle from '@/component/Section_Message/Attom/MessageTitle';
@@ -29,6 +30,11 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
       {device === 'desktop' && (
         <div className={styles.commentsContainer}>
           <Comments />
+        </div>
+      )}
+      {device === 'mobile' && (
+        <div className={styles.commentsContainer}>
+          <MobileComments />
         </div>
       )}
       <div className={styles.inputContainer}>

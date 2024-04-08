@@ -7,6 +7,7 @@ import DonateComplete from '@/component/Modals/Template/DonateComplete';
 import WhoDonate from '@/component/Modals/Template/WhoDonate';
 import DirectDonate from '@/component/Modals/Template/DirectDonate';
 import DirectMessage from '@/component/Modals/Template/DirectMessage';
+import Share from '@/component/Modals/Template/Share';
 
 import ModalWrapper from './ModalWrapper';
 
@@ -16,6 +17,7 @@ const SelectModal = ({ modal }) => {
   if (modal === 'who') return <WhoDonate />;
   if (modal === 'direct') return <DirectDonate />;
   if (modal === 'directmessage') return <DirectMessage />;
+  if (modal === 'share') return <Share />;
   return null;
 };
 
