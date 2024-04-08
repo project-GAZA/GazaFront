@@ -20,7 +20,7 @@ const DirectDonate = () => {
 
   const onClickTossLick = (): void => {
     // window.open('https://toss.me/peacegaza');
-    setModal('who');
+    setModal('directmessage');
   };
 
   return (
@@ -53,7 +53,12 @@ const DirectDonate = () => {
         />
       </div>
       <div className={styles.buttonBox}>
-        <SmallButton fontSize={15} theme="black" type="button">
+        <SmallButton
+          onClick={onClickTossLick}
+          fontSize={15}
+          theme="black"
+          type="button"
+        >
           후원하기
         </SmallButton>
       </div>

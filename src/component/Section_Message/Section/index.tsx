@@ -5,7 +5,7 @@ import SortButtons from '@/component/Section_Message/Modules/SortButtons';
 import InputComment from '@/component/Section_Message/Attom/InputComment';
 import MessageTitle from '@/component/Section_Message/Attom/MessageTitle';
 
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { modalState } from '@/store/modalState';
 import { deviceState } from '@/store/deviceState';
 import styles from './index.module.scss';
@@ -15,7 +15,7 @@ interface SectionMessageProps {
 }
 
 const SectionMessage = ({ msgRef }: SectionMessageProps) => {
-  const [_modal, setModal] = useRecoilState(modalState);
+  const setModal = useSetRecoilState(modalState);
   const device = useRecoilValue(deviceState);
   return (
     <div className={styles.container} ref={msgRef}>

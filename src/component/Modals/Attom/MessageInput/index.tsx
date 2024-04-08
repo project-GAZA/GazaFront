@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 
 interface InputType {
   content: string;
-  changeContent: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  changeContent?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const MessageInput = ({ content, changeContent }: InputType) => {
