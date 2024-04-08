@@ -3,10 +3,10 @@ import styles from './index.module.scss';
 
 interface ContentProps {
   content: string;
-  fontSize: number;
-  lineheight: string;
-  color: 'white' | 'black';
-  align: 'center' | 'left';
+  fontSize?: number;
+  lineheight?: string;
+  color?: 'white' | 'black';
+  align?: 'center' | 'left';
 }
 
 const Content = ({

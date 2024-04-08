@@ -19,10 +19,12 @@ export interface ButtonType {
    */
   onClick?: () => void;
   disabled?: boolean;
-  type: 'button' | 'submit' | 'reset';
+  type?: 'button' | 'submit' | 'reset';
+  fontSize?: number;
 }
 
 const SmallButton = ({
+  fontSize = 15,
   theme = 'black',
   children,
   background = 'primary',
@@ -49,7 +51,13 @@ const SmallButton = ({
   }
 
   return (
-    <button type={type} disabled={disabled} className={cls} onClick={onClick}>
+    <button
+      style={{ fontSize }}
+      type={type}
+      disabled={disabled}
+      className={cls}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

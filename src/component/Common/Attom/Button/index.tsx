@@ -7,6 +7,7 @@ export interface ButtonType {
   marginRight?: number;
   marginLeft?: number;
   marginTop?: number;
+  height?: number;
 
   /**
    * 버튼의 색깔테마입니다(primary,secondary) fill일때만 유효합니다.
@@ -31,6 +32,7 @@ const Button = ({
   marginRight = 0,
   marginLeft = 0,
   marginTop = 0,
+  height = 64,
   theme = 'primary',
   children,
   fill = true,
@@ -46,7 +48,7 @@ const Button = ({
   return (
     <button
       onClick={onClick}
-      style={{ marginBottom, marginRight, marginTop, marginLeft }}
+      style={{ height, marginBottom, marginRight, marginTop, marginLeft }}
       className={buttonClasses}
       type="button"
     >

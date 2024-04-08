@@ -3,9 +3,9 @@ import styles from './index.module.scss';
 
 interface TitleProp {
   title: string;
-  color: 'white' | 'black';
-  fontSize: number;
-  textAlign: 'center' | 'left' | 'right';
+  color?: 'white' | 'black';
+  fontSize?: number;
+  textAlign?: 'center' | 'left' | 'right';
 }
 
 const Title = ({
