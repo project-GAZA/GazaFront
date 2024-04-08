@@ -17,6 +17,7 @@ import WhyDonateSection from './_sections/WhyDonateSection';
 
 const Home = () => {
   const messageRef = useRef<HTMLDivElement>(null);
+  // const moreInfoRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -24,7 +25,7 @@ const Home = () => {
         minWidth: '350px',
       }}
     >
-      <HeadMenu />
+      <HeadMenu msgRef={messageRef} />
       <SectionHero msgRef={messageRef} />
       <DeadInfoSection />
       <WhoAmISection />
