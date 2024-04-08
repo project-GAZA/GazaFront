@@ -9,5 +9,7 @@
   gap: 12px;
   max-width: 813px;
   height: 496px;
-  overflow: scroll;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
 }

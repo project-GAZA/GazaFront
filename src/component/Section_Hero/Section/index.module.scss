@@ -1,6 +1,6 @@
 @import '@style/_mixin.scss';
 .outer {
-  padding: 4px;
+  padding: 0 4px 4px 4px;
   @include respond-to('lg') {
     display: flex;
   }
