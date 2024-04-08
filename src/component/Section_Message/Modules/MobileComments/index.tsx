@@ -103,7 +103,20 @@ const Drawer = ({ isOpen, onClose, children }) => {
         </div>
         {children}
       </div>
-      {animate && <div className={styles.background} onClick={onClose} />}
+      {animate && (
+        <div
+          className={styles.background}
+          onClick={onClose}
+          role="button"
+          aria-label="닫기"
+          tabIndex={0}
+          onKeyDown={event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              onClose();
+            }
+          }}
+        />
+      )}
     </>
   );
 };
