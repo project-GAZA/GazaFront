@@ -6,7 +6,7 @@ import Image from 'next/image';
 import SmallButton from '@/component/Common/Attom/SmallButton';
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import DonateContent from '@/component/Modals/Modules/DonateContent';
-import IconBox from '@/component/Modals/Attom/IconBox';
+import IconBox from '@/component/Common/Attom/IconBox';
 
 import InstaIcon from 'public/assets/svg/insta.svg';
 import FaceIcon from 'public/assets/svg/facebook.svg';
