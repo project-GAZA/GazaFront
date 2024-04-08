@@ -15,7 +15,7 @@ interface SectionMessageProps {
   msgRef?: RefObject<HTMLDivElement>;
 }
 
-const SectionMessage = ({ msgRef }: SectionMessageProps) => {
+const SectionAdditional = ({ msgRef }: SectionMessageProps) => {
   const setModal = useSetRecoilState(modalState);
   const device = useRecoilValue(deviceState);
   return (
@@ -50,4 +50,4 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
   );
 };
 
-export default SectionMessage;
+export default SectionAdditional;

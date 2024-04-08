@@ -1,6 +1,9 @@
 'use client';
 
 import { RefObject } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { modalState } from '@/store/modalState';
+
 import GoDonateButton from '@/component/Section_Hero/Modules/GoDonateButton';
 import MainPicture from '@/component/Section_Hero/Attom/MainPicture';
 import GoButtons from '@/component/Section_Hero/Modules/GoButtons';
