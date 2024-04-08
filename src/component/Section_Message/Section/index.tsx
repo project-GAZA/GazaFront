@@ -26,7 +26,7 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
       <div className={styles.sortContainer}>
         <SortButtons theme="secondary" />
       </div>
-      {device === 'pc' && (
+      {device === 'desktop' && (
         <div className={styles.commentsContainer}>
           <Comments />
         </div>
