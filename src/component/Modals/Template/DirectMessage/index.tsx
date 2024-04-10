@@ -21,44 +21,51 @@ const DirectMessage = () => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
 
-  const onClickTossLick = (): void => {
-    // window.open('https://toss.me/peacegaza');
-    setModal('who');
+  const onSubmitForm = (): void => {
+    console.log(nick, content);
+    setModal('share');
   };
 
   return (
     <div className={animation}>
-      <div className={styles.closeCont}>
-        <CloseButton theme="light" />
-      </div>
-      <div className={styles.titleBox}>
-        <Title color="black" title="어떤 이름으로 송금하셨나요?" />
-        <div className={styles.empty} />
-        <Title color="black" title="확인 후  특별한 표시를 남겨드려요" />
-      </div>
-      <div className={styles.inputBox}>
-        <Input
-          nickName={nick}
-          changeNickName={e => {
-            setNick(e.target.value);
-          }}
-        />
-      </div>
-      <div className={styles.contentBox}>
-        <Content
-          align="left"
-          color="black"
-          content="어린이들에게 전하는 따뜻한 응원의 말 남겨주세요!<br/><strong>(선택)</strong>"
-        />
-      </div>
-      <div className={styles.messageBox}>
-        <MessageInput content={content} />
-      </div>
-      <div className={styles.buttonBox}>
-        <SmallButton fontSize={15} theme="black" type="button">
-          완료하기
-        </SmallButton>
-      </div>
+      <form onSubmit={onSubmitForm}>
+        <div className={styles.closeCont}>
+          <CloseButton theme="light" />
+        </div>
+        <div className={styles.titleBox}>
+          <Title color="black" title="어떤 이름으로 송금하셨나요?" />
+          <div className={styles.empty} />
+          <Title color="black" title="확인 후  특별한 표시를 남겨드려요" />
+        </div>
+        <div className={styles.inputBox}>
+          <Input
+            nickName={nick}
+            changeNickName={e => {
+              setNick(e.target.value);
+            }}
+          />
+        </div>
+        <div className={styles.contentBox}>
+          <Content
+            align="left"
+            color="black"
+            content="어린이들에게 전하는 따뜻한 응원의 말 남겨주세요!<br/><strong>(선택)</strong>"
+          />
+        </div>
+        <div className={styles.messageBox}>
+          <MessageInput
+            content={content}
+            changeContent={e => {
+              setContent(e.target.value);
+            }}
+          />
+        </div>
+        <div className={styles.buttonBox}>
+          <SmallButton fontSize={15} theme="black" type="submit">
+            완료하기
+          </SmallButton>
+        </div>
+      </form>
     </div>
   );
 };
