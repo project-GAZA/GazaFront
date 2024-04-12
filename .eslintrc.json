@@ -11,7 +11,7 @@
     "node": true,
     "es6": true
   },
-  "ignorePatterns": ["node_modules/", "src/old/", "**/*.stories.tsx"],
+  "ignorePatterns": ["node_modules/", "src/old/", "db.js", "**/*.stories.tsx"],
   "extends": [
     "airbnb",
     "airbnb-typescript",

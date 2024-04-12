@@ -1,0 +1,39 @@
+@import '@style/_variables.scss';
+@import '@style/_mixin.scss';
+.container {
+  background: $light_gray;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  @include respond-to('sm') {
+    padding-top: 40px;
+    padding-bottom: 36px;
+  }
+}
+
+.mobileFont {
+  text-align: center;
+  font-size: 28px;
+  @include respond-to('sm') {
+    font-size: 20px;
+    width: 245px;
+    margin: 0 auto;
+  }
+}
+
+.inputContainer {
+  margin-top: 42px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 12px;
+  max-width: 896px;
+  min-width: 300px;
+  margin: 40px auto 0 auto;
+  gap: 16px;
+  @include respond-to('sm') {
+    margin-top: 36px;
+  }
+}

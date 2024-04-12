@@ -1,0 +1,21 @@
+@import '@style/_variables.scss';
+@import '@style/_mixin.scss';
+
+.iconBox {
+  display: flex;
+  gap: 8px;
+  margin: 48px auto 0 auto;
+  width: 134px;
+}
+.footerTypo {
+  margin: 27px 85px 80px 85px;
+  color: var(--grey, #4f4f4f);
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 165%;
+  @include respond-to('sm') {
+    margin: 40px 20px 48px 20px;
+  }
+}

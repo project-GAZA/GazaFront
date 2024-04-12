@@ -50,9 +50,7 @@ const CheerPopup = () => {
       <div className={styles.buttonsCont}>
         <Buttons
           onClickDonate={onClickTossLick}
-          onClickHeart={() => {
-            console.log('test');
-          }}
+          onClickHeart={() => setModal('')}
         />
       </div>
     </div>

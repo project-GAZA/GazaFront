@@ -31,9 +31,11 @@
     "**/*.ts",
     "**/*.tsx",
     "./src/types/**/*.d.ts",
-    "next.config.js"
+    "next.config.js",
+    "src/app/api/db.hs"
   ],
   "exclude": [
+    "db.js",
     "node_modules",
     "./src/old",
     "**/*.stories.ts",

@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { Toaster } from 'react-hot-toast';
 import { deviceState } from '@/store/deviceState';
 
 import '@/style/globals.scss';
@@ -9,18 +10,17 @@ import '@/style/globals.scss';
 import SectionHero from '@/component/Section_Hero/Section';
 import SectionMessage from '@/component/Section_Message/Section';
 import SectionDonate from '@/component/Section_Donation/Section';
-
 import HeadMenu from '@/component/Common/Modules/HeadMenu';
+import SectionAdditional from '@/component/Section_Additional/Section';
+
 import ModalController from './_components/ModalController';
 
 import DeadInfoSection from './_sections/DeadInfoSection';
 import WhoAmISection from './_sections/WhoAmISection';
-import WhyDonateSection from './_sections/WhyDonateSection';
 
 const Home = () => {
   const messageRef = useRef<HTMLDivElement>(null);
-  // const moreInfoRef = useRef<HTMLDivElement>(null);
-  //
+  const moreInfoRef = useRef<HTMLDivElement>(null);
   const setDevice = useSetRecoilState(deviceState); // Device가 모바일인지 PC인지
 
   useEffect(() => {
@@ -38,13 +38,14 @@ const Home = () => {
         minWidth: '350px',
       }}
     >
-      <HeadMenu msgRef={messageRef} />
+      <Toaster />
+      <HeadMenu infoRef={moreInfoRef} msgRef={messageRef} />
       <SectionHero msgRef={messageRef} />
       <DeadInfoSection />
       <WhoAmISection />
       <SectionMessage msgRef={messageRef} />
       <SectionDonate />
-      <WhyDonateSection />
+      <SectionAdditional infoRef={moreInfoRef} />
 
       <ModalController />
     </div>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import toast from 'react-hot-toast';
 import { useSetRecoilState } from 'recoil';
 import { modalState } from '@/store/modalState';
+import axiosInstance from '@/utils/clientaxios';
 
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import Title from '@/component/Modals/Attom/Title';
@@ -21,44 +22,61 @@ const DirectMessage = () => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
 
-  const onClickTossLick = (): void => {
-    // window.open('https://toss.me/peacegaza');
-    setModal('who');
+  const onSubmitForm = (): void => {
+    axiosInstance
+      .post('/message', {
+        nick,
+        content,
+      })
+      .then(res => {
+        toast.success('메세지 입력이 완료되었습니다.');
+      })
+      .catch(err => {
+        toast.error(`전송에 실패하였습니다 : ${err.message}`);
+      });
+    setModal('share');
   };
 
   return (
     <div className={animation}>
-      <div className={styles.closeCont}>
-        <CloseButton theme="light" />
-      </div>
-      <div className={styles.titleBox}>
-        <Title color="black" title="어떤 이름으로 송금하셨나요?" />
-        <div className={styles.empty} />
-        <Title color="black" title="확인 후  특별한 표시를 남겨드려요" />
-      </div>
-      <div className={styles.inputBox}>
-        <Input
-          nickName={nick}
-          changeNickName={e => {
-            setNick(e.target.value);
-          }}
-        />
-      </div>
-      <div className={styles.contentBox}>
-        <Content
-          align="left"
-          color="black"
-          content="어린이들에게 전하는 따뜻한 응원의 말 남겨주세요!<br/><strong>(선택)</strong>"
-        />
-      </div>
-      <div className={styles.messageBox}>
-        <MessageInput content={content} />
-      </div>
-      <div className={styles.buttonBox}>
-        <SmallButton fontSize={15} theme="black" type="button">
-          완료하기
-        </SmallButton>
-      </div>
+      <form onSubmit={onSubmitForm}>
+        <div className={styles.closeCont}>
+          <CloseButton theme="light" />
+        </div>
+        <div className={styles.titleBox}>
+          <Title color="black" title="어떤 이름으로 송금하셨나요?" />
+          <div className={styles.empty} />
+          <Title color="black" title="확인 후  특별한 표시를 남겨드려요" />
+        </div>
+        <div className={styles.inputBox}>
+          <Input
+            nickName={nick}
+            changeNickName={e => {
+              setNick(e.target.value);
+            }}
+          />
+        </div>
+        <div className={styles.contentBox}>
+          <Content
+            align="left"
+            color="black"
+            content="어린이들에게 전하는 따뜻한 응원의 말 남겨주세요!<br/><strong>(선택)</strong>"
+          />
+        </div>
+        <div className={styles.messageBox}>
+          <MessageInput
+            content={content}
+            changeContent={e => {
+              setContent(e.target.value);
+            }}
+          />
+        </div>
+        <div className={styles.buttonBox}>
+          <SmallButton fontSize={15} theme="black" type="submit">
+            완료하기
+          </SmallButton>
+        </div>
+      </form>
     </div>
   );
 };
