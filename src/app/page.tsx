@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { Toaster } from 'react-hot-toast';
 import { deviceState } from '@/store/deviceState';
 
 import '@/style/globals.scss';
@@ -19,7 +20,7 @@ import WhoAmISection from './_sections/WhoAmISection';
 
 const Home = () => {
   const messageRef = useRef<HTMLDivElement>(null);
-  // const moreInfoRef = useRef<HTMLDivElement>(null);
+  const moreInfoRef = useRef<HTMLDivElement>(null);
   const setDevice = useSetRecoilState(deviceState); // Device가 모바일인지 PC인지
 
   useEffect(() => {
@@ -37,13 +38,14 @@ const Home = () => {
         minWidth: '350px',
       }}
     >
-      <HeadMenu msgRef={messageRef} />
+      <Toaster />
+      <HeadMenu infoRef={moreInfoRef} msgRef={messageRef} />
       <SectionHero msgRef={messageRef} />
       <DeadInfoSection />
       <WhoAmISection />
       <SectionMessage msgRef={messageRef} />
       <SectionDonate />
-      <SectionAdditional />
+      <SectionAdditional infoRef={moreInfoRef} />
 
       <ModalController />
     </div>
