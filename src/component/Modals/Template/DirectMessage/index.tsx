@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { useSetRecoilState } from 'recoil';
 import { modalState } from '@/store/modalState';
+import axiosInstance from '@/utils/clientaxios';
 
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import Title from '@/component/Modals/Attom/Title';
@@ -22,7 +22,13 @@ const DirectMessage = () => {
   }, []);
 
   const onSubmitForm = (): void => {
-    console.log(nick, content);
+    axiosInstance
+      .post('/message', {
+        nickname: nick,
+        content,
+      })
+      .then(res => {})
+      .catch(err => {});
     setModal('share');
   };
 

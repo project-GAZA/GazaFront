@@ -1,106 +1,112 @@
+const fs = require('fs');
+
 const sqlite3 = require('sqlite3').verbose();
+const path = 'src/script/testdb.db';
 
-// Connecting to or creating a new SQLite database file
-const db = new sqlite3.Database(
-  'src/script/testdb.db',
-  sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
-  err => {
-    if (err) {
-      return console.error(err.message);
-    }
-    console.log('Connected to the SQlite database.');
-  },
-);
-
-// Serialize method ensures that database queries are executed sequentially
-db.serialize(() => {
-  // Create the items table if it doesn't exist
-  db.run(
-    `CREATE TABLE IF NOT EXISTS items (
-        id INTEGER PRIMARY KEY,
-        name TEXT,
-        description TEXT,
-        img TEXT
-      )`,
+if (fs.existsSync(path)) {
+  console.error('이미 TestDB를 생성했습니다.');
+  return;
+} else {
+  const db = new sqlite3.Database(
+    path,
+    sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
     err => {
       if (err) {
-        return console.error(err.message);
+        console.error(err.message);
+        return;
       }
-      console.log('Created items table.');
-
-      // Clear the existing data in the products table
-      db.run(`DELETE FROM items`, err => {
-        if (err) {
-          return console.error(err.message);
-        }
-        console.log('All rows deleted from items');
-
-        // Insert new data into the products table
-        const values1 = [
-          'Oshawott',
-          'Basic Pokemon. HP 60. Surprise Attack 20. Flip a coin. If heads, this attack does 10 more damage. Water Gun 30. Weakness: Lightning x2. Resistance: none. Retreat Cost: 1.',
-          '/collection/item1.png',
-        ];
-        const values2 = [
-          'Riolu',
-          'Basic Pokemon. HP 60. Quick Attack 10. Flip a coin. If heads, this attack does 10 more damage. Weakness: Fighting x2. Resistance: none. Retreat Cost: 1.',
-          '/collection/item2.png',
-        ];
-
-        const values3 = [
-          'Snivy',
-          'Basic Pokemon. HP 60. Slam 20. Weakness: Fire x2. Resistance: Water -20. Retreat Cost: 1.',
-          '/collection/item3.png',
-        ];
-
-        const values4 = [
-          'Zorua',
-          'Basic Pokemon. HP 60. Stampede 10. Ram 20. Weakness: Fighting x2, Resistance: Psychic -20. Retreat Cost: 1.',
-          '/collection/item4.png',
-        ];
-
-        const insertSql = `INSERT INTO items(name, description, img) VALUES(?, ?, ?)`;
-
-        db.run(insertSql, values1, function (err) {
-          if (err) {
-            return console.error(err.message);
-          }
-          const id = this.lastID; // get the id of the last inserted row
-          console.log(`Rows inserted, ID ${id}`);
-        });
-
-        db.run(insertSql, values2, function (err) {
-          if (err) {
-            return console.error(err.message);
-          }
-          const id = this.lastID; // get the id of the last inserted row
-          console.log(`Rows inserted, ID ${id}`);
-        });
-
-        db.run(insertSql, values3, function (err) {
-          if (err) {
-            return console.error(err.message);
-          }
-          const id = this.lastID; // get the id of the last inserted row
-          console.log(`Rows inserted, ID ${id}`);
-        });
-
-        db.run(insertSql, values4, function (err) {
-          if (err) {
-            return console.error(err.message);
-          }
-          const id = this.lastID; // get the id of the last inserted row
-          console.log(`Rows inserted, ID ${id}`);
-        });
-
-        //   Close the database connection after all insertions are done
-        db.close(err => {
-          if (err) {
-            return console.error(err.message);
-          }
-          console.log('Closed the database connection.');
-        });
-      });
+      console.log('Connected to the SQLite database.');
     },
   );
-});
+
+  db.serialize(() => {
+    db.run(
+      `
+    CREATE TABLE IF NOT EXISTS admin (
+      admin_id INTEGER PRIMARY KEY,
+      admin_name TEXT NOT NULL,
+      password TEXT NOT NULL,
+      activated BOOLEAN NOT NULL,
+      created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('Admin table created.');
+        }
+      },
+    );
+
+    db.run(
+      `
+    CREATE TABLE IF NOT EXISTS message (
+      message_id INTEGER PRIMARY KEY,
+      username TEXT NOT NULL,
+      content TEXT,
+      like_count INTEGER,
+      donate_type TEXT,
+      nation TEXT,
+      latitude REAL,
+      longitude REAL,
+      created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('Message table created.');
+        }
+      },
+    );
+
+    db.run(
+      `
+    CREATE TABLE IF NOT EXISTS donate (
+      donate_id INTEGER PRIMARY KEY,
+      amount INTEGER NOT NULL,
+      message_id INTEGER,
+      donate_dt TIMESTAMP,
+      created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (message_id) REFERENCES message (message_id)
+    );`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('Donate table created.');
+        }
+      },
+    );
+
+    db.run(
+      `
+    CREATE TABLE IF NOT EXISTS member_ip (
+      ip_id INTEGER PRIMARY KEY,
+      ip TEXT NOT NULL,
+      type TEXT NOT NULL,
+      message_id INTEGER,
+      FOREIGN KEY (message_id) REFERENCES message (message_id)
+    );`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('Member IP table created.');
+        }
+
+        // Close the database connection after all operations are done
+        db.close(err => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            console.log('Closed the database connection.');
+          }
+        });
+      },
+    );
+  });
+}

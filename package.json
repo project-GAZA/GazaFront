@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "makedb": "node src/script/db.js",
     "dev": "next dev",
-    "build": "next build",
+    "build": "node src/script/db.js && next build",
     "start": "next start -p 80",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
