@@ -27,8 +27,8 @@ if (fs.existsSync(path)) {
       admin_name TEXT NOT NULL,
       password TEXT NOT NULL,
       activated BOOLEAN NOT NULL,
-      created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      created_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
+      last_modified_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours'))
     );`,
       err => {
         if (err) {
@@ -50,8 +50,8 @@ if (fs.existsSync(path)) {
       nation TEXT,
       latitude REAL,
       longitude REAL,
-      created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      created_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
+      last_modified_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours'))
     );`,
       err => {
         if (err) {
@@ -69,8 +69,8 @@ if (fs.existsSync(path)) {
       amount INTEGER NOT NULL,
       message_id INTEGER,
       donate_dt TIMESTAMP,
-      created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      last_modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      created_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
+      last_modified_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
       FOREIGN KEY (message_id) REFERENCES message (message_id)
     );`,
       err => {

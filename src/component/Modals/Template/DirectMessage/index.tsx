@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { useSetRecoilState } from 'recoil';
 import { modalState } from '@/store/modalState';
 import axiosInstance from '@/utils/clientaxios';
@@ -24,11 +25,15 @@ const DirectMessage = () => {
   const onSubmitForm = (): void => {
     axiosInstance
       .post('/message', {
-        nickname: nick,
+        nick,
         content,
       })
-      .then(res => {})
-      .catch(err => {});
+      .then(res => {
+        toast.success('메세지 입력이 완료되었습니다.');
+      })
+      .catch(err => {
+        toast.error(`전송에 실패하였습니다 : ${err.message}`);
+      });
     setModal('share');
   };
 

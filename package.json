@@ -5,7 +5,7 @@
   "scripts": {
     "makedb": "node src/script/db.js",
     "dev": "next dev",
-    "build": "node src/script/db.js && next build",
+    "build": "rm src/script/testdb.db && node src/script/db.js && next build",
     "start": "next start -p 80",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
@@ -25,6 +25,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-ga4": "^2.1.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.12.0",
     "react-scroll": "^1.9.0",
     "recoil": "^0.7.7",

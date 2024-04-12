@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { useSetRecoilState } from 'recoil';
 import { modalState } from '@/store/modalState';
 import Image from 'next/image';
@@ -24,9 +25,9 @@ const DonateComplete = () => {
   const onClickCopy = async () => {
     try {
       await navigator.clipboard.writeText('https://gazas-child-read-hope.kr/');
-      console.info('클리보드 복사성공');
+      toast.success('클립보드에 복사했습니다.');
     } catch (e) {
-      console.error('클리보드 복사실패', e);
+      toast.error('일시적인 오류로 클립보드에 실패했습니다.');
       // toast 메세지 띄어주기
     } finally {
       setModal('');

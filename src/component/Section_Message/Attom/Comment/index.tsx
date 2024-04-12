@@ -6,7 +6,6 @@ export interface CommentType {
   nick: string;
   date: string;
   isLike: boolean;
-  onClick: () => void;
   content: string;
   isDonate: boolean;
 }
@@ -16,7 +15,6 @@ const Comment = ({
   nick,
   date,
   isLike,
-  onClick,
   content,
   isDonate,
 }: CommentType) => {

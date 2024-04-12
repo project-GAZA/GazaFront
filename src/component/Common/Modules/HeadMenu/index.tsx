@@ -10,9 +10,10 @@ import styles from './index.module.scss';
 
 interface HeadMenuProp {
   msgRef: React.RefObject<HTMLDivElement>;
+  infoRef: React.RefObject<HTMLDivElement>;
 }
 
-const HeadMenu = ({ msgRef }: HeadMenuProp) => {
+const HeadMenu = ({ msgRef, infoRef }: HeadMenuProp) => {
   const setModal = useSetRecoilState(modalState);
   const menus = [
     {
@@ -25,7 +26,11 @@ const HeadMenu = ({ msgRef }: HeadMenuProp) => {
     },
     {
       name: '프로젝트 더 알아보기',
-      click: () => {},
+      click: () => {
+        if (infoRef && infoRef.current) {
+          scrollTo(infoRef);
+        }
+      },
     },
   ];
   return (
