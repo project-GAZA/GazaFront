@@ -23,7 +23,7 @@ if (fs.existsSync(path)) {
     db.run(
       `
     CREATE TABLE IF NOT EXISTS admin (
-      admin_id INTEGER PRIMARY KEY,
+      id INTEGER PRIMARY KEY,
       admin_name TEXT NOT NULL,
       password TEXT NOT NULL,
       activated BOOLEAN NOT NULL,
@@ -42,16 +42,15 @@ if (fs.existsSync(path)) {
     db.run(
       `
     CREATE TABLE IF NOT EXISTS message (
-      message_id INTEGER PRIMARY KEY,
+      id INTEGER PRIMARY KEY,
       username TEXT NOT NULL,
       content TEXT,
-      like_count INTEGER,
-      donate_type TEXT,
       nation TEXT,
       latitude REAL,
       longitude REAL,
-      created_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
-      last_modified_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours'))
+      amount INTEGER,
+      created_dt TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
+      modified_dt TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours'))
     );`,
       err => {
         if (err) {
@@ -64,32 +63,12 @@ if (fs.existsSync(path)) {
 
     db.run(
       `
-    CREATE TABLE IF NOT EXISTS donate (
-      donate_id INTEGER PRIMARY KEY,
-      amount INTEGER NOT NULL,
-      message_id INTEGER,
-      donate_dt TIMESTAMP,
-      created_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
-      last_modified_date TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
-      FOREIGN KEY (message_id) REFERENCES message (message_id)
-    );`,
-      err => {
-        if (err) {
-          console.error(err.message);
-        } else {
-          console.log('Donate table created.');
-        }
-      },
-    );
-
-    db.run(
-      `
-    CREATE TABLE IF NOT EXISTS member_ip (
-      ip_id INTEGER PRIMARY KEY,
+    CREATE TABLE IF NOT EXISTS like (
+      id INTEGER PRIMARY KEY,
       ip TEXT NOT NULL,
-      type TEXT NOT NULL,
       message_id INTEGER,
-      FOREIGN KEY (message_id) REFERENCES message (message_id)
+      created_dt TIMESTAMP DEFAULT (DATETIME('now', 'localtime', '+9 hours')),
+      FOREIGN KEY (message_id) REFERENCES message (id)
     );`,
       err => {
         if (err) {

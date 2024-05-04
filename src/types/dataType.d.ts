@@ -7,14 +7,13 @@ export interface MessagePostType {
 }
 
 export interface MessageType {
-  message_id: number;
+  id: number;
   username: string;
   content: string;
-  like_count: number;
-  donate_type: string;
   nation: string;
   latitude: number;
   longitude: number;
-  created_date: string;
-  last_modified_date: string;
+  amount: number;
+  created_dt: string;
+  modified_dt: string;
 }

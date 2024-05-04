@@ -1,13 +1,15 @@
 'use client';
 
+import { FadeInDiv } from 'react-trend-animation';
 import { RefObject } from 'react';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
+import { modalState } from '@/store/modalState';
+import { deviceState } from '@/store/deviceState';
 
 import GoDonateButton from '@/component/Section_Hero/Modules/GoDonateButton';
 import MainPicture from '@/component/Section_Hero/Attom/MainPicture';
 import GoButtons from '@/component/Section_Hero/Modules/GoButtons';
 import HeroMainTitle from '@/component/Section_Hero/Modules/HeroMainTitle';
-
-import SectionContainer from '@/component/SectionContainer';
 
 import Children_1 from '@/assets/svg/background/children1.png';
 import Children_2 from '@/assets/svg/background/children2.png';
@@ -21,6 +23,12 @@ interface SectionHeroProps {
 }
 
 const SectionHero = ({ msgRef }: SectionHeroProps) => {
+  const device = useRecoilValue(deviceState);
+  const setModal = useSetRecoilState(modalState);
+  const onGoDonateClick = () => {
+    if (device === 'mobile') setModal('direct');
+    else setModal('desktop');
+  };
   const HeroSectionMook = {
     borderRadius: 20,
     urls: [Children_1.src, Children_2.src],
@@ -35,9 +43,9 @@ const SectionHero = ({ msgRef }: SectionHeroProps) => {
   return (
     <div className={styles.outer}>
       <div className={styles.goDonate}>
-        <SectionContainer>
-          <GoDonateButton />
-        </SectionContainer>
+        <FadeInDiv>
+          <GoDonateButton onClick={onGoDonateClick} />
+        </FadeInDiv>
       </div>
       <div className={styles.picture}>
         <MainPicture
@@ -46,12 +54,15 @@ const SectionHero = ({ msgRef }: SectionHeroProps) => {
         />
       </div>
       <div className={styles.wrapper}>
-        <SectionContainer>
+        <FadeInDiv>
           <div className={styles.inner}>
             <HeroMainTitle />
-            <GoButtons onClickGoMessage={onClickGoMessage} />
+            <GoButtons
+              onClickDonate={onGoDonateClick}
+              onClickGoMessage={onClickGoMessage}
+            />
           </div>
-        </SectionContainer>
+        </FadeInDiv>
       </div>
     </div>
   );

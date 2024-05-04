@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { modalState } from '@/store/modalState';
 
 import CloseSquareBlack from '@public/assets/svg/Close_square_black.svg';
@@ -9,17 +9,19 @@ import CloseSquareLight from '@public/assets/svg/Close_square_light.svg';
 import styles from './index.module.scss';
 
 interface TitleProp {
-  theme: 'light' | 'dark';
+  theme: 'light' | 'dark' | 'lightdark';
 }
 
 const CloseButton = ({ theme = 'light' }: TitleProp) => {
-  const [modal, setModal] = useRecoilState(modalState);
+  const setModal = useSetRecoilState(modalState);
 
   let imgsrc: string = '';
   let cls: string = '';
-  if (theme === 'light') {
+  if (theme === 'light' || theme === 'lightdark') {
     imgsrc = CloseSquareBlack.src;
-    cls = styles.light;
+    if (theme === 'lightdark') {
+      cls = styles.lightdark;
+    } else cls = styles.light;
   } else if (theme === 'dark') {
     imgsrc = CloseSquareLight.src;
     cls = styles.dark;

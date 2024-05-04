@@ -1,8 +1,8 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
 import { Toaster } from 'react-hot-toast';
+import { useSetRecoilState } from 'recoil';
 import { deviceState } from '@/store/deviceState';
 
 import '@/style/globals.scss';

@@ -8,10 +8,10 @@ const Comments = ({ comments }: { comments: MessageType[] }) => {
     <div className={styles.commentLayout}>
       {comments.map(v => (
         <Comment
-          key={v.message_id}
-          index={v.message_id}
+          key={v.id}
+          index={v.id}
           nick={v.username}
-          date={v.created_date}
+          date={v.created_dt}
           isLike={false}
           content={v.content}
           isDonate={false}

@@ -1,47 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { modalState } from '@/store/modalState';
-import { deviceState } from '@/store/deviceState';
+import { messageState } from '@/store/postState';
 
 import CloseButton from '@/component/Modals/Attom/CloseButton';
-import CheerTop from '@/component/Modals/Modules/CheerTop';
 import Content from '@/component/Modals/Attom/Content';
-import Buttons from '@/component/Modals/Modules/Buttons';
 
 import Image from 'next/image';
-import HandHeart from '@public/assets/svg/HandHeart.svg';
+import QR from '@public/assets/svg/qr.svg';
+import SmallButton from '@/component/Common/Attom/SmallButton';
+import Title from '@/component/Common/Attom/Title';
 import styles from './index.module.scss';
 
-const CheerPopup = () => {
+const DesktopDonate = () => {
   const setModal = useSetRecoilState<string>(modalState);
-  const device = useRecoilValue(deviceState);
+  const message = useRecoilValue(messageState);
   const [animation, setAnimation] = useState<string>(styles.layout);
   useEffect(() => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
 
-  const onClickTossLick = (): void => {
-    // window.open('https://toss.me/peacegaza');
-    if (device === 'mobile') setModal('who');
-    else setModal('desktop');
+  const onClickNext = (): void => {
+    if (message === null) setModal('directmessage');
+    else setModal('who');
   };
 
   return (
     <div className={animation}>
       <div className={styles.closeCont}>
-        <CloseButton theme="dark" />
+        <CloseButton theme="lightdark" />
       </div>
       <div className={styles.topCont}>
-        <CheerTop />
+        <Title
+          color="black"
+          title="카메라로 스캔후 링크를 클릭하면 토스로 넘어가요!"
+          fontSize={18}
+        />
       </div>
       <div className={styles.icon}>
-        <Image src={HandHeart.src} alt="손하트" width={141} height={134} />
+        <Image src={QR.src} alt="큐알코드" width={141} height={134} />
       </div>
       <div className={styles.botCont}>
         <Content
           fontSize={16}
           align="left"
-          color="white"
+          color="black"
           lineheight="200%"
           content="
 <strong>천원</strong>도 후원 가능해요<br/>
@@ -51,13 +54,16 @@ const CheerPopup = () => {
         />
       </div>
       <div className={styles.buttonsCont}>
-        <Buttons
-          onClickDonate={onClickTossLick}
-          onClickHeart={() => setModal('')}
-        />
+        <SmallButton
+          theme="black"
+          onClick={onClickNext}
+          background="lightyellow"
+        >
+          후원완료했어요
+        </SmallButton>
       </div>
     </div>
   );
 };
 
-export default CheerPopup;
+export default DesktopDonate;
