@@ -28,6 +28,7 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.12.0",
     "react-scroll": "^1.9.0",
+    "react-trend-animation": "^0.0.3",
     "recoil": "^0.7.7",
     "sass": "^1.70.0",
     "sqlite": "^5.1.1",

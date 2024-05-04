@@ -1,20 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import { useSetRecoilState } from 'recoil';
-import { modalState } from '@/store/modalState';
 
 import RoundedButton from '@/component/Section_Hero/Attom/RoundedButton';
 import GoArrowRight from '@/assets/icon/GoArrowRight.svg';
 import styles from './index.module.scss';
 
-const GoDonateButton = () => {
-  const setModal = useSetRecoilState(modalState);
-  const onGoDonateClick = () => {
-    setModal('direct');
-  };
-
+const GoDonateButton = ({ onClick }: { onClick: () => void }) => {
   return (
-    <RoundedButton onClick={onGoDonateClick}>
+    <RoundedButton onClick={onClick}>
       <div className={styles.text}>
         <p className={styles.headbox}>
           지금

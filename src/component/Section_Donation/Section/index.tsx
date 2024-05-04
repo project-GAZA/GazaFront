@@ -1,6 +1,7 @@
 import React from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { modalState } from '@/store/modalState';
+import { deviceState } from '@/store/deviceState';
 import BottomContent from '@/component/Section_Donation/Modules/BottomContent';
 import TopContent from '@/component/Section_Donation/Modules/TopContent';
 import MainContent from '@/component/Section_Donation/Modules/MainContent';
@@ -10,6 +11,11 @@ import styles from './index.module.scss';
 
 const SectionDonation = () => {
   const setModal = useSetRecoilState(modalState);
+  const device = useRecoilValue(deviceState);
+  const onGoDonateClick = () => {
+    if (device === 'mobile') setModal('direct');
+    else setModal('desktop');
+  };
 
   return (
     <SectionContainer>
@@ -21,7 +27,7 @@ const SectionDonation = () => {
           </div>
           <div className={styles.botCont}>
             <div className={styles.buttonSect}>
-              <Button theme="secondary" fill onClick={() => setModal('direct')}>
+              <Button theme="secondary" fill onClick={onGoDonateClick}>
                 후원하기
               </Button>
             </div>

@@ -17,12 +17,14 @@ const DirectMessage = () => {
   const setModal = useSetRecoilState<string>(modalState);
   const [nick, setNick] = useState<string>('');
   const [content, setContent] = useState<string>('');
+  const [disabled, setDisabled] = useState<boolean>(true);
   const [animation, setAnimation] = useState<string>(styles.layout);
   useEffect(() => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
 
-  const onSubmitForm = (): void => {
+  const onSubmitForm = (e): void => {
+    e.preventDefault();
     axiosInstance
       .post('/message', {
         nick,
@@ -53,6 +55,9 @@ const DirectMessage = () => {
             nickName={nick}
             changeNickName={e => {
               setNick(e.target.value);
+              if (e.target.value.length < 2) {
+                setDisabled(true);
+              } else if (content.length > 0) setDisabled(false);
             }}
           />
         </div>
@@ -68,11 +73,19 @@ const DirectMessage = () => {
             content={content}
             changeContent={e => {
               setContent(e.target.value);
+              if (e.target.value.length < 1) {
+                setDisabled(true);
+              } else if (nick.length >= 2) setDisabled(false);
             }}
           />
         </div>
         <div className={styles.buttonBox}>
-          <SmallButton fontSize={15} theme="black" type="submit">
+          <SmallButton
+            disabled={disabled}
+            fontSize={15}
+            theme="black"
+            type="submit"
+          >
             완료하기
           </SmallButton>
         </div>

@@ -27,3 +27,12 @@
     background: $dark_gray;
   }
 }
+.lightdark {
+  background: $light_gray;
+  &:hover {
+    background: $hover_gray;
+  }
+  &:active {
+    background: $dark_gray;
+  }
+}
