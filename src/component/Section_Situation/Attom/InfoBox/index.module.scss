@@ -1,0 +1,36 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  color: var(--white, var(--white, #fff));
+
+  width: 220px;
+  height: 160px;
+  @include respond-to('sm') {
+    width: 164px;
+  }
+}
+
+.number {
+  font-family: Georgia;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  @include respond-to('sm') {
+    font-size: 32px;
+  }
+}
+
+.title {
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

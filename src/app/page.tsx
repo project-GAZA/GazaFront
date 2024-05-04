@@ -7,11 +7,12 @@ import { deviceState } from '@/store/deviceState';
 
 import '@/style/globals.scss';
 
+import HeadMenu from '@/component/Common/Modules/HeadMenu';
 import SectionHero from '@/component/Section_Hero/Section';
 import SectionMessage from '@/component/Section_Message/Section';
 import SectionDonate from '@/component/Section_Donation/Section';
-import HeadMenu from '@/component/Common/Modules/HeadMenu';
 import SectionAdditional from '@/component/Section_Additional/Section';
+import SectionSituation from '@/component/Section_Situation/Section';
 
 import ModalController from './_components/ModalController';
 
@@ -41,7 +42,7 @@ const Home = () => {
       <Toaster />
       <HeadMenu infoRef={moreInfoRef} msgRef={messageRef} />
       <SectionHero msgRef={messageRef} />
-      <DeadInfoSection />
+      <SectionSituation />
       <WhoAmISection />
       <SectionMessage msgRef={messageRef} />
       <SectionDonate />
