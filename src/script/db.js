@@ -20,6 +20,7 @@ if (fs.existsSync(path)) {
   );
 
   db.serialize(() => {
+    // 관리자 계정 테이블
     db.run(
       `
     CREATE TABLE IF NOT EXISTS admin (
@@ -39,6 +40,7 @@ if (fs.existsSync(path)) {
       },
     );
 
+    // 메세지 테이블
     db.run(
       `
     CREATE TABLE IF NOT EXISTS message (
@@ -61,6 +63,24 @@ if (fs.existsSync(path)) {
       },
     );
 
+    // 사망자 현황 테이블
+    db.run(
+      `
+    CREATE TABLE IF NOT EXISTS situation (
+      id INTEGER PRIMARY KEY,
+      title TEXT NOT NULL,
+      amount INTEGER
+    );`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('situation table created.');
+        }
+      },
+    );
+
+    // like한 테이블
     db.run(
       `
     CREATE TABLE IF NOT EXISTS like (
