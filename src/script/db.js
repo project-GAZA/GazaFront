@@ -79,6 +79,58 @@ if (fs.existsSync(path)) {
         }
       },
     );
+    db.run(
+      `
+      INSERT INTO situation
+      (title,amount) 
+      VALUES ('사망자', 0)`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('사망자 row생성');
+        }
+      },
+    );
+    db.run(
+      `
+      INSERT INTO situation
+      (title,amount) 
+      VALUES ('부상자', 0)`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('부상자 row생성');
+        }
+      },
+    );
+    db.run(
+      `
+      INSERT INTO situation
+      (title,amount) 
+      VALUES ('어린이 사망', 0)`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('어린이 사망 row생성');
+        }
+      },
+    );
+    db.run(
+      `
+      INSERT INTO situation
+      (title,amount) 
+      VALUES ('굶주리는 사람', 0)`,
+      err => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('굶주리는 사람 row생성');
+        }
+      },
+    );
 
     // like한 테이블
     db.run(
