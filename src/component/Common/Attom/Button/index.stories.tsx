@@ -5,12 +5,12 @@ import Button from './index';
 
 // 어떤 컴포넌트의 story인지, 어떤 설정으로 렌더링할지 정의
 export default {
-  title: 'stories/Common/Attoms/Button',
+  title: 'stories/Common/Attom/Button',
   component: Button,
   parameters: {
     docs: {
       description: {
-        component: '기본 버튼 - 히어로, 기부섹션에 사용되었습니다.',
+        component: '기본 버튼',
       },
     },
   },
@@ -27,12 +27,7 @@ const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
 // 각각이 새로운 스토리들
 // export const Small = () => <Button size="small" label="button" />; 얘와 같음
 
-export const Mobile: ComponentStory<typeof Button> = Template.bind({});
-Mobile.args = {
+export const View: ComponentStory<typeof Button> = Template.bind({});
+View.args = {
   fill: false,
-};
-Mobile.parameters = {
-  viewport: {
-    defaultViewport: 'iphone12promax',
-  },
 };

@@ -8,27 +8,18 @@ export default {
   component: InfoBox,
   parameters: {
     docs: {
-      description: { component: '메세지영역 제목' },
+      description: {
+        component: '상황섹션 실제상황박스 기본 배경은 검은색입니다.',
+      },
     },
   },
   args: {
-    index: 10,
-    nick: 'JooKyungJin',
-    date: '2023.03.04',
-    isLike: true,
-    onClick: () => {
-      console.log('신고누름');
-    },
-    content: '뉴스를 봤는데 마음이 너무 아팠습니다.',
-    isdonate: true,
+    number: 10000,
+    title: '사망자',
+    color: '#EB4511',
   },
 } as ComponentMeta<typeof InfoBox>;
-
-// 기본 포맷을 정해두고 bind로 제어
 const Template: ComponentStory<typeof InfoBox> = args => <InfoBox {...args} />;
-
-// 각각이 새로운 스토리들
-// export const Small = () => <Button size="small" label="button" />; 얘와 같음
 
 export const Mobile: ComponentStory<typeof InfoBox> = Template.bind({});
 Mobile.parameters = {

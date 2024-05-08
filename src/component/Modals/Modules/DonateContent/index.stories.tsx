@@ -8,15 +8,21 @@ export default {
   component: DonateContent,
   parameters: {
     docs: {
-      description: { component: '기부 아이디 입력' },
+      description: { component: '기부모달 콘텐츠들' },
     },
+  },
+  args: {
+    title: "Gaza's Child Read Hope",
+    content: ' 주변에 가자지구의 상황을 널리 알려주세요',
   },
 } as ComponentMeta<typeof DonateContent>;
 
-const Template: ComponentStory<typeof DonateContent> = () => <DonateContent />;
+const Template: ComponentStory<typeof DonateContent> = args => (
+  <DonateContent {...args} />
+);
 
-export const Mobile: ComponentStory<typeof DonateContent> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof DonateContent> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

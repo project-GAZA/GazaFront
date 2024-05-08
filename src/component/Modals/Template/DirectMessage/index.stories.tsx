@@ -9,7 +9,7 @@ export default {
   component: DirectMessage,
   parameters: {
     docs: {
-      description: { component: '모달창에 쓸 제목' },
+      description: { component: '직접 메세지 입력하는 모달창' },
     },
   },
 } as ComponentMeta<typeof DirectMessage>;
@@ -20,8 +20,8 @@ const Template: ComponentStory<typeof DirectMessage> = args => (
   </RecoilRoot>
 );
 
-export const Mobile: ComponentStory<typeof DirectMessage> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof DirectMessage> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

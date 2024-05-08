@@ -10,25 +10,16 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: '기본 버튼 - 히어로, 기부섹션에 사용되었습니다.',
+        component: '공유하기버튼 - 히어로, 기부섹션에 사용되었습니다.',
       },
     },
   },
 } as ComponentMeta<typeof ShareLang>;
 
-// 기본 포맷을 정해두고 bind로 제어
-const Template: ComponentStory<typeof ShareLang> = args => (
-  <ShareLang {...args} />
-);
+const Template: ComponentStory<typeof ShareLang> = args => <ShareLang />;
 
-// 각각이 새로운 스토리들
-// export const Small = () => <Button size="small" label="button" />; 얘와 같음
-
-export const Mobile: ComponentStory<typeof ShareLang> = Template.bind({});
-Mobile.args = {
-  fill: false,
-};
-Mobile.parameters = {
+export const View: ComponentStory<typeof ShareLang> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

@@ -9,7 +9,9 @@ export default {
   component: SortButtons,
   parameters: {
     docs: {
-      description: { component: 'Sort클릭 버튼' },
+      description: {
+        component: '메세지 섹션 Sort클릭 버튼. 기본 배경은 검은색입니다.',
+      },
     },
   },
   args: {
@@ -17,16 +19,12 @@ export default {
   },
 } as ComponentMeta<typeof SortButtons>;
 
-// 기본 포맷을 정해두고 bind로 제어
 const Template: ComponentStory<typeof SortButtons> = args => (
   <SortButtons {...args} />
 );
 
-// 각각이 새로운 스토리들
-// export const Small = () => <Button size="small" label="button" />; 얘와 같음
-
-export const Mobile: ComponentStory<typeof SortButtons> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof SortButtons> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },
