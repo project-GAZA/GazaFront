@@ -86,6 +86,23 @@ export const updateMessage = async (
   }
 };
 
+export const deleteMessage = async (id: number): Promise<boolean> => {
+  try {
+    const db = await open({
+      filename: 'src/script/testdb.db',
+      driver: sqlite3.Database,
+    });
+
+    await db.run(
+      `DELETE FROM message
+       WHERE id = ${id};`,
+    );
+    return true;
+  } catch (e) {
+    throw new Error('message테이블에 데이터가 삭제되지 못했습니다.');
+  }
+};
+
 export const getMessage = async (
   size: number,
   sort: string,

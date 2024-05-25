@@ -1,4 +1,4 @@
-import { updateMessage } from '@/utils/dbController';
+import { updateMessage, deleteMessage } from '@/utils/dbController';
 import { NextRequest } from 'next/server';
 
 export async function PATCH(
@@ -22,6 +22,16 @@ export async function PATCH(
     const { username, content, amount } = await req.json();
     valid({ id, username, content, amount });
     await updateMessage(id, username, content, amount);
+    return Response.json(true, { status: 200 });
+  } catch (e: any) {
+    return Response.json({ error: e.message }, { status: 500 });
+  }
+}
+
+export async function DELETE(_req, { params }: { params: { id: number } }) {
+  try {
+    const { id } = params;
+    await deleteMessage(id);
     return Response.json(true, { status: 200 });
   } catch (e: any) {
     return Response.json({ error: e.message }, { status: 500 });
