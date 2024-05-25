@@ -95,27 +95,43 @@ export const getMessage = async (
   size: number,
   sort: string,
   page: number,
+  ip: string,
 ): Promise<MessageType[]> => {
   try {
-    if (!fs.existsSync('src/script/testdb.db')) {
-      throw new Error(
-        '데이터베이스파일이 없습니다. yarn makedb로 db를 생성해주세요',
-      );
-    }
     const db = await open({
       filename: 'src/script/testdb.db',
       driver: sqlite3.Database,
     });
     const rows = await db.all(
-      `SELECT *
-       FROM message
+      `
+SELECT
+    m.id AS message_id,
+    m.username,
+    m.content,
+    m.nation,
+    m.latitude,
+    m.longitude,
+    m.amount,
+    m.created_dt,
+    m.modified_dt,
+    COUNT(l.id) AS like_count,
+    CASE 
+        WHEN EXISTS (SELECT 1 FROM like l2 WHERE l2.message_id = m.id AND l2.ip = ?) THEN 1
+        ELSE 0
+    END AS user_liked
+FROM
+    message m
+LEFT JOIN
+    like l ON m.id = l.message_id
+GROUP BY
+    m.id
        ORDER BY
-         CASE WHEN ? = 'time' THEN created_dt END DESC
+         CASE WHEN ? = 'new' THEN m.created_dt END DESC
        LIMIT ? OFFSET ?;`,
-      [sort, size, (page - 1) * size],
+      [ip, sort, size, (page - 1) * size],
     );
     return rows;
-  } catch (error) {
-    throw new Error('서버에 오류가 났습니다.');
+  } catch (err) {
+    throw new Error('DB를 가져오는데 문제가 발생했습니다.');
   }
 };
