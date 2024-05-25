@@ -28,34 +28,33 @@ export const getSituation = async (): Promise<SituationType[]> => {
 
 // about Message
 
-export const inputMessage = async (
-  message: MessagePostType,
-): Promise<MessageType> => {
+export const inputMessage = async ({
+  username,
+  content,
+  nation,
+  longitude,
+  latitude,
+  amount,
+}: {
+  username: string;
+  content: string;
+  nation: string;
+  longitude: number;
+  latitude: number;
+  amount: number;
+}): Promise<boolean> => {
   try {
-    if (!fs.existsSync('src/script/testdb.db')) {
-      throw new Error(
-        '데이터베이스파일이 없습니다. yarn makedb로 db를 생성해주세요',
-      );
-    }
     const db = await open({
       filename: 'src/script/testdb.db',
       driver: sqlite3.Database,
     });
-    const { lastID } = await db.run(
+    await db.run(
       `INSERT INTO message
       (username, content, nation, latitude, longitude,amount) 
-      VALUES (?, ?, ?, ?, ?,0)`,
-      [
-        message.nickname,
-        message.content,
-        message.nation,
-        message.latitude,
-        message.longitude,
-      ],
+      VALUES (?, ?, ?, ?, ?,?)`,
+      [username, content, nation, latitude, longitude, amount],
     );
-    // 최근 삽입된 메시지의 ID 가져오기
-    const data = await db.get('SELECT * FROM message WHERE id = ?', [lastID]);
-    return data;
+    return true;
   } catch (e) {
     throw new Error('message테이블에 데이터가 들어가지 못했습니다.');
   }

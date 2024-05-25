@@ -101,6 +101,25 @@
           }
           insertMessageStmt.finalize();
 
+          console.log(
+            'message default modified_dt 현재시간으로 수정하는 트리거 추가',
+          );
+          const createTriggerSQL = `
+  CREATE TRIGGER IF NOT EXISTS update_modified_dt
+  AFTER UPDATE ON message
+  FOR EACH ROW
+  BEGIN
+    UPDATE message SET modified_dt = DATETIME('now', 'localtime', '+9 hours') WHERE id = OLD.id;
+  END;
+`;
+          db.run(createTriggerSQL, err => {
+            if (err) {
+              console.error(err.message);
+              throw err;
+            }
+            console.log('Update trigger created or verified.');
+          });
+
           console.log('Message Test Datas created!!!');
         }
       },

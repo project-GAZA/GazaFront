@@ -15,6 +15,7 @@ export async function GET(req: NextRequest) {
     if (ip && !ipv4Pattern.test(ip))
       throw Error(`ip에 올바른 아이피를 입력해주세요. ip:${ip}`);
   };
+
   try {
     const sort = req.nextUrl.searchParams.get('sort') || 'new';
     const page = req.nextUrl.searchParams.get('page') || '0';
@@ -34,10 +35,50 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  const valid = ({
+    nation,
+    latitude,
+    longitude,
+    content,
+    username,
+    amount,
+  }) => {
+    if (typeof nation !== 'string')
+      throw Error(`유효한 nation값을 입력해주세요 nation:${nation}`);
+    if (typeof latitude !== 'number')
+      throw Error(`유효한 latitude값을 입력해주세요 latitude:${latitude}`);
+    if (typeof longitude !== 'number')
+      throw Error(`유효한 longitude값을 입력해주세요 longitude:${longitude}`);
+    if (typeof content !== 'string')
+      throw Error(`유효한 content값을 입력해주세요 content:${content}`);
+    if (typeof username !== 'string')
+      throw Error(`유효한 username값을 입력해주세요 username:${username}`);
+    if (username.length < 2 || username.length > 12)
+      throw Error('유저이름은 2글자이상,12글자 이하입니다.');
+    if (amount === null || amount === undefined) return;
+    if (typeof parseInt(amount, 10) !== 'number')
+      throw Error(`유효한 amount값을 입력해주세요 amount:${amount}`);
+  };
   try {
-    const data = await req.json();
-    const d = await inputMessage(data);
-    return Response.json(d);
+    const { nation, latitude, longitude, content, username, amount } =
+      await req.json();
+    valid({
+      nation,
+      latitude,
+      longitude,
+      content,
+      username,
+      amount,
+    });
+    await inputMessage({
+      username,
+      latitude,
+      longitude,
+      content,
+      nation,
+      amount: amount || 0,
+    });
+    return Response.json(true, { status: 200 });
   } catch (e: any) {
     return Response.json({ error: e.message }, { status: 500 });
   }
