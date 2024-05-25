@@ -47,6 +47,7 @@
     "consistent-return": "off",
     "react/jsx-props-no-spreading": "off",
     "no-param-reassign": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "@typescript-eslint/naming-convention": "off"
   }
 }
