@@ -1,4 +1,4 @@
-import { inputMessage, getMessage, updateMessage } from '@/utils/dbController';
+import { inputMessage, getMessage } from '@/utils/dbController';
 import { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -33,21 +33,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
     const d = await inputMessage(data);
-    return Response.json(d);
-  } catch (e: any) {
-    return Response.json({ error: e.message }, { status: 500 });
-  }
-}
-
-export async function PATCH(req) {
-  try {
-    const resdata = await req.json();
-    const field = req.nextUrl.searchParams.get('field');
-    const d = updateMessage(resdata.id, field, resdata.value);
     return Response.json(d);
   } catch (e: any) {
     return Response.json({ error: e.message }, { status: 500 });
