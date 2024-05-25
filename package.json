@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "makedb": "node src/script/db.js",
-    "dev": "next dev",
-    "build": "rm src/script/testdb.db && node src/script/db.js && next build",
-    "start": "next start -p 80",
+    "dev": "node src/script/db.js && next dev",
+    "build": "node src/script/db.js && next build",
+    "start": "node src/script/db.js && next start -p 80",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
