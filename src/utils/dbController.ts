@@ -3,6 +3,27 @@ import sqlite3 from 'sqlite3';
 import { MessageType, SituationType } from '@/types/dataType';
 
 // about Situation
+export const modifySituation = async ({
+  id,
+  name,
+  value,
+}): Promise<boolean> => {
+  try {
+    const db = await open({
+      filename: 'src/script/testdb.db',
+      driver: sqlite3.Database,
+    });
+    await db.all(
+      `UPDATE situation
+  SET name = "${name}",
+  value = ${value}
+  WHERE id =${id} `,
+    );
+    return true;
+  } catch (e) {
+    throw new Error('sitaution테이블을 수정하는데 오류가 났습니다.');
+  }
+};
 
 export const getSituation = async (): Promise<SituationType[]> => {
   try {
