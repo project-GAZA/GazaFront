@@ -1,7 +1,7 @@
 import { getSituation } from '@/utils/dbController';
 import { NextRequest } from 'next/server';
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   try {
     const data = await getSituation();
     return Response.json(data);
