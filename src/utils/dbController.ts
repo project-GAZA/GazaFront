@@ -2,7 +2,34 @@ import { open } from 'sqlite';
 import sqlite3 from 'sqlite3';
 import { MessageType, SituationType } from '@/types/dataType';
 
-export const deleteSituation = async (id): Promise<boolean> => {
+export const clickLike = async (message_id: number, ip): Promise<string> => {
+  try {
+    const db = await open({
+      filename: 'src/script/testdb.db',
+      driver: sqlite3.Database,
+    });
+    const rows = await db.all(
+      `SELECT *
+       FROM like where message_id = ${message_id} and ip = "${ip}"`,
+    );
+    if (rows.length > 0) {
+      await db.all(
+        `DELETE 
+       FROM like where message_id = ${message_id} and ip = "${ip}"`,
+      );
+      return `like를 삭제했습니다. message_id:${message_id}, ip:${ip}`;
+    }
+    await db.all(
+      `INSERT INTO like 
+       (message_id,ip) values (${message_id},"${ip}")`,
+    );
+    return `like를 생성했습니다. message_id:${message_id}, ip:${ip}`;
+  } catch (e) {
+    throw new Error('like 과정에서 오류가 났습니다.');
+  }
+};
+
+export const deleteSituation = async (id: number): Promise<boolean> => {
   try {
     const db = await open({
       filename: 'src/script/testdb.db',
