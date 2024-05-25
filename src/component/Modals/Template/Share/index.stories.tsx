@@ -9,7 +9,7 @@ export default {
   component: Share,
   parameters: {
     docs: {
-      description: { component: '후원하기 모달창' },
+      description: { component: '공유하기 모달창' },
     },
   },
 } as ComponentMeta<typeof Share>;
@@ -20,8 +20,8 @@ const Template: ComponentStory<typeof Share> = args => (
   </RecoilRoot>
 );
 
-export const Mobile: ComponentStory<typeof Share> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof Share> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

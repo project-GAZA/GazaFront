@@ -4,11 +4,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Title from './index';
 
 export default {
-  title: 'stories/Section_Donation/Attoms/Title',
+  title: 'stories/Section_Donation/Attom/Title',
   component: Title,
   parameters: {
     docs: {
-      description: { component: '글의 제목이빈다.' },
+      description: { component: '도네이션 섹션의  제목텍스트입니다.' },
     },
   },
   args: {
@@ -18,8 +18,8 @@ export default {
 
 const Template: ComponentStory<typeof Title> = args => <Title {...args} />;
 
-export const Mobile: ComponentStory<typeof Title> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof Title> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

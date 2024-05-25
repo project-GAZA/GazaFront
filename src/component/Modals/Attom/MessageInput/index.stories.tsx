@@ -4,11 +4,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import MessageInput from './index';
 
 export default {
-  title: 'stories/Modals/Attoms/MessageInput',
+  title: 'stories/Modals/Attom/MessageInput',
   component: MessageInput,
   parameters: {
     docs: {
-      description: { component: '모달 토스 아이디 인풋' },
+      description: { component: '모달 메세지내용 인풋' },
     },
   },
   args: {
@@ -20,10 +20,12 @@ export default {
   },
 } as ComponentMeta<typeof MessageInput>;
 
-const Template: ComponentStory<typeof MessageInput> = args => <MessageInput />;
+const Template: ComponentStory<typeof MessageInput> = args => (
+  <MessageInput {...args} />
+);
 
-export const Mobile: ComponentStory<typeof MessageInput> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof MessageInput> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

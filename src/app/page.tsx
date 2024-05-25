@@ -16,7 +16,6 @@ import SectionSituation from '@/component/Section_Situation/Section';
 
 import ModalController from './_components/ModalController';
 
-import DeadInfoSection from './_sections/DeadInfoSection';
 import WhoAmISection from './_sections/WhoAmISection';
 
 const Home = () => {

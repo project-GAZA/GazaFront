@@ -9,7 +9,7 @@ export default {
   component: DesktopDonate,
   parameters: {
     docs: {
-      description: { component: '모달창에 쓸 제목' },
+      description: { component: '데스크탑전용 모달창' },
     },
   },
 } as ComponentMeta<typeof DesktopDonate>;
@@ -20,8 +20,8 @@ const Template: ComponentStory<typeof DesktopDonate> = args => (
   </RecoilRoot>
 );
 
-export const Mobile: ComponentStory<typeof DesktopDonate> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof DesktopDonate> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

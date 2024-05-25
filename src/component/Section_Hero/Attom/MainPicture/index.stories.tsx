@@ -3,8 +3,15 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import MainPicture from './index';
 
 export default {
-  title: 'stories/Section_Hero/Attoms/MainPicture',
+  title: 'stories/Section_Hero/Attom/MainPicture',
   component: MainPicture,
+  parameters: {
+    docs: {
+      description: {
+        component: '히어로섹션 사진스크롤링은 메인페이지에서 동작확인가능',
+      },
+    },
+  },
   args: {
     borderRadius: 20,
     urls: [
@@ -17,20 +24,8 @@ export default {
 const Template: ComponentStory<typeof MainPicture> = args => (
   <MainPicture {...args} />
 );
-export const Desktop: ComponentStory<typeof MainPicture> = Template.bind({});
-Desktop.parameters = {
-  viewport: {
-    defaultViewport: 'desktop',
-  },
-};
-export const Tablet: ComponentStory<typeof MainPicture> = Template.bind({});
-Tablet.parameters = {
-  viewport: {
-    defaultViewport: 'tablet',
-  },
-};
-export const Mobile: ComponentStory<typeof MainPicture> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof MainPicture> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone14promax',
   },

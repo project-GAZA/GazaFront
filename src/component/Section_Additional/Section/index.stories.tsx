@@ -1,19 +1,16 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import SectionMessage from './index';
+import Section_Additional from './index';
 
 export default {
-  title: 'stories/Section_Message/Section',
-  component: SectionMessage,
-} as ComponentMeta<typeof SectionMessage>;
+  title: 'stories/Section_Additional/Section',
+  component: Section_Additional,
+} as ComponentMeta<typeof Section_Additional>;
 
-const Template: ComponentStory<typeof SectionMessage> = args => (
-  <SectionMessage />
+const Template: ComponentStory<typeof Section_Additional> = args => (
+  <Section_Additional />
 );
 
-export const Mobile: ComponentStory<typeof SectionMessage> = Template.bind({});
-Mobile.parameters = {
-  viewport: {
-    defaultViewport: 'iphone14promax',
-  },
-};
+export const View: ComponentStory<typeof Section_Additional> = Template.bind(
+  {},
+);

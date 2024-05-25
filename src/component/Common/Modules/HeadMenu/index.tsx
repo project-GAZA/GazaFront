@@ -10,8 +10,8 @@ import { deviceState } from '@/store/deviceState';
 import styles from './index.module.scss';
 
 interface HeadMenuProp {
-  msgRef: React.RefObject<HTMLDivElement>;
-  infoRef: React.RefObject<HTMLDivElement>;
+  msgRef: React.RefObject<HTMLDivElement> | null;
+  infoRef: React.RefObject<HTMLDivElement> | null;
 }
 
 const HeadMenu = ({ msgRef, infoRef }: HeadMenuProp) => {

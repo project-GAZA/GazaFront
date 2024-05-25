@@ -9,7 +9,7 @@ export default {
   component: CheerPopup,
   parameters: {
     docs: {
-      description: { component: '모달창에 쓸 제목' },
+      description: { component: '응원메세지 전달 모달창' },
     },
   },
 } as ComponentMeta<typeof CheerPopup>;
@@ -20,8 +20,8 @@ const Template: ComponentStory<typeof CheerPopup> = args => (
   </RecoilRoot>
 );
 
-export const Mobile: ComponentStory<typeof CheerPopup> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof CheerPopup> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

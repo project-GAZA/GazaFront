@@ -1,3 +1,8 @@
+export interface SituationType {
+  id?: number;
+  title: string;
+  amount: number;
+}
 export interface MessagePostType {
   nation: string;
   latitude: string;

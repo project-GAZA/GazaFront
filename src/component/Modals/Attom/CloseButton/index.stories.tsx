@@ -5,11 +5,11 @@ import { RecoilRoot } from 'recoil';
 import CloseButton from './index';
 
 export default {
-  title: 'stories/Modals/Attoms/CloseButton',
+  title: 'stories/Modals/Attom/CloseButton',
   component: CloseButton,
   parameters: {
     docs: {
-      description: { component: '모달창에 쓸 제목' },
+      description: { component: '모달창 닫기버튼' },
     },
   },
   args: {
@@ -23,8 +23,8 @@ const Template: ComponentStory<typeof CloseButton> = args => (
   </RecoilRoot>
 );
 
-export const Mobile: ComponentStory<typeof CloseButton> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof CloseButton> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

@@ -12,16 +12,16 @@ export default {
     },
   },
   args: {
-    nickName: '',
+    nick: '',
   },
 } as ComponentMeta<typeof DonateNameInput>;
 
 const Template: ComponentStory<typeof DonateNameInput> = args => (
-  <DonateNameInput />
+  <DonateNameInput {...args} />
 );
 
-export const Mobile: ComponentStory<typeof DonateNameInput> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof DonateNameInput> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

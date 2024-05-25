@@ -9,7 +9,7 @@ export default {
   component: DirectDonate,
   parameters: {
     docs: {
-      description: { component: '모달창에 쓸 제목' },
+      description: { component: '기부먼저 하는 모달창' },
     },
   },
 } as ComponentMeta<typeof DirectDonate>;
@@ -20,8 +20,8 @@ const Template: ComponentStory<typeof DirectDonate> = args => (
   </RecoilRoot>
 );
 
-export const Mobile: ComponentStory<typeof DirectDonate> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof DirectDonate> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

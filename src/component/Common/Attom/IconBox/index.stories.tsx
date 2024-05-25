@@ -5,11 +5,11 @@ import Insta from 'public/assets/svg/insta.svg';
 import IconBox from './index';
 
 export default {
-  title: 'stories/Modals/Attoms/IconBox',
+  title: 'stories/Common/Attom/IconBox',
   component: IconBox,
   parameters: {
     docs: {
-      description: { component: '모달창에 쓸 제목' },
+      description: { component: '아이콘 버튼' },
     },
   },
   args: {
@@ -20,8 +20,8 @@ export default {
 
 const Template: ComponentStory<typeof IconBox> = args => <IconBox {...args} />;
 
-export const Mobile: ComponentStory<typeof IconBox> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof IconBox> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

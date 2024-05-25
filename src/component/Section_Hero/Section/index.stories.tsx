@@ -1,10 +1,18 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import SectionHero from './index';
 
 export default {
   title: 'stories/Section_Hero/Section',
   component: SectionHero,
+  parameters: {
+    docs: {
+      description: {
+        component: '히어로섹션',
+      },
+    },
+  },
   args: {
     mainPictureData: {
       borderRadius: 20,
@@ -16,9 +24,13 @@ export default {
   },
 } as ComponentMeta<typeof SectionHero>;
 
-const Template: ComponentStory<typeof SectionHero> = args => <SectionHero />;
-export const Mobile: ComponentStory<typeof SectionHero> = Template.bind({});
-Mobile.parameters = {
+const Template: ComponentStory<typeof SectionHero> = args => (
+  <RecoilRoot>
+    <SectionHero />
+  </RecoilRoot>
+);
+export const View: ComponentStory<typeof SectionHero> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone14promax',
   },
