@@ -3,13 +3,14 @@ import getIpInfo from '@/utils/ipInfo';
 import { NextRequest } from 'next/server';
 import { MessageType } from '@/types/dataType';
 
-export async function GET(req: NextRequest) {
+export async function GET(req: any) {
   try {
     const sort = req.nextUrl.searchParams.get('sort');
     const page = req.nextUrl.searchParams.get('page');
     const size = req.nextUrl.searchParams.get('size');
+    const ipinfo = await getIpInfo(req);
     const { data } = await instance.get(
-      `/message?sort=${sort}&page=${page}&size=${size}`,
+      `/message?sort=${sort}&page=${page}&size=${size}&ip=${ipinfo.ip}`,
     );
     return Response.json(data);
   } catch (e: any) {
