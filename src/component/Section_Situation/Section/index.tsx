@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import InfoBox, {
   InfoBoxType,
 } from '@/component/Section_Situation/Attom/InfoBox';
+import instance from '@/utils/clientaxios';
 import styles from './index.module.scss';
 
+interface InfoBoxType2 extends InfoBoxType {
+  id: number;
+}
+
 const SectionSituation = () => {
-  const [infos, setInfos] = useState<InfoBoxType[]>([]);
+  const [infos, setInfos] = useState<InfoBoxType2[]>([]);
   useEffect(() => {
-    setInfos([
-      { title: '사망자', number: 24620 },
-      { title: '부상자', number: 60800 },
-      { title: '어린이사망', number: 60800, color: '#EB4511' },
-      { title: '굶주린 사람들', number: 60800 },
-    ]);
+    instance
+      .get(`/situation`)
+      .then(res => setInfos(res.data))
+      .catch(_e => toast.error('서버에서 에러가 났습니다.'));
   }, []);
   return (
     <div className={styles.layout}>
@@ -21,10 +25,10 @@ const SectionSituation = () => {
         <div className={styles.numberContainer}>
           {infos.map(v => (
             <InfoBox
-              title={v.title}
-              number={v.number}
-              key={v.title}
-              color={v.color}
+              name={v.name}
+              value={v.value}
+              key={v.id}
+              color={v.name === '어린이 사망자' ? '#EB4511' : 'white'}
             />
           ))}
         </div>

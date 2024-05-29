@@ -22,7 +22,7 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
   const device = useRecoilValue(deviceState);
   useEffect(() => {
     instance
-      .get(`/message?size=100&page=1&sort=time`)
+      .get(`/message?size=100&page=1&sort=new`)
       .then(res => setComments(res.data))
       .catch(_e => toast.error('서버에서 에러가 났습니다.'));
   }, []);

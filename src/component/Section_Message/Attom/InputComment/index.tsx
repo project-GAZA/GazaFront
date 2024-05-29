@@ -28,13 +28,17 @@ const InputComment = ({ placeholder, setComments }: InputCommentType) => {
         toast.error('메세지를 입력하세요!!');
         return;
       }
-      const nick = GenerateNickName();
-      const res = await instance.post('/message', { nick, content });
+      const username = GenerateNickName();
+      const res = await instance.post('/message', {
+        username,
+        content,
+        amount: 0,
+      });
       setMessageState(res.data);
 
       toast.success('메세지 입력이 완료되었습니다.');
       const { data } = await instance.get<MessageType[]>(
-        `/message?size=100&page=1&sort=time`,
+        `/message?size=100&page=1&sort=new`,
       );
       setComments(data);
       setModal('cheer');
