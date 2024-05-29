@@ -4,17 +4,19 @@ import ShareLang from '@/component/Common/Attom/ShareLang';
 import Menus from '@/component/Common/Attom/Menus';
 import scrollTo from '@/utils/scroll';
 
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { modalState } from '@/store/modalState';
+import { deviceState } from '@/store/deviceState';
 import styles from './index.module.scss';
 
 interface HeadMenuProp {
-  msgRef: React.RefObject<HTMLDivElement>;
-  infoRef: React.RefObject<HTMLDivElement>;
+  msgRef: React.RefObject<HTMLDivElement> | null;
+  infoRef: React.RefObject<HTMLDivElement> | null;
 }
 
 const HeadMenu = ({ msgRef, infoRef }: HeadMenuProp) => {
   const setModal = useSetRecoilState(modalState);
+  const device = useRecoilValue(deviceState);
   const menus = [
     {
       name: '응원 메세지 보기',
@@ -41,7 +43,11 @@ const HeadMenu = ({ msgRef, infoRef }: HeadMenuProp) => {
         <div className={styles.buttonWrapper}>
           <Button
             onClick={() => {
-              setModal('direct');
+              if (device === 'mobile') {
+                setModal('direct');
+              } else {
+                setModal('desktop');
+              }
             }}
             height={44}
             theme="secondary"

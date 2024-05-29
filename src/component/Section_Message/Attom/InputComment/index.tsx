@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast';
 import instance from '@/utils/clientaxios';
 import GenerateNickName from '@/utils/randKakaoNick';
 import { modalState } from '@/store/modalState';
+import { messageState } from '@/store/postState';
 
 import SendIcon from '@public/assets/svg/sendicon.svg';
 import { MessageType } from '@/types/dataType';
@@ -18,12 +19,19 @@ export interface InputCommentType {
 
 const InputComment = ({ placeholder, setComments }: InputCommentType) => {
   const setModal = useSetRecoilState(modalState);
+  const setMessageState = useSetRecoilState(messageState);
   const [content, setContent] = useState('');
   const onSubmitForm = async e => {
     try {
       e.preventDefault();
+      if (content.length === 0) {
+        toast.error('메세지를 입력하세요!!');
+        return;
+      }
       const nick = GenerateNickName();
-      await instance.post('/message', { nick, content });
+      const res = await instance.post('/message', { nick, content });
+      setMessageState(res.data);
+
       toast.success('메세지 입력이 완료되었습니다.');
       const { data } = await instance.get<MessageType[]>(
         `/message?size=100&page=1&sort=time`,

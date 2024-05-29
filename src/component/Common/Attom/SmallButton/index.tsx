@@ -13,7 +13,13 @@ export interface ButtonType {
   /**
    *  버튼안에 색상을 채울지 여부입니다. false면 투명한 배경색의 버튼이됩니다.
    */
-  background?: 'primary' | 'secondary' | 'white' | 'red' | 'gray';
+  background?:
+    | 'primary'
+    | 'secondary'
+    | 'white'
+    | 'red'
+    | 'gray'
+    | 'lightyellow';
   /**
    * onClick은 클릭시 실행할 함수입니다.
    */
@@ -44,6 +50,8 @@ const SmallButton = ({
     cls += ` ${styles.bgwhite}`;
   } else if (background === 'gray') {
     cls += ` ${styles.bglightgray}`;
+  } else if (background === 'lightyellow') {
+    cls += ` ${styles.bglightyellow}`;
   }
 
   if (theme === 'white') {

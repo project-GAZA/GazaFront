@@ -59,3 +59,12 @@
     background-color: $dark_gray;
   }
 }
+.bglightyellow {
+  background-color: #ffedb5;
+  &:hover {
+    background-color: #fff7e0;
+  }
+  &:active {
+    background-color: #ffe38d;
+  }
+}

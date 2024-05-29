@@ -1,0 +1,40 @@
+@import '@style/_variables.scss';
+@import '@style/_mixin.scss';
+
+.layout {
+  background: black;
+  padding: 56px 0 56px 0;
+}
+
+.title {
+  text-align: center;
+  color: var(--white, var(--white, #fff));
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.numberContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  @include respond-to('sm') {
+    width: 360px;
+    margin: auto;
+  }
+  @include respond-to('md') {
+    width: 610px;
+    margin: auto;
+  }
+  @include respond-to('lg') {
+    width: 100%;
+  }
+}
+
+.innerContainer {
+}

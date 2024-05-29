@@ -13,10 +13,10 @@ export default {
   },
 } as ComponentMeta<typeof Buttons>;
 
-const Template: ComponentStory<typeof Buttons> = args => <Buttons />;
+const Template: ComponentStory<typeof Buttons> = args => <Buttons {...args} />;
 
-export const Mobile: ComponentStory<typeof Buttons> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof Buttons> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

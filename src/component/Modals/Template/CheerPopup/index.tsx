@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { modalState } from '@/store/modalState';
+import { deviceState } from '@/store/deviceState';
 
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import CheerTop from '@/component/Modals/Modules/CheerTop';
@@ -13,6 +14,7 @@ import styles from './index.module.scss';
 
 const CheerPopup = () => {
   const setModal = useSetRecoilState<string>(modalState);
+  const device = useRecoilValue(deviceState);
   const [animation, setAnimation] = useState<string>(styles.layout);
   useEffect(() => {
     setAnimation(`${styles.layout} ${styles.active}`);
@@ -20,7 +22,8 @@ const CheerPopup = () => {
 
   const onClickTossLick = (): void => {
     // window.open('https://toss.me/peacegaza');
-    setModal('who');
+    if (device === 'mobile') setModal('who');
+    else setModal('desktop');
   };
 
   return (

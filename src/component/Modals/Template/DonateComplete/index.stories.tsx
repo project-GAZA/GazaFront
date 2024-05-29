@@ -9,7 +9,7 @@ export default {
   component: DonateComplete,
   parameters: {
     docs: {
-      description: { component: '후원하기 모달창' },
+      description: { component: '후원하기 완료된 모달창' },
     },
   },
 } as ComponentMeta<typeof DonateComplete>;
@@ -20,8 +20,8 @@ const Template: ComponentStory<typeof DonateComplete> = args => (
   </RecoilRoot>
 );
 
-export const Mobile: ComponentStory<typeof DonateComplete> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof DonateComplete> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

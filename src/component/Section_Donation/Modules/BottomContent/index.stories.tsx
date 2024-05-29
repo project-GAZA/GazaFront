@@ -8,15 +8,15 @@ export default {
   component: BottomContent,
   parameters: {
     docs: {
-      description: { component: '섹션 위의 내용' },
+      description: { component: '도네이션 섹션의 아래 컨텐츠' },
     },
   },
 } as ComponentMeta<typeof BottomContent>;
 
 const Template: ComponentStory<typeof BottomContent> = () => <BottomContent />;
 
-export const Mobile: ComponentStory<typeof BottomContent> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof BottomContent> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

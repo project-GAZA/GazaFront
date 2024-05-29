@@ -4,11 +4,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import MoneySlider from './index';
 
 export default {
-  title: 'stories/Section_Donation/Attoms/MoneySlider',
+  title: 'stories/Section_Donation/Attom/MoneySlider',
   component: MoneySlider,
   parameters: {
     docs: {
-      description: { component: '기본 버튼' },
+      description: { component: '도네이션 섹션의 기부금 퍼센터 바' },
     },
   },
   args: {
@@ -21,8 +21,8 @@ const Template: ComponentStory<typeof MoneySlider> = args => (
   <MoneySlider {...args} />
 );
 
-export const Mobile: ComponentStory<typeof MoneySlider> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof MoneySlider> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

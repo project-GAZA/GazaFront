@@ -1,15 +1,14 @@
 import instance from '@/utils/serveraxios';
 import getIpInfo from '@/utils/ipInfo';
-import { NextRequest } from 'next/server';
-import { MessageType } from '@/types/dataType';
 
-export async function GET(req: NextRequest) {
+export async function GET(req: any) {
   try {
     const sort = req.nextUrl.searchParams.get('sort');
     const page = req.nextUrl.searchParams.get('page');
     const size = req.nextUrl.searchParams.get('size');
+    const ipinfo = await getIpInfo(req);
     const { data } = await instance.get(
-      `/message?sort=${sort}&page=${page}&size=${size}`,
+      `/message?sort=${sort}&page=${page}&size=${size}&ip=${ipinfo.ip}`,
     );
     return Response.json(data);
   } catch (e: any) {
@@ -17,19 +16,20 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req) {
+export async function POST(req: any) {
   try {
-    const data = await req.json();
+    const { content, username, amount } = await req.json();
     const ipinfo = await getIpInfo(req);
-    const resData = await instance.post<MessageType>('/message', {
+    const { data } = await instance.post('/message', {
       nation: ipinfo.nation,
-      latitude: ipinfo.latitude,
-      longitude: ipinfo.longitude,
-      content: data.content,
-      nickname: data.nick,
+      latitude: Number(ipinfo.latitude),
+      longitude: Number(ipinfo.longitude),
+      content,
+      username,
+      amount,
     });
-    return Response.json(resData.data);
-  } catch (e) {
-    return Response.json({ error: '에러' });
+    return Response.json(data);
+  } catch (e: any) {
+    return Response.json({ error: e.message });
   }
 }

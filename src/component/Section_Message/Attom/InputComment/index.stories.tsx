@@ -4,11 +4,11 @@ import MessageTitle from './index';
 
 // 어떤 컴포넌트의 story인지, 어떤 설정으로 렌더링할지 정의
 export default {
-  title: 'stories/Section_Message/Attoms/InputComment',
+  title: 'stories/Section_Message/Attom/InputComment',
   component: MessageTitle,
   parameters: {
     docs: {
-      description: { component: '댓글 다는 부분' },
+      description: { component: '메세지 섹션 댓글 입력' },
     },
   },
   args: {
@@ -19,17 +19,11 @@ export default {
     },
   },
 } as ComponentMeta<typeof MessageTitle>;
-
-// 기본 포맷을 정해두고 bind로 제어
 const Template: ComponentStory<typeof MessageTitle> = args => (
   <MessageTitle {...args} />
 );
-
-// 각각이 새로운 스토리들
-// export const Small = () => <Button size="small" label="button" />; 얘와 같음
-
-export const Mobile: ComponentStory<typeof MessageTitle> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof MessageTitle> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

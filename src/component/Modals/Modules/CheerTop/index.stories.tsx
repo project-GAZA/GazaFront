@@ -8,15 +8,18 @@ export default {
   component: CheerTop,
   parameters: {
     docs: {
-      description: { component: '응원메세지 첫번째 제목과 내용' },
+      description: {
+        component:
+          '응원메세지 첫번째 제목과 내용 - 배경색이 기본적으로 있습니다.',
+      },
     },
   },
 } as ComponentMeta<typeof CheerTop>;
 
 const Template: ComponentStory<typeof CheerTop> = () => <CheerTop />;
 
-export const Mobile: ComponentStory<typeof CheerTop> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof CheerTop> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },

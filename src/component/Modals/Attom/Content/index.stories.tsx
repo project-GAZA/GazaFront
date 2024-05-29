@@ -4,11 +4,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Content from './index';
 
 export default {
-  title: 'stories/Modals/Attoms/Content',
+  title: 'stories/Modals/Attom/Content',
   component: Content,
   parameters: {
     docs: {
-      description: { component: '글의 제목이빈다.' },
+      description: { component: '모달창 컨텐츠 내용.' },
     },
   },
   args: {
@@ -19,8 +19,8 @@ export default {
 
 const Template: ComponentStory<typeof Content> = args => <Content {...args} />;
 
-export const Mobile: ComponentStory<typeof Content> = Template.bind({});
-Mobile.parameters = {
+export const View: ComponentStory<typeof Content> = Template.bind({});
+View.parameters = {
   viewport: {
     defaultViewport: 'iphone12promax',
   },
