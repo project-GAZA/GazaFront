@@ -12,7 +12,7 @@ export interface MessagePostType {
 }
 
 export interface MessageType {
-  id: number;
+  message_id: number;
   username: string;
   content: string;
   nation: string;
@@ -20,5 +20,6 @@ export interface MessageType {
   longitude: number;
   amount: number;
   created_dt: string;
+  user_like: boolean;
   modified_dt: string;
 }
