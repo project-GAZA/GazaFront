@@ -78,11 +78,11 @@ const Comments = ({ comments }: { comments: MessageType[] }) => {
       <div className={styles.commentBox}>
         {comments.map(v => (
           <Comment
-            key={v.id}
-            index={v.id}
+            key={v.message_id}
+            index={v.message_id}
             nick={v.username}
             date={v.created_dt}
-            isLike={false}
+            isLike={v.user_like}
             content={v.content}
             isDonate={false}
           />
@@ -100,11 +100,11 @@ const Comments = ({ comments }: { comments: MessageType[] }) => {
         <div className={`${styles.commentDrawer} ${styles.commentBox}`}>
           {comments.map(v => (
             <Comment
-              key={v.id}
-              index={v.id}
+              key={v.message_id}
+              index={v.message_id}
               nick={v.username}
               date={v.created_dt}
-              isLike={false}
+              isLike={v.user_like}
               content={v.content}
               isDonate={false}
             />

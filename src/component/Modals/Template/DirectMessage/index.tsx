@@ -15,7 +15,7 @@ import styles from './index.module.scss';
 
 const DirectMessage = () => {
   const setModal = useSetRecoilState<string>(modalState);
-  const [nick, setNick] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [disabled, setDisabled] = useState<boolean>(true);
   const [animation, setAnimation] = useState<string>(styles.layout);
@@ -27,8 +27,9 @@ const DirectMessage = () => {
     e.preventDefault();
     axiosInstance
       .post('/message', {
-        nick,
+        username,
         content,
+        amount: 0,
       })
       .then(res => {
         toast.success('메세지 입력이 완료되었습니다.');
@@ -52,9 +53,9 @@ const DirectMessage = () => {
         </div>
         <div className={styles.inputBox}>
           <Input
-            nickName={nick}
+            nickName={username}
             changeNickName={e => {
-              setNick(e.target.value);
+              setUsername(e.target.value);
               if (e.target.value.length < 2) {
                 setDisabled(true);
               } else if (content.length > 0) setDisabled(false);
@@ -75,7 +76,7 @@ const DirectMessage = () => {
               setContent(e.target.value);
               if (e.target.value.length < 1) {
                 setDisabled(true);
-              } else if (nick.length >= 2) setDisabled(false);
+              } else if (username.length >= 2) setDisabled(false);
             }}
           />
         </div>

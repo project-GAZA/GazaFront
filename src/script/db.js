@@ -176,10 +176,10 @@
         } else {
           console.log('situation table created.');
           const situations = [
-            ['사망자', 0],
-            ['부상자', 0],
-            ['어린이 사망자', 0],
-            ['굶주린 사람', 0],
+            ['사망자', 12345],
+            ['부상자', 22345],
+            ['어린이 사망자', 1223],
+            ['굶주린 사람', 123],
           ];
 
           const insertMessageStmt = db.prepare(
