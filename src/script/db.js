@@ -2,7 +2,7 @@
 (function () {
   const fs = require('fs');
   const sqlite3 = require('sqlite3').verbose();
-  const path = 'src/script/testdb.db';
+  const path = './testdb.db';
 
   // 파일이 존재하면 삭제
   if (fs.existsSync(path)) {
