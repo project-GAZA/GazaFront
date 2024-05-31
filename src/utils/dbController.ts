@@ -167,6 +167,10 @@ export const getMessage = async (
   ip: string,
 ): Promise<MessageType[]> => {
   try {
+    console.log(`${process.cwd()}/`);
+    fs.readdir(`${process.cwd()}/`, function (error, filelist) {
+      console.log(filelist);
+    });
     console.log(`${process.cwd()}/.next/`);
     fs.readdir(`${process.cwd()}/.next/`, function (error, filelist) {
       console.log(filelist);
