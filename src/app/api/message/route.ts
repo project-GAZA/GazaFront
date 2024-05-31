@@ -10,14 +10,12 @@ export async function GET(req: any) {
     const { data } = await instance.get(
       `/message?sort=${sort}&page=${page}&size=${size}&ip=${ipinfo.ip}`,
     );
-    console.log(
-      `/message?sort=${sort}&page=${page}&size=${size}&ip=${ipinfo.ip}`,
-      data,
-    );
     return Response.json(data);
   } catch (e: any) {
     console.log(e);
-    return new Response(JSON.stringify({ error: e.message }), { status: 502 });
+    return new Response(JSON.stringify({ error: e.data.error }), {
+      status: 502,
+    });
   }
 }
 
