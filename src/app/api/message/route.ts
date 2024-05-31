@@ -7,12 +7,17 @@ export async function GET(req: any) {
     const page = req.nextUrl.searchParams.get('page');
     const size = req.nextUrl.searchParams.get('size');
     const ipinfo = await getIpInfo(req);
+    console.log(ipinfo);
     const { data } = await instance.get(
       `/message?sort=${sort}&page=${page}&size=${size}&ip=${ipinfo.ip}`,
     );
+    console.log(
+      `/message?sort=${sort}&page=${page}&size=${size}&ip=${ipinfo.ip}`,
+      data,
+    );
     return Response.json(data);
   } catch (e: any) {
-    return new Response(JSON.stringify({ error: e.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: e.message }), { status: 502 });
   }
 }
 
