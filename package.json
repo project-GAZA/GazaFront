@@ -5,7 +5,7 @@
   "scripts": {
     "makedb": "node src/script/db.js",
     "dev": "node src/script/db.js && next dev",
-    "build": "node src/script/db.js && next build && mkdir -p .next/src/script && cp src/script/testdb.db .next/src/script/testdb.db",
+    "build": "node src/script/db.js && next build",
     "start": "node src/script/db.js && next start -p 80",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
