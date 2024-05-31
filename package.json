@@ -5,7 +5,7 @@
   "scripts": {
     "makedb": "node src/script/db.js",
     "dev": "node src/script/db.js && next dev",
-    "build": "node src/script/db.js && next build && cp src/script/testdb.db .next/static/testdb.db && echo 'DB file copied to .next/static/testdb.db' && ls -l .next/static",
+    "build": "node src/script/db.js && next build && cp src/script/testdb.db .next/static/testdb.db && cp src/script/testdb.db .next/server/testdb.db  && echo 'DB file copied to .next/static/testdb.db' && ls -l .next/static",
     "start": "node src/script/db.js && next start -p 80",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
