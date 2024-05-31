@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const url =
-  process.env.NEXT_PUBLIC_FRONT_API_URL || 'http://localhost:3000/api/test';
+  process.env.NEXT_PUBLIC_BACK_API_URL || 'http://localhost:3000/api/test';
 
 // Axios 인스턴스 생성
 const instance = axios.create({
