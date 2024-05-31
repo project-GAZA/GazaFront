@@ -176,16 +176,15 @@ export const getMessage = async (
       console.log(filelist);
     });
 
-    console.log(`${process.cwd()}/.next/server`);
-    fs.readdir(`${process.cwd()}/.next/server`, function (error, filelist) {
+    console.log(`${process.cwd()}/.next/src`);
+    fs.readdir(`${process.cwd()}/.next/src`, function (error, filelist) {
       console.log(filelist);
     });
 
     console.log(__dirname);
     console.log(process.cwd());
-    console.log(`${process.cwd()}/.next/_next/static/testdb.db`);
     const db = await open({
-      filename: `${process.cwd()}/.next/_next/static/testdb.db`,
+      filename: `${process.cwd()}/src/script/testdb.db`,
       driver: sqlite3.Database,
     });
     console.log('디비를 받아왔습니다. 이로그가 보인다면 SELECT가 문제입니다.');
