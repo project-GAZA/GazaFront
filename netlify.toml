@@ -5,5 +5,9 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[functions]
+  included_files = ["src/script/testdb.db"]
+
 [[build.lifecycle.onPostBuild]]
-  command = "mkdir -p $(pwd)/.next/src/script && cp $(pwd)/src/script/testdb.db $(pwd)/.next/src/script/testdb.db && echo 'DB file copied to .next/src/script/testdb.db' && ls -l $(pwd)/.next/src/script"
+  command = "mkdir -p .next/src/script && cp src/script/testdb.db .next/src/script/testdb.db && echo 'DB file copied to .next/src/script/testdb.db' && ls -l .next/src/script"
+
