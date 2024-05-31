@@ -1,5 +1,5 @@
 [build]
-  command = "yarn build && mkdir -p $(pwd)/.next/src/script && cp $(pwd)/src/script/test.db $(pwd)/.next/src/script/testdb.db && echo 'DB file copied to $(pwd)/.next/src/script/testdb.db' && ls -l $(pwd)/.next/src/script"
+  command = "yarn build"
   publish = ".next"
 
 [[plugins]]
