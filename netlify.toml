@@ -2,5 +2,8 @@
   command = "yarn build"
   publish = ".next"
 
+[functions]
+  included_files = ["src/script/testdb.db"]  # 정확한 경로 지정
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
