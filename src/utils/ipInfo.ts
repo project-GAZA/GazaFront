@@ -24,9 +24,7 @@ const getIpInfo = async (req: NextRequest): Promise<IpInfoType> => {
       ip = '';
     }
     const url = `https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.NEXT_PUBLIC_IPGEOAPIKEY}&ip=${ip}`;
-    console.log(url);
     const ipInfo = await axios.get<IpInfoResponse>(url);
-    console.log(ipInfo);
     return {
       nation: ipInfo.data.country_code3,
       latitude: ipInfo.data.latitude,
