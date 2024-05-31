@@ -167,27 +167,10 @@ export const getMessage = async (
   ip: string,
 ): Promise<MessageType[]> => {
   try {
-    console.log(`${process.cwd()}/`);
-    fs.readdir(`${process.cwd()}/`, function (error, filelist) {
-      console.log(filelist);
-    });
-    console.log(`${process.cwd()}/.next/`);
-    fs.readdir(`${process.cwd()}/.next/`, function (error, filelist) {
-      console.log(filelist);
-    });
-
-    console.log(`${process.cwd()}/.next/src`);
-    fs.readdir(`${process.cwd()}/.next/src`, function (error, filelist) {
-      console.log(filelist);
-    });
-
-    console.log(__dirname);
-    console.log(process.cwd());
     const db = await open({
       filename: `${process.cwd()}/src/script/testdb.db`,
       driver: sqlite3.Database,
     });
-    console.log('디비를 받아왔습니다. 이로그가 보인다면 SELECT가 문제입니다.');
     const rows = await db.all(
       `
 SELECT
