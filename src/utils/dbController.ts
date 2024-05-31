@@ -167,6 +167,7 @@ export const getMessage = async (
 ): Promise<MessageType[]> => {
   try {
     console.log(__dirname);
+    console.log(process.cwd());
     const db = await open({
       filename: '/_next/static/testdb.db',
       driver: sqlite3.Database,
