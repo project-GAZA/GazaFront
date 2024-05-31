@@ -1,0 +1,6 @@
+[build]
+  command = "next build"
+  publish = "out"
+
+[[build.lifecycle.onBuild]]
+  command = "node src/script/db.js && cp src/script/test.db out/"
