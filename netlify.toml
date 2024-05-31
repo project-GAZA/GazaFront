@@ -6,4 +6,4 @@
   package = "@netlify/plugin-nextjs"
 
 [[build.lifecycle.onPostBuild]]
-  command = "mkdir -p .next/src/script && cp src/script/test.db .next/src/script/testdb.db && echo 'DB file copied to .next/src/script/testdb.db' && ls -l .next/src/script"
+  command = "mkdir -p ./.next/src/script && cp ./src/script/test.db ./.next/src/script/testdb.db && echo 'DB file copied to ./.next/src/script/testdb.db' && ls -l .next/src/script"
