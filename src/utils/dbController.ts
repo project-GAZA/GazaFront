@@ -168,8 +168,9 @@ export const getMessage = async (
   try {
     console.log(__dirname);
     console.log(process.cwd());
+    console.log(`${process.cwd()}/.next/_next/static/testdb.db`);
     const db = await open({
-      filename: '/_next/static/testdb.db',
+      filename: `${process.cwd()}/.next/_next/static/testdb.db`,
       driver: sqlite3.Database,
     });
     const rows = await db.all(
