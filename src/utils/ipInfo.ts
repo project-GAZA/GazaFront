@@ -16,10 +16,14 @@ export interface IpInfoType {
 
 const getIpInfo = async (req: NextRequest): Promise<IpInfoType> => {
   try {
-    const ip =
-      req.headers.get('x-forwarded-for') === '::1'
-        ? ''
-        : req.headers.get('x-forwarded-for');
+    let ip: any = req.headers.get('x-forwarded-for');
+    if (ip) {
+      [ip] = ip.split(',');
+    }
+
+    if (ip === '::1') {
+      ip = '';
+    }
     const url = `https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.NEXT_PUBLIC_IPGEOAPIKEY}&ip=${ip}`;
     const ipInfo = await axios.get<IpInfoResponse>(url);
     return {
