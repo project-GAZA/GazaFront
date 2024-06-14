@@ -167,7 +167,15 @@ export const deleteMessage = async (id: number): Promise<boolean> => {
   }
 };
 
-export const getAllAmount = async (): Promise<number> => {};
+export const getAllAmount = async (): Promise<number> => {
+  try {
+    const db = await DB_Instance.getDatabase();
+    const data = await db.all(`select sum(amount) as total from message`);
+    return data[0].total;
+  } catch (e: any) {
+    throw new Error(`모든 금액을 받아오는데 실패했습니다.${e.message}`);
+  }
+};
 
 export const getMessage = async (
   size: number,
