@@ -19,8 +19,3 @@ const Template: ComponentStory<typeof Section_WhoAmI> = () => (
 );
 
 export const View: ComponentStory<typeof Section_WhoAmI> = Template.bind({});
-View.parameters = {
-  viewport: {
-    defaultViewport: 'iphone14promax',
-  },
-};
