@@ -1,0 +1,12 @@
+@import '@style/_variables.scss';
+@import '@style/_mixin.scss';
+
+.layout {
+  padding: 56px 0 56px 0;
+  @include respond-to('sm') {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

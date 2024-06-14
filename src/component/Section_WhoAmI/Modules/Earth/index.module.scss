@@ -1,0 +1,19 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.layout {
+  background-image: url('/assets/svg/earth.svg');
+  width: 217.815px;
+  height: 249px;
+  overflow: visible;
+}
+
+.text {
+  color: var(--black, var(--black, #000));
+  text-align: center;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%; /* 24.75px */
+}

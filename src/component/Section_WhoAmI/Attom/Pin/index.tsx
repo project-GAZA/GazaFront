@@ -3,10 +3,10 @@ import styles from './index.module.scss';
 
 export interface PinType {
   text: string;
-  posx: number;
-  posy: number;
-  posz: number;
-  color: 'white' | 'orange';
+  posx?: number;
+  posy?: number;
+  posz?: number;
+  color?: 'white' | 'orange';
 }
 
 const Pin = ({
