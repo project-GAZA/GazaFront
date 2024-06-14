@@ -15,7 +15,6 @@ export default {
     placeholder: '가자지구 아이들에게 응원의 메세지를 남겨보세요',
     onSubmit: e => {
       e.preventDefault();
-      console.log('hi');
     },
   },
 } as ComponentMeta<typeof MessageTitle>;

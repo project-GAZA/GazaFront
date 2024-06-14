@@ -19,10 +19,6 @@ instance.interceptors.response.use(
     return response;
   },
   error => {
-    // 응답 에러를 처리
-    if (error.response.status === 401) {
-      console.error('401인증 에러!');
-    }
     return Promise.reject(error);
   },
 );
