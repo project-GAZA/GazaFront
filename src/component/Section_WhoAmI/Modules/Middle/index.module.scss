@@ -1,19 +1,34 @@
 @import '@style/_mixin.scss';
 @import '@style/_variables.scss';
 
-.layout {
-  background-image: url('/assets/svg/earth.svg');
-  width: 217.815px;
-  height: 249px;
-  overflow: visible;
+.title {
+  color: var(--black, var(--black, #000));
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 28px;
+  line-height: 160%;
+  text-align: left;
+  @include respond-to('sm') {
+    text-align: center;
+    font-size: 24px;
+    line-height: normal;
+  }
 }
 
-.text {
+.content {
   color: var(--black, var(--black, #000));
-  text-align: center;
   font-family: Inter;
-  font-size: 15px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 165%; /* 24.75px */
+  font-weight: 500;
+  line-height: 160%;
+  strong {
+    font-weight: 700;
+    color: var(--red, var(--red, #eb4511));
+  }
+  @include respond-to('sm') {
+    font-size: 16px;
+  }
 }

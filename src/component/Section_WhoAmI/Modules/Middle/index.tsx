@@ -1,26 +1,18 @@
 import React from 'react';
-import Image from 'next/image';
-
-import Pin from '@/component/Section_WhoAmI/Attom/Pin';
-
-import pinIcon from '@public/assets/svg/pin.svg';
 import styles from './index.module.scss';
 
 const Earth = () => {
   return (
     <div className={styles.layout}>
-      <Image
-        src={pinIcon.src}
-        width={51}
-        height={69}
-        alt="핀"
-        style={{ position: 'relative', left: '99px', top: '27px' }}
-      />
-      <Pin text="# GAZA" posx={105} posy={-5} />
-      <Pin text="희망의 메세지를" posx={-45} posy={-10} />
-      <Pin text="희망의 메세지를" color="orange" posx={180} posy={-30} />
-      <Pin text="전달합니다" posx={23} posy={20} />
-      <Pin text="전달합니다" color="orange" posx={-45} posy={0} posz={-1} />
+      <h1 className={styles.title}>이제 우리가 행동할 때입니다.</h1>
+      <p className={styles.content}>
+        <strong>
+          가자지구 아이들을 위한 후원금 및 희망 메세지 전달 프로젝트
+        </strong>
+        로 가자지구의 아이들이 분쟁의 어둠을 넘어 밝은 내일을 향해 나아가도록
+        돕고자 합니다. 우리의 관심과 사랑이 이 아이들에게 긍정적인 변화를
+        가져오고 전 세계에 평화의 메시지를 전파할 것입니다.
+      </p>
     </div>
   );
 };
