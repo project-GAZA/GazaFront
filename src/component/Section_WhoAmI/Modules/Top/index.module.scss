@@ -1,0 +1,44 @@
+@import '@style/_mixin.scss';
+@import '@style/_variables.scss';
+
+.layout {
+  background: $primary;
+  @include respond-to('sm') {
+    padding: 20px 16px 20px 16px;
+  }
+  @include respond-to('md') {
+    padding: 20px 60px 20px 60px;
+  }
+  @include respond-to('lg') {
+    padding: 40px 80px 40px 80px;
+  }
+}
+
+.title {
+  color: var(--black, var(--black, #000));
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 28px;
+  line-height: 160%;
+  text-align: center;
+  @include respond-to('sm') {
+    font-size: 24px;
+  }
+}
+
+.content {
+  color: var(--black, var(--black, #000));
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  strong {
+    font-weight: 700;
+  }
+  @include respond-to('sm') {
+    font-size: 16px;
+  }
+}
