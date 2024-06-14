@@ -5,7 +5,7 @@
   "scripts": {
     "makedb": "node src/script/db.js",
     "dev": "node src/script/db.js && next dev",
-    "build": "node src/script/db.js && next build ",
+    "build": "node src/script/db.js && next build",
     "start": "node src/script/db.js && next start -p 80",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
@@ -20,7 +20,7 @@
     "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
     "classnames": "^2.5.1",
-    "next": "14.0.4",
+    "next": "^14.2.4",
     "prettier": "^3.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
