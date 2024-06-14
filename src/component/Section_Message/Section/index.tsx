@@ -23,7 +23,9 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
   useEffect(() => {
     instance
       .get(`/message?size=100&page=1&sort=new`)
-      .then(res => setComments(res.data))
+      .then(res => {
+        setComments(res.data);
+      })
       .catch(e => {
         toast.error(`서버에서 에러가 났습니다. ${e.response.data.error}`);
       });

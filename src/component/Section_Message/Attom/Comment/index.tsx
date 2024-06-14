@@ -8,6 +8,7 @@ export interface CommentType {
   isLike: boolean;
   content: string;
   isDonate: boolean;
+  like_count: number;
 }
 
 const Comment = ({
@@ -17,6 +18,7 @@ const Comment = ({
   isLike,
   content,
   isDonate,
+  like_count,
 }: CommentType) => {
   return (
     <div>
@@ -37,12 +39,10 @@ const Comment = ({
           </div>
 
           <div className={styles.rightContainer}>
+            <span className={styles.count}>{like_count}</span>
             <div
               className={isLike ? styles.heart_active : styles.heart_unactive}
             />
-            <button type="button" className={styles.call}>
-              신고하기
-            </button>
           </div>
         </div>
         <p className={styles.content}>{content}</p>
