@@ -24,7 +24,9 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
     instance
       .get(`/message?size=100&page=1&sort=new`)
       .then(res => setComments(res.data))
-      .catch(_e => toast.error('서버에서 에러가 났습니다.'));
+      .catch(e => {
+        toast.error(`서버에서 에러가 났습니다. ${e.response.data.error}`);
+      });
   }, []);
   return (
     <div className={styles.container} ref={msgRef}>

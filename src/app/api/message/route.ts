@@ -12,9 +12,8 @@ export async function GET(req: any) {
     );
     return Response.json(data);
   } catch (e: any) {
-    console.log(e);
-    return new Response(JSON.stringify({ error: e.data.error }), {
-      status: 502,
+    return new Response(JSON.stringify({ error: e.response.data.error }), {
+      status: 400,
     });
   }
 }

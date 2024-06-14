@@ -12,19 +12,4 @@ const instance = axios.create({
   },
 });
 
-// 응답 인터셉터 추가
-instance.interceptors.response.use(
-  response => {
-    // 응답을 처리하고 반환
-    return response;
-  },
-  error => {
-    // 응답 에러를 처리
-    if (error.response.status === 401) {
-      console.error('401인증 에러!');
-    }
-    return Promise.reject(error);
-  },
-);
-
 export default instance;

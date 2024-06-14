@@ -1,14 +1,33 @@
-import { open } from 'sqlite';
-import sqlite3 from 'sqlite3';
-import fs from 'fs';
+import { open, Database } from 'sqlite';
+import sqlite3, { Statement } from 'sqlite3';
 import { MessageType, SituationType } from '@/types/dataType';
 
-export const clickLike = async (message_id: number, ip): Promise<string> => {
+type SQDBType = Database<sqlite3.Database, sqlite3.Statement>;
+
+class DB_Instance {
+  private static db: SQDBType | undefined;
+
+  public static async getDatabase(): Promise<SQDBType> {
+    try {
+      if (!DB_Instance.db) {
+        DB_Instance.db = await open<sqlite3.Database, sqlite3.Statement>({
+          filename: `${process.cwd()}/src/script/testdb.db`,
+          driver: sqlite3.Database,
+        });
+      }
+      return DB_Instance.db;
+    } catch (err: any) {
+      throw Error(`DB를 불러오는데 에러가 났습니다. ${err.message}`);
+    }
+  }
+}
+
+export const clickLike = async (
+  message_id: number,
+  ip: string,
+): Promise<string> => {
   try {
-    const db = await open({
-      filename: 'src/script/testdb.db',
-      driver: sqlite3.Database,
-    });
+    const db = await DB_Instance.getDatabase();
     const rows = await db.all(
       `SELECT *
        FROM like where message_id = ${message_id} and ip = "${ip}"`,
@@ -25,24 +44,23 @@ export const clickLike = async (message_id: number, ip): Promise<string> => {
        (message_id,ip) values (${message_id},"${ip}")`,
     );
     return `like를 생성했습니다. message_id:${message_id}, ip:${ip}`;
-  } catch (e) {
-    throw new Error('like 과정에서 오류가 났습니다.');
+  } catch (e: any) {
+    throw new Error(`like클릭 과정에서 에러가 났습니다. Message: ${e.message}`);
   }
 };
 
 export const deleteSituation = async (id: number): Promise<boolean> => {
   try {
-    const db = await open({
-      filename: 'src/script/testdb.db',
-      driver: sqlite3.Database,
-    });
+    const db = await DB_Instance.getDatabase();
     await db.all(
       `DELETE from situation
   WHERE id =${id} `,
     );
     return true;
-  } catch (e) {
-    throw new Error('sitaution테이블을 삭제하는데 오류가 났습니다.');
+  } catch (e: any) {
+    throw new Error(
+      `Situation을 지우는 과정에서 에러가 났습니다. Message: ${e.message}`,
+    );
   }
 };
 // about Situation
@@ -52,10 +70,7 @@ export const modifySituation = async ({
   value,
 }): Promise<boolean> => {
   try {
-    const db = await open({
-      filename: 'src/script/testdb.db',
-      driver: sqlite3.Database,
-    });
+    const db = await DB_Instance.getDatabase();
     await db.all(
       `UPDATE situation
   SET name = "${name}",
@@ -63,24 +78,25 @@ export const modifySituation = async ({
   WHERE id =${id} `,
     );
     return true;
-  } catch (e) {
-    throw new Error('sitaution테이블을 수정하는데 오류가 났습니다.');
+  } catch (e: any) {
+    throw new Error(
+      `Situation을 수정하는데 에러가 났습니다. Message: ${e.message}`,
+    );
   }
 };
 
 export const getSituation = async (): Promise<SituationType[]> => {
   try {
-    const db = await open({
-      filename: 'src/script/testdb.db',
-      driver: sqlite3.Database,
-    });
+    const db = await DB_Instance.getDatabase();
     const rows = await db.all(
       `SELECT *
        FROM situation`,
     );
     return rows;
-  } catch (e) {
-    throw new Error('sitaution테이블에 데이터를 가져오지 못했습니다.');
+  } catch (e: any) {
+    throw new Error(
+      `Situation을 받아오는데 에러가 났습니다. Message: ${e.message}`,
+    );
   }
 };
 
@@ -102,10 +118,7 @@ export const inputMessage = async ({
   amount: number;
 }): Promise<boolean> => {
   try {
-    const db = await open({
-      filename: 'src/script/testdb.db',
-      driver: sqlite3.Database,
-    });
+    const db = await DB_Instance.getDatabase();
     await db.run(
       `INSERT INTO message
       (username, content, nation, latitude, longitude,amount) 
@@ -113,8 +126,8 @@ export const inputMessage = async ({
       [username, content, nation, latitude, longitude, amount],
     );
     return true;
-  } catch (e) {
-    throw new Error('message테이블에 데이터가 들어가지 못했습니다.');
+  } catch (e: any) {
+    throw new Error(`메세지 입력에 실패했습니다. Message: ${e.message}`);
   }
 };
 
@@ -125,10 +138,7 @@ export const updateMessage = async (
   amount: number | null,
 ): Promise<boolean> => {
   try {
-    const db = await open({
-      filename: 'src/script/testdb.db',
-      driver: sqlite3.Database,
-    });
+    const db = await DB_Instance.getDatabase();
 
     await db.run(
       `UPDATE message
@@ -138,25 +148,37 @@ export const updateMessage = async (
     );
 
     return true;
-  } catch (e) {
-    throw new Error('message테이블에 데이터가 들어가지 못했습니다.');
+  } catch (e: any) {
+    throw new Error(`메세지 Update에 실패했습니다. Message: ${e.message}`);
   }
 };
 
 export const deleteMessage = async (id: number): Promise<boolean> => {
   try {
-    const db = await open({
-      filename: 'src/script/testdb.db',
-      driver: sqlite3.Database,
-    });
+    const db = await DB_Instance.getDatabase();
 
     await db.run(
       `DELETE FROM message
        WHERE id = ${id};`,
     );
     return true;
-  } catch (e) {
-    throw new Error('message테이블에 데이터가 삭제되지 못했습니다.');
+  } catch (e: any) {
+    throw new Error(`메세지 삭제에 실패했습니다. Message: ${e.message}`);
+  }
+};
+
+export const getAllAmount = async (): Promise<number> => {
+  try {
+    const db = await DB_Instance.getDatabase();
+    const rows = await db.all(`select sum(amount) as total from message`);
+    const totalAmount = rows[0].total;
+
+    if (totalAmount === undefined) {
+      throw new Error('Data is undefined');
+    }
+    return totalAmount;
+  } catch (e: any) {
+    throw new Error(`모든 금액을 받아오는데 실패했습니다.${e.message}`);
   }
 };
 
@@ -167,10 +189,7 @@ export const getMessage = async (
   ip: string,
 ): Promise<MessageType[]> => {
   try {
-    const db = await open({
-      filename: `${process.cwd()}/src/script/testdb.db`,
-      driver: sqlite3.Database,
-    });
+    const db = await DB_Instance.getDatabase();
     const rows = await db.all(
       `
 SELECT
@@ -200,7 +219,9 @@ GROUP BY
       [ip, sort, size, (page - 1) * size],
     );
     return rows;
-  } catch (err) {
-    throw new Error('DB를 가져오는데 문제가 발생했습니다.');
+  } catch (e: any) {
+    throw new Error(
+      `메세지를 받아오는데에 실패했습니다. Message: ${e.message}`,
+    );
   }
 };
