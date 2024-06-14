@@ -12,11 +12,10 @@ import SectionHero from '@/component/Section_Hero/Section';
 import SectionMessage from '@/component/Section_Message/Section';
 import SectionDonate from '@/component/Section_Donation/Section';
 import SectionAdditional from '@/component/Section_Additional/Section';
+import SectionWhoAmI from '@/component/Section_WhoAmI/Section';
 import SectionSituation from '@/component/Section_Situation/Section';
 
 import ModalController from './_components/ModalController';
-
-import WhoAmISection from './_sections/WhoAmISection';
 
 const Home = () => {
   const messageRef = useRef<HTMLDivElement>(null);
@@ -42,7 +41,7 @@ const Home = () => {
       <HeadMenu infoRef={moreInfoRef} msgRef={messageRef} />
       <SectionHero msgRef={messageRef} />
       <SectionSituation />
-      <WhoAmISection />
+      <SectionWhoAmI />
       <SectionMessage msgRef={messageRef} />
       <SectionDonate />
       <SectionAdditional infoRef={moreInfoRef} />
