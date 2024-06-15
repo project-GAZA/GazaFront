@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
-import { messageState } from '@/store/postState';
+import { useSetRecoilState } from 'recoil';
+import { modalState } from '@/store';
 
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import Content from '@/component/Modals/Attom/Content';
@@ -14,15 +13,16 @@ import styles from './index.module.scss';
 
 const DesktopDonate = () => {
   const setModal = useSetRecoilState<string>(modalState);
-  const message = useRecoilValue(messageState);
   const [animation, setAnimation] = useState<string>(styles.layout);
   useEffect(() => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
 
   const onClickNext = (): void => {
+    /*
     if (message === null) setModal('directmessage');
-    else setModal('who');
+    */
+    setModal('who');
   };
 
   return (

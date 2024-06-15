@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import { useSetRecoilState } from 'recoil';
-import { modalState } from '@/store/modalState';
+import { modalState } from '@/store';
 
 import CloseSquareBlack from '@public/assets/svg/Close_square_black.svg';
 import CloseSquareLight from '@public/assets/svg/Close_square_light.svg';

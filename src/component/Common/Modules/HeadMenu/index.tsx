@@ -5,8 +5,7 @@ import Menus from '@/component/Common/Attom/Menus';
 import scrollTo from '@/utils/scroll';
 
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
-import { deviceState } from '@/store/deviceState';
+import { deviceState, modalState } from '@/store';
 import styles from './index.module.scss';
 
 interface HeadMenuProp {

@@ -3,8 +3,7 @@
 import { FadeInDiv } from 'react-trend-animation';
 import { RefObject } from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
-import { deviceState } from '@/store/deviceState';
+import { modalState, deviceState } from '@/store';
 
 import GoDonateButton from '@/component/Section_Hero/Modules/GoDonateButton';
 import MainPicture from '@/component/Section_Hero/Attom/MainPicture';

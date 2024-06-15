@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { modalState } from '@/store/modalState';
+import { modalState } from '@/store';
 import Image from 'next/image';
 
 import SmallButton from '@/component/Common/Attom/SmallButton';

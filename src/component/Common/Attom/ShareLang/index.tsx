@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useSetRecoilState } from 'recoil';
 
-import { modalState } from '@/store/modalState';
+import { modalState } from '@/store';
 import ShareIcon from 'public/assets/svg/share_outline.svg';
 import LangIcon from 'public/assets/svg/globe.svg';
 import styles from './index.module.scss';

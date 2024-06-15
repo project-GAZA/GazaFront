@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
-import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
-import { messageState } from '@/store/postState';
+import { useSetRecoilState } from 'recoil';
+import { modalState } from '@/store';
 
 import instance from '@/utils/clientaxios';
 
@@ -15,7 +14,6 @@ import styles from './index.module.scss';
 
 const WhoDonate = () => {
   const setModal = useSetRecoilState<string>(modalState);
-  const message: any = useRecoilValue(messageState);
   const [nick, setNick] = useState('');
   const [animation, setAnimation] = useState<string>(styles.layout);
   useEffect(() => {
@@ -25,6 +23,7 @@ const WhoDonate = () => {
   const onSubmit = async (e: React.FormEvent) => {
     try {
       e.preventDefault();
+      /*
       const res = await instance.patch('/message?field=username', {
         id: message.id,
         value: nick,
@@ -32,8 +31,9 @@ const WhoDonate = () => {
       if (res.status !== 200) {
         throw new Error('서버에러: 닉네임변경에 실패했습니다.');
       }
+      */
       toast.success('메세지의 닉네임을 토스송금닉네임으로 변경했습니다.');
-      const resData = await instance.get('/message?field=username');
+      await instance.get('/message?field=username');
     } catch (err: any) {
       toast.error(err.message);
     } finally {

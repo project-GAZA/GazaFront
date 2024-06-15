@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
-import { deviceState } from '@/store/deviceState';
+import { deviceState, modalState } from '@/store';
 
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import CheerTop from '@/component/Modals/Modules/CheerTop';
