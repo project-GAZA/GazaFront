@@ -48,6 +48,7 @@
     "react/jsx-props-no-spreading": "off",
     "no-param-reassign": "off",
     "react/button-has-type": "off",
-    "@typescript-eslint/naming-convention": "off"
+    "@typescript-eslint/naming-convention": "off",
+    "jsx-a11y/control-has-associated-label": "off"
   }
 }

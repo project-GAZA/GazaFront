@@ -61,6 +61,7 @@
 }
 
 .heart_active {
+  cursor: pointer;
   width: 24px;
   height: 24px;
   background-image: url('/assets/svg/heart_active.svg');
@@ -74,6 +75,7 @@
 }
 
 .heart_unactive {
+  cursor: pointer;
   width: 24px;
   height: 24px;
   background-image: url('/assets/svg/heart.svg');
