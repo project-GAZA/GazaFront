@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useSetRecoilState } from 'recoil';
 import { modalState } from '@/store';
+import useRefreshMessage from '@/hooks/useRefreshMessage';
 import axiosInstance from '@/utils/clientaxios';
 
 import CloseButton from '@/component/Modals/Attom/CloseButton';
@@ -15,6 +16,7 @@ import styles from './index.module.scss';
 
 const DirectMessage = () => {
   const setModal = useSetRecoilState<string>(modalState);
+  const refreshMessage = useRefreshMessage();
   const [username, setUsername] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -31,8 +33,9 @@ const DirectMessage = () => {
         content,
         amount: 0,
       })
-      .then(res => {
+      .then(() => {
         toast.success('메세지 입력이 완료되었습니다.');
+        refreshMessage();
       })
       .catch(err => {
         toast.error(`전송에 실패하였습니다 : ${err.message}`);

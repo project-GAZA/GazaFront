@@ -22,7 +22,7 @@ const DesktopDonate = () => {
     /*
     if (message === null) setModal('directmessage');
     */
-    setModal('who');
+    setModal('directmessage');
   };
 
   return (
