@@ -23,6 +23,14 @@ const DonateComplete = () => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
 
+  const onClickInsta = () => {
+    const shareUrl = 'https://gazas-child-read-hope.kr';
+    const url = `https://instagram.com`;
+    const shareLink = `${url}?text=${encodeURIComponent('가자지구 아이드을 도와주세요!')}&url=${encodeURIComponent(shareUrl)}`;
+
+    window.open(shareLink, '_blank');
+  };
+
   const onClickKakao = () => {
     const { Kakao } = window;
     Kakao.Share.sendDefault({
@@ -87,7 +95,11 @@ const DonateComplete = () => {
         />
       </div>
       <div className={styles.iconCont}>
-        <IconBox name="인스타그램" iconsrc={InstaIcon.src} />
+        <IconBox
+          onClick={onClickInsta}
+          name="인스타그램"
+          iconsrc={InstaIcon.src}
+        />
         <IconBox
           onClick={onClickFaceBook}
           name="페이스북"
