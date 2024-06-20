@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useSetRecoilState } from 'recoil';
-import { modalState } from '@/store';
 import Image from 'next/image';
+
+import { modalState } from '@/store';
 
 import SmallButton from '@/component/Common/Attom/SmallButton';
 import CloseButton from '@/component/Modals/Attom/CloseButton';
@@ -21,6 +22,38 @@ const DonateComplete = () => {
   useEffect(() => {
     setAnimation(`${styles.layout} ${styles.active}`);
   }, []);
+
+  const onClickKakao = () => {
+    const { Kakao } = window;
+    Kakao.Share.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '가자지구 난민을 도와주세요',
+        description: '여러분의 따듯한 응원 한마디가 큰 힘을 줍니다.',
+        imageUrl:
+          'https://gazas-child-read-hope.kr/_next/static/media/children1.625c3dab.png',
+        link: {
+          // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+          mobileWebUrl: `${process.env.NEXT_PUBLIC_KAKAO_URL}`,
+          webUrl: `${process.env.NEXT_PUBLIC_KAKAO_URL}`,
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: '응원 메세지 남기기',
+          link: {
+            mobileWebUrl: 'https://gazas-child-read-hope.kr/',
+            webUrl: 'https://gazas-child-read-hope.kr/',
+          },
+        },
+      ],
+    });
+  };
 
   const onClickCopy = async () => {
     try {
@@ -60,7 +93,11 @@ const DonateComplete = () => {
           name="페이스북"
           iconsrc={FaceIcon.src}
         />
-        <IconBox name="카카오톡" iconsrc={KakaoIcon.src} />
+        <IconBox
+          onClick={onClickKakao}
+          name="카카오톡"
+          iconsrc={KakaoIcon.src}
+        />
       </div>
       <div className={styles.buttonCont}>
         <SmallButton

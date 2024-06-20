@@ -1,5 +1,6 @@
 // next.config.js
 module.exports = {
+  crossOrigin: 'anonymous',
   reactStrictMode: false,
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // 기존 로더 설정에 .stories.tsx 파일을 제외하는 설정을 추가합니다.
