@@ -34,6 +34,12 @@ const DonateComplete = () => {
     }
   };
 
+  const onClickFaceBook = () => {
+    window.open(
+      'http://www.facebook.com/sharer.php?u=https://dc2348.tistory.com/',
+    );
+  };
+
   return (
     <div className={animation}>
       <div className={styles.closeCont}>
@@ -49,7 +55,11 @@ const DonateComplete = () => {
       </div>
       <div className={styles.iconCont}>
         <IconBox name="인스타그램" iconsrc={InstaIcon.src} />
-        <IconBox name="페이스북" iconsrc={FaceIcon.src} />
+        <IconBox
+          onClick={onClickFaceBook}
+          name="페이스북"
+          iconsrc={FaceIcon.src}
+        />
         <IconBox name="카카오톡" iconsrc={KakaoIcon.src} />
       </div>
       <div className={styles.buttonCont}>

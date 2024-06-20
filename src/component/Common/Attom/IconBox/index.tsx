@@ -5,14 +5,19 @@ import styles from './index.module.scss';
 interface IconBoxProp {
   iconsrc: string;
   name: string;
+  onClick?: () => void;
 }
 
-const IconBox = ({ iconsrc, name }: IconBoxProp) => {
+const IconBox = ({
+  iconsrc,
+  name,
+  onClick = () => console.log('Test'),
+}: IconBoxProp) => {
   return (
-    <div className={styles.layout}>
+    <button onClick={onClick} className={styles.layout}>
       <Image src={iconsrc} width={59} height={59} alt={name} />
       <p className={styles.name}>{name}</p>
-    </div>
+    </button>
   );
 };
 
