@@ -1,4 +1,6 @@
 import React from 'react';
+import useRefreshMessage from '@/hooks/useRefreshMessage';
+import instance from '@/utils/clientaxios';
 import styles from './index.module.scss';
 
 export interface CommentType {
@@ -8,6 +10,7 @@ export interface CommentType {
   isLike: boolean;
   content: string;
   isDonate: boolean;
+  like_count: number;
 }
 
 const Comment = ({
@@ -17,7 +20,15 @@ const Comment = ({
   isLike,
   content,
   isDonate,
+  like_count,
 }: CommentType) => {
+  const refreshMessage = useRefreshMessage();
+  const onClickLike = () => {
+    instance.post(`like/${index}`).then(res => {
+      refreshMessage();
+    });
+  };
+
   return (
     <div>
       {isDonate && (
@@ -37,12 +48,11 @@ const Comment = ({
           </div>
 
           <div className={styles.rightContainer}>
-            <div
+            <span className={styles.count}>{like_count}</span>
+            <button
+              onClick={onClickLike}
               className={isLike ? styles.heart_active : styles.heart_unactive}
             />
-            <button type="button" className={styles.call}>
-              신고하기
-            </button>
           </div>
         </div>
         <p className={styles.content}>{content}</p>

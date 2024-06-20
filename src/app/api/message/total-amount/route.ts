@@ -8,6 +8,3 @@ export async function GET() {
     return new Response(JSON.stringify({ error: e.message }), { status: 500 });
   }
 }
-export async function POST() {
-  return Response.json(2);
-}

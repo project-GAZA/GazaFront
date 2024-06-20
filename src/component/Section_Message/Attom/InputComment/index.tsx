@@ -3,23 +3,21 @@ import Image from 'next/image';
 import { useSetRecoilState } from 'recoil';
 import { toast } from 'react-hot-toast';
 
+import useRefreshMessage from '@/hooks/useRefreshMessage';
 import instance from '@/utils/clientaxios';
 import GenerateNickName from '@/utils/randKakaoNick';
-import { modalState } from '@/store/modalState';
-import { messageState } from '@/store/postState';
+import { modalState } from '@/store';
 
 import SendIcon from '@public/assets/svg/sendicon.svg';
-import { MessageType } from '@/types/dataType';
 import styles from './index.module.scss';
 
 export interface InputCommentType {
   placeholder: string;
-  setComments: React.Dispatch<MessageType[]>;
 }
 
-const InputComment = ({ placeholder, setComments }: InputCommentType) => {
+const InputComment = ({ placeholder }: InputCommentType) => {
+  const refreshMessage = useRefreshMessage();
   const setModal = useSetRecoilState(modalState);
-  const setMessageState = useSetRecoilState(messageState);
   const [content, setContent] = useState('');
   const onSubmitForm = async e => {
     try {
@@ -29,18 +27,15 @@ const InputComment = ({ placeholder, setComments }: InputCommentType) => {
         return;
       }
       const username = GenerateNickName();
-      const res = await instance.post('/message', {
+      await instance.post('/message', {
         username,
         content,
         amount: 0,
       });
-      setMessageState(res.data);
 
       toast.success('메세지 입력이 완료되었습니다.');
-      const { data } = await instance.get<MessageType[]>(
-        `/message?size=100&page=1&sort=new`,
-      );
-      setComments(data);
+
+      refreshMessage();
       setModal('cheer');
     } catch (_err) {
       toast.error('메세지 입력이 실패되었습니다. 관리자에게 문의해주세요');

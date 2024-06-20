@@ -3,16 +3,15 @@
 import { FadeInDiv } from 'react-trend-animation';
 import { RefObject } from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
-import { deviceState } from '@/store/deviceState';
+import { modalState, deviceState } from '@/store';
 
 import GoDonateButton from '@/component/Section_Hero/Modules/GoDonateButton';
 import MainPicture from '@/component/Section_Hero/Attom/MainPicture';
 import GoButtons from '@/component/Section_Hero/Modules/GoButtons';
 import HeroMainTitle from '@/component/Section_Hero/Modules/HeroMainTitle';
 
-import Children_1 from '@/assets/svg/background/children1.png';
-import Children_2 from '@/assets/svg/background/children2.png';
+import Children_1 from '@public/assets/svg/children1.png';
+import Children_2 from '@public/assets/svg/children2.png';
 
 import scrollTo from '@/utils/scroll';
 import styles from './index.module.scss';

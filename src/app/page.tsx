@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useSetRecoilState } from 'recoil';
-import { deviceState } from '@/store/deviceState';
+import { deviceState } from '@/store';
 
 import '@/style/globals.scss';
 

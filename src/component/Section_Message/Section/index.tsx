@@ -1,16 +1,10 @@
-import { RefObject, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import instance from '@/utils/clientaxios';
+import { RefObject } from 'react';
 
 import Comments from '@/component/Section_Message/Modules/Comments';
-import MobileComments from '@/component/Section_Message/Modules/MobileComments';
 import SortButtons from '@/component/Section_Message/Modules/SortButtons';
 import InputComment from '@/component/Section_Message/Attom/InputComment';
 import MessageTitle from '@/component/Section_Message/Attom/MessageTitle';
 
-import { useRecoilValue } from 'recoil';
-import { deviceState } from '@/store/deviceState';
-import { MessageType } from '@/types/dataType';
 import styles from './index.module.scss';
 
 interface SectionMessageProps {
@@ -18,16 +12,6 @@ interface SectionMessageProps {
 }
 
 const SectionMessage = ({ msgRef }: SectionMessageProps) => {
-  const [comments, setComments] = useState<MessageType[] | null>(null);
-  const device = useRecoilValue(deviceState);
-  useEffect(() => {
-    instance
-      .get(`/message?size=100&page=1&sort=new`)
-      .then(res => setComments(res.data))
-      .catch(e => {
-        toast.error(`서버에서 에러가 났습니다. ${e.response.data.error}`);
-      });
-  }, []);
   return (
     <div className={styles.container} ref={msgRef}>
       <MessageTitle
@@ -37,21 +21,9 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
       <div className={styles.sortContainer}>
         <SortButtons theme="secondary" />
       </div>
-      {device === 'desktop' && comments !== null && (
-        <div className={styles.commentsContainer}>
-          <Comments comments={comments} />
-        </div>
-      )}
-      {device === 'mobile' && comments !== null && (
-        <div className={styles.commentsContainer}>
-          <MobileComments comments={comments} />
-        </div>
-      )}
+      <Comments />
       <div className={styles.inputContainer}>
-        <InputComment
-          setComments={setComments}
-          placeholder="가자지구 아이들에게 응원의 메세지를 남겨보세요."
-        />
+        <InputComment placeholder="가자지구 아이들에게 응원의 메세지를 남겨보세요." />
       </div>
     </div>
   );

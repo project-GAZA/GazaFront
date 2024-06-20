@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useSetRecoilState } from 'recoil';
-import { modalState } from '@/store/modalState';
+import { modalState } from '@/store';
 
 import CloseButton from '@/component/Modals/Attom/CloseButton';
 import Title from '@/component/Modals/Attom/Title';

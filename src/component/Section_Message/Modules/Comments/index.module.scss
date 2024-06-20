@@ -1,15 +1,7 @@
 @import '@style/_mixin.scss';
-@import '@style/_variables.scss';
-
-.commentLayout {
-  padding: 0px 20px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 813px;
-  height: 496px;
-  overflow-y: scroll;
-  -ms-overflow-style: none; /* 인터넷 익스플로러 */
-  scrollbar-width: none; /* 파이어폭스 */
+.commentsContainer {
+  margin-top: 14px;
+  @include respond-to('sm') {
+    margin-top: 24px;
+  }
 }

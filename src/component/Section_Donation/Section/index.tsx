@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
-import { deviceState } from '@/store/deviceState';
+import { modalState, deviceState } from '@/store';
 import BottomContent from '@/component/Section_Donation/Modules/BottomContent';
 import TopContent from '@/component/Section_Donation/Modules/TopContent';
 import MainContent from '@/component/Section_Donation/Modules/MainContent';

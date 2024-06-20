@@ -20,6 +20,7 @@ export interface MessageType {
   longitude: number;
   amount: number;
   created_dt: string;
-  user_like: boolean;
+  user_liked: boolean;
   modified_dt: string;
+  like_count: number;
 }

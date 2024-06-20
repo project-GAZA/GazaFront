@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
+import { modalState } from '@/store';
 
 import CheerPopup from '@/component/Modals/Template/CheerPopup';
 import DonateComplete from '@/component/Modals/Template/DonateComplete';

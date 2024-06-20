@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { modalState } from '@/store/modalState';
+import { modalState } from '@/store';
 import Image from 'next/image';
 
 import SmallButton from '@/component/Common/Attom/SmallButton';
@@ -24,9 +24,7 @@ const DonateComplete = () => {
   const onClickCopy = async () => {
     try {
       await navigator.clipboard.writeText('https://gazas-child-read-hope.kr/');
-      console.info('클리보드 복사성공');
     } catch (e) {
-      console.error('클리보드 복사실패', e);
       // toast 메세지 띄어주기
     } finally {
       setModal('');

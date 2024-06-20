@@ -28,7 +28,7 @@ const SectionSituation = () => {
               name={v.name}
               value={v.value}
               key={v.id}
-              color={v.name === '어린이 사망자' ? '#EB4511' : 'white'}
+              color={v.name === '어린이사망' ? '#EB4511' : 'white'}
             />
           ))}
         </div>

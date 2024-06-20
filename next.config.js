@@ -1,5 +1,6 @@
 // next.config.js
 module.exports = {
+  reactStrictMode: false,
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // 기존 로더 설정에 .stories.tsx 파일을 제외하는 설정을 추가합니다.
     config.module.rules.push({
@@ -8,6 +9,9 @@ module.exports = {
 
     // Webpack 설정을 반환합니다.
     return config;
+  },
+  eslint: {
+    ignoreDuringBuilds: true, // ESLint 검사 무시
   },
   async headers() {
     return [

@@ -79,10 +79,11 @@ const Comments = ({ comments }: { comments: MessageType[] }) => {
         {comments.map(v => (
           <Comment
             key={v.message_id}
+            like_count={v.like_count}
             index={v.message_id}
             nick={v.username}
             date={v.created_dt}
-            isLike={v.user_like}
+            isLike={v.user_liked}
             content={v.content}
             isDonate={false}
           />
@@ -101,10 +102,11 @@ const Comments = ({ comments }: { comments: MessageType[] }) => {
           {comments.map(v => (
             <Comment
               key={v.message_id}
+              like_count={v.like_count}
               index={v.message_id}
               nick={v.username}
               date={v.created_dt}
-              isLike={v.user_like}
+              isLike={v.user_liked}
               content={v.content}
               isDonate={false}
             />

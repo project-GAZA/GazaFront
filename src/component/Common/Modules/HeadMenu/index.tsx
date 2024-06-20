@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Button from '@/component/Common/Attom/Button';
 import ShareLang from '@/component/Common/Attom/ShareLang';
@@ -5,8 +7,7 @@ import Menus from '@/component/Common/Attom/Menus';
 import scrollTo from '@/utils/scroll';
 
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { modalState } from '@/store/modalState';
-import { deviceState } from '@/store/deviceState';
+import { deviceState, modalState } from '@/store';
 import styles from './index.module.scss';
 
 interface HeadMenuProp {
