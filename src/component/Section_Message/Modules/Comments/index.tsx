@@ -7,21 +7,20 @@ import MobileComments from './MobileComments';
 import DesktopComments from './DesktopComments';
 
 const Comments = () => {
-  const [comments, loading] = useMessageData();
+  const { data: comments, loading } = useMessageData();
   const device = useRecoilValue(deviceState);
   if (loading) {
     return null;
   }
 
-  console.log('hi');
   return (
     <>
-      {device === 'desktop' && comments !== null && (
+      {device === 'desktop' && (
         <div className={styles.commentsContainer}>
           <DesktopComments comments={comments} />
         </div>
       )}
-      {device === 'mobile' && comments !== null && (
+      {device === 'mobile' && (
         <div className={styles.commentsContainer}>
           <MobileComments comments={comments} />
         </div>

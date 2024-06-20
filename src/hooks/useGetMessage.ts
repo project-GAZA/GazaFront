@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRecoilValueLoadable } from 'recoil';
 import { messageAsyncState } from '@/store';
+import { MessageType } from '@/types/dataType';
 import toast from 'react-hot-toast';
 
 const useMessageData = () => {
@@ -23,7 +24,7 @@ const useMessageData = () => {
     }
   }, [messageLoadable]);
 
-  return [data, loading];
+  return { data, loading };
 };
 
 export default useMessageData;
