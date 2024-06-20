@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Button from '@/component/Common/Attom/Button';
 import ShareLang from '@/component/Common/Attom/ShareLang';

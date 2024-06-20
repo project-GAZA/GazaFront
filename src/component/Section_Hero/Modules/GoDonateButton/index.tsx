@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import RoundedButton from '@/component/Section_Hero/Attom/RoundedButton';
-import GoArrowRight from '@/assets/icon/GoArrowRight.svg';
+import GoArrowRight from '@public/assets/svg/GoArrowRight.svg';
 import styles from './index.module.scss';
 
 const GoDonateButton = ({ onClick }: { onClick: () => void }) => {

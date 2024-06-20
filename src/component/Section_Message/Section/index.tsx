@@ -1,4 +1,6 @@
-import { RefObject, useState } from 'react';
+'use client';
+
+import { RefObject } from 'react';
 
 import Comments from '@/component/Section_Message/Modules/Comments';
 import MobileComments from '@/component/Section_Message/Modules/MobileComments';
@@ -7,8 +9,8 @@ import InputComment from '@/component/Section_Message/Attom/InputComment';
 import MessageTitle from '@/component/Section_Message/Attom/MessageTitle';
 
 import { useRecoilValue } from 'recoil';
+import useMessageData from '@/hooks/useGetMessage';
 import { deviceState, messageAsyncState } from '@/store';
-import { MessageType } from '@/types/dataType';
 import styles from './index.module.scss';
 
 interface SectionMessageProps {
@@ -16,8 +18,9 @@ interface SectionMessageProps {
 }
 
 const SectionMessage = ({ msgRef }: SectionMessageProps) => {
-  const comments = useRecoilValue(messageAsyncState);
+  const comments = useMessageData();
   const device = useRecoilValue(deviceState);
+
   return (
     <div className={styles.container} ref={msgRef}>
       <MessageTitle

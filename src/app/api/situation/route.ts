@@ -9,3 +9,7 @@ export async function GET(req: NextRequest) {
     return new Response(JSON.stringify({ error: e.message }), { status: 500 });
   }
 }
+
+export async function POST(req: NextRequest) {
+  return Response.json(2);
+}

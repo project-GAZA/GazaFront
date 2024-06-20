@@ -10,8 +10,8 @@ import MainPicture from '@/component/Section_Hero/Attom/MainPicture';
 import GoButtons from '@/component/Section_Hero/Modules/GoButtons';
 import HeroMainTitle from '@/component/Section_Hero/Modules/HeroMainTitle';
 
-import Children_1 from '@/assets/svg/background/children1.png';
-import Children_2 from '@/assets/svg/background/children2.png';
+import Children_1 from '@public/assets/svg/children1.png';
+import Children_2 from '@public/assets/svg/children2.png';
 
 import scrollTo from '@/utils/scroll';
 import styles from './index.module.scss';

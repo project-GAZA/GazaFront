@@ -1,5 +1,4 @@
 import { atom, selector } from 'recoil';
-import toast from 'react-hot-toast';
 import instance from '@/utils/clientaxios';
 
 import { AxiosResponse } from 'axios';
@@ -33,8 +32,7 @@ export const messageAsyncState = selector({
       );
       return res.data;
     } catch (e: any) {
-      toast.error(`서버에서 에러가 났습니다. ${e.response.data.error}`);
-      return [];
+      throw new Error(`메세지를 받아오는데 에러 발생 : ${e.data.meesage}`);
     }
   },
 });
