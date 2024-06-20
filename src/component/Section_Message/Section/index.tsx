@@ -1,16 +1,10 @@
-'use client';
-
 import { RefObject } from 'react';
 
 import Comments from '@/component/Section_Message/Modules/Comments';
-import MobileComments from '@/component/Section_Message/Modules/MobileComments';
 import SortButtons from '@/component/Section_Message/Modules/SortButtons';
 import InputComment from '@/component/Section_Message/Attom/InputComment';
 import MessageTitle from '@/component/Section_Message/Attom/MessageTitle';
 
-import { useRecoilValue } from 'recoil';
-import useMessageData from '@/hooks/useGetMessage';
-import { deviceState, messageAsyncState } from '@/store';
 import styles from './index.module.scss';
 
 interface SectionMessageProps {
@@ -18,9 +12,6 @@ interface SectionMessageProps {
 }
 
 const SectionMessage = ({ msgRef }: SectionMessageProps) => {
-  const comments = useMessageData();
-  const device = useRecoilValue(deviceState);
-
   return (
     <div className={styles.container} ref={msgRef}>
       <MessageTitle
@@ -30,16 +21,7 @@ const SectionMessage = ({ msgRef }: SectionMessageProps) => {
       <div className={styles.sortContainer}>
         <SortButtons theme="secondary" />
       </div>
-      {device === 'desktop' && comments !== null && (
-        <div className={styles.commentsContainer}>
-          <Comments comments={comments} />
-        </div>
-      )}
-      {device === 'mobile' && comments !== null && (
-        <div className={styles.commentsContainer}>
-          <MobileComments comments={comments} />
-        </div>
-      )}
+      <Comments />
       <div className={styles.inputContainer}>
         <InputComment placeholder="가자지구 아이들에게 응원의 메세지를 남겨보세요." />
       </div>

@@ -17,12 +17,6 @@
     margin-top: 20px;
   }
 }
-.commentsContainer {
-  margin-top: 14px;
-  @include respond-to('sm') {
-    margin-top: 24px;
-  }
-}
 .inputContainer {
   margin-top: 42px;
 }
