@@ -16,6 +16,8 @@ import KakaoIcon from 'public/assets/svg/kakao.svg';
 import CopyIcon from 'public/assets/svg/copyicon.svg';
 import styles from './index.module.scss';
 
+const GazaURL = 'https://gazas-child-read-hope.kr';
+
 const DonateComplete = () => {
   const [animation, setAnimation] = useState<string>(styles.layout);
   const setModal = useSetRecoilState<string>(modalState);
@@ -24,9 +26,8 @@ const DonateComplete = () => {
   }, []);
 
   const onClickInsta = () => {
-    const shareUrl = 'https://gazas-child-read-hope.kr';
     const url = `https://instagram.com`;
-    const shareLink = `${url}?text=${encodeURIComponent('가자지구 아이드을 도와주세요!')}&url=${encodeURIComponent(shareUrl)}`;
+    const shareLink = `${url}?text=${encodeURIComponent('가자지구 아이드을 도와주세요!')}&url=${encodeURIComponent(GazaURL)}`;
 
     window.open(shareLink, '_blank');
   };
@@ -55,8 +56,8 @@ const DonateComplete = () => {
         {
           title: '응원 메세지 남기기',
           link: {
-            mobileWebUrl: 'https://gazas-child-read-hope.kr/',
-            webUrl: 'https://gazas-child-read-hope.kr/',
+            mobileWebUrl: GazaURL,
+            webUrl: GazaURL,
           },
         },
       ],
@@ -65,7 +66,7 @@ const DonateComplete = () => {
 
   const onClickCopy = async () => {
     try {
-      await navigator.clipboard.writeText('https://gazas-child-read-hope.kr/');
+      await navigator.clipboard.writeText(GazaURL);
       toast.success('클립보드에 복사했습니다.');
     } catch (e) {
       toast.error('일시적인 오류로 클립보드에 실패했습니다.');
@@ -76,9 +77,7 @@ const DonateComplete = () => {
   };
 
   const onClickFaceBook = () => {
-    window.open(
-      'http://www.facebook.com/sharer.php?u=https://dc2348.tistory.com/',
-    );
+    window.open(`http://www.facebook.com/sharer.php?u=${GazaURL}`);
   };
 
   return (
