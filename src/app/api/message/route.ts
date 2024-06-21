@@ -32,6 +32,6 @@ export async function POST(req: any) {
     });
     return Response.json(data);
   } catch (e: any) {
-    return Response.json({ error: e.message });
+    return Response.json({ error: e.message }, { status: 400 });
   }
 }
